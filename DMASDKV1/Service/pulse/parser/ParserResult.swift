@@ -1,0 +1,45 @@
+//
+//  ResponseBody.swift
+//  Uptick
+//
+//  Created by StarryMedia 刘晓祥 on 2019/7/4.
+//  Copyright © 2019 starrymedia. All rights reserved.
+//
+
+import Foundation
+import HandyJSON
+
+open class ParserResult : HandyJSON{
+    /**
+     * 计数器
+     */
+    var count : Int?;
+    
+    /**
+     * 数据源
+     */
+    var did : String = "";
+//    /**
+//     * 什么应用产生的
+//     */
+//    var appId : String?;
+    /**
+     * 数据
+     */
+    var data : String = "";
+    
+    /**
+     * 数据标签,用于检索
+     */
+    var tag : String = "";
+    /**
+     * 数据类型
+     */
+    var type : String = "";
+    /**
+     * 分类
+     */
+    var category : String = "";
+    
+    required public init() {}
+}

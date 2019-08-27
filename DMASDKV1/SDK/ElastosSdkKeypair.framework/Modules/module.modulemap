@@ -1,0 +1,4 @@
+framework module ElastosSdkKeypair {
+  header "ElastosSdkKeypair-Swift.h"
+  requires objc
+}

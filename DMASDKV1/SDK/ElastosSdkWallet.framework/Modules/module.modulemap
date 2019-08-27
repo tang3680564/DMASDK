@@ -1,0 +1,4 @@
+framework module ElastosSdkWallet {
+  header "ElastosSdkWallet-Swift.h"
+  requires objc
+}

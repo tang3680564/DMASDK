@@ -1,0 +1,885 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0DF943739E816E6A25916D56 /* Pods_DMASDKV1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70A38906F026B6EDA704A972 /* Pods_DMASDKV1.framework */; };
+		F8125C0D2314F50700B813DB /* DMASDKV1.h in Headers */ = {isa = PBXBuildFile; fileRef = F8125C0B2314F50700B813DB /* DMASDKV1.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F8125C162314F5A800B813DB /* ElastosSdkKeypair.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8125C142314F5A800B813DB /* ElastosSdkKeypair.framework */; };
+		F8125C172314F5A800B813DB /* ElastosSdkWallet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8125C152314F5A800B813DB /* ElastosSdkWallet.framework */; };
+		F8125C7A2314FD1400B813DB /* AssetManagementService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C222314FD1300B813DB /* AssetManagementService.swift */; };
+		F8125C7B2314FD1400B813DB /* MerchantServiceConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C242314FD1300B813DB /* MerchantServiceConfig.swift */; };
+		F8125C7C2314FD1400B813DB /* PaymentConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C252314FD1300B813DB /* PaymentConfig.swift */; };
+		F8125C7D2314FD1400B813DB /* DMAEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C262314FD1300B813DB /* DMAEnum.swift */; };
+		F8125C7E2314FD1400B813DB /* RechargeStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C282314FD1300B813DB /* RechargeStatus.swift */; };
+		F8125C7F2314FD1400B813DB /* PaymentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C292314FD1300B813DB /* PaymentService.swift */; };
+		F8125C802314FD1400B813DB /* PayMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C2A2314FD1300B813DB /* PayMethod.swift */; };
+		F8125C812314FD1400B813DB /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C2B2314FD1300B813DB /* Direction.swift */; };
+		F8125C822314FD1400B813DB /* RequestBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C2E2314FD1300B813DB /* RequestBody.swift */; };
+		F8125C832314FD1400B813DB /* ParserResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C302314FD1300B813DB /* ParserResult.swift */; };
+		F8125C842314FD1400B813DB /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C312314FD1300B813DB /* Parser.swift */; };
+		F8125C852314FD1400B813DB /* PulseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C332314FD1300B813DB /* PulseService.swift */; };
+		F8125C862314FD1400B813DB /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C352314FD1300B813DB /* DataService.swift */; };
+		F8125C872314FD1400B813DB /* ResponseBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C362314FD1300B813DB /* ResponseBody.swift */; };
+		F8125C882314FD1400B813DB /* DynamicData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C382314FD1300B813DB /* DynamicData.swift */; };
+		F8125C892314FD1400B813DB /* Tags.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C392314FD1300B813DB /* Tags.swift */; };
+		F8125C8A2314FD1400B813DB /* Pulse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C3A2314FD1300B813DB /* Pulse.swift */; };
+		F8125C8B2314FD1400B813DB /* AbstractService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C3B2314FD1300B813DB /* AbstractService.swift */; };
+		F8125C8C2314FD1400B813DB /* ElaDIDService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C3D2314FD1300B813DB /* ElaDIDService.swift */; };
+		F8125C8D2314FD1400B813DB /* DefaultEncipher.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C3F2314FD1300B813DB /* DefaultEncipher.swift */; };
+		F8125C8E2314FD1400B813DB /* Encipher.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C402314FD1300B813DB /* Encipher.swift */; };
+		F8125C8F2314FD1400B813DB /* AppIdEncipher.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C412314FD1300B813DB /* AppIdEncipher.swift */; };
+		F8125C902314FD1400B813DB /* IpfsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C432314FD1300B813DB /* IpfsService.swift */; };
+		F8125C912314FD1400B813DB /* StorageMedium.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C442314FD1300B813DB /* StorageMedium.swift */; };
+		F8125C922314FD1400B813DB /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C472314FD1300B813DB /* Profile.swift */; };
+		F8125C932314FD1400B813DB /* Propertys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C482314FD1300B813DB /* Propertys.swift */; };
+		F8125C942314FD1400B813DB /* ProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C4A2314FD1300B813DB /* ProfileService.swift */; };
+		F8125C952314FD1400B813DB /* EthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C4C2314FD1300B813DB /* EthService.swift */; };
+		F8125C962314FD1400B813DB /* ElaService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C4D2314FD1300B813DB /* ElaService.swift */; };
+		F8125C972314FD1400B813DB /* MessageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C4F2314FD1300B813DB /* MessageService.swift */; };
+		F8125C982314FD1400B813DB /* GroupService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C502314FD1300B813DB /* GroupService.swift */; };
+		F8125C992314FD1400B813DB /* AppraiserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C522314FD1300B813DB /* AppraiserService.swift */; };
+		F8125C9A2314FD1400B813DB /* Appraiser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C532314FD1300B813DB /* Appraiser.swift */; };
+		F8125C9B2314FD1400B813DB /* ChargeActivityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C552314FD1300B813DB /* ChargeActivityService.swift */; };
+		F8125C9C2314FD1400B813DB /* MerchantService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C562314FD1300B813DB /* MerchantService.swift */; };
+		F8125C9D2314FD1400B813DB /* PledgeActivityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C572314FD1300B813DB /* PledgeActivityService.swift */; };
+		F8125C9E2314FD1400B813DB /* TokenContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C5A2314FD1400B813DB /* TokenContract.swift */; };
+		F8125C9F2314FD1400B813DB /* PlatformContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C5B2314FD1400B813DB /* PlatformContract.swift */; };
+		F8125CA02314FD1400B813DB /* ChargeActivityContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C5C2314FD1400B813DB /* ChargeActivityContract.swift */; };
+		F8125CA12314FD1400B813DB /* PledgeActivityContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C5D2314FD1400B813DB /* PledgeActivityContract.swift */; };
+		F8125CA22314FD1400B813DB /* AssetManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C5F2314FD1400B813DB /* AssetManagement.swift */; };
+		F8125CA32314FD1400B813DB /* DMACommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C612314FD1400B813DB /* DMACommon.swift */; };
+		F8125CA42314FD1400B813DB /* DMAHttpUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C622314FD1400B813DB /* DMAHttpUtil.swift */; };
+		F8125CA52314FD1400B813DB /* DeployHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C632314FD1400B813DB /* DeployHelper.swift */; };
+		F8125CA62314FD1400B813DB /* ContractMethodHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C642314FD1400B813DB /* ContractMethodHelper.swift */; };
+		F8125CA72314FD1400B813DB /* ElaDID.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C662314FD1400B813DB /* ElaDID.swift */; };
+		F8125CA82314FD1400B813DB /* IpfsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C682314FD1400B813DB /* IpfsStorage.swift */; };
+		F8125CA92314FD1400B813DB /* ETHChargeActivity.json in Resources */ = {isa = PBXBuildFile; fileRef = F8125C6A2314FD1400B813DB /* ETHChargeActivity.json */; };
+		F8125CAA2314FD1400B813DB /* ETHChargeActivityData.json in Resources */ = {isa = PBXBuildFile; fileRef = F8125C6B2314FD1400B813DB /* ETHChargeActivityData.json */; };
+		F8125CAB2314FD1400B813DB /* ETHTransfer.json in Resources */ = {isa = PBXBuildFile; fileRef = F8125C6C2314FD1400B813DB /* ETHTransfer.json */; };
+		F8125CAC2314FD1400B813DB /* ETHPlatformData.json in Resources */ = {isa = PBXBuildFile; fileRef = F8125C6D2314FD1400B813DB /* ETHPlatformData.json */; };
+		F8125CAD2314FD1400B813DB /* ETHPlatform.json in Resources */ = {isa = PBXBuildFile; fileRef = F8125C6E2314FD1400B813DB /* ETHPlatform.json */; };
+		F8125CAE2314FD1400B813DB /* NFTokenETH.json in Resources */ = {isa = PBXBuildFile; fileRef = F8125C6F2314FD1400B813DB /* NFTokenETH.json */; };
+		F8125CAF2314FD1400B813DB /* ETHPledgeActivityData.json in Resources */ = {isa = PBXBuildFile; fileRef = F8125C702314FD1400B813DB /* ETHPledgeActivityData.json */; };
+		F8125CB02314FD1400B813DB /* ETHPledgeActivity.json in Resources */ = {isa = PBXBuildFile; fileRef = F8125C712314FD1400B813DB /* ETHPledgeActivity.json */; };
+		F8125CB12314FD1400B813DB /* NFTokenETHData.json in Resources */ = {isa = PBXBuildFile; fileRef = F8125C722314FD1400B813DB /* NFTokenETHData.json */; };
+		F8125CB22314FD1400B813DB /* EthWallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C742314FD1400B813DB /* EthWallet.swift */; };
+		F8125CB32314FD1400B813DB /* ElaWallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C752314FD1400B813DB /* ElaWallet.swift */; };
+		F8125CB42314FD1400B813DB /* GroupHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C772314FD1400B813DB /* GroupHelper.swift */; };
+		F8125CB52314FD1400B813DB /* NetworkReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C782314FD1400B813DB /* NetworkReachabilityManager.swift */; };
+		F8125CB62314FD1400B813DB /* MessageBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C792314FD1400B813DB /* MessageBase.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		32CF08E1CC9C3AC4C76FD733 /* Pods-DMASDKV1.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DMASDKV1.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DMASDKV1/Pods-DMASDKV1.debug.xcconfig"; sourceTree = "<group>"; };
+		410A32CABEAE2AF1640E0A2A /* Pods-DMASDKV1.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DMASDKV1.release.xcconfig"; path = "Pods/Target Support Files/Pods-DMASDKV1/Pods-DMASDKV1.release.xcconfig"; sourceTree = "<group>"; };
+		70A38906F026B6EDA704A972 /* Pods_DMASDKV1.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DMASDKV1.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F8125C082314F50700B813DB /* DMASDKV1.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DMASDKV1.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F8125C0B2314F50700B813DB /* DMASDKV1.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DMASDKV1.h; sourceTree = "<group>"; };
+		F8125C0C2314F50700B813DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F8125C142314F5A800B813DB /* ElastosSdkKeypair.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ElastosSdkKeypair.framework; sourceTree = "<group>"; };
+		F8125C152314F5A800B813DB /* ElastosSdkWallet.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ElastosSdkWallet.framework; sourceTree = "<group>"; };
+		F8125C222314FD1300B813DB /* AssetManagementService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssetManagementService.swift; sourceTree = "<group>"; };
+		F8125C242314FD1300B813DB /* MerchantServiceConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MerchantServiceConfig.swift; sourceTree = "<group>"; };
+		F8125C252314FD1300B813DB /* PaymentConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentConfig.swift; sourceTree = "<group>"; };
+		F8125C262314FD1300B813DB /* DMAEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMAEnum.swift; sourceTree = "<group>"; };
+		F8125C282314FD1300B813DB /* RechargeStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RechargeStatus.swift; sourceTree = "<group>"; };
+		F8125C292314FD1300B813DB /* PaymentService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentService.swift; sourceTree = "<group>"; };
+		F8125C2A2314FD1300B813DB /* PayMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayMethod.swift; sourceTree = "<group>"; };
+		F8125C2B2314FD1300B813DB /* Direction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Direction.swift; sourceTree = "<group>"; };
+		F8125C2E2314FD1300B813DB /* RequestBody.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestBody.swift; sourceTree = "<group>"; };
+		F8125C302314FD1300B813DB /* ParserResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParserResult.swift; sourceTree = "<group>"; };
+		F8125C312314FD1300B813DB /* Parser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
+		F8125C332314FD1300B813DB /* PulseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PulseService.swift; sourceTree = "<group>"; };
+		F8125C352314FD1300B813DB /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
+		F8125C362314FD1300B813DB /* ResponseBody.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseBody.swift; sourceTree = "<group>"; };
+		F8125C382314FD1300B813DB /* DynamicData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicData.swift; sourceTree = "<group>"; };
+		F8125C392314FD1300B813DB /* Tags.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tags.swift; sourceTree = "<group>"; };
+		F8125C3A2314FD1300B813DB /* Pulse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pulse.swift; sourceTree = "<group>"; };
+		F8125C3B2314FD1300B813DB /* AbstractService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbstractService.swift; sourceTree = "<group>"; };
+		F8125C3D2314FD1300B813DB /* ElaDIDService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElaDIDService.swift; sourceTree = "<group>"; };
+		F8125C3F2314FD1300B813DB /* DefaultEncipher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultEncipher.swift; sourceTree = "<group>"; };
+		F8125C402314FD1300B813DB /* Encipher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Encipher.swift; sourceTree = "<group>"; };
+		F8125C412314FD1300B813DB /* AppIdEncipher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppIdEncipher.swift; sourceTree = "<group>"; };
+		F8125C432314FD1300B813DB /* IpfsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IpfsService.swift; sourceTree = "<group>"; };
+		F8125C442314FD1300B813DB /* StorageMedium.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageMedium.swift; sourceTree = "<group>"; };
+		F8125C472314FD1300B813DB /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		F8125C482314FD1300B813DB /* Propertys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Propertys.swift; sourceTree = "<group>"; };
+		F8125C4A2314FD1300B813DB /* ProfileService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileService.swift; sourceTree = "<group>"; };
+		F8125C4C2314FD1300B813DB /* EthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EthService.swift; sourceTree = "<group>"; };
+		F8125C4D2314FD1300B813DB /* ElaService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElaService.swift; sourceTree = "<group>"; };
+		F8125C4F2314FD1300B813DB /* MessageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageService.swift; sourceTree = "<group>"; };
+		F8125C502314FD1300B813DB /* GroupService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupService.swift; sourceTree = "<group>"; };
+		F8125C522314FD1300B813DB /* AppraiserService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppraiserService.swift; sourceTree = "<group>"; };
+		F8125C532314FD1300B813DB /* Appraiser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Appraiser.swift; sourceTree = "<group>"; };
+		F8125C552314FD1300B813DB /* ChargeActivityService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChargeActivityService.swift; sourceTree = "<group>"; };
+		F8125C562314FD1300B813DB /* MerchantService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MerchantService.swift; sourceTree = "<group>"; };
+		F8125C572314FD1300B813DB /* PledgeActivityService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PledgeActivityService.swift; sourceTree = "<group>"; };
+		F8125C5A2314FD1400B813DB /* TokenContract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenContract.swift; sourceTree = "<group>"; };
+		F8125C5B2314FD1400B813DB /* PlatformContract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlatformContract.swift; sourceTree = "<group>"; };
+		F8125C5C2314FD1400B813DB /* ChargeActivityContract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChargeActivityContract.swift; sourceTree = "<group>"; };
+		F8125C5D2314FD1400B813DB /* PledgeActivityContract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PledgeActivityContract.swift; sourceTree = "<group>"; };
+		F8125C5F2314FD1400B813DB /* AssetManagement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssetManagement.swift; sourceTree = "<group>"; };
+		F8125C612314FD1400B813DB /* DMACommon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMACommon.swift; sourceTree = "<group>"; };
+		F8125C622314FD1400B813DB /* DMAHttpUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMAHttpUtil.swift; sourceTree = "<group>"; };
+		F8125C632314FD1400B813DB /* DeployHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeployHelper.swift; sourceTree = "<group>"; };
+		F8125C642314FD1400B813DB /* ContractMethodHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContractMethodHelper.swift; sourceTree = "<group>"; };
+		F8125C662314FD1400B813DB /* ElaDID.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElaDID.swift; sourceTree = "<group>"; };
+		F8125C682314FD1400B813DB /* IpfsStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IpfsStorage.swift; sourceTree = "<group>"; };
+		F8125C6A2314FD1400B813DB /* ETHChargeActivity.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ETHChargeActivity.json; sourceTree = "<group>"; };
+		F8125C6B2314FD1400B813DB /* ETHChargeActivityData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ETHChargeActivityData.json; sourceTree = "<group>"; };
+		F8125C6C2314FD1400B813DB /* ETHTransfer.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ETHTransfer.json; sourceTree = "<group>"; };
+		F8125C6D2314FD1400B813DB /* ETHPlatformData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ETHPlatformData.json; sourceTree = "<group>"; };
+		F8125C6E2314FD1400B813DB /* ETHPlatform.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ETHPlatform.json; sourceTree = "<group>"; };
+		F8125C6F2314FD1400B813DB /* NFTokenETH.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = NFTokenETH.json; sourceTree = "<group>"; };
+		F8125C702314FD1400B813DB /* ETHPledgeActivityData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ETHPledgeActivityData.json; sourceTree = "<group>"; };
+		F8125C712314FD1400B813DB /* ETHPledgeActivity.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ETHPledgeActivity.json; sourceTree = "<group>"; };
+		F8125C722314FD1400B813DB /* NFTokenETHData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = NFTokenETHData.json; sourceTree = "<group>"; };
+		F8125C742314FD1400B813DB /* EthWallet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EthWallet.swift; sourceTree = "<group>"; };
+		F8125C752314FD1400B813DB /* ElaWallet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElaWallet.swift; sourceTree = "<group>"; };
+		F8125C772314FD1400B813DB /* GroupHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupHelper.swift; sourceTree = "<group>"; };
+		F8125C782314FD1400B813DB /* NetworkReachabilityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkReachabilityManager.swift; sourceTree = "<group>"; };
+		F8125C792314FD1400B813DB /* MessageBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageBase.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F8125C052314F50700B813DB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F8125C172314F5A800B813DB /* ElastosSdkWallet.framework in Frameworks */,
+				F8125C162314F5A800B813DB /* ElastosSdkKeypair.framework in Frameworks */,
+				0DF943739E816E6A25916D56 /* Pods_DMASDKV1.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4CB9FEABC979D0AF8EA3561C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				70A38906F026B6EDA704A972 /* Pods_DMASDKV1.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F8125BFE2314F50700B813DB = {
+			isa = PBXGroup;
+			children = (
+				F8125C0A2314F50700B813DB /* DMASDKV1 */,
+				F8125C092314F50700B813DB /* Products */,
+				F9A4A06537CA10B6468373B5 /* Pods */,
+				4CB9FEABC979D0AF8EA3561C /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		F8125C092314F50700B813DB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F8125C082314F50700B813DB /* DMASDKV1.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F8125C0A2314F50700B813DB /* DMASDKV1 */ = {
+			isa = PBXGroup;
+			children = (
+				F8125C582314FD1400B813DB /* Base */,
+				F8125C202314FD1300B813DB /* Service */,
+				F8125C132314F5A100B813DB /* SDK */,
+				F8125C0B2314F50700B813DB /* DMASDKV1.h */,
+				F8125C0C2314F50700B813DB /* Info.plist */,
+			);
+			path = DMASDKV1;
+			sourceTree = "<group>";
+		};
+		F8125C132314F5A100B813DB /* SDK */ = {
+			isa = PBXGroup;
+			children = (
+				F8125C142314F5A800B813DB /* ElastosSdkKeypair.framework */,
+				F8125C152314F5A800B813DB /* ElastosSdkWallet.framework */,
+			);
+			path = SDK;
+			sourceTree = "<group>";
+		};
+		F8125C202314FD1300B813DB /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				F8125C212314FD1300B813DB /* asset */,
+				F8125C232314FD1300B813DB /* config */,
+				F8125C272314FD1300B813DB /* payment */,
+				F8125C2C2314FD1300B813DB /* pulse */,
+				F8125C342314FD1300B813DB /* dataservice */,
+				F8125C3C2314FD1300B813DB /* passport */,
+				F8125C422314FD1300B813DB /* storage */,
+				F8125C452314FD1300B813DB /* profile */,
+				F8125C4B2314FD1300B813DB /* wallet */,
+				F8125C4E2314FD1300B813DB /* carrier */,
+				F8125C512314FD1300B813DB /* appraiser */,
+				F8125C542314FD1300B813DB /* merchant */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		F8125C212314FD1300B813DB /* asset */ = {
+			isa = PBXGroup;
+			children = (
+				F8125C222314FD1300B813DB /* AssetManagementService.swift */,
+			);
+			path = asset;
+			sourceTree = "<group>";
+		};
+		F8125C232314FD1300B813DB /* config */ = {
+			isa = PBXGroup;
+			children = (
+				F8125C242314FD1300B813DB /* MerchantServiceConfig.swift */,
+				F8125C252314FD1300B813DB /* PaymentConfig.swift */,
+				F8125C262314FD1300B813DB /* DMAEnum.swift */,
+			);
+			path = config;
+			sourceTree = "<group>";
+		};
+		F8125C272314FD1300B813DB /* payment */ = {
+			isa = PBXGroup;
+			children = (
+				F8125C282314FD1300B813DB /* RechargeStatus.swift */,
+				F8125C292314FD1300B813DB /* PaymentService.swift */,
+				F8125C2A2314FD1300B813DB /* PayMethod.swift */,
+				F8125C2B2314FD1300B813DB /* Direction.swift */,
+			);
+			path = payment;
+			sourceTree = "<group>";
+		};
+		F8125C2C2314FD1300B813DB /* pulse */ = {
+			isa = PBXGroup;
+			children = (
+				F8125C2D2314FD1300B813DB /* entity */,
+				F8125C2F2314FD1300B813DB /* parser */,
+				F8125C322314FD1300B813DB /* service */,
+			);
+			path = pulse;
+			sourceTree = "<group>";
+		};
+		F8125C2D2314FD1300B813DB /* entity */ = {
+			isa = PBXGroup;
+			children = (
+				F8125C2E2314FD1300B813DB /* RequestBody.swift */,
+			);
+			path = entity;
+			sourceTree = "<group>";
+		};
+		F8125C2F2314FD1300B813DB /* parser */ = {
+			isa = PBXGroup;
+			children = (
+				F8125C302314FD1300B813DB /* ParserResult.swift */,
+				F8125C312314FD1300B813DB /* Parser.swift */,
+			);
+			path = parser;
+			sourceTree = "<group>";
+		};
+		F8125C322314FD1300B813DB /* service */ = {
+			isa = PBXGroup;
+			children = (
+				F8125C332314FD1300B813DB /* PulseService.swift */,
+			);
+			path = service;
+			sourceTree = "<group>";
+		};
+		F8125C342314FD1300B813DB /* dataservice */ = {
+			isa = PBXGroup;
+			children = (
+				F8125C352314FD1300B813DB /* DataService.swift */,
+				F8125C362314FD1300B813DB /* ResponseBody.swift */,
+				F8125C372314FD1300B813DB /* entity */,
+				F8125C3B2314FD1300B813DB /* AbstractService.swift */,
+			);
+			path = dataservice;
+			sourceTree = "<group>";
+		};
+		F8125C372314FD1300B813DB /* entity */ = {
+			isa = PBXGroup;
+			children = (
+				F8125C382314FD1300B813DB /* DynamicData.swift */,
+				F8125C392314FD1300B813DB /* Tags.swift */,
+				F8125C3A2314FD1300B813DB /* Pulse.swift */,
+			);
+			path = entity;
+			sourceTree = "<group>";
+		};
+		F8125C3C2314FD1300B813DB /* passport */ = {
+			isa = PBXGroup;
+			children = (
+				F8125C3D2314FD1300B813DB /* ElaDIDService.swift */,
+				F8125C3E2314FD1300B813DB /* encipher */,
+			);
+			path = passport;
+			sourceTree = "<group>";
+		};
+		F8125C3E2314FD1300B813DB /* encipher */ = {
+			isa = PBXGroup;
+			children = (
+				F8125C3F2314FD1300B813DB /* DefaultEncipher.swift */,
+				F8125C402314FD1300B813DB /* Encipher.swift */,
+				F8125C412314FD1300B813DB /* AppIdEncipher.swift */,
+			);
+			path = encipher;
+			sourceTree = "<group>";
+		};
+		F8125C422314FD1300B813DB /* storage */ = {
+			isa = PBXGroup;
+			children = (
+				F8125C432314FD1300B813DB /* IpfsService.swift */,
+				F8125C442314FD1300B813DB /* StorageMedium.swift */,
+			);
+			path = storage;
+			sourceTree = "<group>";
+		};
+		F8125C452314FD1300B813DB /* profile */ = {
+			isa = PBXGroup;
+			children = (
+				F8125C462314FD1300B813DB /* entity */,
+				F8125C492314FD1300B813DB /* service */,
+			);
+			path = profile;
+			sourceTree = "<group>";
+		};
+		F8125C462314FD1300B813DB /* entity */ = {
+			isa = PBXGroup;
+			children = (
+				F8125C472314FD1300B813DB /* Profile.swift */,
+				F8125C482314FD1300B813DB /* Propertys.swift */,
+			);
+			path = entity;
+			sourceTree = "<group>";
+		};
+		F8125C492314FD1300B813DB /* service */ = {
+			isa = PBXGroup;
+			children = (
+				F8125C4A2314FD1300B813DB /* ProfileService.swift */,
+			);
+			path = service;
+			sourceTree = "<group>";
+		};
+		F8125C4B2314FD1300B813DB /* wallet */ = {
+			isa = PBXGroup;
+			children = (
+				F8125C4C2314FD1300B813DB /* EthService.swift */,
+				F8125C4D2314FD1300B813DB /* ElaService.swift */,
+			);
+			path = wallet;
+			sourceTree = "<group>";
+		};
+		F8125C4E2314FD1300B813DB /* carrier */ = {
+			isa = PBXGroup;
+			children = (
+				F8125C4F2314FD1300B813DB /* MessageService.swift */,
+				F8125C502314FD1300B813DB /* GroupService.swift */,
+			);
+			path = carrier;
+			sourceTree = "<group>";
+		};
+		F8125C512314FD1300B813DB /* appraiser */ = {
+			isa = PBXGroup;
+			children = (
+				F8125C522314FD1300B813DB /* AppraiserService.swift */,
+				F8125C532314FD1300B813DB /* Appraiser.swift */,
+			);
+			path = appraiser;
+			sourceTree = "<group>";
+		};
+		F8125C542314FD1300B813DB /* merchant */ = {
+			isa = PBXGroup;
+			children = (
+				F8125C552314FD1300B813DB /* ChargeActivityService.swift */,
+				F8125C562314FD1300B813DB /* MerchantService.swift */,
+				F8125C572314FD1300B813DB /* PledgeActivityService.swift */,
+			);
+			path = merchant;
+			sourceTree = "<group>";
+		};
+		F8125C582314FD1400B813DB /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				F8125C592314FD1400B813DB /* exchange */,
+				F8125C5E2314FD1400B813DB /* asset */,
+				F8125C602314FD1400B813DB /* util */,
+				F8125C652314FD1400B813DB /* passport */,
+				F8125C672314FD1400B813DB /* storage */,
+				F8125C692314FD1400B813DB /* abi */,
+				F8125C732314FD1400B813DB /* wallet */,
+				F8125C762314FD1400B813DB /* carrier */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		F8125C592314FD1400B813DB /* exchange */ = {
+			isa = PBXGroup;
+			children = (
+				F8125C5A2314FD1400B813DB /* TokenContract.swift */,
+				F8125C5B2314FD1400B813DB /* PlatformContract.swift */,
+				F8125C5C2314FD1400B813DB /* ChargeActivityContract.swift */,
+				F8125C5D2314FD1400B813DB /* PledgeActivityContract.swift */,
+			);
+			path = exchange;
+			sourceTree = "<group>";
+		};
+		F8125C5E2314FD1400B813DB /* asset */ = {
+			isa = PBXGroup;
+			children = (
+				F8125C5F2314FD1400B813DB /* AssetManagement.swift */,
+			);
+			path = asset;
+			sourceTree = "<group>";
+		};
+		F8125C602314FD1400B813DB /* util */ = {
+			isa = PBXGroup;
+			children = (
+				F8125C612314FD1400B813DB /* DMACommon.swift */,
+				F8125C622314FD1400B813DB /* DMAHttpUtil.swift */,
+				F8125C632314FD1400B813DB /* DeployHelper.swift */,
+				F8125C642314FD1400B813DB /* ContractMethodHelper.swift */,
+			);
+			path = util;
+			sourceTree = "<group>";
+		};
+		F8125C652314FD1400B813DB /* passport */ = {
+			isa = PBXGroup;
+			children = (
+				F8125C662314FD1400B813DB /* ElaDID.swift */,
+			);
+			path = passport;
+			sourceTree = "<group>";
+		};
+		F8125C672314FD1400B813DB /* storage */ = {
+			isa = PBXGroup;
+			children = (
+				F8125C682314FD1400B813DB /* IpfsStorage.swift */,
+			);
+			path = storage;
+			sourceTree = "<group>";
+		};
+		F8125C692314FD1400B813DB /* abi */ = {
+			isa = PBXGroup;
+			children = (
+				F8125C6A2314FD1400B813DB /* ETHChargeActivity.json */,
+				F8125C6B2314FD1400B813DB /* ETHChargeActivityData.json */,
+				F8125C6C2314FD1400B813DB /* ETHTransfer.json */,
+				F8125C6D2314FD1400B813DB /* ETHPlatformData.json */,
+				F8125C6E2314FD1400B813DB /* ETHPlatform.json */,
+				F8125C6F2314FD1400B813DB /* NFTokenETH.json */,
+				F8125C702314FD1400B813DB /* ETHPledgeActivityData.json */,
+				F8125C712314FD1400B813DB /* ETHPledgeActivity.json */,
+				F8125C722314FD1400B813DB /* NFTokenETHData.json */,
+			);
+			path = abi;
+			sourceTree = "<group>";
+		};
+		F8125C732314FD1400B813DB /* wallet */ = {
+			isa = PBXGroup;
+			children = (
+				F8125C742314FD1400B813DB /* EthWallet.swift */,
+				F8125C752314FD1400B813DB /* ElaWallet.swift */,
+			);
+			path = wallet;
+			sourceTree = "<group>";
+		};
+		F8125C762314FD1400B813DB /* carrier */ = {
+			isa = PBXGroup;
+			children = (
+				F8125C772314FD1400B813DB /* GroupHelper.swift */,
+				F8125C782314FD1400B813DB /* NetworkReachabilityManager.swift */,
+				F8125C792314FD1400B813DB /* MessageBase.swift */,
+			);
+			path = carrier;
+			sourceTree = "<group>";
+		};
+		F9A4A06537CA10B6468373B5 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				32CF08E1CC9C3AC4C76FD733 /* Pods-DMASDKV1.debug.xcconfig */,
+				410A32CABEAE2AF1640E0A2A /* Pods-DMASDKV1.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		F8125C032314F50700B813DB /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F8125C0D2314F50700B813DB /* DMASDKV1.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		F8125C072314F50700B813DB /* DMASDKV1 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F8125C102314F50700B813DB /* Build configuration list for PBXNativeTarget "DMASDKV1" */;
+			buildPhases = (
+				F2864E94A091A953605B9485 /* [CP] Check Pods Manifest.lock */,
+				F8125C032314F50700B813DB /* Headers */,
+				F8125C042314F50700B813DB /* Sources */,
+				F8125C052314F50700B813DB /* Frameworks */,
+				F8125C062314F50700B813DB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DMASDKV1;
+			productName = DMASDKV1;
+			productReference = F8125C082314F50700B813DB /* DMASDKV1.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F8125BFF2314F50700B813DB /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1020;
+				ORGANIZATIONNAME = starrymedia;
+				TargetAttributes = {
+					F8125C072314F50700B813DB = {
+						CreatedOnToolsVersion = 10.2.1;
+					};
+				};
+			};
+			buildConfigurationList = F8125C022314F50700B813DB /* Build configuration list for PBXProject "DMASDKV1" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = F8125BFE2314F50700B813DB;
+			productRefGroup = F8125C092314F50700B813DB /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F8125C072314F50700B813DB /* DMASDKV1 */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F8125C062314F50700B813DB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F8125CAD2314FD1400B813DB /* ETHPlatform.json in Resources */,
+				F8125CAE2314FD1400B813DB /* NFTokenETH.json in Resources */,
+				F8125CAF2314FD1400B813DB /* ETHPledgeActivityData.json in Resources */,
+				F8125CAC2314FD1400B813DB /* ETHPlatformData.json in Resources */,
+				F8125CAB2314FD1400B813DB /* ETHTransfer.json in Resources */,
+				F8125CB02314FD1400B813DB /* ETHPledgeActivity.json in Resources */,
+				F8125CAA2314FD1400B813DB /* ETHChargeActivityData.json in Resources */,
+				F8125CB12314FD1400B813DB /* NFTokenETHData.json in Resources */,
+				F8125CA92314FD1400B813DB /* ETHChargeActivity.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		F2864E94A091A953605B9485 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DMASDKV1-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F8125C042314F50700B813DB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F8125CB62314FD1400B813DB /* MessageBase.swift in Sources */,
+				F8125CA82314FD1400B813DB /* IpfsStorage.swift in Sources */,
+				F8125CB52314FD1400B813DB /* NetworkReachabilityManager.swift in Sources */,
+				F8125C872314FD1400B813DB /* ResponseBody.swift in Sources */,
+				F8125CA62314FD1400B813DB /* ContractMethodHelper.swift in Sources */,
+				F8125C9E2314FD1400B813DB /* TokenContract.swift in Sources */,
+				F8125C7A2314FD1400B813DB /* AssetManagementService.swift in Sources */,
+				F8125C9A2314FD1400B813DB /* Appraiser.swift in Sources */,
+				F8125C942314FD1400B813DB /* ProfileService.swift in Sources */,
+				F8125C862314FD1400B813DB /* DataService.swift in Sources */,
+				F8125C882314FD1400B813DB /* DynamicData.swift in Sources */,
+				F8125C892314FD1400B813DB /* Tags.swift in Sources */,
+				F8125C842314FD1400B813DB /* Parser.swift in Sources */,
+				F8125CA72314FD1400B813DB /* ElaDID.swift in Sources */,
+				F8125C932314FD1400B813DB /* Propertys.swift in Sources */,
+				F8125C7E2314FD1400B813DB /* RechargeStatus.swift in Sources */,
+				F8125C992314FD1400B813DB /* AppraiserService.swift in Sources */,
+				F8125C9C2314FD1400B813DB /* MerchantService.swift in Sources */,
+				F8125C8D2314FD1400B813DB /* DefaultEncipher.swift in Sources */,
+				F8125C802314FD1400B813DB /* PayMethod.swift in Sources */,
+				F8125C832314FD1400B813DB /* ParserResult.swift in Sources */,
+				F8125C812314FD1400B813DB /* Direction.swift in Sources */,
+				F8125CB22314FD1400B813DB /* EthWallet.swift in Sources */,
+				F8125C952314FD1400B813DB /* EthService.swift in Sources */,
+				F8125C9D2314FD1400B813DB /* PledgeActivityService.swift in Sources */,
+				F8125C7C2314FD1400B813DB /* PaymentConfig.swift in Sources */,
+				F8125C962314FD1400B813DB /* ElaService.swift in Sources */,
+				F8125C912314FD1400B813DB /* StorageMedium.swift in Sources */,
+				F8125C8C2314FD1400B813DB /* ElaDIDService.swift in Sources */,
+				F8125CB32314FD1400B813DB /* ElaWallet.swift in Sources */,
+				F8125C8B2314FD1400B813DB /* AbstractService.swift in Sources */,
+				F8125C902314FD1400B813DB /* IpfsService.swift in Sources */,
+				F8125CA02314FD1400B813DB /* ChargeActivityContract.swift in Sources */,
+				F8125CA22314FD1400B813DB /* AssetManagement.swift in Sources */,
+				F8125C922314FD1400B813DB /* Profile.swift in Sources */,
+				F8125CA12314FD1400B813DB /* PledgeActivityContract.swift in Sources */,
+				F8125C982314FD1400B813DB /* GroupService.swift in Sources */,
+				F8125CB42314FD1400B813DB /* GroupHelper.swift in Sources */,
+				F8125C822314FD1400B813DB /* RequestBody.swift in Sources */,
+				F8125CA32314FD1400B813DB /* DMACommon.swift in Sources */,
+				F8125C9F2314FD1400B813DB /* PlatformContract.swift in Sources */,
+				F8125C7B2314FD1400B813DB /* MerchantServiceConfig.swift in Sources */,
+				F8125C9B2314FD1400B813DB /* ChargeActivityService.swift in Sources */,
+				F8125CA42314FD1400B813DB /* DMAHttpUtil.swift in Sources */,
+				F8125C8F2314FD1400B813DB /* AppIdEncipher.swift in Sources */,
+				F8125C7F2314FD1400B813DB /* PaymentService.swift in Sources */,
+				F8125CA52314FD1400B813DB /* DeployHelper.swift in Sources */,
+				F8125C972314FD1400B813DB /* MessageService.swift in Sources */,
+				F8125C8E2314FD1400B813DB /* Encipher.swift in Sources */,
+				F8125C7D2314FD1400B813DB /* DMAEnum.swift in Sources */,
+				F8125C852314FD1400B813DB /* PulseService.swift in Sources */,
+				F8125C8A2314FD1400B813DB /* Pulse.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		F8125C0E2314F50700B813DB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		F8125C0F2314F50700B813DB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		F8125C112314F50700B813DB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 32CF08E1CC9C3AC4C76FD733 /* Pods-DMASDKV1.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 75EYP2YGJW;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/DMASDKV1/SDK",
+				);
+				INFOPLIST_FILE = DMASDKV1/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = starrymedia.DMASDKV1;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F8125C122314F50700B813DB /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 410A32CABEAE2AF1640E0A2A /* Pods-DMASDKV1.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 75EYP2YGJW;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/DMASDKV1/SDK",
+				);
+				INFOPLIST_FILE = DMASDKV1/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = starrymedia.DMASDKV1;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F8125C022314F50700B813DB /* Build configuration list for PBXProject "DMASDKV1" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F8125C0E2314F50700B813DB /* Debug */,
+				F8125C0F2314F50700B813DB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F8125C102314F50700B813DB /* Build configuration list for PBXNativeTarget "DMASDKV1" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F8125C112314F50700B813DB /* Debug */,
+				F8125C122314F50700B813DB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F8125BFF2314F50700B813DB /* Project object */;
+}
