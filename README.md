@@ -10,10 +10,10 @@ Carthage update --platform ios
 
 2 -- 再使用 pod
 在文件中添加如下
-    pod 'web3swift', '~> 1.1.10'
-    pod 'Alamofire', '~> 4.7'
-    pod 'HandyJSON', '~> 5.0.0'
-    pod 'ElastosCarrierSDK', '~> 5.3.1'
+    # pod 'web3swift', '~> 1.1.10'
+    # pod 'Alamofire', '~> 4.7'
+    # pod 'HandyJSON', '~> 5.0.0'
+    # pod 'ElastosCarrierSDK', '~> 5.3.1'
     
 执行命令
 pod install
