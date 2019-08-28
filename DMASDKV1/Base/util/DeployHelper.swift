@@ -69,8 +69,8 @@ class DeployHelper: NSObject {
     
     
     func getAbi(abi:String) -> String {
-//        let path = Bundle(for: type(of: self)).path(forResource: abi, ofType: "json")
-        let path = Bundle.main.path(forResource: abi, ofType: "json")
+        let path = Bundle(identifier: "starrymedia.DMASDKV1")?.path(forResource: abi, ofType: "json")
+//        let path = Bundle.main.path(forResource: abi, ofType: "json")
         let data = NSData.init(contentsOfFile: path!)
         let abiString = String.init(data: data! as Data, encoding:.utf8)
         return abiString!
