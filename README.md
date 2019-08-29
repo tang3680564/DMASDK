@@ -17,7 +17,7 @@ Carthage update --platform ios
 
 在文件中添加如下
    
-   pod 'ElastosCarrierSDK', '~> 5.3.1'
+   pod 'ElastosCarrierSDK', '~> 5.3.2'
     
 执行命令
 
