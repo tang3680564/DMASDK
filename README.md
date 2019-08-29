@@ -1,6 +1,7 @@
 # DMASDK
 集合以太坊的区块链方法和 ela 的区块链方法
 
+Swift: 5.0 以上
 
 1 -- 先使用Carthage
 
@@ -29,6 +30,8 @@ Carthage update --platform ios
 pod install
 
 最后将 carthage 的 build 里面的 framework 和 当前项目的SDK目录中的ElastosSdkWallet.framework ,ElastosSdkKeypair.framework添加到项目当中
+
+builsetting: encode -> false
 
 在使用的地方使用
 
