@@ -32,7 +32,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 4.7)
-  - ElastosCarrierSDK (~> 5.3.1)
+  - ElastosCarrierSDK (~> 5.3.2)
   - HandyJSON (~> 5.0.0)
   - web3swift (~> 1.1.10)
 
@@ -65,6 +65,6 @@ SPEC CHECKSUMS:
   SwiftRLP: 9de2c9512a9a6bf0909cd84cc143a7ff1aff7820
   web3swift: 843dd5295d2ae755e6f80e9e0bdabe2868a5c7d8
 
-PODFILE CHECKSUM: 6249a45404f480c28595b16867fc03feb29ebca1
+PODFILE CHECKSUM: 8bef83e8e1e8d5aa310a7ce610754410c7c6b134
 
 COCOAPODS: 1.5.3
