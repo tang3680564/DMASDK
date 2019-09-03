@@ -26,3 +26,10 @@ public var MAIN_ETH_CROSS_CHAIN_FEE = "0.0002"
 public var ETH_CROSS_MAIN_CHAIN_FEE = "0.0001"
 ///主链向 did侧链 转账 fee
 public var MAIN_DID_CROSS_CHAIN_FEE = "0.0002"
+
+///估算收费的合约初始化资产 gas 费的合约地址
+public var ChargeContractAddress = "0x5Ed512ef2b127d3164d96F823bEe86773563EF4d"
+///估算质押的合约初始化资产 gas 费的合约地址
+public var PledgeContractAddress = "0xac2c92D285a7EB5F971A5212EFc4cE70982b355a"
+///估算gas 的私钥
+public var ContractAddressPrivateKey = "131beaa6385a35307df62e8bf098ef61a990073dead098009e0de98ee500909c"

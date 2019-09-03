@@ -12,6 +12,10 @@ open class EthService: NSObject {
     
     public var url = defultURL
 
+    
+    /// 初始化eth 钱包
+    ///
+    /// - Parameter url: 节点地址
     public init(url : String) {
         super.init()
         self.url = url
@@ -21,9 +25,6 @@ open class EthService: NSObject {
 
     }
     
-    deinit {
-        
-    }
     /// 获取助记词
     ///
     /// - Parameter seedLen: 随机长度
@@ -94,6 +95,11 @@ open class EthService: NSObject {
         
     }
     
+    
+    /// 通过地址查询钱包余额
+    ///
+    /// - Parameter address: 钱包地址
+    /// - Returns: 余额
     public func balances(address:String) -> String {
         let eth = EthWallet()
         eth.url = url
@@ -161,11 +167,11 @@ open class EthService: NSObject {
         return result
     }
     
-    static public func parseToBigUInt(value : String) -> String{
-        if let str = EthWallet.parseToBigUInt(value: value){
-            return str
-        }
-        return "0"
-    }
+//    static public func parseToBigUInt(value : String) -> String{
+//        if let str = EthWallet.parseToBigUInt(value: value){
+//            return str
+//        }
+//        return "0"
+//    }
     
 }

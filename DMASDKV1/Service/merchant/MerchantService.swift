@@ -41,6 +41,18 @@ open class MerchantService: NSObject {
     required public override init() {
     }
     
+    
+    
+    /// 发布合约
+    ///
+    /// - Parameters:
+    ///   - privateKey: 私钥
+    ///   - gasPrice: gasPrice description
+    ///   - gasLimit: gasLimit description
+    ///   - name: 合约名称
+    ///   - symbol: 合约简介
+    ///   - metadata: 合约描述
+    /// - Returns: return value description
     public func deploy(privateKey:String,gasPrice:String,gasLimit:String,name:String,symbol:String,metadata:String) -> ContractResult {
         let eth = EthService()
         eth.url = url
@@ -114,6 +126,20 @@ open class MerchantService: NSObject {
         }
     }
     
+    
+    /// 批量创建资产
+    ///
+    /// - Parameters:
+    ///   - privateKey: 私钥
+    ///   - assetAddress: 资产合约地址
+    ///   - to: 资产归属地址
+    ///   - array: 资产 id 数组
+    ///   - metaData: 资产描述
+    ///   - isTransfer: 是否可以转送
+    ///   - isBurn: 是否可以销毁
+    ///   - gasLimit: gasLimit description
+    ///   - gasPrice: gasPrice description
+    /// - Returns: return value description
     public func mintWithArray(privateKey:String,assetAddress:String,to:String,array:Array<Any>,metaData:String,isTransfer:Bool,isBurn:Bool,gasLimit:String,gasPrice:String) -> ContractResult {
         let asset = AssetManagement(url: url)
         let result = asset.mintWithArray(privateKey: privateKey, contractAddress: assetAddress, to: to, array: array, uri: metaData, isTransfer: isTransfer, isBurn: isBurn, gasLimit: gasLimit, gasPrice: gasPrice)
@@ -157,7 +183,7 @@ open class MerchantService: NSObject {
     
     
     
-    /// 转卖
+    /// 上架
     ///
     /// - Parameters:
     ///   - contractAddress: 票券地址
@@ -196,6 +222,19 @@ open class MerchantService: NSObject {
         
     }
     
+    
+    
+    /// 上架
+    ///
+    /// - Parameters:
+    ///   - privateKey: 资产拥有者的私钥
+    ///   - platformAddress: 托管合约地址
+    ///   - owner: 授权给哪个地址
+    ///   - tokenIds: 资产 id
+    ///   - price: 上架的金额
+    ///   - gasLimit: gasLimit description
+    ///   - gasPrice: gasPrice description
+    /// - Returns: return value description
     func saveApproveWithArray(privateKey : String,platformAddress : String,owner : String,tokenIds:Array<Any>,price : String,gasLimit : String,gasPrice : String) -> ContractResult{
         let platfrom = PlatformContract(url: url)
         let platformResult = platfrom.saveApproveWithArray(privateKey: privateKey, contractAddress: platformAddress, owner: owner, tokenArr: tokenIds, value:price, gasLimit: gasLimit, gasPrice: gasPrice)
@@ -263,6 +302,17 @@ open class MerchantService: NSObject {
         }
         
     }
+    
+    
+    /// 下架
+    ///
+    /// - Parameters:
+    ///   - privateKey: 资产拥有者的私钥
+    ///   - platAddress: 托管合约地址
+    ///   - tokenArr: 资产id 数组
+    ///   - gasLimit: gasLimit description
+    ///   - gasPrice: gasPrice description
+    /// - Returns: return value description
     public func offSales(privateKey:String,platAddress:String,tokenArr:Array<Any>,gasLimit:String,gasPrice:String) -> ContractResult {
         let result =  PlatformContract(url: url)
         return result.revokeApprovesWithArray(privateKey: privateKey, contractAddress: platAddress, tokenArr: tokenArr, gasLimit: gasLimit, gasPrice: gasPrice)
@@ -301,20 +351,19 @@ open class MerchantService: NSObject {
         }
     }
     
-    public func getCreateOrderGas(platAddress:String,privateKey:String,gasPrice:String,gasLimit:String,tokenIds:Array<Any>,sumPrice:String,owner:String) -> String{
-        let platform =  PlatformContract(url: url)
-        let result = platform.getGasFee(privateKey: privateKey, contractAddress: platAddress, owner: owner, tokenArr: tokenIds, totalValue: sumPrice, gasLimit: gasLimit, gasPrice: gasPrice)
-        switch result {
-        case .success(value: let dic):
-            let gas = "\(dic["gas"]!)"
-            let gasStr = Web3.Utils.formatToPrecision(BigInt(gas)!)!
-            return gasStr
-        case .failure(error: let error):
-            return "0"
-        }
-    }
     
     
+    /// 购买
+    ///
+    /// - Parameters:
+    ///   - platAddress: 托管合约地址
+    ///   - privateKey: 购买者私钥
+    ///   - gasPrice: gasPrice description
+    ///   - gasLimit: gasLimit description
+    ///   - tokenIds: 资产 id 数组
+    ///   - sumPrice: 总金额
+    ///   - owner: 资产拥有者地址
+    /// - Returns: return value description
     public  func createOrder(platAddress:String,privateKey:String,gasPrice:String,gasLimit:String,tokenIds:Array<Any>,sumPrice:String,owner:String) -> ContractResult {
         let platform = PlatformContract(url: url)
         let platformResult = platform.transferWithArray(privateKey: privateKey, contractAddress: platAddress, owner: owner, tokenArr: tokenIds, totalValue: sumPrice,gasLimit: gasLimit, gasPrice: gasPrice)
@@ -376,7 +425,7 @@ open class MerchantService: NSObject {
     }
     public  func ownerOf(contractAddress:String,tokenId:String) -> ContractResult {
         let asset = AssetManagementService(url : url)
-        let result = asset.ownerOf(contractAddress: contractAddress, tokenId: tokenId)
+        let result = asset.getTokenOwner(contractAddress: contractAddress, tokenId: tokenId)
         return result
     }
     public  func tokenIds(contractAddress:String,owner:String) -> ContractResult {

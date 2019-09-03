@@ -16,16 +16,30 @@ open class ElaDIDService: NSObject {
         super.init()
     }
     
+    
+    
+    /// 初始化 did
+    ///
+    /// - Parameter url: did 节点地址
     public required init(url : String) {
         super.init()
         self.url = url
     }
     
+    
+    /// 初始化 did
+    ///
+    /// - Parameter didInfoUrl: did 信息的节点地址
     public required init(didInfoUrl : String) {
         super.init()
         self.didInfoUrl = didInfoUrl
     }
     
+    /// 初始化did
+    ///
+    /// - Parameters:
+    ///   - didInfoUrl: did 信息的节点地址
+    ///   - url: did 的节点地址
     public required init(didInfoUrl : String,url : String) {
         super.init()
         self.didInfoUrl = didInfoUrl
@@ -33,6 +47,9 @@ open class ElaDIDService: NSObject {
     }
     
     
+    /// 创建did 钱包
+    ///
+    /// - Returns: (助记词,私钥,ela地址,did 地址)
     public func create() -> (mnemonic:String,privateKey:String,address:String,elaDid:String) {
         let ela = ElaDID()
         return ela.create()
@@ -78,6 +95,16 @@ open class ElaDIDService: NSObject {
         ela.getassetbalances(address: address, success: success, Failed: Failed)
         
     }
+    
+    
+    /// did转账
+    ///
+    /// - Parameters:
+    ///   - privateKey: did 钱包的私钥
+    ///   - to: 转账个哪个地址
+    ///   - value: 金额
+    ///   - success: 成功回调
+    ///   - Failed: 失败回调
     public func transfer(privateKey:String,to:String,value:String,success:@escaping ElaWalletSuccess,Failed:@escaping ElaWalletSuccess) -> Void {
         let ela = ElaDID()
         ela.url = url
@@ -100,22 +127,52 @@ open class ElaDIDService: NSObject {
         ela.crossTransfer(privateKey: privateKey, to: to, value: value, transferType: TranferType.DID_MAIN_CROSS_CHAIN, success: success, Failed: Failed)
     }
     
+    
+    
+    /// 设置 did 信息
+    ///
+    /// - Parameters:
+    ///   - mnemonic: 助记词
+    ///   - didProfile: did的规范类
+    /// - Returns: 交易成功的 hash
     public func setDIDInfo(mnemonic : String,didProfile : Profile) -> String{
         let ela = ElaDID()
         let remark = NSMutableDictionary(dictionary: didProfile.toJSON()!)
         return ela.setDidInfo(mnemonic: mnemonic,remark : remark,nodeUrl : didInfoUrl)
     }
     
+    
+    /// 设置 did 信息
+    ///
+    /// - Parameters:
+    ///   - mnemonic: 助记词
+    ///   - dic: json 数据
+    /// - Returns: 交易成功的 hash
     public func setDIDInfo(mnemonic : String, dic : NSMutableDictionary) -> String{
          let ela = ElaDID()
         return ela.setDidInfo(mnemonic: mnemonic, remark: dic, nodeUrl: didInfoUrl)
     }
     
+    
+    /// 获取 设置的 did 信息
+    ///
+    /// - Parameters:
+    ///   - didAddress:  did 地址
+    ///   - Success: 成功回调
+    ///   - Failed: 失败回调
     public func getDIDInfo(didAddress : String,Success : @escaping ServerResultSuccessResult,Failed : @escaping ServerResultSuccessResult){
         let ela = ElaDID()
         ela.getDidInfo(nodeUrl: didInfoUrl, didAddress: didAddress, Success: Success, Failed: Failed)
     }
     
+    
+    /// 获取 did 的信息
+    ///
+    /// - Parameters:
+    ///   - didAddress: did 的地址
+    ///   - status: 信息的状态
+    ///   - Success: 成功回调
+    ///   - Failed: 失败回调
     public func getDIDInfo(didAddress : String,status : Propertys.Status,Success : @escaping ServerResultSuccessResult,Failed : @escaping ServerResultSuccessResult){
         let ela = ElaDID()
         var baseUrl = didInfoUrl + "/api/1/didexplorer/did/"
@@ -133,6 +190,12 @@ open class ElaDIDService: NSObject {
     }
     
     
+    /// 根据交易 hash 查询设置的 did 信息
+    ///
+    /// - Parameters:
+    ///   - txid: 交易 hash
+    ///   - Success: 成功回调
+    ///   - Failed: 失败回调
     public func getDIDInfoByTxId(txid : String,Success : @escaping ServerResultSuccessResult,Failed : @escaping ServerResultSuccessResult){
         let ela = ElaDID()
         var baseUrl = didInfoUrl + "/transaction/"
@@ -141,6 +204,13 @@ open class ElaDIDService: NSObject {
     }
     
     
+    /// 根据设置的 key 来查询设置的did 信息
+    ///
+    /// - Parameters:
+    ///   - did: did
+    ///   - key: 设置的 key
+    ///   - Success: 成功回调
+    ///   - Failed: 失败回调
     public func getDIDInfoByKey(did : String,key : String,Success : @escaping ServerResultSuccessResult,Failed : @escaping ServerResultSuccessResult){
         let ela = ElaDID()
         var baseUrl = didInfoUrl + "/api/1/didexplorer/did/"

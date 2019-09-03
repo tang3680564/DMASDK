@@ -28,7 +28,11 @@ class ContractMethodHelper: NSObject {
         super.init()
     }
     
-    func getContract(abi:String,contractAddress:String,method:String,privateKey:String,parameters: [AnyObject] = [AnyObject](),gasLimit:String,gasPrice:String,weiValue : String? = "") -> ContractResult {
+    func getContract(abi:String,contractAddress:String,method:String,privateKey:String,parameters: [AnyObject] = [AnyObject](),gasLimit:String,gasPrice:String,weiValue : String? = "",getGasFee : Bool = false) -> ContractResult {
+        
+        if getGasFee{
+            return getContractGas(abi: abi, contractAddress: contractAddress, method: method, privateKey: privateKey, gasLimit: gasLimit, gasPrice: gasPrice)
+        }
         let abi = getAbi(abi: abi)
         let ethWallet = EthWallet()
         let web3 = Web3.new(nodeURL)
