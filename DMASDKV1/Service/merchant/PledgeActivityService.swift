@@ -111,15 +111,13 @@ public class PledgeActivityService : NSObject{
     ///   - owner: ETH地址
     ///   - tokenIds: 资产 ID
     ///   - price:  上架价格
+    ///   - getGasFee: 估算这次操作所需要的gasfee , true : 进行估算,不进行这次操作, false : 不进行估算,进行这次操作
+    ///   - canNext : true : 足够支付 gas 费的时候 ,进行此次操作, false: 足够支付 gas 费的时候,不进行此次操作
     /// - Returns:
-    public func onSales(contractAddress:String,platformAddress:String,privateKey:String,gasLimit:String,gasPrice:String,owner:String,tokenIds:Array<Any>,price:String,getGasFee : Bool = false) -> ContractResult {
-        print(contractAddress)
-        print(platformAddress)
-        print(owner)
-        print(tokenIds)
-        print(price)
+    public func onSales(contractAddress:String,platformAddress:String,privateKey:String,gasLimit:String,gasPrice:String,owner:String,tokenIds:Array<Any>,price:String,getGasFee : Bool = false,canNext : Bool = false) -> ContractResult {
+       
         if getGasFee{
-            return onSales(contractAddress: contractAddress, platformAddress: platformAddress, privateKey: privateKey, gasLimit: gasLimit, gasPrice: gasPrice, owner: owner, tokenIds: tokenIds, price: price, getGasFees: true)
+            return onSales(contractAddress: contractAddress, platformAddress: platformAddress, privateKey: privateKey, gasLimit: gasLimit, gasPrice: gasPrice, owner: owner, tokenIds: tokenIds, price: price, getGasFees: true,canNext: canNext)
         }
         let asset = AssetManagement(url: urlStr)
         //
@@ -148,7 +146,7 @@ public class PledgeActivityService : NSObject{
     }
     
     
-    func onSales(contractAddress:String,platformAddress:String,privateKey:String,gasLimit:String,gasPrice:String,owner:String,tokenIds:Array<Any>,price:String,getGasFees : Bool = false) -> ContractResult {
+    private func onSales(contractAddress:String,platformAddress:String,privateKey:String,gasLimit:String,gasPrice:String,owner:String,tokenIds:Array<Any>,price:String,getGasFees : Bool,canNext : Bool = false) -> ContractResult {
         print(contractAddress)
         print(platformAddress)
         print(owner)
@@ -160,18 +158,24 @@ public class PledgeActivityService : NSObject{
         switch assetresult {
             
         case .success(let value):
-            let assetHash = value["gas"] as? String
-            let platfrom = PledgeActivityContract(url: urlStr)
-            let platformResult = platfrom.saveApproveWithArray(privateKey: privateKey, contractAddress: platformAddress, owner: owner, tokenArr: tokenIds, value:price, gasLimit: gasLimit, gasPrice: gasPrice,getGasFee: getGasFees)
-            switch platformResult
-            {
-            case .success(let value):
-                let platfromHash = value["gas"] as? String
-                return ContractResult.success(value: ["assetGasFee":assetHash,"platfromGasFee":platfromHash,"priceStr":price])
-            case .failure(let error):
-                print("secend error")
-                return ContractResult.failure(error: error)
+            let assetHash = "\(value["gas"]!)"
+            let ethServers = EthService(url: urlStr)
+            let address = ethServers.exportAddressFromPrivateKey(privateKey: privateKey)
+            let banlance = ethServers.balances(address: address)
+            let gasValue = NSDecimalNumber(string : assetHash.getWeb3ValueInWei()).adding(NSDecimalNumber(string: assetHash.getWeb3ValueInWei()))
+            print("assetHash  \(assetHash)")
+            var userLimt = NSDecimalNumber(string: assetHash).multiplying(by: 3)
+            if userLimt.doubleValue > NSDecimalNumber(string: "7000000").doubleValue{
+                userLimt = NSDecimalNumber(string: "7000000")
             }
+            if canNext{
+                if gasValue.doubleValue < NSDecimalNumber(string: banlance).doubleValue{
+                    return onSales(contractAddress: contractAddress, platformAddress: platformAddress, privateKey: privateKey, gasLimit: userLimt.stringValue, gasPrice: gasPrice, owner: owner, tokenIds: tokenIds, price: price)
+                }else{
+                    return ContractResult.failure(error: [error_Str : "Lack of balance"])
+                }
+            }
+            return ContractResult.success(value: ["assetGasFee":assetHash,"priceStr":price])
         case .failure(let error):
             print("fist error")
             return ContractResult.failure(error: error)
@@ -219,7 +223,7 @@ public class PledgeActivityService : NSObject{
             
         case .success(let value):
             if getGasFee {
-                let platformHash = value["gas"] as? String
+                let platformHash = "\(value["gas"]!)"
                 return ContractResult.success(value: ["platformGasFee":platformHash])
             }else{
                 let platformHash = value["hash"] as! String

@@ -22,8 +22,8 @@ public let exchange_url = baseUrl + "/exchange"
 
 public let platformWallet = "0x51f56e19f4e2c71fc5ffa4cd25520480c7708030"
 public let isBurn = true
-public let defaultGasPrice = "10000000000"
-public let defaultGasLimit = "7002513"
+public let defaultGasPrice = "1000000000"
+public let defaultGasLimit = "6002513"
 public let transferGasLimit = "21000" 
 //public let reSellGasLimit = "80000"
 public let firstExpenses = "50"

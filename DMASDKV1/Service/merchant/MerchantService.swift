@@ -140,9 +140,9 @@ open class MerchantService: NSObject {
     ///   - gasLimit: gasLimit description
     ///   - gasPrice: gasPrice description
     /// - Returns: return value description
-    public func mintWithArray(privateKey:String,assetAddress:String,to:String,array:Array<Any>,metaData:String,isTransfer:Bool,isBurn:Bool,gasLimit:String,gasPrice:String) -> ContractResult {
+    public func mintWithArray(privateKey:String,assetAddress:String,to:String,array:Array<Any>,metaData:String,isTransfer:Bool,isBurn:Bool,gasLimit:String,gasPrice:String,getGasFee : Bool = false) -> ContractResult {
         let asset = AssetManagement(url: url)
-        let result = asset.mintWithArray(privateKey: privateKey, contractAddress: assetAddress, to: to, array: array, uri: metaData, isTransfer: isTransfer, isBurn: isBurn, gasLimit: gasLimit, gasPrice: gasPrice)
+        let result = asset.mintWithArray(privateKey: privateKey, contractAddress: assetAddress, to: to, array: array, uri: metaData, isTransfer: isTransfer, isBurn: isBurn, gasLimit: gasLimit, gasPrice: gasPrice,getGasFee: getGasFee)
         return result
     }
     public func mintWithArrayStorage(privateKey:String,assetAddress:String,platformAddress:String,chainType:String,to:String,tokenIds:Array<String>,metaData:String,isTransfer:Bool,isBurn:Bool,notifyUrl:String,gasLimit:String,gasPrice:String,success:@escaping MerchantServiceFinal,Failed:@escaping MerchantServiceFinal) -> Void {
@@ -195,7 +195,10 @@ open class MerchantService: NSObject {
     ///   - tokenIds: 资产 ID
     ///   - price:  上架价格
     /// - Returns: 
-    public func onSales(contractAddress:String,platformAddress:String,privateKey:String,gasLimit:String,gasPrice:String,owner:String,tokenIds:Array<Any>,price:String) -> ContractResult {
+    public func onSales(contractAddress:String,platformAddress:String,privateKey:String,gasLimit:String,gasPrice:String,owner:String,tokenIds:Array<Any>,price:String,getGasFee : Bool = false,canNext : Bool = false) -> ContractResult {
+        if getGasFee{
+            return onSales(contractAddress: contractAddress, platformAddress: platformAddress, privateKey: privateKey, gasLimit: gasLimit, gasPrice: gasPrice, owner: owner, tokenIds: tokenIds, price: price, getGasFees: getGasFee, canNext: canNext)
+        }
         let asset = AssetManagement(url: url)
         //
         let assetresult = asset.approveWithArray(privateKey: privateKey, contractAddress: contractAddress, approved: platformAddress, tokenArr: tokenIds, gasLimit: gasLimit, gasPrice: gasPrice)
@@ -223,6 +226,39 @@ open class MerchantService: NSObject {
     }
     
     
+    private func onSales(contractAddress:String,platformAddress:String,privateKey:String,gasLimit:String,gasPrice:String,owner:String,tokenIds:Array<Any>,price:String,getGasFees : Bool,canNext : Bool = false) -> ContractResult {
+        let asset = AssetManagement(url: url)
+        //
+        let assetresult = asset.approveWithArray(privateKey: privateKey, contractAddress: contractAddress, approved: platformAddress, tokenArr: tokenIds, gasLimit: gasLimit, gasPrice: gasPrice)
+        switch assetresult {
+            
+        case .success(let value):
+            let assetHash = "\(value["gas"]!)"
+            let ethServers = EthService(url: url)
+            let address = ethServers.exportAddressFromPrivateKey(privateKey: privateKey)
+            let banlance = ethServers.balances(address: address)
+            let gasValue = NSDecimalNumber(string : assetHash.getWeb3ValueInWei()).adding(NSDecimalNumber(string: assetHash.getWeb3ValueInWei()))
+            print("assetHash  \(assetHash)")
+            var userLimt = NSDecimalNumber(string: assetHash).multiplying(by: 3)
+            if userLimt.doubleValue > NSDecimalNumber(string: "7000000").doubleValue{
+                userLimt = NSDecimalNumber(string: "7000000")
+            }
+            if canNext{
+                if gasValue.doubleValue < NSDecimalNumber(string: banlance).doubleValue{
+                    return onSales(contractAddress: contractAddress, platformAddress: platformAddress, privateKey: privateKey, gasLimit: userLimt.stringValue, gasPrice: gasPrice, owner: owner, tokenIds: tokenIds, price: price)
+                }else{
+                    return ContractResult.failure(error: [error_Str : "Lack of balance"])
+                }
+            }
+            return ContractResult.success(value: ["assetGasFee":assetHash,"priceStr":price])
+        case .failure(let error):
+            print("fist error")
+            return ContractResult.failure(error: error)
+            
+        }
+        
+    }
+    
     
     /// 上架
     ///
@@ -235,19 +271,19 @@ open class MerchantService: NSObject {
     ///   - gasLimit: gasLimit description
     ///   - gasPrice: gasPrice description
     /// - Returns: return value description
-    func saveApproveWithArray(privateKey : String,platformAddress : String,owner : String,tokenIds:Array<Any>,price : String,gasLimit : String,gasPrice : String) -> ContractResult{
-        let platfrom = PlatformContract(url: url)
-        let platformResult = platfrom.saveApproveWithArray(privateKey: privateKey, contractAddress: platformAddress, owner: owner, tokenArr: tokenIds, value:price, gasLimit: gasLimit, gasPrice: gasPrice)
-        switch platformResult
-        {
-        case .success(let value):
-            let platfromHash = value["hash"] as!String
-            return ContractResult.success(value: ["platfromHash":platfromHash,"priceStr" : price])
-        case .failure(let error):
-            print("secend error")
-            return ContractResult.failure(error: error)
-        }
-    }
+//    func saveApproveWithArray(privateKey : String,platformAddress : String,owner : String,tokenIds:Array<Any>,price : String,gasLimit : String,gasPrice : String) -> ContractResult{
+//        let platfrom = PlatformContract(url: url)
+//        let platformResult = platfrom.saveApproveWithArray(privateKey: privateKey, contractAddress: platformAddress, owner: owner, tokenArr: tokenIds, value:price, gasLimit: gasLimit, gasPrice: gasPrice)
+//        switch platformResult
+//        {
+//        case .success(let value):
+//            let platfromHash = value["hash"] as!String
+//            return ContractResult.success(value: ["platfromHash":platfromHash,"priceStr" : price])
+//        case .failure(let error):
+//            print("secend error")
+//            return ContractResult.failure(error: error)
+//        }
+//    }
     
     /// 转卖
     ///
@@ -264,44 +300,44 @@ open class MerchantService: NSObject {
     ///   - price:  价格
     ///   - success: success description
     ///   - Failed: Failed description
-    public  func onSalesStorage(contractAddress:String,platformAddress:String,privateKey:String,gasLimit:String,chainType:String,notifyUrl:String,gasPrice:String,owner:String,tokenIds:Array<String>,price:String,success:@escaping MerchantServiceFinal,Failed:@escaping MerchantServiceFinal) -> Void {
-        let onSaleResult = self.onSales(contractAddress: contractAddress, platformAddress: platformAddress, privateKey: privateKey, gasLimit: gasLimit, gasPrice: gasPrice, owner: owner, tokenIds: tokenIds, price: price)
-        switch onSaleResult {
-        case .success(let value):
-            let assetHash = value["assetHash"]
-            let platfromHash = value["platfromHash"]
-            var targetString:String? = ""
-            for i in tokenIds{
-                targetString?.append(i+",")
-            }
-            let param = ["owner":owner,
-                         "contractAddress":contractAddress,
-                         "platformAddress":platformAddress,
-                         "type":1,
-                         "status":0,
-                         "price":price,
-                         "serialNo":isBurn,
-                         "approveTxId":assetHash!,
-                         "saveApproveTxId":platfromHash!,
-                         "nodeUrl":assetManagementUrl!,
-                         "chainType":chainType,
-                         "notifyUrl":notifyUrl,
-                         "tokenIds":targetString!
-            ]
-            
-            Alamofire.request(URL(string: merchainSale)!, method: .post, parameters: param, encoding: URLEncoding.default).responseString { (resp) in
-                if resp.result.isSuccess
-                {
-                    success(resp.result.value!)
-                }
-            }
-            break
-        case .failure(let error):
-            Failed("失败")
-            break
-        }
-        
-    }
+//    public  func onSalesStorage(contractAddress:String,platformAddress:String,privateKey:String,gasLimit:String,chainType:String,notifyUrl:String,gasPrice:String,owner:String,tokenIds:Array<String>,price:String,success:@escaping MerchantServiceFinal,Failed:@escaping MerchantServiceFinal) -> Void {
+//        let onSaleResult = self.onSales(contractAddress: contractAddress, platformAddress: platformAddress, privateKey: privateKey, gasLimit: gasLimit, gasPrice: gasPrice, owner: owner, tokenIds: tokenIds, price: price)
+//        switch onSaleResult {
+//        case .success(let value):
+//            let assetHash = value["assetHash"]
+//            let platfromHash = value["platfromHash"]
+//            var targetString:String? = ""
+//            for i in tokenIds{
+//                targetString?.append(i+",")
+//            }
+//            let param = ["owner":owner,
+//                         "contractAddress":contractAddress,
+//                         "platformAddress":platformAddress,
+//                         "type":1,
+//                         "status":0,
+//                         "price":price,
+//                         "serialNo":isBurn,
+//                         "approveTxId":assetHash!,
+//                         "saveApproveTxId":platfromHash!,
+//                         "nodeUrl":assetManagementUrl!,
+//                         "chainType":chainType,
+//                         "notifyUrl":notifyUrl,
+//                         "tokenIds":targetString!
+//            ]
+//
+//            Alamofire.request(URL(string: merchainSale)!, method: .post, parameters: param, encoding: URLEncoding.default).responseString { (resp) in
+//                if resp.result.isSuccess
+//                {
+//                    success(resp.result.value!)
+//                }
+//            }
+//            break
+//        case .failure(let error):
+//            Failed("失败")
+//            break
+//        }
+//
+//    }
     
     
     /// 下架
@@ -313,43 +349,43 @@ open class MerchantService: NSObject {
     ///   - gasLimit: gasLimit description
     ///   - gasPrice: gasPrice description
     /// - Returns: return value description
-    public func offSales(privateKey:String,platAddress:String,tokenArr:Array<Any>,gasLimit:String,gasPrice:String) -> ContractResult {
+    public func offSales(privateKey:String,platAddress:String,tokenArr:Array<Any>,gasLimit:String,gasPrice:String,getGasFee : Bool = false) -> ContractResult {
         let result =  PlatformContract(url: url)
-        return result.revokeApprovesWithArray(privateKey: privateKey, contractAddress: platAddress, tokenArr: tokenArr, gasLimit: gasLimit, gasPrice: gasPrice)
+        return result.revokeApprovesWithArray(privateKey: privateKey, contractAddress: platAddress, tokenArr: tokenArr, gasLimit: gasLimit, gasPrice: gasPrice,getGasFee : getGasFee)
     }
-    public  func offSalesStorage(contractAddress:String,privateKey:String,platAddress:String,tokenArr:Array<String>,notifyUrl:String,chainType:String,gasLimit:String,gasPrice:String,success:@escaping MerchantServiceFinal,Failed:@escaping MerchantServiceFinal) -> Void {
-        let offsaleResult = self.offSales(privateKey: privateKey, platAddress: platAddress, tokenArr: tokenArr, gasLimit: gasLimit, gasPrice: gasPrice)
-        let eth = EthWallet()
-        
-        switch offsaleResult {
-        case .success(let value):
-            var targetString:String? = ""
-            for i in tokenArr{
-                targetString?.append(i+",")
-            }
-            let param = [
-                "contractAddress":contractAddress,
-                "platformAddress":platAddress,
-                "type":2,
-                "status":0,
-                "owner":eth.exportAddressFromPrivateKey(privateKey: privateKey)!,
-                "revokeTxId":value["hash"]!,
-                "nodeUrl":assetManagementUrl!,
-                "notifyUrl":notifyUrl,
-                "tokenIds":targetString!,
-                "chainType":chainType
-            ]
-            Alamofire.request(URL(string: merchainSale)!, method: .post, parameters: param , encoding: URLEncoding.default).responseString { (resp) in
-                if resp.result.isSuccess
-                {
-                    success(resp.result.value!)
-                }            }
-            break
-        case .failure(let error):
-            Failed("失败")
-            break
-        }
-    }
+//    public  func offSalesStorage(contractAddress:String,privateKey:String,platAddress:String,tokenArr:Array<String>,notifyUrl:String,chainType:String,gasLimit:String,gasPrice:String,success:@escaping MerchantServiceFinal,Failed:@escaping MerchantServiceFinal) -> Void {
+//        let offsaleResult = self.offSales(privateKey: privateKey, platAddress: platAddress, tokenArr: tokenArr, gasLimit: gasLimit, gasPrice: gasPrice)
+//        let eth = EthWallet()
+//
+//        switch offsaleResult {
+//        case .success(let value):
+//            var targetString:String? = ""
+//            for i in tokenArr{
+//                targetString?.append(i+",")
+//            }
+//            let param = [
+//                "contractAddress":contractAddress,
+//                "platformAddress":platAddress,
+//                "type":2,
+//                "status":0,
+//                "owner":eth.exportAddressFromPrivateKey(privateKey: privateKey)!,
+//                "revokeTxId":value["hash"]!,
+//                "nodeUrl":assetManagementUrl!,
+//                "notifyUrl":notifyUrl,
+//                "tokenIds":targetString!,
+//                "chainType":chainType
+//            ]
+//            Alamofire.request(URL(string: merchainSale)!, method: .post, parameters: param , encoding: URLEncoding.default).responseString { (resp) in
+//                if resp.result.isSuccess
+//                {
+//                    success(resp.result.value!)
+//                }            }
+//            break
+//        case .failure(let error):
+//            Failed("失败")
+//            break
+//        }
+//    }
     
     
     
@@ -364,11 +400,15 @@ open class MerchantService: NSObject {
     ///   - sumPrice: 总金额
     ///   - owner: 资产拥有者地址
     /// - Returns: return value description
-    public  func createOrder(platAddress:String,privateKey:String,gasPrice:String,gasLimit:String,tokenIds:Array<Any>,sumPrice:String,owner:String) -> ContractResult {
+    public  func createOrder(platAddress:String,privateKey:String,gasPrice:String,gasLimit:String,tokenIds:Array<Any>,sumPrice:String,owner:String,getGasFee : Bool = false) -> ContractResult {
         let platform = PlatformContract(url: url)
-        let platformResult = platform.transferWithArray(privateKey: privateKey, contractAddress: platAddress, owner: owner, tokenArr: tokenIds, totalValue: sumPrice,gasLimit: gasLimit, gasPrice: gasPrice)
+        let platformResult = platform.transferWithArray(privateKey: privateKey, contractAddress: platAddress, owner: owner, tokenArr: tokenIds, totalValue: sumPrice,gasLimit: gasLimit, gasPrice: gasPrice,getGasFee : getGasFee)
         switch platformResult{
         case .success(let value):
+            if getGasFee {
+                let gas = "\(value["gas"]!)"
+                return ContractResult.success(value: ["platformGasFee":gas])
+            }
             let platformHash = value["hash"] as!String
             return ContractResult.success(value: ["platformHash":platformHash])
             
@@ -377,48 +417,48 @@ open class MerchantService: NSObject {
         }
         
     }
-    public  func createOrderStorage(contractAddress:String,platAddress:String,privateKey:String,gasPrice:String,gasLimit:String,tokenIds:Array<String>,sumPrice:String,owner:String,chainType:String,notifyUrl:String,remark:String,name:String,orderNo:String,success:@escaping MerchantServiceFinal,Failed:@escaping MerchantServiceFinal) -> Void {
-        let createOrderResult = self.createOrder(platAddress: platAddress, privateKey: privateKey, gasPrice: gasPrice, gasLimit: gasLimit, tokenIds: tokenIds, sumPrice: sumPrice, owner: owner)
-        switch createOrderResult {
-        case .success(let value):
-            var targetString:String? = ""
-            for i in tokenIds{
-                targetString?.append(i+",")
-            }
-            let eth = EthWallet()
-            
-            let param = [
-                "quantity":tokenIds.count,
-                "remark":remark,
-                "name":name,
-                "orderNo":name,
-                "price":sumPrice,
-                "contractAddress":contractAddress,
-                "platformAddress":platAddress,
-                "owner":owner,
-                "toOwner":eth.exportAddressFromPrivateKey(privateKey: privateKey)!,
-                "transTxId":value["platformHash"]!,
-                "approveTxId":value["tokenHash"]!,
-                "tokenIds":targetString!,
-                "notifyUrl":notifyUrl,
-                "nodeUrl":assetManagementUrl!,
-                "chainType":chainType
-            ]
-            
-            Alamofire.request(URL(string: merchaincreateorderInfo)!, method: .post, parameters: param, encoding: URLEncoding.default).responseString { (resp) in
-                if resp.result.isSuccess
-                {
-                    success(resp.result.value!)
-                }
-                
-            }
-            break
-        case .failure(let error):
-            Failed("失败")
-            break
-        }
-        
-    }
+//    public  func createOrderStorage(contractAddress:String,platAddress:String,privateKey:String,gasPrice:String,gasLimit:String,tokenIds:Array<String>,sumPrice:String,owner:String,chainType:String,notifyUrl:String,remark:String,name:String,orderNo:String,success:@escaping MerchantServiceFinal,Failed:@escaping MerchantServiceFinal) -> Void {
+//        let createOrderResult = self.createOrder(platAddress: platAddress, privateKey: privateKey, gasPrice: gasPrice, gasLimit: gasLimit, tokenIds: tokenIds, sumPrice: sumPrice, owner: owner)
+//        switch createOrderResult {
+//        case .success(let value):
+//            var targetString:String? = ""
+//            for i in tokenIds{
+//                targetString?.append(i+",")
+//            }
+//            let eth = EthWallet()
+//
+//            let param = [
+//                "quantity":tokenIds.count,
+//                "remark":remark,
+//                "name":name,
+//                "orderNo":name,
+//                "price":sumPrice,
+//                "contractAddress":contractAddress,
+//                "platformAddress":platAddress,
+//                "owner":owner,
+//                "toOwner":eth.exportAddressFromPrivateKey(privateKey: privateKey)!,
+//                "transTxId":value["platformHash"]!,
+//                "approveTxId":value["tokenHash"]!,
+//                "tokenIds":targetString!,
+//                "notifyUrl":notifyUrl,
+//                "nodeUrl":assetManagementUrl!,
+//                "chainType":chainType
+//            ]
+//
+//            Alamofire.request(URL(string: merchaincreateorderInfo)!, method: .post, parameters: param, encoding: URLEncoding.default).responseString { (resp) in
+//                if resp.result.isSuccess
+//                {
+//                    success(resp.result.value!)
+//                }
+//
+//            }
+//            break
+//        case .failure(let error):
+//            Failed("失败")
+//            break
+//        }
+//
+//    }
     public  func getApproveInfo(contractAddress:String,tokenId:String) -> ContractResult {
         let platform =  PlatformContract(url: url)
         return platform.getApproveinfo(contractAddress: contractAddress, tokenId: tokenId)

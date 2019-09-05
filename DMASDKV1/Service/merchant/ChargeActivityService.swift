@@ -105,17 +105,18 @@ public class ChargeActivityService : NSObject{
     /// - Parameters:
     ///   - contractAddress: 票券地址
     ///   - platformAddress: 平台合约地址
-    ///   - privateKey: ETH私钥
+    ///   - privateKey: 资产拥有者的私钥
     ///   - gasLimit: defaultGasLimit
     ///   - gasPrice: defaultGasPrice
-    ///   - owner: ETH地址
+    ///   - owner: 资产拥有者的地址
     ///   - tokenIds: 资产 ID
     ///   - price:  上架价格
     ///   - getGasFee: 估算这次操作所需要的gasfee , true : 进行估算,不进行这次操作, false : 不进行估算,进行这次操作
+    ///   - canNext : true : 足够支付 gas 费的时候 ,进行此次操作, false: 足够支付 gas 费的时候,不进行此次操作
     /// - Returns:
-    public func onSales(contractAddress:String,platformAddress:String,privateKey:String,gasLimit:String,gasPrice:String,owner:String,tokenIds:Array<Any>,price:String,getGasFee : Bool = false) -> ContractResult {
+    public func onSales(contractAddress:String,platformAddress:String,privateKey:String,gasLimit:String,gasPrice:String,owner:String,tokenIds:Array<Any>,price:String,getGasFee : Bool = false,canNext : Bool = false) -> ContractResult {
         if getGasFee{
-            return onSales(contractAddress: contractAddress, platformAddress: platformAddress, privateKey: privateKey, gasLimit: gasLimit, gasPrice: gasPrice, owner: owner, tokenIds: tokenIds, price: price, getGasFees: true)
+            return onSales(contractAddress: contractAddress, platformAddress: platformAddress, privateKey: privateKey, gasLimit: gasLimit, gasPrice: gasPrice, owner: owner, tokenIds: tokenIds, price: price, getGasFees: getGasFee,canNext: canNext)
         }
         let asset = AssetManagement(url: urlStr)
         //
@@ -143,31 +144,36 @@ public class ChargeActivityService : NSObject{
         
     }
     
-    func onSales(contractAddress:String,platformAddress:String,privateKey:String,gasLimit:String,gasPrice:String,owner:String,tokenIds:Array<Any>,price:String,getGasFees : Bool) -> ContractResult {
+    private func onSales(contractAddress:String,platformAddress:String,privateKey:String,gasLimit:String,gasPrice:String,owner:String,tokenIds:Array<Any>,price:String,getGasFees : Bool,canNext : Bool = false) -> ContractResult {
         let asset = AssetManagement(url: urlStr)
         //
         let assetresult = asset.approveWithArray(privateKey: privateKey, contractAddress: contractAddress, approved: platformAddress, tokenArr: tokenIds, gasLimit: gasLimit, gasPrice: gasPrice,getGasFee:  getGasFees)
         switch assetresult {
             
         case .success(let value):
-            let assetHash = value["gas"] as? String
-            let platfrom = ChargeActivityContract(url: urlStr)
-            let platformResult = platfrom.saveApproveWithArray(privateKey: privateKey, contractAddress: platformAddress, owner: owner, tokenArr: tokenIds, value:price, gasLimit: gasLimit, gasPrice: gasPrice,getGasFee: getGasFees)
-            switch platformResult
-            {
-            case .success(let value):
-                let platfromHash = value["gas"] as? String
-                return ContractResult.success(value: ["assetGasFee":assetHash,"platfromGasFee":platfromHash,"priceStr":price])
-            case .failure(let error):
-                print("secend error")
-                return ContractResult.failure(error: error)
+            let assetHash = "\(value["gas"]!)"
+            let ethServers = EthService(url: urlStr)
+            let address = ethServers.exportAddressFromPrivateKey(privateKey: privateKey)
+            let banlance = ethServers.balances(address: address)
+            let gasValue = NSDecimalNumber(string : assetHash.getWeb3ValueInWei()).adding(NSDecimalNumber(string: assetHash.getWeb3ValueInWei()))
+            print("assetHash  \(assetHash)")
+            var userLimt = NSDecimalNumber(string: assetHash).multiplying(by: 3)
+            if userLimt.doubleValue > NSDecimalNumber(string: "7000000").doubleValue{
+                userLimt = NSDecimalNumber(string: "7000000")
             }
+            if canNext{
+                if gasValue.doubleValue < NSDecimalNumber(string: banlance).doubleValue{
+                    return onSales(contractAddress: contractAddress, platformAddress: platformAddress, privateKey: privateKey, gasLimit: userLimt.stringValue, gasPrice: gasPrice, owner: owner, tokenIds: tokenIds, price: price)
+                }else{
+                    return ContractResult.failure(error: [error_Str : "Lack of balance"])
+                }
+            }
+            return ContractResult.success(value: ["assetGasFee":assetHash,"priceStr":price])
         case .failure(let error):
             print("fist error")
             return ContractResult.failure(error: error)
             
         }
-        
     }
     
     

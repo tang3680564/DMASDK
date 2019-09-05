@@ -79,6 +79,7 @@
 		F8125D0B23162C3200B813DB /* SwiftMultiaddr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8125D0423162C3200B813DB /* SwiftMultiaddr.framework */; };
 		F8125D0C23162C3200B813DB /* SwiftMultihash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8125D0523162C3200B813DB /* SwiftMultihash.framework */; };
 		F8125D0D23162C3200B813DB /* VarInt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8125D0623162C3200B813DB /* VarInt.framework */; };
+		F823CD112320AD6D00BCF66B /* Web3Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = F823CD102320AD6C00BCF66B /* Web3Util.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -158,6 +159,7 @@
 		F8125D0423162C3200B813DB /* SwiftMultiaddr.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftMultiaddr.framework; path = Carthage/Build/iOS/SwiftMultiaddr.framework; sourceTree = "<group>"; };
 		F8125D0523162C3200B813DB /* SwiftMultihash.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftMultihash.framework; path = Carthage/Build/iOS/SwiftMultihash.framework; sourceTree = "<group>"; };
 		F8125D0623162C3200B813DB /* VarInt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VarInt.framework; path = Carthage/Build/iOS/VarInt.framework; sourceTree = "<group>"; };
+		F823CD102320AD6C00BCF66B /* Web3Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Web3Util.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -471,6 +473,7 @@
 				F8125C622314FD1400B813DB /* DMAHttpUtil.swift */,
 				F8125C632314FD1400B813DB /* DeployHelper.swift */,
 				F8125C642314FD1400B813DB /* ContractMethodHelper.swift */,
+				F823CD102320AD6C00BCF66B /* Web3Util.swift */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -655,6 +658,7 @@
 				F8125C942314FD1400B813DB /* ProfileService.swift in Sources */,
 				F8125C862314FD1400B813DB /* DataService.swift in Sources */,
 				F8125C882314FD1400B813DB /* DynamicData.swift in Sources */,
+				F823CD112320AD6D00BCF66B /* Web3Util.swift in Sources */,
 				F8125C892314FD1400B813DB /* Tags.swift in Sources */,
 				F8125C842314FD1400B813DB /* Parser.swift in Sources */,
 				F8125CA72314FD1400B813DB /* ElaDID.swift in Sources */,

@@ -49,15 +49,19 @@ class ChargeActivityContract : NSObject{
     
    
     
-    /// 资产上架
+   
+    /// 资产授权
     ///
     /// - Parameters:
-    ///   - privateKey: 私钥
+    ///   - privateKey: 资产拥有者的私钥
     ///   - contractAddress: 合约地址
-    ///   - spender: 被授权者地址
-    ///   - value: 上架金额
+    ///   - owner: 合约拥有者的地址
+    ///   - tokenId: 资产 id
+    ///   - value: 资产授权的金额
+    ///   - gasLimit: gasLimit description
+    ///   - gasPrice: gasPrice description
     ///   - getGasFee: 估算这次操作所需要的gasfee , true : 进行估算,不进行这次操作, false : 不进行估算,进行这次操作
-    /// - Returns: hash
+    /// - Returns: return value description
     func saveApprove(privateKey:String,contractAddress:String,owner:String,tokenId:String, value: String ,gasLimit:String,gasPrice:String,getGasFee : Bool = false) -> ContractResult {
         let param = [owner,tokenId,Web3.Utils.parseToBigUInt(value, units: .eth) as Any] as [Any]
         let contract = ContractMethodHelper(url: urlStr)
