@@ -15,7 +15,7 @@ public class PaymentConfig : NSObject{
     public static var bizContractAddress = "0x539557d1888589bf1032a2c9f1b952a4d838781d";
     public static var elaNodeUrl = "http://54.64.220.165:21334";
     public static var ethNodeUrl = "http://47.105.149.174:8545";
-    public static var defaultGasPrice = "10000000000";
+    public static var defaultGasPrice = "1000000000";
     public static var defaultGasLimit = "602513";
     
 }

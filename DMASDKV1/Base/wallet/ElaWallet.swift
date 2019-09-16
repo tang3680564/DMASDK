@@ -170,7 +170,7 @@ class ElaWallet: NSObject {
                 }
             }else
             {
-                Failed("请求成功")
+                Failed(DMASDKError.ErrorCode.RPC_REQUEST_FAILED.rawValue)
             }
         }
     }
@@ -194,7 +194,7 @@ class ElaWallet: NSObject {
                 }
             }else
             {
-                Failed("请求失败")
+                Failed(DMASDKError.ErrorCode.RPC_REQUEST_FAILED.rawValue)
             }
         }
     }
@@ -217,7 +217,7 @@ class ElaWallet: NSObject {
                 }
             }else
             {
-                Failed("请求失败")
+                Failed(DMASDKError.ErrorCode.RPC_REQUEST_FAILED.rawValue)
             }
         }
     }
@@ -240,7 +240,7 @@ class ElaWallet: NSObject {
                 }
             }else
             {
-                Failed("请求失败")
+                Failed(DMASDKError.ErrorCode.RPC_REQUEST_FAILED.rawValue)
             }
         }
     }
@@ -257,7 +257,7 @@ class ElaWallet: NSObject {
                 }
             }else
             {
-                Failed("请求失败")
+                Failed(DMASDKError.ErrorCode.RPC_REQUEST_FAILED.rawValue)
             }
         }
     }
@@ -280,7 +280,7 @@ class ElaWallet: NSObject {
                 }
             }else
             {
-                Failed("请求失败")
+                Failed(DMASDKError.ErrorCode.RPC_REQUEST_FAILED.rawValue)
             }
         }
     }
@@ -300,11 +300,11 @@ class ElaWallet: NSObject {
                     success((r?.toJSONString()!)!)
                 }else
                 {
-                    Failed("请求失败")
+                    Failed(DMASDKError.ErrorCode.RPC_REQUEST_FAILED.rawValue)
                 }
             }else
             {
-                Failed("请求失败")
+                Failed(DMASDKError.ErrorCode.RPC_REQUEST_FAILED.rawValue)
             }
         }
     }
@@ -402,7 +402,7 @@ class ElaWallet: NSObject {
                 
             }else
             {
-                Failed("金额不足")
+                Failed(DMASDKError.ErrorCode.BALANCE_UNDERFINANCED.rawValue)
             }
             
         }) { (error) in
@@ -431,7 +431,7 @@ class ElaWallet: NSObject {
         if let res = result{
             Success(res)
         }else{
-            Failed("error")
+            Failed(DMASDKError.ErrorCode.RPC_REQUEST_FAILED.rawValue)
         }
         
     }
@@ -546,7 +546,7 @@ class ElaWallet: NSObject {
                 
             }else
             {
-                Failed("金额不足")
+                Failed(DMASDKError.ErrorCode.BALANCE_UNDERFINANCED.rawValue)
             }
             
         }) { (error) in
@@ -614,7 +614,7 @@ class ElaWallet: NSObject {
                 
             }else
             {
-                Failed("金额不足")
+                Failed(DMASDKError.ErrorCode.BALANCE_UNDERFINANCED.rawValue)
             }
             
         }) { (error) in

@@ -11,6 +11,7 @@ import CommonCrypto
 import Alamofire
 public typealias JsonResultSuccess = (NSMutableDictionary) -> ()
 let error_Str = "error"
+let error_Code = "code"
 public class PaymentService : NSObject{
 
     private var elaWalletService = ElaService(url : PaymentConfig.elaNodeUrl)

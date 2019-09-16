@@ -72,7 +72,7 @@ public class PledgeActivityService : NSObject{
                 }
             }else
             {
-                return ContractResult.failure(error: "余额不足")
+                return ContractResult.failure(error: DMASDKError.BALANCE_UNDERFINANCED.getCodeAndMsg())
             }
         case.failure(let error):
             return ContractResult.failure(error: error)
@@ -94,8 +94,22 @@ public class PledgeActivityService : NSObject{
     ///   - gasPrice: gasPrice description
     ///   - getGasFee: 估算这次操作所需要的gasfee , true : 进行估算,不进行这次操作, false : 不进行估算,进行这次操作
     /// - Returns: 交易 hash
-    public func mintWithArray(privateKey:String,assetAddress:String,to:String,array:Array<Any>,metaData:String,isTransfer:Bool,isBurn:Bool,gasLimit:String,gasPrice:String,getGasFee : Bool = false) -> ContractResult {
+    public func mintWithArray(privateKey:String,assetAddress:String,to:String,array:Array<Any>,metaData:String,isTransfer:Bool,isBurn:Bool,gasLimit:String = "",gasPrice:String = "",getGasFee : Bool = false) -> ContractResult {
         let asset = AssetManagement(url: urlStr)
+        
+        var gasLimit = gasLimit
+        var gasPrice = gasPrice
+        var getGasFee = getGasFee
+        if !getGasFee{
+            let result = asset.mintWithArray(privateKey: privateKey, contractAddress: assetAddress, to: to, array: array, uri: metaData, isTransfer: isTransfer, isBurn: isBurn, gasLimit: gasLimit, gasPrice: gasPrice,getGasFee : true)
+            let isError = limIsEmpty(gasLimit: &gasLimit, gasPrice: &gasPrice, getGasFee: &getGasFee, result: result)
+            if let result = isError{
+                return result
+            }
+        }else{
+            limAndPriceIsEmpty(gasLimit: &gasLimit, gasPrice: &gasPrice)
+        }
+        
         let result = asset.mintWithArray(privateKey: privateKey, contractAddress: assetAddress, to: to, array: array, uri: metaData, isTransfer: isTransfer, isBurn: isBurn, gasLimit: gasLimit, gasPrice: gasPrice,getGasFee : getGasFee)
         return result
     }
@@ -114,11 +128,18 @@ public class PledgeActivityService : NSObject{
     ///   - getGasFee: 估算这次操作所需要的gasfee , true : 进行估算,不进行这次操作, false : 不进行估算,进行这次操作
     ///   - canNext : true : 足够支付 gas 费的时候 ,进行此次操作, false: 足够支付 gas 费的时候,不进行此次操作
     /// - Returns:
-    public func onSales(contractAddress:String,platformAddress:String,privateKey:String,gasLimit:String,gasPrice:String,owner:String,tokenIds:Array<Any>,price:String,getGasFee : Bool = false,canNext : Bool = false) -> ContractResult {
-       
+    public func onSales(contractAddress:String,platformAddress:String,privateKey:String,gasLimit:String = "",gasPrice:String = "",owner:String,tokenIds:Array<Any>,price:String,getGasFee : Bool = false,canNext : Bool = false) -> ContractResult {
+        var canNext = canNext
+        var gasLimit = gasLimit
+        var gasPrice = gasPrice
         if getGasFee{
+            if gasLimit.isEmpty{
+                canNext = true
+                limAndPriceIsEmpty(gasLimit: &gasLimit, gasPrice: &gasPrice)
+            }
             return onSales(contractAddress: contractAddress, platformAddress: platformAddress, privateKey: privateKey, gasLimit: gasLimit, gasPrice: gasPrice, owner: owner, tokenIds: tokenIds, price: price, getGasFees: true,canNext: canNext)
         }
+        limAndPriceIsEmpty(gasLimit: &gasLimit, gasPrice: &gasPrice)
         let asset = AssetManagement(url: urlStr)
         //
         let assetresult = asset.approveWithArray(privateKey: privateKey, contractAddress: contractAddress, approved: platformAddress, tokenArr: tokenIds, gasLimit: gasLimit, gasPrice: gasPrice)
@@ -172,7 +193,7 @@ public class PledgeActivityService : NSObject{
                 if gasValue.doubleValue < NSDecimalNumber(string: banlance).doubleValue{
                     return onSales(contractAddress: contractAddress, platformAddress: platformAddress, privateKey: privateKey, gasLimit: userLimt.stringValue, gasPrice: gasPrice, owner: owner, tokenIds: tokenIds, price: price)
                 }else{
-                    return ContractResult.failure(error: [error_Str : "Lack of balance"])
+                    return ContractResult.failure(error: DMASDKError.BALANCE_UNDERFINANCED.getCodeAndMsg())
                 }
             }
             return ContractResult.success(value: ["assetGasFee":assetHash,"priceStr":price])
@@ -197,8 +218,22 @@ public class PledgeActivityService : NSObject{
     ///   - gasPrice: gasPrice description
     ///   - getGasFee: 估算这次操作所需要的gasfee , true : 进行估算,不进行这次操作, false : 不进行估算,进行这次操作
     /// - Returns: 交易 hash
-    public func offSales(privateKey:String,platAddress:String,tokenArr:Array<Any>,gasLimit:String,gasPrice:String,getGasFee : Bool = false) -> ContractResult {
+    public func offSales(privateKey:String,platAddress:String,tokenArr:Array<Any>,gasLimit:String = "",gasPrice:String = "",getGasFee : Bool = false) -> ContractResult {
         let result = PledgeActivityContract(url : urlStr)
+        
+        var gasLimit = gasLimit
+        var gasPrice = gasPrice
+        var getGasFee = getGasFee
+        if !getGasFee{
+            let result = result.revokeApprovesWithArray(privateKey: privateKey, contractAddress: platAddress, tokenArr: tokenArr, gasLimit: gasLimit, gasPrice: gasPrice,getGasFee : true)
+            let isError = limIsEmpty(gasLimit: &gasLimit, gasPrice: &gasPrice, getGasFee: &getGasFee, result: result)
+            if let result = isError{
+                return result
+            }
+        }else{
+            limAndPriceIsEmpty(gasLimit: &gasLimit, gasPrice: &gasPrice)
+        }
+        
         return result.revokeApprovesWithArray(privateKey: privateKey, contractAddress: platAddress, tokenArr: tokenArr, gasLimit: gasLimit, gasPrice: gasPrice,getGasFee : getGasFee)
     }
     
@@ -216,8 +251,23 @@ public class PledgeActivityService : NSObject{
     ///   - owner: 资产拥有者的地址
     ///   - getGasFee: 估算这次操作所需要的gasfee , true : 进行估算,不进行这次操作, false : 不进行估算,进行这次操作
     /// - Returns: return value description
-    public  func createOrder(platAddress:String,privateKey:String,gasPrice:String,gasLimit:String,tokenId:String,sumPrice:String,owner:String,getGasFee : Bool = false) -> ContractResult {
+    public  func createOrder(platAddress:String,privateKey:String,gasPrice:String = "",gasLimit:String = "",tokenId:String,sumPrice:String,owner:String,getGasFee : Bool = false) -> ContractResult {
         let platform = PledgeActivityContract(url: urlStr)
+        
+        var gasLimit = gasLimit
+        var gasPrice = gasPrice
+        var getGasFee = getGasFee
+        if !getGasFee{
+            let result = platform.transfer(privateKey: privateKey, contractAddress: platAddress, tokenId: tokenId, weiValue: sumPrice, gasLimit: gasLimit, gasPrice: gasPrice,getGasFee : true)
+            let isError = limIsEmpty(gasLimit: &gasLimit, gasPrice: &gasPrice, getGasFee: &getGasFee, result: result)
+            if let result = isError{
+                return result
+            }
+        }else{
+            limAndPriceIsEmpty(gasLimit: &gasLimit, gasPrice: &gasPrice)
+        }
+        
+        
         let platformResult = platform.transfer(privateKey: privateKey, contractAddress: platAddress, tokenId: tokenId, weiValue: sumPrice, gasLimit: gasLimit, gasPrice: gasPrice,getGasFee : getGasFee)
         switch platformResult{
             
@@ -247,8 +297,23 @@ public class PledgeActivityService : NSObject{
     ///   - gasPrice: gasPrice description
     ///   - getGasFee: 估算这次操作所需要的gasfee , true : 进行估算,不进行这次操作, false : 不进行估算,进行这次操作
     /// - Returns: 交易 hash
-    public func endActivity(privateKey : String,contractAddress : String,gasLimit : String,gasPrice : String,getGasFee : Bool = false) -> ContractResult{
+    public func endActivity(privateKey : String,contractAddress : String,gasLimit : String = "",gasPrice : String = "",getGasFee : Bool = false) -> ContractResult{
         let platform = PledgeActivityContract(url: urlStr)
+        
+        var gasLimit = gasLimit
+        var gasPrice = gasPrice
+        var getGasFee = getGasFee
+        if !getGasFee{
+            let result = platform.endActivity(privateKey: privateKey, contractAddress: contractAddress, gasLimit: gasLimit, gasPrice: gasPrice,getGasFee : true)
+            let isError = limIsEmpty(gasLimit: &gasLimit, gasPrice: &gasPrice, getGasFee: &getGasFee, result: result)
+            if let result = isError{
+                return result
+            }
+        }else{
+            limAndPriceIsEmpty(gasLimit: &gasLimit, gasPrice: &gasPrice)
+        }
+        
+        
         let reulst = platform.endActivity(privateKey: privateKey, contractAddress: contractAddress, gasLimit: gasLimit, gasPrice: gasPrice,getGasFee : getGasFee)
         switch reulst {
         case .success(let dic):
@@ -282,14 +347,39 @@ public class PledgeActivityService : NSObject{
     ///   - gasPrice: gasPrice description
     ///   - getGasFee: 估算这次操作所需要的gasfee , true : 进行估算,不进行这次操作, false : 不进行估算,进行这次操作
     /// - Returns: hash
-    public func refund(privateKey : String,contractAddress : String,tokenId : String,gasLimit : String,gasPrice : String,getGasFee : Bool = false) -> ContractResult{
+    public func refund(privateKey : String,contractAddress : String,tokenId : String,gasLimit : String = "",gasPrice : String = "",getGasFee : Bool = false) -> ContractResult{
         let platform = PledgeActivityContract(url: urlStr)
+        var gasLimit = gasLimit
+        var gasPrice = gasPrice
+        var getGasFee = getGasFee
+        if !getGasFee{
+            let result = platform.refund(privateKey: privateKey, contractAddress: contractAddress, tokenId: tokenId, gasLimit: gasLimit, gasPrice: gasPrice,getGasFee : true)
+            let isError = limIsEmpty(gasLimit: &gasLimit, gasPrice: &gasPrice, getGasFee: &getGasFee, result: result)
+            if let result = isError{
+                return result
+            }
+        }else{
+            limAndPriceIsEmpty(gasLimit: &gasLimit, gasPrice: &gasPrice)
+        }
+        
         return platform.refund(privateKey: privateKey, contractAddress: contractAddress, tokenId: tokenId, gasLimit: gasLimit, gasPrice: gasPrice,getGasFee : getGasFee)
     }
     
     
-    public func verify(privateKey : String,contractAddress : String,tokenId : String,owner : String,gasLimit : String, gasPrice : String,getGasFee : Bool = false ) -> ContractResult{
+    public func verify(privateKey : String,contractAddress : String,tokenId : String,owner : String,gasLimit : String = "", gasPrice : String = "",getGasFee : Bool = false ) -> ContractResult{
         let platform = PledgeActivityContract(url: urlStr)
+        var gasLimit = gasLimit
+        var gasPrice = gasPrice
+        var getGasFee = getGasFee
+        if !getGasFee{
+            let result = platform.verify(privateKey: privateKey, contractAddress: contractAddress, tokenId: tokenId, owner: owner, gasLimit: gasLimit, gasPrice: gasPrice,getGasFee : true)
+            let isError = limIsEmpty(gasLimit: &gasLimit, gasPrice: &gasPrice, getGasFee: &getGasFee, result: result)
+            if let result = isError{
+                return result
+            }
+        }else{
+            limAndPriceIsEmpty(gasLimit: &gasLimit, gasPrice: &gasPrice)
+        }
         return platform.verify(privateKey: privateKey, contractAddress: contractAddress, tokenId: tokenId, owner: owner, gasLimit: gasLimit, gasPrice: gasPrice,getGasFee : getGasFee)
     }
     

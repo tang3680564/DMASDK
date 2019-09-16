@@ -73,3 +73,38 @@ class ModelType1: HandyJSON {
     func mapping(mapper: HelpingMapper) {
     }
 }
+
+
+extension NSObject{
+    func getGasLimInResult(result : ContractResult) -> (Bool,String,Any?){
+        switch result {
+        case .success(value: let dic):
+            return (true,dic["gas"] as! String,nil)
+        case .failure(error: let error):
+            return (false,"",error)
+        }
+    }
+    
+    func limAndPriceIsEmpty(gasLimit : inout String,gasPrice : inout String){
+        if gasLimit.isEmpty{
+            gasLimit = defaultGasLimit
+        }
+        if gasPrice.isEmpty{
+            gasPrice = defaultGasPrice
+        }
+    }
+    
+    func limIsEmpty(gasLimit : inout String,gasPrice : inout String,getGasFee : inout Bool,result : ContractResult) -> ContractResult?{
+        if gasLimit.isEmpty{
+            limAndPriceIsEmpty(gasLimit: &gasLimit, gasPrice: &gasPrice)
+            let limt = getGasLimInResult(result: result)
+            if limt.0 {
+                gasLimit = limt.1
+                getGasFee = false
+            }else{
+                return ContractResult.failure(error: limt.2)
+            }
+        }
+        return nil
+    }
+}

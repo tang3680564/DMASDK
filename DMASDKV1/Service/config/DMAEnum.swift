@@ -9,17 +9,31 @@
 import Foundation
 
 public enum TranferType : String{
-//    case MAIN_CHAIN
-//    case DID_SIDECHAIN
+    //    case MAIN_CHAIN
+    //    case DID_SIDECHAIN
     ///主链向 did侧链 转账
     case MAIN_DID_CROSS_CHAIN = "XKUh4GLhFJiqAMTF6HyWQrV9pK9HcGUdfJ"
     ///主链 向 eth侧链 转账
     case MAIN_ETH_CROSS_CHAIN = "XVbCTM7vqM1qHKsABSFH4xKN1qbp7ijpWf"
     ///did 向 主链 转账
     case DID_MAIN_CROSS_CHAIN = "0000000000000000000000000000000000"
+    
+    func setChainNetValue() -> String{
+        switch self {
+        case .MAIN_DID_CROSS_CHAIN:
+            return "XKUh4GLhFJiqAMTF6HyWQrV9pK9HcGUdfJ"
+        case .MAIN_ETH_CROSS_CHAIN:
+            if DMAChainNet == ChainNetType.MAIN{
+                return "XVbCTM7vqM1qHKsABSFH4xKN1qbp7ijpWf"
+            }
+            return "XNpPE8hWEn4y5a6K3GssiXRAXsqeen3HFa"
+        case .DID_MAIN_CROSS_CHAIN:
+            return "0000000000000000000000000000000000"
+        }
+    }
 }
 ///eth侧链 向 主链转账
-public let ethToElaContractAddress = "0xC445f9487bF570fF508eA9Ac320b59730e81e503"
+public var ethToElaContractAddress = "0xC445f9487bF570fF508eA9Ac320b59730e81e503"
 ///主链 向 eth侧链 转账 fee
 public var MAIN_ETH_CROSS_CHAIN_FEE = "0.0002"
 ///eth侧链 向 主链转账 fee
@@ -33,3 +47,26 @@ public var defultChargeContractAddress = "0xe986B89c0a3b3e1cF66B64825c5F232EA0e8
 public var defultPledgeContractAddress = "0xac2c92D285a7EB5F971A5212EFc4cE70982b355a"
 ///估算gas 的私钥
 public var defultContractAddressPrivateKey = "131beaa6385a35307df62e8bf098ef61a990073dead098009e0de98ee500909c"
+
+var DMAChainNet : ChainNetType = ChainNetType.MAIN
+
+public enum ChainNetType {
+    case MAIN
+    case TEST
+}
+
+class DMAConfigChainNetSet : NSObject{
+    required init(chainType : ChainNetType) {
+        DMAChainNet = chainType
+        if chainType == ChainNetType.TEST{
+            defultChargeContractAddress = "0xe986B89c0a3b3e1cF66B64825c5F232EA0e8588b"
+            ///估算质押的合约初始化资产 gas 费的合约地址
+            defultPledgeContractAddress = "0xac2c92D285a7EB5F971A5212EFc4cE70982b355a"
+            ///估算gas 的私钥
+            defultContractAddressPrivateKey = "131beaa6385a35307df62e8bf098ef61a990073dead098009e0de98ee500909c"
+            ///估算收费的合约初始化资产 gas 费的合约地址
+            ethToElaContractAddress = "0xC445f9487bF570fF508eA9Ac320b59730e81e503"
+        }
+    }
+}
+

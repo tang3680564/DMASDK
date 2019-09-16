@@ -24,8 +24,9 @@ public let platformWallet = "0x51f56e19f4e2c71fc5ffa4cd25520480c7708030"
 public let isBurn = true
 public let defaultGasPrice = "1000000000"
 public let defaultGasLimit = "6002513"
-public let transferGasLimit = "21000" 
-//public let reSellGasLimit = "80000"
+public let transferGasLimit = "21000"
+public let corsTranferGasLimit = "30744"
+
 public let firstExpenses = "50"
 public let secondExpenses = "10"
 public let expenses = "10"

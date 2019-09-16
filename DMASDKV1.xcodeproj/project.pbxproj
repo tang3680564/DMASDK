@@ -80,6 +80,8 @@
 		F8125D0C23162C3200B813DB /* SwiftMultihash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8125D0523162C3200B813DB /* SwiftMultihash.framework */; };
 		F8125D0D23162C3200B813DB /* VarInt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8125D0623162C3200B813DB /* VarInt.framework */; };
 		F823CD112320AD6D00BCF66B /* Web3Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = F823CD102320AD6C00BCF66B /* Web3Util.swift */; };
+		F8A9810A232F28B900F3494B /* NFTokenDMA.json in Resources */ = {isa = PBXBuildFile; fileRef = F8A98109232F28B900F3494B /* NFTokenDMA.json */; };
+		F8A9810C232F28FC00F3494B /* ErrorCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A9810B232F28FC00F3494B /* ErrorCode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -160,6 +162,8 @@
 		F8125D0523162C3200B813DB /* SwiftMultihash.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftMultihash.framework; path = Carthage/Build/iOS/SwiftMultihash.framework; sourceTree = "<group>"; };
 		F8125D0623162C3200B813DB /* VarInt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VarInt.framework; path = Carthage/Build/iOS/VarInt.framework; sourceTree = "<group>"; };
 		F823CD102320AD6C00BCF66B /* Web3Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Web3Util.swift; sourceTree = "<group>"; };
+		F8A98109232F28B900F3494B /* NFTokenDMA.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = NFTokenDMA.json; sourceTree = "<group>"; };
+		F8A9810B232F28FC00F3494B /* ErrorCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorCode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -267,6 +271,7 @@
 		F8125C232314FD1300B813DB /* config */ = {
 			isa = PBXGroup;
 			children = (
+				F8A9810B232F28FC00F3494B /* ErrorCode.swift */,
 				F8125C242314FD1300B813DB /* MerchantServiceConfig.swift */,
 				F8125C252314FD1300B813DB /* PaymentConfig.swift */,
 				F8125C262314FD1300B813DB /* DMAEnum.swift */,
@@ -497,14 +502,15 @@
 		F8125C692314FD1400B813DB /* abi */ = {
 			isa = PBXGroup;
 			children = (
+				F8A98109232F28B900F3494B /* NFTokenDMA.json */,
 				F8125C6A2314FD1400B813DB /* ETHChargeActivity.json */,
 				F8125C6B2314FD1400B813DB /* ETHChargeActivityData.json */,
-				F8125C6C2314FD1400B813DB /* ETHTransfer.json */,
-				F8125C6D2314FD1400B813DB /* ETHPlatformData.json */,
 				F8125C6E2314FD1400B813DB /* ETHPlatform.json */,
-				F8125C6F2314FD1400B813DB /* NFTokenETH.json */,
-				F8125C702314FD1400B813DB /* ETHPledgeActivityData.json */,
+				F8125C6D2314FD1400B813DB /* ETHPlatformData.json */,
 				F8125C712314FD1400B813DB /* ETHPledgeActivity.json */,
+				F8125C702314FD1400B813DB /* ETHPledgeActivityData.json */,
+				F8125C6C2314FD1400B813DB /* ETHTransfer.json */,
+				F8125C6F2314FD1400B813DB /* NFTokenETH.json */,
 				F8125C722314FD1400B813DB /* NFTokenETHData.json */,
 			);
 			path = abi;
@@ -611,6 +617,7 @@
 				F8125CAE2314FD1400B813DB /* NFTokenETH.json in Resources */,
 				F8125CAF2314FD1400B813DB /* ETHPledgeActivityData.json in Resources */,
 				F8125CAC2314FD1400B813DB /* ETHPlatformData.json in Resources */,
+				F8A9810A232F28B900F3494B /* NFTokenDMA.json in Resources */,
 				F8125CAB2314FD1400B813DB /* ETHTransfer.json in Resources */,
 				F8125CB02314FD1400B813DB /* ETHPledgeActivity.json in Resources */,
 				F8125CAA2314FD1400B813DB /* ETHChargeActivityData.json in Resources */,
@@ -652,6 +659,7 @@
 				F8125CB52314FD1400B813DB /* NetworkReachabilityManager.swift in Sources */,
 				F8125C872314FD1400B813DB /* ResponseBody.swift in Sources */,
 				F8125CA62314FD1400B813DB /* ContractMethodHelper.swift in Sources */,
+				F8A9810C232F28FC00F3494B /* ErrorCode.swift in Sources */,
 				F8125C9E2314FD1400B813DB /* TokenContract.swift in Sources */,
 				F8125C7A2314FD1400B813DB /* AssetManagementService.swift in Sources */,
 				F8125C9A2314FD1400B813DB /* Appraiser.swift in Sources */,

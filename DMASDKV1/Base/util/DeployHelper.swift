@@ -53,7 +53,7 @@ class DeployHelper: NSObject {
         case .failure(let error)?:
             return ContractResult.failure(error: error)
         case .none:
-            return ContractResult.failure(error: "合约创建失败")
+            return ContractResult.failure(error: DMASDKError.RPC_REQUEST_FAILED.getCodeAndMsg())
         }
     }
     

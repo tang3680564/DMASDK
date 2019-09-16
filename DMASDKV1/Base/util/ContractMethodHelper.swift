@@ -87,13 +87,13 @@ class ContractMethodHelper: NSObject {
                     case .failure(let error)?:
                         return ContractResult.failure(error: error)
                     case .none:
-                        return ContractResult.failure(error: "转账失败")
+                        return ContractResult.failure(error: DMASDKError.RPC_REQUEST_FAILED.getCodeAndMsg())
                     }
                 case .failure(let error)?:
                     print(error)
                     return ContractResult.failure(error: error)
                 case .none:
-                    return ContractResult.failure(error: "失败")
+                    return ContractResult.failure(error: DMASDKError.RPC_REQUEST_FAILED.getCodeAndMsg())
                 }
             }else { return ContractResult.failure(error: "私钥错误")}
         }else
@@ -108,7 +108,7 @@ class ContractMethodHelper: NSObject {
                 return ContractResult.failure(error: error.localizedDescription)
 
             case .none:
-                return ContractResult.failure(error: "失败")
+                return ContractResult.failure(error: DMASDKError.RPC_REQUEST_FAILED.getCodeAndMsg())
             }
         }
 
@@ -147,7 +147,7 @@ class ContractMethodHelper: NSObject {
                     print(error)
                     return ContractResult.failure(error: error)
                 case .none:
-                    return ContractResult.failure(error: "失败")
+                    return ContractResult.failure(error: DMASDKError.RPC_REQUEST_FAILED.getCodeAndMsg())
                 }
             }else { return ContractResult.failure(error: "私钥错误")}
         }else
@@ -162,7 +162,7 @@ class ContractMethodHelper: NSObject {
                 return ContractResult.failure(error: error.localizedDescription)
                 
             case .none:
-                return ContractResult.failure(error: "失败")
+                return ContractResult.failure(error: DMASDKError.RPC_REQUEST_FAILED.getCodeAndMsg())
             }
         }
         

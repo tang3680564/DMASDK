@@ -159,9 +159,17 @@ open class EthService: NSObject {
     ///   - gasLimit: gasLimit description
     ///   - gasPrice: gasPrice description
     /// - Returns: return value description
-    public func crossTransfer(mnemonics : String,to : String,value : String,gasLimit : String,gasPrice : String) -> ContractResult{
+    public func crossTransfer(mnemonics : String,to : String,value : String,gasLimit : String = "",gasPrice : String = "") -> ContractResult{
         let eth = EthWallet()
         eth.url = url
+        var gasLimit = gasLimit
+        var gasPrice = gasPrice
+        if gasLimit.isEmpty{
+            gasLimit = corsTranferGasLimit
+        }
+        if gasPrice.isEmpty{
+            gasPrice = defaultGasPrice
+        }
         let privateKey = exportAddressAndPrivateKeyFromMnemonics(mnemonics: mnemonics).privateKey
         let result = eth.crossTransfer(privateKey: privateKey, to: to, value: value, contractAddress: ethToElaContractAddress, gasLimit: gasLimit, gasPrice: gasPrice)
         return result

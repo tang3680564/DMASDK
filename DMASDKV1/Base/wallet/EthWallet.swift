@@ -97,11 +97,11 @@ class EthWallet: NSObject {
         switch balanceResult {
         case .success(let balance)?:
             
-            return ContractResult.success(value:["balance":Web3.Utils.formatToPrecision(balance) as Any])
-        case .failure(_)?:
-            return ContractResult.failure(error: "查询失败")
+            return ContractResult.success(value:["balance":Web3.Utils.formatToPrecision(balance,formattingDecimals : 8) as Any])
+        case .failure(let error)?:
+            return ContractResult.failure(error: error.localizedDescription)
         case .none:
-            return ContractResult.failure(error: "查询失败")
+            return ContractResult.failure(error: DMASDKError.RPC_REQUEST_FAILED.getCodeAndMsg())
         }
     }
     
@@ -113,7 +113,7 @@ class EthWallet: NSObject {
         switch balanceResult {
         case .success(let balance)?:
             print("balance is \(balance)")
-            return Web3.Utils.formatToPrecision(balance)!
+            return Web3.Utils.formatToPrecision(balance,formattingDecimals : 8)!
         case .failure(let error)?:
             return "查询失败\(error)"
         case .none:
@@ -133,12 +133,13 @@ class EthWallet: NSObject {
     ///   - gasLimit: gasLimit description
     ///   - gasPrice: gasPrice description
     /// - Returns: return value description
-    public func crossTransfer(privateKey : String,to : String,value : String,contractAddress : String,gasLimit : String,gasPrice : String) -> ContractResult{
+    public func crossTransfer(privateKey : String,to : String,value : String,contractAddress : String,gasLimit : String,gasPrice : String,getGasFee : Bool = false) -> ContractResult{
         let fee = "0.0001"
         let valuesC = NSDecimalNumber(string: value).adding(0.0001)
         let param = [to,Web3.Utils.parseToBigUInt(valuesC.stringValue, units: .eth)! as Any,Web3.Utils.parseToBigUInt(fee, units: .eth)! as Any] as [Any]
         let contract = ContractMethodHelper(url: url!)
-        let result = contract.getContract(abi: abi,contractAddress:contractAddress,method: "receivePayload", privateKey: privateKey, parameters: param as [AnyObject], gasLimit: gasLimit, gasPrice: gasPrice,weiValue: valuesC.stringValue)
+        let result = contract.getContract(abi: abi,contractAddress:contractAddress,method: "receivePayload", privateKey: privateKey, parameters: param as [AnyObject], gasLimit: "30744", gasPrice: gasPrice,weiValue: valuesC.stringValue,getGasFee: getGasFee)
+        
         return result
     }
     
@@ -146,6 +147,23 @@ class EthWallet: NSObject {
         return Web3.Utils.formatToEthereumUnits(BigUInt(value)!)
     }
     
+    
+    func getStatusByHash(hash : String ) -> ContractResult{
+        let web3 = Web3.new(URL(string: url!)!)
+        let result = web3?.eth.getTransactionReceipt(hash)
+        switch result {
+        case .success(let dic)?:
+            let status = dic.status
+            if status == web3swift.TransactionReceipt.TXStatus.ok{
+                return ContractResult.success(value: ["status" : true])
+            }
+            return ContractResult.success(value: ["status" : false])
+        case .failure(let error)?:
+            return ContractResult.failure(error: [error_Str : error.localizedDescription])
+        case .none:
+            return ContractResult.failure(error: DMASDKError.RPC_REQUEST_FAILED.getCodeAndMsg())
+        }
+    }
     
     /// 转账
     ///
@@ -197,13 +215,13 @@ class EthWallet: NSObject {
             case .failure(let error)?:
                 return ContractResult.failure(error: error)
             case .none:
-                return ContractResult.failure(error: "转账失败")
+                return ContractResult.failure(error: DMASDKError.RPC_REQUEST_FAILED.getCodeAndMsg())
             }
             
         case .failure(let error)?:
             return ContractResult.failure(error: error)
         case .none:
-            return ContractResult.failure(error: "获取random失败")
+            return ContractResult.failure(error: DMASDKError.RPC_REQUEST_FAILED.getCodeAndMsg())
         }
     }
     
