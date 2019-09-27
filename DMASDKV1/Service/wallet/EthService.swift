@@ -142,9 +142,17 @@ open class EthService: NSObject {
     ///   - gasPrice: gas价格 例如Demo
     ///   - gasLimit: gas限制 例如Demo
     /// - Returns: 哈希值
-    public func transfer(privatekey:String,to:String,value:String,gasPrice:String,gasLimit:String) -> ContractResult {
+    public func transfer(privatekey:String,to:String,value:String,gasPrice:String = "",gasLimit:String = "") -> ContractResult {
         let eth = EthWallet()
         eth.url = url
+        var gasPrice = gasPrice
+        var gasLimit = gasLimit
+        if gasPrice.isEmpty{
+            gasPrice = defaultGasPrice
+        }
+        if gasLimit.isEmpty {
+            gasLimit = transferGasLimit
+        }
         let e = eth.transfer(privatekey: privatekey, to: to, value: value, gasPrice: gasPrice, gasLimit: gasLimit)
         return e
     }
@@ -181,5 +189,17 @@ open class EthService: NSObject {
 //        }
 //        return "0"
 //    }
+    
+    func getStatusByHash(hash : String ) -> ContractResult{
+        let eth = EthWallet()
+        eth.url = url
+        return eth.getStatusByHash(hash: hash)
+    }
+    
+    func getTransactionReceipt(hash : String ) -> ContractResult{
+        let eth = EthWallet()
+        eth.url = url
+        return eth.getTransactionReceipt(hash: hash)
+    }
     
 }

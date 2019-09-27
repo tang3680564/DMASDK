@@ -165,6 +165,19 @@ class EthWallet: NSObject {
         }
     }
     
+    func getTransactionReceipt(hash : String ) -> ContractResult{
+        let web3 = Web3.new(URL(string: url!)!)
+        let result = web3?.eth.getTransactionReceipt(hash)
+        switch result {
+        case .success(let dic)?:
+            return ContractResult.success(value: ["transactionReceipt":"\(dic)"])
+        case .failure(let error)?:
+            return ContractResult.failure(error: [error_Str : error.localizedDescription])
+        case .none:
+            return ContractResult.failure(error: DMASDKError.RPC_REQUEST_FAILED.getCodeAndMsg())
+        }
+    }
+    
     /// 转账
     ///
     /// - Parameters:
