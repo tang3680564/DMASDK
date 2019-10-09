@@ -11,6 +11,7 @@ import web3swift
 import BigInt
 import HandyJSON
 
+
 class ContractMethodHelper: NSObject {
     
     var nodeURL = assetManagementUrl!

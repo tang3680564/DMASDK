@@ -261,6 +261,10 @@ public class ChargeActivityService : NSObject{
         let paltformResult = platform.transferWithArray(privateKey: privateKey, contractAddress: platAddress, owner: owner, tokenArr: tokenIds, weiValue: sumPrice, gasLimit: gasLimit, gasPrice: gasPrice,getGasFee : getGasFee)
         switch paltformResult{
         case .success(let value):
+            if getGasFee {
+                let platformHash = "\(value["gas"]!)"
+                return ContractResult.success(value: ["platformGasFee":platformHash])
+            }
             let platformHash = value["hash"] as!String
             return ContractResult.success(value: ["platformHash":platformHash])
             
