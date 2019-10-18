@@ -28,6 +28,7 @@ open class IpfsService: NSObject {
         let ipfs = IpfsStorage()
         ipfs.url = url
         ipfs.port = port
+        
         return ipfs.add(filePath: filePath)
     }
     
@@ -64,5 +65,7 @@ open class IpfsService: NSObject {
         ipfs.port = port
         return ipfs.getString(hash:hash)
     }
+    
+    
     
 }

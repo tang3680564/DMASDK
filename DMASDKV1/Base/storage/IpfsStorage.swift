@@ -21,7 +21,6 @@ public class IpfsStorage: NSObject {
             var b58string:String?
             let group = DispatchGroup()
             group.enter()
-           
             try api.add(filePath) { (m) in
                 b58string = b58String((m.first?.hash!)!)
                 group.leave()
@@ -64,18 +63,24 @@ public class IpfsStorage: NSObject {
         return uint8
     }
     func getString(hash:String) -> String{
-        let api = try!IpfsApi(host: url, port: Int(port)!)
-        let multihash = try!fromB58String(hash)
-        let group = DispatchGroup()
-        group.enter()
-        var uint8:Array<UInt8>?
-        
-        try! api.get(multihash) { (result) in
-            uint8 = result
-            group.leave()
+        do{
+            let api = try IpfsApi(host: url, port: Int(port)!)
+            let multihash = try fromB58String(hash)
+            let group = DispatchGroup()
+            group.enter()
+            var uint8:Array<UInt8>?
+            
+            try api.get(multihash) { (result) in
+                uint8 = result
+                group.leave()
+            }
+            group.wait()
+            return String.init(bytes: uint8!, encoding: .utf8)!
+        }catch let error{
+            return ""
         }
-        group.wait()
-        return String.init(bytes: uint8!, encoding: .utf8)!
     }
+    
+   
 
 }

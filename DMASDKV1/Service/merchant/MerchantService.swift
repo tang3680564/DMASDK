@@ -53,7 +53,21 @@ open class MerchantService: NSObject {
     ///   - symbol: 合约简介
     ///   - metadata: 合约描述
     /// - Returns: return value description
-    public func deploy(privateKey:String,gasPrice:String,gasLimit:String,name:String,symbol:String,metadata:String) -> ContractResult {
+    public func deploy(privateKey:String,gasPrice:String = "",gasLimit:String = "",getGasFee : Bool = false) -> ContractResult {
+        let platform = PlatformContract(url: url)
+        var gasLimit = gasLimit
+        var gasPrice = gasPrice
+        var getGasFee = getGasFee
+        if !getGasFee{
+            let result = platform.setupDeploy(privateKey: privateKey, platformAddress: platformWallet,firstExpense: firstExpenses,secondExpense: secondExpenses ,gasLimit: gasLimit, gasPrice: gasPrice,getGasFee : true)
+            let isError = limIsEmpty(gasLimit: &gasLimit, gasPrice: &gasPrice, getGasFee: &getGasFee, result: result)
+            if let result = isError{
+                return result
+            }
+        }else{
+            limAndPriceIsEmpty(gasLimit: &gasLimit, gasPrice: &gasPrice)
+        }
+        
         let eth = EthService()
         eth.url = url
         let address = eth.exportAddressFromPrivateKey(privateKey: privateKey)
@@ -64,27 +78,19 @@ open class MerchantService: NSObject {
             print(resp)
             let b = resp["balance"] as!String
             if Double(b)! > 0{
-                let asset = AssetManagement(url: url)
-                
-                let assetResult = asset.setupDeploy(privateKey: privateKey, name: name, symbol: symbol, metadata: metadata, isburn: true, gasLimit: gasLimit, gasPrice: gasPrice)
-                switch assetResult{
-                    
+                let platformResult = platform.setupDeploy(privateKey: privateKey, platformAddress: platformWallet,firstExpense: firstExpenses,secondExpense: secondExpenses ,gasLimit: gasLimit, gasPrice: gasPrice,getGasFee: getGasFee)
+                switch platformResult{
                 case .success(let value):
-                    print("ccccc")
-                    print(value)
-                    
-                    let assetAddress = value["address"] as!String
-                    let platform = PlatformContract(url: url)
-                    let platformResult = platform.setupDeploy(privateKey: privateKey, token721: assetAddress, platformAddress: platformWallet,firstExpense: firstExpenses,secondExpense: secondExpenses ,gasLimit: gasLimit, gasPrice: gasPrice)
-                    switch platformResult{
-                    case .success(let value):
-                        let platformAddress = value["address"] as!String
-                        return ContractResult.success(value: ["platformAddress":platformAddress,"assetAddress":assetAddress])
-                    case .failure(let error):
-                        return ContractResult.failure(error: error)
+                    if getGasFee{
+                        if let gas = value["gas"] as? String{
+                            return ContractResult.success(value: ["gas":gas])
+                        }
                     }
+                    let platformAddress = value["address"] as!String
+                    return ContractResult.success(value: ["platformAddress":platformAddress])
                 case .failure(let error):
-                    
+                    print("error")
+                    print(error)
                     return ContractResult.failure(error: error)
                 }
             }else
@@ -136,8 +142,9 @@ open class MerchantService: NSObject {
     /// 上架
     ///
     /// - Parameters:
-    ///   - contractAddress: 票券地址
-    ///   - platformAddress: 平台合约地址
+    ///   - contractAddress: 资产地址
+    ///   - platformAddress: 托管地址
+    ///   - assetAddress: 资产地址
     ///   - privateKey: ETH私钥
     ///   - gasLimit: defaultGasLimit
     ///   - gasPrice: defaultGasPrice
@@ -166,7 +173,7 @@ open class MerchantService: NSObject {
         case .success(let value):
             let assetHash = value["hash"] as!String
             let platfrom =  PlatformContract(url: url)
-            let platformResult = platfrom.saveApproveWithArray(privateKey: privateKey, contractAddress: platformAddress, owner: owner, tokenArr: tokenIds, value:price, gasLimit: gasLimit, gasPrice: gasPrice)
+            let platformResult = platfrom.saveApproveWithArray(privateKey: privateKey, contractAddress: platformAddress, assetAddress: contractAddress, owner: owner, tokenArr: tokenIds, value:price, gasLimit: gasLimit, gasPrice: gasPrice)
             switch platformResult
             {
             case .success(let value):
@@ -226,17 +233,18 @@ open class MerchantService: NSObject {
     ///   - privateKey: 资产拥有者的私钥
     ///   - platAddress: 托管合约地址
     ///   - tokenArr: 资产id 数组
+    ///   - assetAddress : 资产地址
     ///   - gasLimit: gasLimit description
     ///   - gasPrice: gasPrice description
     /// - Returns: return value description
-    public func offSales(privateKey:String,platAddress:String,tokenArr:Array<Any>,gasLimit:String = "",gasPrice:String = "",getGasFee : Bool = false) -> ContractResult {
+    public func offSales(privateKey:String,platAddress:String,assetAddress:String,tokenArr:Array<Any>,gasLimit:String = "",gasPrice:String = "",getGasFee : Bool = false) -> ContractResult {
         let result =  PlatformContract(url: url)
         
         var gasLimit = gasLimit
         var gasPrice = gasPrice
         var getGasFee = getGasFee
         if !getGasFee{
-            let result = result.revokeApprovesWithArray(privateKey: privateKey, contractAddress: platAddress, tokenArr: tokenArr, gasLimit: gasLimit, gasPrice: gasPrice,getGasFee : true)
+            let result = result.revokeApprovesWithArray(privateKey: privateKey, contractAddress: platAddress, assetAddress: assetAddress, tokenArr: tokenArr, gasLimit: gasLimit, gasPrice: gasPrice,getGasFee : true)
             let isError = limIsEmpty(gasLimit: &gasLimit, gasPrice: &gasPrice, getGasFee: &getGasFee, result: result)
             if let result = isError{
                 return result
@@ -245,7 +253,7 @@ open class MerchantService: NSObject {
             limAndPriceIsEmpty(gasLimit: &gasLimit, gasPrice: &gasPrice)
         }
         
-        return result.revokeApprovesWithArray(privateKey: privateKey, contractAddress: platAddress, tokenArr: tokenArr, gasLimit: gasLimit, gasPrice: gasPrice,getGasFee : getGasFee)
+        return result.revokeApprovesWithArray(privateKey: privateKey, contractAddress: platAddress, assetAddress: assetAddress, tokenArr: tokenArr, gasLimit: gasLimit, gasPrice: gasPrice,getGasFee : getGasFee)
     }
 
     
@@ -255,20 +263,21 @@ open class MerchantService: NSObject {
     /// - Parameters:
     ///   - platAddress: 托管合约地址
     ///   - privateKey: 购买者私钥
+    ///   - assetAddress : 资产地址
     ///   - gasPrice: gasPrice description
     ///   - gasLimit: gasLimit description
     ///   - tokenIds: 资产 id 数组
     ///   - sumPrice: 总金额
     ///   - owner: 资产拥有者地址
     /// - Returns: return value description
-    public  func createOrder(platAddress:String,privateKey:String,gasPrice:String = "",gasLimit:String = "",tokenIds:Array<Any>,sumPrice:String,owner:String,getGasFee : Bool = false) -> ContractResult {
+    public  func createOrder(platAddress:String,privateKey:String,assetAddress:String,gasPrice:String = "",gasLimit:String = "",tokenIds:Array<Any>,sumPrice:String,owner:String,getGasFee : Bool = false) -> ContractResult {
         let platform = PlatformContract(url: url)
         
         var gasLimit = gasLimit
         var gasPrice = gasPrice
         var getGasFee = getGasFee
         if !getGasFee{
-            let result = platform.transferWithArray(privateKey: privateKey, contractAddress: platAddress, owner: owner, tokenArr: tokenIds, totalValue: sumPrice,gasLimit: gasLimit, gasPrice: gasPrice,getGasFee : true)
+            let result = platform.transferWithArray(privateKey: privateKey, contractAddress: platAddress, assetAddress: assetAddress, owner: owner, tokenArr: tokenIds, totalValue: sumPrice,gasLimit: gasLimit, gasPrice: gasPrice,getGasFee : true)
             let isError = limIsEmpty(gasLimit: &gasLimit, gasPrice: &gasPrice, getGasFee: &getGasFee, result: result)
             if let result = isError{
                 return result
@@ -278,7 +287,7 @@ open class MerchantService: NSObject {
         }
         
         
-        let platformResult = platform.transferWithArray(privateKey: privateKey, contractAddress: platAddress, owner: owner, tokenArr: tokenIds, totalValue: sumPrice,gasLimit: gasLimit, gasPrice: gasPrice,getGasFee : getGasFee)
+        let platformResult = platform.transferWithArray(privateKey: privateKey, contractAddress: platAddress, assetAddress: assetAddress, owner: owner, tokenArr: tokenIds, totalValue: sumPrice,gasLimit: gasLimit, gasPrice: gasPrice,getGasFee : getGasFee)
         switch platformResult{
         case .success(let value):
             if getGasFee {
@@ -293,11 +302,57 @@ open class MerchantService: NSObject {
         }
         
     }
-
-    public  func getApproveInfo(contractAddress:String,tokenId:String) -> ContractResult {
+    
+    
+    /// 获取托管地址下的已上架的资产地址数量
+    ///
+    /// - Parameter contractAddress: 合约地址
+    /// - Returns: return value description
+    func getAssetNum(platAddress : String) -> ContractResult{
         let platform =  PlatformContract(url: url)
-        return platform.getApproveinfo(contractAddress: contractAddress, tokenId: tokenId)
+        return platform.getAssetNum(contractAddress: platAddress)
     }
+    
+    
+    /// 获取托管合约下的已上架的所有资产地址以及资产下的 token 数量
+    ///
+    /// - Parameter pageSize: 页码
+    func getAssetList(pageSize : String,platAddress : String) -> ContractResult{
+       let platform =  PlatformContract(url: url)
+       return platform.getAssetList(pageSize: pageSize, contractAddress: platAddress)
+    }
+    
+    
+    /// 获取托管合约下已上架的资产数量
+    ///
+    /// - Parameters:
+    ///   - assetAddress: 资产地址
+    ///   - contractAddress: 托管地址
+    /// - Returns: return value description
+    func getTokenNum(assetAddress : String,platAddress : String) -> ContractResult{
+        let platform =  PlatformContract(url: url)
+        return platform.getTokenNum(assetAddress: assetAddress, contractAddress: platAddress)
+    }
+    
+    
+    /// 获取托管合约下已上架的资产token
+    ///
+    /// - Parameters:
+    ///   - assetAddress: 资产地址
+    ///   - pageSize: 页码
+    ///   - contractAddress: 托管合约地址
+    func getTokenList(assetAddress : String,pageSize : String,platAddress : String) -> ContractResult{
+        let platform = PlatformContract(url: url)
+        return platform.getTokenList(assetAddress: assetAddress,pageSize: pageSize, contractAddress: platAddress)
+    }
+    
+    
+
+    public  func getApproveInfo(contractAddress:String, assetAddress: String,tokenId:String) -> ContractResult {
+        let platform =  PlatformContract(url: url)
+        return platform.getApproveinfo(contractAddress: contractAddress, assetAddress: assetAddress, tokenId: tokenId)
+    }
+    
     public  func ownerOf(contractAddress:String,tokenId:String) -> ContractResult {
         let asset = AssetManagementService(url : url)
         let result = asset.getTokenOwner(contractAddress: contractAddress, tokenId: tokenId)

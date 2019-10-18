@@ -21,5 +21,6 @@ open class AppraiserService : NSObject{
         dic["type"] = type
         dic["category"] = category
         DMAHttpUtil.getServerData(url: Config.Appraiser.ALL, param: dic, Success: Success, Failed: Failed)
+        
     }
 }

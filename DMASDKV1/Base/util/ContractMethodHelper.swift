@@ -11,14 +11,12 @@ import web3swift
 import BigInt
 import HandyJSON
 
-
 class ContractMethodHelper: NSObject {
     
     var nodeURL = assetManagementUrl!
     
     private static var randomInt : BigUInt = 0
     
-    private static var address = ""
   
     
     required init(url : String) {
@@ -42,11 +40,6 @@ class ContractMethodHelper: NSObject {
         var options = Web3Options()
         if !privateKey.isEmpty {
             let keystoreJson = ethWallet.exportKeystoreFromPrivateKeyAndPassword(privateKey: privateKey, passWord: "A")
-            let address = ethWallet.exportAddressFromPrivateKey(privateKey: privateKey) ?? ""
-            if ContractMethodHelper.address != address{
-                ContractMethodHelper.address = address
-                ContractMethodHelper.randomInt = 0
-            }
             if keystoreJson != nil {
                 let keystore = EthereumKeystoreV3.init(keystoreJson!)
                 let keystoreManager = KeystoreManager([keystore!])

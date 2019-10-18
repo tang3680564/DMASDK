@@ -20,6 +20,14 @@ public let exchangeInfo_url = baseUrl + "common/exchangeInfo"
 public let exchangeList_url = baseUrl + "common/exchangeList"
 public let exchange_url = baseUrl + "/exchange"
 
+public let contract_URL = "/contract/all"
+public let aseet_URL = "/asset/all"
+public let order_URL = "/order/all"
+public let orderItems = "/order/items"
+public let onSale_URL = "/asset/onSale"
+public let transaction_URL = "/transaction/all"
+
+
 public let platformWallet = "0x51f56e19f4e2c71fc5ffa4cd25520480c7708030"
 public let isBurn = true
 public let defaultGasPrice = "1000000000"

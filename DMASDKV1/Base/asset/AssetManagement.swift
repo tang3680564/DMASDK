@@ -9,7 +9,7 @@
 import UIKit
 import BigInt
 import HandyJSON
-
+import web3swift
 
 public class AssetManagement: NSObject {
 //NFTokenDMA
@@ -37,10 +37,10 @@ public class AssetManagement: NSObject {
     ///   - gasLimit: gasLimit description
     ///   - gasPrice: gasPrice description
     /// - Returns: ContractResult
-    func setupDeploy(privateKey:String,name:String,symbol:String,metadata:String,isburn:Bool,gasLimit:String,gasPrice:String) -> ContractResult {
+    func setupDeploy(privateKey:String,name:String,symbol:String,metadata:String,isburn:Bool,gasLimit:String,gasPrice:String,getGasFee : Bool = false) -> ContractResult {
         let deployHelper = DeployHelper(url: url)
         let param = [name ,symbol ,metadata ,isburn ] as [Any]
-        return deployHelper.setupDeploy(privateKey: privateKey, abi: abi, bytecode: "NFTokenETHData", parameters: param as [AnyObject], gasLimit: gasLimit, gasPrice: gasPrice)
+        return deployHelper.setupDeploy(privateKey: privateKey, abi: abi, bytecode: "NFTokenETHData", parameters: param as [AnyObject], gasLimit: gasLimit, gasPrice: gasPrice,getGasFee : getGasFee)
     }
     
     /// 资产授权
@@ -466,8 +466,10 @@ public class AssetManagement: NSObject {
         let result = contract.getContract(abi: abi,contractAddress:contractAddress,method: "owner", privateKey: "", parameters: param as [AnyObject], gasLimit: "", gasPrice: "")
         switch result {
         case .success(let res):
-            let management = ModelType2.deserialize(from: res)
-            return ContractResult.success(value:["result":management!.a! as Any])
+            if let address = res["0"] as? EthereumAddress{
+                return ContractResult.success(value:["result":address.address])
+            }
+            return ContractResult.success(value:["result":""])
         case .failure(let error):
             return ContractResult.failure(error: error)
         }
@@ -571,7 +573,7 @@ public class AssetManagement: NSObject {
     func tokenURI(contractAddress:String,tokenId:String) -> ContractResult {
         let param = [tokenId] as [Any]
         let contract = ContractMethodHelper(url: url)
-        let result = contract.getContract(abi: abi,contractAddress:contractAddress,method: "totalSupply", privateKey: "", parameters: param as [AnyObject], gasLimit: "", gasPrice: "")
+        let result = contract.getContract(abi: abi,contractAddress:contractAddress,method: "tokenURI", privateKey: "", parameters: param as [AnyObject], gasLimit: "", gasPrice: "")
         switch result {
         case .success(let res):
             let management = ModelType2.deserialize(from: res)
@@ -579,6 +581,13 @@ public class AssetManagement: NSObject {
         case .failure(let error):
             return ContractResult.failure(error: error)
         }
+    }
+    
+    func setCanTransfer(privateKey : String,contractAddress : String,tokenId : String,canTransfer : Bool,gasLimit:String = "",gasPrice:String = "",getGasFee : Bool = false) -> ContractResult{
+        let param = [tokenId,canTransfer] as [Any]
+        let contract = ContractMethodHelper(url: url)
+        let result = contract.getContract(abi: abi,contractAddress:contractAddress,method: "setCanTransfer", privateKey: privateKey, parameters: param as [AnyObject], gasLimit: gasLimit, gasPrice: gasPrice,getGasFee : getGasFee)
+        return result
     }
     
     
@@ -593,7 +602,7 @@ public class AssetManagement: NSObject {
         switch result {
         case .success(let res):
             let management = ModelType2.deserialize(from: res)
-            return ContractResult.success(value:["result":management!.a! as Any])
+            return ContractResult.success(value:["result":management!.a!])
         case .failure(let error):
             return ContractResult.failure(error: error)
         }
@@ -619,25 +628,25 @@ public class AssetManagement: NSObject {
         }
         
     }
+    
     func tokenIds(contractAddress:String,owner:String) -> ContractResult {
         let balanceResult = self.balanceOf(contractAddress: contractAddress, owner: owner)
-        var tokenIds:Array<Any> = []
+        var tokenIds:NSMutableArray = []
 
         switch balanceResult {
         case .success(let value):
-            let bValue = value["result"] as!String
-            if (Int(bValue)!)>0 {
-                for i in 0...(Int(bValue)!-1){
-                    let tokenIdResult = self.tokenByIndex(contractAddress: contractAddress, index: String(i))
-                    switch tokenIdResult{
-                    case .success(let value):
-                        let tokenId = value["result"] as!String
-                        tokenIds.append(tokenId)
-                        break
-                    case .failure(let error):
-                        return ContractResult.failure(error: error)
-                        
-                    }
+            let bValue = value["result"] as! String
+            let number = NSDecimalNumber(string: bValue)
+            for i in 0..<number.intValue{
+                let tokenIdResult = self.tokenOfOwnerByIndex(contractAddress: contractAddress, owner: owner, index: String(i))
+                switch tokenIdResult{
+                case .success(let value):
+                    let tokenId = value["result"] as!String
+                    tokenIds.add(tokenId)
+                    break
+                case .failure(let error):
+                    return ContractResult.failure(error: error)
+                    
                 }
             }
             return ContractResult.success(value:["result":tokenIds])

@@ -79,7 +79,7 @@ extension NSObject{
     func getGasLimInResult(result : ContractResult) -> (Bool,String,Any?){
         switch result {
         case .success(value: let dic):
-            return (true,dic["gas"] as! String,nil)
+            return (true,"\(dic["gas"]!)",nil)
         case .failure(error: let error):
             return (false,"",error)
         }

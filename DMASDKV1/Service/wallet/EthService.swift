@@ -183,17 +183,23 @@ open class EthService: NSObject {
         return result
     }
     
-//    static public func parseToBigUInt(value : String) -> String{
-//        if let str = EthWallet.parseToBigUInt(value: value){
-//            return str
-//        }
-//        return "0"
-//    }
-    
     func getStatusByHash(hash : String ) -> ContractResult{
         let eth = EthWallet()
         eth.url = url
         return eth.getStatusByHash(hash: hash)
+    }
+    
+    func getStatusByHashs(hash : String ) -> Bool{
+        let eth = EthWallet()
+        eth.url = url
+        let result = eth.getStatusByHash(hash: hash)
+        guard case .success(let dic) = result else{
+            return false
+        }
+        guard let status = dic["status"] as? Bool else{
+            return false
+        }
+        return status
     }
     
     func getTransactionReceipt(hash : String ) -> ContractResult{
@@ -201,5 +207,11 @@ open class EthService: NSObject {
         eth.url = url
         return eth.getTransactionReceipt(hash: hash)
     }
+//    static public func parseToBigUInt(value : String) -> String{
+//        if let str = EthWallet.parseToBigUInt(value: value){
+//            return str
+//        }
+//        return "0"
+//    }
     
 }

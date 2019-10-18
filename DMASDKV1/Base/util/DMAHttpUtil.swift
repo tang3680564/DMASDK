@@ -9,11 +9,12 @@
 import Foundation
 import Alamofire
 
+let error_Str = "error"
+
 public typealias ServerResultSuccessResult = (NSMutableDictionary) -> ()
 
 class DMAHttpUtil: NSObject {
     
-   
     
     static func getServerData(url : String,param : Dictionary<String, Any>,Success : @escaping ServerResultSuccessResult,Failed : @escaping ServerResultSuccessResult){
         var params = param
@@ -44,9 +45,6 @@ class DMAHttpUtil: NSObject {
                 if(result.0){
                     Success(result.1)
                 }else{
-                    print("ccccsss")
-                    print(url)
-                    print(result.1)
                     Failed(result.1)
                 }
             case .failure(let erro):
