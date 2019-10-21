@@ -1,0 +1,4 @@
+framework module SwiftHex {
+  header "SwiftHex-Swift.h"
+  requires objc
+}

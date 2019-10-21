@@ -1,0 +1,4 @@
+framework module SwiftMultihash {
+  header "SwiftMultihash-Swift.h"
+  requires objc
+}

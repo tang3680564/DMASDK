@@ -157,32 +157,6 @@ open class EthService: NSObject {
         return e
     }
     
-    /// eth侧链 向 主链转账
-    ///
-    /// - Parameters:
-    ///   - privateKey: 私钥
-    ///   - to: 转账地址
-    ///   - value: 转账金额
-    ///   - contractAddress: 合约地址
-    ///   - gasLimit: gasLimit description
-    ///   - gasPrice: gasPrice description
-    /// - Returns: return value description
-    public func crossTransfer(mnemonics : String,to : String,value : String,gasLimit : String = "",gasPrice : String = "") -> ContractResult{
-        let eth = EthWallet()
-        eth.url = url
-        var gasLimit = gasLimit
-        var gasPrice = gasPrice
-        if gasLimit.isEmpty{
-            gasLimit = corsTranferGasLimit
-        }
-        if gasPrice.isEmpty{
-            gasPrice = defaultGasPrice
-        }
-        let privateKey = exportAddressAndPrivateKeyFromMnemonics(mnemonics: mnemonics).privateKey
-        let result = eth.crossTransfer(privateKey: privateKey, to: to, value: value, contractAddress: ethToElaContractAddress, gasLimit: gasLimit, gasPrice: gasPrice)
-        return result
-    }
-    
     func getStatusByHash(hash : String ) -> ContractResult{
         let eth = EthWallet()
         eth.url = url

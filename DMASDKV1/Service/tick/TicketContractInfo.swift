@@ -30,6 +30,8 @@ public class TicketContractInfo : HandyJSON {
     public var type : String?
     ///扩展json，使用者自定义
     public var json : String?
+    ///地址
+    public var location : String?
     
     public required init() {
     }

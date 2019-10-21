@@ -1,0 +1,4 @@
+framework module SwiftBase58 {
+  header "SwiftBase58-Swift.h"
+  requires objc
+}

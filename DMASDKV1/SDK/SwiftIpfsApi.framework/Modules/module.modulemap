@@ -1,0 +1,4 @@
+framework module SwiftIpfsApi {
+  header "SwiftIpfsApi-Swift.h"
+  requires objc
+}

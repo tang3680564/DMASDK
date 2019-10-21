@@ -35,7 +35,7 @@ open class AssetManagementService: NSObject {
     ///   - gasLimit: gasLimit description
     ///   - gasPrice: gasPrice description
     /// - Returns: ContractResult
-    public func setupDeploy(privateKey:String,name:String,symbol:String,metadata:String,isburn:Bool,gasLimit:String,gasPrice:String,getGasFee : Bool = false) -> ContractResult {
+    public func deploy(privateKey:String,name:String,symbol:String,metadata:String,isburn:Bool,gasLimit:String,gasPrice:String,getGasFee : Bool = false) -> ContractResult {
         
         var gasLimit = gasLimit
         var gasPrice = gasPrice
@@ -336,19 +336,6 @@ open class AssetManagementService: NSObject {
     }
     
     
-    /// 根据资产id查询资产信息
-    ///
-    /// - Parameters:
-    ///   - contractAddress: 合约地址
-    ///   - tokenId: 资产 ID
-    /// - Returns: return value description
-    public  func getAssetInfo(contractAddress:String,tokenId:String) -> ContractResult {
-        let result = asset.getTokenInfo(contractAddress: contractAddress, tokenId: tokenId)
-        return result
-    }
-    
-    
-    
     /// 查询是否拥有合约的授权
     ///
     /// - Parameters:
@@ -485,7 +472,7 @@ open class AssetManagementService: NSObject {
     ///   - contractAddress: 合约地址
     ///   - tokenId: 资产 ID
     /// - Returns: return value description
-    public func valid(contractAddress:String,tokenId:String) -> ContractResult {
+    public func isValid(contractAddress:String,tokenId:String) -> ContractResult {
         let result = asset.valid(contractAddress: contractAddress, tokenId: tokenId)
         return result
     }

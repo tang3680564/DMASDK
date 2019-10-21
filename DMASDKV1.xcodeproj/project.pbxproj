@@ -11,67 +11,6 @@
 		F8125C0D2314F50700B813DB /* DMASDKV1.h in Headers */ = {isa = PBXBuildFile; fileRef = F8125C0B2314F50700B813DB /* DMASDKV1.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F8125C162314F5A800B813DB /* ElastosSdkKeypair.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8125C142314F5A800B813DB /* ElastosSdkKeypair.framework */; };
 		F8125C172314F5A800B813DB /* ElastosSdkWallet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8125C152314F5A800B813DB /* ElastosSdkWallet.framework */; };
-		F8125C7A2314FD1400B813DB /* AssetManagementService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C222314FD1300B813DB /* AssetManagementService.swift */; };
-		F8125C7B2314FD1400B813DB /* MerchantServiceConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C242314FD1300B813DB /* MerchantServiceConfig.swift */; };
-		F8125C7C2314FD1400B813DB /* PaymentConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C252314FD1300B813DB /* PaymentConfig.swift */; };
-		F8125C7D2314FD1400B813DB /* DMAEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C262314FD1300B813DB /* DMAEnum.swift */; };
-		F8125C7E2314FD1400B813DB /* RechargeStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C282314FD1300B813DB /* RechargeStatus.swift */; };
-		F8125C7F2314FD1400B813DB /* PaymentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C292314FD1300B813DB /* PaymentService.swift */; };
-		F8125C802314FD1400B813DB /* PayMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C2A2314FD1300B813DB /* PayMethod.swift */; };
-		F8125C812314FD1400B813DB /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C2B2314FD1300B813DB /* Direction.swift */; };
-		F8125C822314FD1400B813DB /* RequestBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C2E2314FD1300B813DB /* RequestBody.swift */; };
-		F8125C832314FD1400B813DB /* ParserResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C302314FD1300B813DB /* ParserResult.swift */; };
-		F8125C842314FD1400B813DB /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C312314FD1300B813DB /* Parser.swift */; };
-		F8125C852314FD1400B813DB /* PulseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C332314FD1300B813DB /* PulseService.swift */; };
-		F8125C862314FD1400B813DB /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C352314FD1300B813DB /* DataService.swift */; };
-		F8125C872314FD1400B813DB /* ResponseBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C362314FD1300B813DB /* ResponseBody.swift */; };
-		F8125C882314FD1400B813DB /* DynamicData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C382314FD1300B813DB /* DynamicData.swift */; };
-		F8125C892314FD1400B813DB /* Tags.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C392314FD1300B813DB /* Tags.swift */; };
-		F8125C8A2314FD1400B813DB /* Pulse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C3A2314FD1300B813DB /* Pulse.swift */; };
-		F8125C8B2314FD1400B813DB /* AbstractService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C3B2314FD1300B813DB /* AbstractService.swift */; };
-		F8125C8C2314FD1400B813DB /* ElaDIDService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C3D2314FD1300B813DB /* ElaDIDService.swift */; };
-		F8125C8D2314FD1400B813DB /* DefaultEncipher.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C3F2314FD1300B813DB /* DefaultEncipher.swift */; };
-		F8125C8E2314FD1400B813DB /* Encipher.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C402314FD1300B813DB /* Encipher.swift */; };
-		F8125C8F2314FD1400B813DB /* AppIdEncipher.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C412314FD1300B813DB /* AppIdEncipher.swift */; };
-		F8125C902314FD1400B813DB /* IpfsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C432314FD1300B813DB /* IpfsService.swift */; };
-		F8125C912314FD1400B813DB /* StorageMedium.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C442314FD1300B813DB /* StorageMedium.swift */; };
-		F8125C922314FD1400B813DB /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C472314FD1300B813DB /* Profile.swift */; };
-		F8125C932314FD1400B813DB /* Propertys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C482314FD1300B813DB /* Propertys.swift */; };
-		F8125C942314FD1400B813DB /* ProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C4A2314FD1300B813DB /* ProfileService.swift */; };
-		F8125C952314FD1400B813DB /* EthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C4C2314FD1300B813DB /* EthService.swift */; };
-		F8125C962314FD1400B813DB /* ElaService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C4D2314FD1300B813DB /* ElaService.swift */; };
-		F8125C972314FD1400B813DB /* MessageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C4F2314FD1300B813DB /* MessageService.swift */; };
-		F8125C982314FD1400B813DB /* GroupService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C502314FD1300B813DB /* GroupService.swift */; };
-		F8125C992314FD1400B813DB /* AppraiserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C522314FD1300B813DB /* AppraiserService.swift */; };
-		F8125C9A2314FD1400B813DB /* Appraiser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C532314FD1300B813DB /* Appraiser.swift */; };
-		F8125C9B2314FD1400B813DB /* ChargeActivityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C552314FD1300B813DB /* ChargeActivityService.swift */; };
-		F8125C9C2314FD1400B813DB /* MerchantService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C562314FD1300B813DB /* MerchantService.swift */; };
-		F8125C9D2314FD1400B813DB /* PledgeActivityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C572314FD1300B813DB /* PledgeActivityService.swift */; };
-		F8125C9E2314FD1400B813DB /* TokenContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C5A2314FD1400B813DB /* TokenContract.swift */; };
-		F8125C9F2314FD1400B813DB /* PlatformContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C5B2314FD1400B813DB /* PlatformContract.swift */; };
-		F8125CA02314FD1400B813DB /* ChargeActivityContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C5C2314FD1400B813DB /* ChargeActivityContract.swift */; };
-		F8125CA12314FD1400B813DB /* PledgeActivityContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C5D2314FD1400B813DB /* PledgeActivityContract.swift */; };
-		F8125CA22314FD1400B813DB /* AssetManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C5F2314FD1400B813DB /* AssetManagement.swift */; };
-		F8125CA32314FD1400B813DB /* DMACommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C612314FD1400B813DB /* DMACommon.swift */; };
-		F8125CA42314FD1400B813DB /* DMAHttpUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C622314FD1400B813DB /* DMAHttpUtil.swift */; };
-		F8125CA52314FD1400B813DB /* DeployHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C632314FD1400B813DB /* DeployHelper.swift */; };
-		F8125CA62314FD1400B813DB /* ContractMethodHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C642314FD1400B813DB /* ContractMethodHelper.swift */; };
-		F8125CA72314FD1400B813DB /* ElaDID.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C662314FD1400B813DB /* ElaDID.swift */; };
-		F8125CA82314FD1400B813DB /* IpfsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C682314FD1400B813DB /* IpfsStorage.swift */; };
-		F8125CA92314FD1400B813DB /* ETHChargeActivity.json in Resources */ = {isa = PBXBuildFile; fileRef = F8125C6A2314FD1400B813DB /* ETHChargeActivity.json */; };
-		F8125CAA2314FD1400B813DB /* ETHChargeActivityData.json in Resources */ = {isa = PBXBuildFile; fileRef = F8125C6B2314FD1400B813DB /* ETHChargeActivityData.json */; };
-		F8125CAB2314FD1400B813DB /* ETHTransfer.json in Resources */ = {isa = PBXBuildFile; fileRef = F8125C6C2314FD1400B813DB /* ETHTransfer.json */; };
-		F8125CAC2314FD1400B813DB /* ETHPlatformData.json in Resources */ = {isa = PBXBuildFile; fileRef = F8125C6D2314FD1400B813DB /* ETHPlatformData.json */; };
-		F8125CAD2314FD1400B813DB /* ETHPlatform.json in Resources */ = {isa = PBXBuildFile; fileRef = F8125C6E2314FD1400B813DB /* ETHPlatform.json */; };
-		F8125CAE2314FD1400B813DB /* NFTokenETH.json in Resources */ = {isa = PBXBuildFile; fileRef = F8125C6F2314FD1400B813DB /* NFTokenETH.json */; };
-		F8125CAF2314FD1400B813DB /* ETHPledgeActivityData.json in Resources */ = {isa = PBXBuildFile; fileRef = F8125C702314FD1400B813DB /* ETHPledgeActivityData.json */; };
-		F8125CB02314FD1400B813DB /* ETHPledgeActivity.json in Resources */ = {isa = PBXBuildFile; fileRef = F8125C712314FD1400B813DB /* ETHPledgeActivity.json */; };
-		F8125CB12314FD1400B813DB /* NFTokenETHData.json in Resources */ = {isa = PBXBuildFile; fileRef = F8125C722314FD1400B813DB /* NFTokenETHData.json */; };
-		F8125CB22314FD1400B813DB /* EthWallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C742314FD1400B813DB /* EthWallet.swift */; };
-		F8125CB32314FD1400B813DB /* ElaWallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C752314FD1400B813DB /* ElaWallet.swift */; };
-		F8125CB42314FD1400B813DB /* GroupHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C772314FD1400B813DB /* GroupHelper.swift */; };
-		F8125CB52314FD1400B813DB /* NetworkReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C782314FD1400B813DB /* NetworkReachabilityManager.swift */; };
-		F8125CB62314FD1400B813DB /* MessageBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C792314FD1400B813DB /* MessageBase.swift */; };
 		F8125D0723162C3200B813DB /* SwiftHex.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8125D0023162C3100B813DB /* SwiftHex.framework */; };
 		F8125D0823162C3200B813DB /* SwiftBase58.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8125D0123162C3100B813DB /* SwiftBase58.framework */; };
 		F8125D0923162C3200B813DB /* SwiftGMP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8125D0223162C3100B813DB /* SwiftGMP.framework */; };
@@ -79,9 +18,84 @@
 		F8125D0B23162C3200B813DB /* SwiftMultiaddr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8125D0423162C3200B813DB /* SwiftMultiaddr.framework */; };
 		F8125D0C23162C3200B813DB /* SwiftMultihash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8125D0523162C3200B813DB /* SwiftMultihash.framework */; };
 		F8125D0D23162C3200B813DB /* VarInt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8125D0623162C3200B813DB /* VarInt.framework */; };
-		F823CD112320AD6D00BCF66B /* Web3Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = F823CD102320AD6C00BCF66B /* Web3Util.swift */; };
-		F8A9810A232F28B900F3494B /* NFTokenDMA.json in Resources */ = {isa = PBXBuildFile; fileRef = F8A98109232F28B900F3494B /* NFTokenDMA.json */; };
-		F8A9810C232F28FC00F3494B /* ErrorCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A9810B232F28FC00F3494B /* ErrorCode.swift */; };
+		F82873FD235DC80000E4A086 /* TokenContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8287394235DC80000E4A086 /* TokenContract.swift */; };
+		F82873FE235DC80000E4A086 /* PlatformContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8287395235DC80000E4A086 /* PlatformContract.swift */; };
+		F82873FF235DC80000E4A086 /* ChargeActivityContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8287396235DC80000E4A086 /* ChargeActivityContract.swift */; };
+		F8287400235DC80000E4A086 /* PledgeActivityContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8287397235DC80000E4A086 /* PledgeActivityContract.swift */; };
+		F8287401235DC80000E4A086 /* AssetManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8287399235DC80000E4A086 /* AssetManagement.swift */; };
+		F8287402235DC80000E4A086 /* DMACommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F828739B235DC80000E4A086 /* DMACommon.swift */; };
+		F8287403235DC80000E4A086 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F828739C235DC80000E4A086 /* String+Extension.swift */; };
+		F8287404235DC80000E4A086 /* Web3Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = F828739D235DC80000E4A086 /* Web3Util.swift */; };
+		F8287405235DC80000E4A086 /* DMAHttpUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = F828739E235DC80000E4A086 /* DMAHttpUtil.swift */; };
+		F8287406235DC80000E4A086 /* DeployHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F828739F235DC80000E4A086 /* DeployHelper.swift */; };
+		F8287407235DC80000E4A086 /* ContractMethodHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82873A0235DC80000E4A086 /* ContractMethodHelper.swift */; };
+		F8287408235DC80000E4A086 /* ElaDID.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82873A2235DC80000E4A086 /* ElaDID.swift */; };
+		F8287409235DC80000E4A086 /* IpfsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82873A4235DC80000E4A086 /* IpfsStorage.swift */; };
+		F828740A235DC80000E4A086 /* ETHChargeActivity.json in Resources */ = {isa = PBXBuildFile; fileRef = F82873A6235DC80000E4A086 /* ETHChargeActivity.json */; };
+		F828740B235DC80000E4A086 /* ETHChargeActivityData.json in Resources */ = {isa = PBXBuildFile; fileRef = F82873A7235DC80000E4A086 /* ETHChargeActivityData.json */; };
+		F828740C235DC80000E4A086 /* NFTokenDMA.json in Resources */ = {isa = PBXBuildFile; fileRef = F82873A8235DC80000E4A086 /* NFTokenDMA.json */; };
+		F828740D235DC80000E4A086 /* ETHTransfer.json in Resources */ = {isa = PBXBuildFile; fileRef = F82873A9235DC80000E4A086 /* ETHTransfer.json */; };
+		F828740E235DC80000E4A086 /* ETHPlatformData.json in Resources */ = {isa = PBXBuildFile; fileRef = F82873AA235DC80000E4A086 /* ETHPlatformData.json */; };
+		F828740F235DC80000E4A086 /* ETHPlatform.json in Resources */ = {isa = PBXBuildFile; fileRef = F82873AB235DC80000E4A086 /* ETHPlatform.json */; };
+		F8287410235DC80000E4A086 /* NFTokenETH.json in Resources */ = {isa = PBXBuildFile; fileRef = F82873AC235DC80000E4A086 /* NFTokenETH.json */; };
+		F8287411235DC80000E4A086 /* ETHPledgeActivityData.json in Resources */ = {isa = PBXBuildFile; fileRef = F82873AD235DC80000E4A086 /* ETHPledgeActivityData.json */; };
+		F8287412235DC80000E4A086 /* ETHPledgeActivity.json in Resources */ = {isa = PBXBuildFile; fileRef = F82873AE235DC80000E4A086 /* ETHPledgeActivity.json */; };
+		F8287413235DC80000E4A086 /* NFTokenETHData.json in Resources */ = {isa = PBXBuildFile; fileRef = F82873AF235DC80000E4A086 /* NFTokenETHData.json */; };
+		F8287414235DC80000E4A086 /* EthWallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82873B1235DC80000E4A086 /* EthWallet.swift */; };
+		F8287415235DC80000E4A086 /* ElaWallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82873B2235DC80000E4A086 /* ElaWallet.swift */; };
+		F8287416235DC80000E4A086 /* GroupHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82873B4235DC80000E4A086 /* GroupHelper.swift */; };
+		F8287417235DC80000E4A086 /* NetworkReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82873B5235DC80000E4A086 /* NetworkReachabilityManager.swift */; };
+		F8287418235DC80000E4A086 /* MessageBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82873B6235DC80000E4A086 /* MessageBase.swift */; };
+		F8287419235DC80000E4A086 /* Token20Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82873B9235DC80000E4A086 /* Token20Service.swift */; };
+		F828741A235DC80000E4A086 /* Token721Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82873BA235DC80000E4A086 /* Token721Service.swift */; };
+		F828741B235DC80000E4A086 /* AssetManagementService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82873BB235DC80000E4A086 /* AssetManagementService.swift */; };
+		F828741C235DC80000E4A086 /* MerchantServiceConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82873BD235DC80000E4A086 /* MerchantServiceConfig.swift */; };
+		F828741D235DC80000E4A086 /* PaymentConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82873BE235DC80000E4A086 /* PaymentConfig.swift */; };
+		F828741E235DC80000E4A086 /* ErrorCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82873BF235DC80000E4A086 /* ErrorCode.swift */; };
+		F828741F235DC80000E4A086 /* DMAEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82873C0235DC80000E4A086 /* DMAEnum.swift */; };
+		F8287420235DC80000E4A086 /* RechargeStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82873C2235DC80000E4A086 /* RechargeStatus.swift */; };
+		F8287421235DC80000E4A086 /* PaymentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82873C3235DC80000E4A086 /* PaymentService.swift */; };
+		F8287422235DC80000E4A086 /* PayMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82873C4235DC80000E4A086 /* PayMethod.swift */; };
+		F8287423235DC80000E4A086 /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82873C5235DC80000E4A086 /* Direction.swift */; };
+		F8287424235DC80000E4A086 /* RequestBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82873C8235DC80000E4A086 /* RequestBody.swift */; };
+		F8287425235DC80000E4A086 /* ParserResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82873CA235DC80000E4A086 /* ParserResult.swift */; };
+		F8287426235DC80000E4A086 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82873CB235DC80000E4A086 /* Parser.swift */; };
+		F8287427235DC80000E4A086 /* PulseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82873CD235DC80000E4A086 /* PulseService.swift */; };
+		F8287428235DC80000E4A086 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82873CF235DC80000E4A086 /* DataService.swift */; };
+		F8287429235DC80000E4A086 /* ResponseBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82873D0235DC80000E4A086 /* ResponseBody.swift */; };
+		F828742A235DC80000E4A086 /* DynamicData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82873D2235DC80000E4A086 /* DynamicData.swift */; };
+		F828742B235DC80000E4A086 /* Tags.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82873D3235DC80000E4A086 /* Tags.swift */; };
+		F828742C235DC80000E4A086 /* Pulse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82873D4235DC80000E4A086 /* Pulse.swift */; };
+		F828742D235DC80000E4A086 /* AbstractService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82873D5235DC80000E4A086 /* AbstractService.swift */; };
+		F828742E235DC80000E4A086 /* PassportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82873D7235DC80000E4A086 /* PassportService.swift */; };
+		F828742F235DC80000E4A086 /* DefaultEncipher.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82873D9235DC80000E4A086 /* DefaultEncipher.swift */; };
+		F8287430235DC80000E4A086 /* Encipher.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82873DA235DC80000E4A086 /* Encipher.swift */; };
+		F8287431235DC80000E4A086 /* AppIdEncipher.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82873DB235DC80000E4A086 /* AppIdEncipher.swift */; };
+		F8287432235DC80000E4A086 /* IpfsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82873DD235DC80000E4A086 /* IpfsService.swift */; };
+		F8287433235DC80000E4A086 /* StorageMedium.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82873DE235DC80000E4A086 /* StorageMedium.swift */; };
+		F8287434235DC80000E4A086 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82873E1235DC80000E4A086 /* Profile.swift */; };
+		F8287435235DC80000E4A086 /* Propertys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82873E2235DC80000E4A086 /* Propertys.swift */; };
+		F8287436235DC80000E4A086 /* ProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82873E4235DC80000E4A086 /* ProfileService.swift */; };
+		F8287437235DC80000E4A086 /* ElaDIDService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82873E6235DC80000E4A086 /* ElaDIDService.swift */; };
+		F8287438235DC80000E4A086 /* EthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82873E7235DC80000E4A086 /* EthService.swift */; };
+		F8287439235DC80000E4A086 /* ElaService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82873E8235DC80000E4A086 /* ElaService.swift */; };
+		F828743A235DC80000E4A086 /* EthSideChainWalletService .swift in Sources */ = {isa = PBXBuildFile; fileRef = F82873E9235DC80000E4A086 /* EthSideChainWalletService .swift */; };
+		F828743B235DC80000E4A086 /* MessageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82873EB235DC80000E4A086 /* MessageService.swift */; };
+		F828743C235DC80000E4A086 /* GroupService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82873EC235DC80000E4A086 /* GroupService.swift */; };
+		F828743D235DC80000E4A086 /* AppraiserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82873EE235DC80000E4A086 /* AppraiserService.swift */; };
+		F828743E235DC80000E4A086 /* Appraiser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82873EF235DC80000E4A086 /* Appraiser.swift */; };
+		F828743F235DC80000E4A086 /* ChargeActivityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82873F1235DC80000E4A086 /* ChargeActivityService.swift */; };
+		F8287440235DC80000E4A086 /* MerchantService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82873F2235DC80000E4A086 /* MerchantService.swift */; };
+		F8287441235DC80000E4A086 /* PledgeActivityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82873F3235DC80000E4A086 /* PledgeActivityService.swift */; };
+		F8287442235DC80000E4A086 /* ChargeActivityTrusService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82873F5235DC80000E4A086 /* ChargeActivityTrusService.swift */; };
+		F8287443235DC80000E4A086 /* TicketService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82873F6235DC80000E4A086 /* TicketService.swift */; };
+		F8287444235DC80000E4A086 /* TicketOrderInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82873F7235DC80000E4A086 /* TicketOrderInfo.swift */; };
+		F8287445235DC80000E4A086 /* SaleMyTickService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82873F8235DC80000E4A086 /* SaleMyTickService.swift */; };
+		F8287446235DC80000E4A086 /* TicketTokenInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82873F9235DC80000E4A086 /* TicketTokenInfo.swift */; };
+		F8287447235DC80000E4A086 /* TicketContractInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82873FA235DC80000E4A086 /* TicketContractInfo.swift */; };
+		F8287448235DC80000E4A086 /* TicketTrustService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82873FB235DC80000E4A086 /* TicketTrustService.swift */; };
+		F8287449235DC80000E4A086 /* PledgeActivityTrusService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82873FC235DC80000E4A086 /* PledgeActivityTrusService.swift */; };
+		F828744B235DC8EB00E4A086 /* NSMutableDictionary+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F828744A235DC8EB00E4A086 /* NSMutableDictionary+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -93,67 +107,6 @@
 		F8125C0C2314F50700B813DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F8125C142314F5A800B813DB /* ElastosSdkKeypair.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ElastosSdkKeypair.framework; sourceTree = "<group>"; };
 		F8125C152314F5A800B813DB /* ElastosSdkWallet.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ElastosSdkWallet.framework; sourceTree = "<group>"; };
-		F8125C222314FD1300B813DB /* AssetManagementService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssetManagementService.swift; sourceTree = "<group>"; };
-		F8125C242314FD1300B813DB /* MerchantServiceConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MerchantServiceConfig.swift; sourceTree = "<group>"; };
-		F8125C252314FD1300B813DB /* PaymentConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentConfig.swift; sourceTree = "<group>"; };
-		F8125C262314FD1300B813DB /* DMAEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMAEnum.swift; sourceTree = "<group>"; };
-		F8125C282314FD1300B813DB /* RechargeStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RechargeStatus.swift; sourceTree = "<group>"; };
-		F8125C292314FD1300B813DB /* PaymentService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentService.swift; sourceTree = "<group>"; };
-		F8125C2A2314FD1300B813DB /* PayMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayMethod.swift; sourceTree = "<group>"; };
-		F8125C2B2314FD1300B813DB /* Direction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Direction.swift; sourceTree = "<group>"; };
-		F8125C2E2314FD1300B813DB /* RequestBody.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestBody.swift; sourceTree = "<group>"; };
-		F8125C302314FD1300B813DB /* ParserResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParserResult.swift; sourceTree = "<group>"; };
-		F8125C312314FD1300B813DB /* Parser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
-		F8125C332314FD1300B813DB /* PulseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PulseService.swift; sourceTree = "<group>"; };
-		F8125C352314FD1300B813DB /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
-		F8125C362314FD1300B813DB /* ResponseBody.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseBody.swift; sourceTree = "<group>"; };
-		F8125C382314FD1300B813DB /* DynamicData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicData.swift; sourceTree = "<group>"; };
-		F8125C392314FD1300B813DB /* Tags.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tags.swift; sourceTree = "<group>"; };
-		F8125C3A2314FD1300B813DB /* Pulse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pulse.swift; sourceTree = "<group>"; };
-		F8125C3B2314FD1300B813DB /* AbstractService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbstractService.swift; sourceTree = "<group>"; };
-		F8125C3D2314FD1300B813DB /* ElaDIDService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElaDIDService.swift; sourceTree = "<group>"; };
-		F8125C3F2314FD1300B813DB /* DefaultEncipher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultEncipher.swift; sourceTree = "<group>"; };
-		F8125C402314FD1300B813DB /* Encipher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Encipher.swift; sourceTree = "<group>"; };
-		F8125C412314FD1300B813DB /* AppIdEncipher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppIdEncipher.swift; sourceTree = "<group>"; };
-		F8125C432314FD1300B813DB /* IpfsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IpfsService.swift; sourceTree = "<group>"; };
-		F8125C442314FD1300B813DB /* StorageMedium.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageMedium.swift; sourceTree = "<group>"; };
-		F8125C472314FD1300B813DB /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
-		F8125C482314FD1300B813DB /* Propertys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Propertys.swift; sourceTree = "<group>"; };
-		F8125C4A2314FD1300B813DB /* ProfileService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileService.swift; sourceTree = "<group>"; };
-		F8125C4C2314FD1300B813DB /* EthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EthService.swift; sourceTree = "<group>"; };
-		F8125C4D2314FD1300B813DB /* ElaService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElaService.swift; sourceTree = "<group>"; };
-		F8125C4F2314FD1300B813DB /* MessageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageService.swift; sourceTree = "<group>"; };
-		F8125C502314FD1300B813DB /* GroupService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupService.swift; sourceTree = "<group>"; };
-		F8125C522314FD1300B813DB /* AppraiserService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppraiserService.swift; sourceTree = "<group>"; };
-		F8125C532314FD1300B813DB /* Appraiser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Appraiser.swift; sourceTree = "<group>"; };
-		F8125C552314FD1300B813DB /* ChargeActivityService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChargeActivityService.swift; sourceTree = "<group>"; };
-		F8125C562314FD1300B813DB /* MerchantService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MerchantService.swift; sourceTree = "<group>"; };
-		F8125C572314FD1300B813DB /* PledgeActivityService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PledgeActivityService.swift; sourceTree = "<group>"; };
-		F8125C5A2314FD1400B813DB /* TokenContract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenContract.swift; sourceTree = "<group>"; };
-		F8125C5B2314FD1400B813DB /* PlatformContract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlatformContract.swift; sourceTree = "<group>"; };
-		F8125C5C2314FD1400B813DB /* ChargeActivityContract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChargeActivityContract.swift; sourceTree = "<group>"; };
-		F8125C5D2314FD1400B813DB /* PledgeActivityContract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PledgeActivityContract.swift; sourceTree = "<group>"; };
-		F8125C5F2314FD1400B813DB /* AssetManagement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssetManagement.swift; sourceTree = "<group>"; };
-		F8125C612314FD1400B813DB /* DMACommon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMACommon.swift; sourceTree = "<group>"; };
-		F8125C622314FD1400B813DB /* DMAHttpUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMAHttpUtil.swift; sourceTree = "<group>"; };
-		F8125C632314FD1400B813DB /* DeployHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeployHelper.swift; sourceTree = "<group>"; };
-		F8125C642314FD1400B813DB /* ContractMethodHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContractMethodHelper.swift; sourceTree = "<group>"; };
-		F8125C662314FD1400B813DB /* ElaDID.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElaDID.swift; sourceTree = "<group>"; };
-		F8125C682314FD1400B813DB /* IpfsStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IpfsStorage.swift; sourceTree = "<group>"; };
-		F8125C6A2314FD1400B813DB /* ETHChargeActivity.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ETHChargeActivity.json; sourceTree = "<group>"; };
-		F8125C6B2314FD1400B813DB /* ETHChargeActivityData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ETHChargeActivityData.json; sourceTree = "<group>"; };
-		F8125C6C2314FD1400B813DB /* ETHTransfer.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ETHTransfer.json; sourceTree = "<group>"; };
-		F8125C6D2314FD1400B813DB /* ETHPlatformData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ETHPlatformData.json; sourceTree = "<group>"; };
-		F8125C6E2314FD1400B813DB /* ETHPlatform.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ETHPlatform.json; sourceTree = "<group>"; };
-		F8125C6F2314FD1400B813DB /* NFTokenETH.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = NFTokenETH.json; sourceTree = "<group>"; };
-		F8125C702314FD1400B813DB /* ETHPledgeActivityData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ETHPledgeActivityData.json; sourceTree = "<group>"; };
-		F8125C712314FD1400B813DB /* ETHPledgeActivity.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ETHPledgeActivity.json; sourceTree = "<group>"; };
-		F8125C722314FD1400B813DB /* NFTokenETHData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = NFTokenETHData.json; sourceTree = "<group>"; };
-		F8125C742314FD1400B813DB /* EthWallet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EthWallet.swift; sourceTree = "<group>"; };
-		F8125C752314FD1400B813DB /* ElaWallet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElaWallet.swift; sourceTree = "<group>"; };
-		F8125C772314FD1400B813DB /* GroupHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupHelper.swift; sourceTree = "<group>"; };
-		F8125C782314FD1400B813DB /* NetworkReachabilityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkReachabilityManager.swift; sourceTree = "<group>"; };
-		F8125C792314FD1400B813DB /* MessageBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageBase.swift; sourceTree = "<group>"; };
 		F8125D0023162C3100B813DB /* SwiftHex.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftHex.framework; path = Carthage/Build/iOS/SwiftHex.framework; sourceTree = "<group>"; };
 		F8125D0123162C3100B813DB /* SwiftBase58.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftBase58.framework; path = Carthage/Build/iOS/SwiftBase58.framework; sourceTree = "<group>"; };
 		F8125D0223162C3100B813DB /* SwiftGMP.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftGMP.framework; path = Carthage/Build/iOS/SwiftGMP.framework; sourceTree = "<group>"; };
@@ -161,9 +114,84 @@
 		F8125D0423162C3200B813DB /* SwiftMultiaddr.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftMultiaddr.framework; path = Carthage/Build/iOS/SwiftMultiaddr.framework; sourceTree = "<group>"; };
 		F8125D0523162C3200B813DB /* SwiftMultihash.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftMultihash.framework; path = Carthage/Build/iOS/SwiftMultihash.framework; sourceTree = "<group>"; };
 		F8125D0623162C3200B813DB /* VarInt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VarInt.framework; path = Carthage/Build/iOS/VarInt.framework; sourceTree = "<group>"; };
-		F823CD102320AD6C00BCF66B /* Web3Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Web3Util.swift; sourceTree = "<group>"; };
-		F8A98109232F28B900F3494B /* NFTokenDMA.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = NFTokenDMA.json; sourceTree = "<group>"; };
-		F8A9810B232F28FC00F3494B /* ErrorCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorCode.swift; sourceTree = "<group>"; };
+		F8287394235DC80000E4A086 /* TokenContract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenContract.swift; sourceTree = "<group>"; };
+		F8287395235DC80000E4A086 /* PlatformContract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlatformContract.swift; sourceTree = "<group>"; };
+		F8287396235DC80000E4A086 /* ChargeActivityContract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChargeActivityContract.swift; sourceTree = "<group>"; };
+		F8287397235DC80000E4A086 /* PledgeActivityContract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PledgeActivityContract.swift; sourceTree = "<group>"; };
+		F8287399235DC80000E4A086 /* AssetManagement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssetManagement.swift; sourceTree = "<group>"; };
+		F828739B235DC80000E4A086 /* DMACommon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMACommon.swift; sourceTree = "<group>"; };
+		F828739C235DC80000E4A086 /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		F828739D235DC80000E4A086 /* Web3Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Web3Util.swift; sourceTree = "<group>"; };
+		F828739E235DC80000E4A086 /* DMAHttpUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMAHttpUtil.swift; sourceTree = "<group>"; };
+		F828739F235DC80000E4A086 /* DeployHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeployHelper.swift; sourceTree = "<group>"; };
+		F82873A0235DC80000E4A086 /* ContractMethodHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContractMethodHelper.swift; sourceTree = "<group>"; };
+		F82873A2235DC80000E4A086 /* ElaDID.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElaDID.swift; sourceTree = "<group>"; };
+		F82873A4235DC80000E4A086 /* IpfsStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IpfsStorage.swift; sourceTree = "<group>"; };
+		F82873A6235DC80000E4A086 /* ETHChargeActivity.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ETHChargeActivity.json; sourceTree = "<group>"; };
+		F82873A7235DC80000E4A086 /* ETHChargeActivityData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ETHChargeActivityData.json; sourceTree = "<group>"; };
+		F82873A8235DC80000E4A086 /* NFTokenDMA.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = NFTokenDMA.json; sourceTree = "<group>"; };
+		F82873A9235DC80000E4A086 /* ETHTransfer.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ETHTransfer.json; sourceTree = "<group>"; };
+		F82873AA235DC80000E4A086 /* ETHPlatformData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ETHPlatformData.json; sourceTree = "<group>"; };
+		F82873AB235DC80000E4A086 /* ETHPlatform.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ETHPlatform.json; sourceTree = "<group>"; };
+		F82873AC235DC80000E4A086 /* NFTokenETH.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = NFTokenETH.json; sourceTree = "<group>"; };
+		F82873AD235DC80000E4A086 /* ETHPledgeActivityData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ETHPledgeActivityData.json; sourceTree = "<group>"; };
+		F82873AE235DC80000E4A086 /* ETHPledgeActivity.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ETHPledgeActivity.json; sourceTree = "<group>"; };
+		F82873AF235DC80000E4A086 /* NFTokenETHData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = NFTokenETHData.json; sourceTree = "<group>"; };
+		F82873B1235DC80000E4A086 /* EthWallet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EthWallet.swift; sourceTree = "<group>"; };
+		F82873B2235DC80000E4A086 /* ElaWallet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElaWallet.swift; sourceTree = "<group>"; };
+		F82873B4235DC80000E4A086 /* GroupHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupHelper.swift; sourceTree = "<group>"; };
+		F82873B5235DC80000E4A086 /* NetworkReachabilityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkReachabilityManager.swift; sourceTree = "<group>"; };
+		F82873B6235DC80000E4A086 /* MessageBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageBase.swift; sourceTree = "<group>"; };
+		F82873B9235DC80000E4A086 /* Token20Service.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Token20Service.swift; sourceTree = "<group>"; };
+		F82873BA235DC80000E4A086 /* Token721Service.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Token721Service.swift; sourceTree = "<group>"; };
+		F82873BB235DC80000E4A086 /* AssetManagementService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssetManagementService.swift; sourceTree = "<group>"; };
+		F82873BD235DC80000E4A086 /* MerchantServiceConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MerchantServiceConfig.swift; sourceTree = "<group>"; };
+		F82873BE235DC80000E4A086 /* PaymentConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentConfig.swift; sourceTree = "<group>"; };
+		F82873BF235DC80000E4A086 /* ErrorCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorCode.swift; sourceTree = "<group>"; };
+		F82873C0235DC80000E4A086 /* DMAEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMAEnum.swift; sourceTree = "<group>"; };
+		F82873C2235DC80000E4A086 /* RechargeStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RechargeStatus.swift; sourceTree = "<group>"; };
+		F82873C3235DC80000E4A086 /* PaymentService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentService.swift; sourceTree = "<group>"; };
+		F82873C4235DC80000E4A086 /* PayMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayMethod.swift; sourceTree = "<group>"; };
+		F82873C5235DC80000E4A086 /* Direction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Direction.swift; sourceTree = "<group>"; };
+		F82873C8235DC80000E4A086 /* RequestBody.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestBody.swift; sourceTree = "<group>"; };
+		F82873CA235DC80000E4A086 /* ParserResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParserResult.swift; sourceTree = "<group>"; };
+		F82873CB235DC80000E4A086 /* Parser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
+		F82873CD235DC80000E4A086 /* PulseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PulseService.swift; sourceTree = "<group>"; };
+		F82873CF235DC80000E4A086 /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
+		F82873D0235DC80000E4A086 /* ResponseBody.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseBody.swift; sourceTree = "<group>"; };
+		F82873D2235DC80000E4A086 /* DynamicData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicData.swift; sourceTree = "<group>"; };
+		F82873D3235DC80000E4A086 /* Tags.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tags.swift; sourceTree = "<group>"; };
+		F82873D4235DC80000E4A086 /* Pulse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pulse.swift; sourceTree = "<group>"; };
+		F82873D5235DC80000E4A086 /* AbstractService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbstractService.swift; sourceTree = "<group>"; };
+		F82873D7235DC80000E4A086 /* PassportService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PassportService.swift; sourceTree = "<group>"; };
+		F82873D9235DC80000E4A086 /* DefaultEncipher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultEncipher.swift; sourceTree = "<group>"; };
+		F82873DA235DC80000E4A086 /* Encipher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Encipher.swift; sourceTree = "<group>"; };
+		F82873DB235DC80000E4A086 /* AppIdEncipher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppIdEncipher.swift; sourceTree = "<group>"; };
+		F82873DD235DC80000E4A086 /* IpfsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IpfsService.swift; sourceTree = "<group>"; };
+		F82873DE235DC80000E4A086 /* StorageMedium.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageMedium.swift; sourceTree = "<group>"; };
+		F82873E1235DC80000E4A086 /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		F82873E2235DC80000E4A086 /* Propertys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Propertys.swift; sourceTree = "<group>"; };
+		F82873E4235DC80000E4A086 /* ProfileService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileService.swift; sourceTree = "<group>"; };
+		F82873E6235DC80000E4A086 /* ElaDIDService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElaDIDService.swift; sourceTree = "<group>"; };
+		F82873E7235DC80000E4A086 /* EthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EthService.swift; sourceTree = "<group>"; };
+		F82873E8235DC80000E4A086 /* ElaService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElaService.swift; sourceTree = "<group>"; };
+		F82873E9235DC80000E4A086 /* EthSideChainWalletService .swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EthSideChainWalletService .swift"; sourceTree = "<group>"; };
+		F82873EB235DC80000E4A086 /* MessageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageService.swift; sourceTree = "<group>"; };
+		F82873EC235DC80000E4A086 /* GroupService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupService.swift; sourceTree = "<group>"; };
+		F82873EE235DC80000E4A086 /* AppraiserService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppraiserService.swift; sourceTree = "<group>"; };
+		F82873EF235DC80000E4A086 /* Appraiser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Appraiser.swift; sourceTree = "<group>"; };
+		F82873F1235DC80000E4A086 /* ChargeActivityService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChargeActivityService.swift; sourceTree = "<group>"; };
+		F82873F2235DC80000E4A086 /* MerchantService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MerchantService.swift; sourceTree = "<group>"; };
+		F82873F3235DC80000E4A086 /* PledgeActivityService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PledgeActivityService.swift; sourceTree = "<group>"; };
+		F82873F5235DC80000E4A086 /* ChargeActivityTrusService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChargeActivityTrusService.swift; sourceTree = "<group>"; };
+		F82873F6235DC80000E4A086 /* TicketService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketService.swift; sourceTree = "<group>"; };
+		F82873F7235DC80000E4A086 /* TicketOrderInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketOrderInfo.swift; sourceTree = "<group>"; };
+		F82873F8235DC80000E4A086 /* SaleMyTickService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaleMyTickService.swift; sourceTree = "<group>"; };
+		F82873F9235DC80000E4A086 /* TicketTokenInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketTokenInfo.swift; sourceTree = "<group>"; };
+		F82873FA235DC80000E4A086 /* TicketContractInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketContractInfo.swift; sourceTree = "<group>"; };
+		F82873FB235DC80000E4A086 /* TicketTrustService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketTrustService.swift; sourceTree = "<group>"; };
+		F82873FC235DC80000E4A086 /* PledgeActivityTrusService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PledgeActivityTrusService.swift; sourceTree = "<group>"; };
+		F828744A235DC8EB00E4A086 /* NSMutableDictionary+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSMutableDictionary+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -223,8 +251,8 @@
 		F8125C0A2314F50700B813DB /* DMASDKV1 */ = {
 			isa = PBXGroup;
 			children = (
-				F8125C582314FD1400B813DB /* Base */,
-				F8125C202314FD1300B813DB /* Service */,
+				F82873B7235DC80000E4A086 /* Service */,
+				F8287392235DC80000E4A086 /* Base */,
 				F8125C132314F5A100B813DB /* SDK */,
 				F8125C0B2314F50700B813DB /* DMASDKV1.h */,
 				F8125C0C2314F50700B813DB /* Info.plist */,
@@ -241,298 +269,320 @@
 			path = SDK;
 			sourceTree = "<group>";
 		};
-		F8125C202314FD1300B813DB /* Service */ = {
+		F8287392235DC80000E4A086 /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				F8125C212314FD1300B813DB /* asset */,
-				F8125C232314FD1300B813DB /* config */,
-				F8125C272314FD1300B813DB /* payment */,
-				F8125C2C2314FD1300B813DB /* pulse */,
-				F8125C342314FD1300B813DB /* dataservice */,
-				F8125C3C2314FD1300B813DB /* passport */,
-				F8125C422314FD1300B813DB /* storage */,
-				F8125C452314FD1300B813DB /* profile */,
-				F8125C4B2314FD1300B813DB /* wallet */,
-				F8125C4E2314FD1300B813DB /* carrier */,
-				F8125C512314FD1300B813DB /* appraiser */,
-				F8125C542314FD1300B813DB /* merchant */,
-			);
-			path = Service;
-			sourceTree = "<group>";
-		};
-		F8125C212314FD1300B813DB /* asset */ = {
-			isa = PBXGroup;
-			children = (
-				F8125C222314FD1300B813DB /* AssetManagementService.swift */,
-			);
-			path = asset;
-			sourceTree = "<group>";
-		};
-		F8125C232314FD1300B813DB /* config */ = {
-			isa = PBXGroup;
-			children = (
-				F8A9810B232F28FC00F3494B /* ErrorCode.swift */,
-				F8125C242314FD1300B813DB /* MerchantServiceConfig.swift */,
-				F8125C252314FD1300B813DB /* PaymentConfig.swift */,
-				F8125C262314FD1300B813DB /* DMAEnum.swift */,
-			);
-			path = config;
-			sourceTree = "<group>";
-		};
-		F8125C272314FD1300B813DB /* payment */ = {
-			isa = PBXGroup;
-			children = (
-				F8125C282314FD1300B813DB /* RechargeStatus.swift */,
-				F8125C292314FD1300B813DB /* PaymentService.swift */,
-				F8125C2A2314FD1300B813DB /* PayMethod.swift */,
-				F8125C2B2314FD1300B813DB /* Direction.swift */,
-			);
-			path = payment;
-			sourceTree = "<group>";
-		};
-		F8125C2C2314FD1300B813DB /* pulse */ = {
-			isa = PBXGroup;
-			children = (
-				F8125C2D2314FD1300B813DB /* entity */,
-				F8125C2F2314FD1300B813DB /* parser */,
-				F8125C322314FD1300B813DB /* service */,
-			);
-			path = pulse;
-			sourceTree = "<group>";
-		};
-		F8125C2D2314FD1300B813DB /* entity */ = {
-			isa = PBXGroup;
-			children = (
-				F8125C2E2314FD1300B813DB /* RequestBody.swift */,
-			);
-			path = entity;
-			sourceTree = "<group>";
-		};
-		F8125C2F2314FD1300B813DB /* parser */ = {
-			isa = PBXGroup;
-			children = (
-				F8125C302314FD1300B813DB /* ParserResult.swift */,
-				F8125C312314FD1300B813DB /* Parser.swift */,
-			);
-			path = parser;
-			sourceTree = "<group>";
-		};
-		F8125C322314FD1300B813DB /* service */ = {
-			isa = PBXGroup;
-			children = (
-				F8125C332314FD1300B813DB /* PulseService.swift */,
-			);
-			path = service;
-			sourceTree = "<group>";
-		};
-		F8125C342314FD1300B813DB /* dataservice */ = {
-			isa = PBXGroup;
-			children = (
-				F8125C352314FD1300B813DB /* DataService.swift */,
-				F8125C362314FD1300B813DB /* ResponseBody.swift */,
-				F8125C372314FD1300B813DB /* entity */,
-				F8125C3B2314FD1300B813DB /* AbstractService.swift */,
-			);
-			path = dataservice;
-			sourceTree = "<group>";
-		};
-		F8125C372314FD1300B813DB /* entity */ = {
-			isa = PBXGroup;
-			children = (
-				F8125C382314FD1300B813DB /* DynamicData.swift */,
-				F8125C392314FD1300B813DB /* Tags.swift */,
-				F8125C3A2314FD1300B813DB /* Pulse.swift */,
-			);
-			path = entity;
-			sourceTree = "<group>";
-		};
-		F8125C3C2314FD1300B813DB /* passport */ = {
-			isa = PBXGroup;
-			children = (
-				F8125C3D2314FD1300B813DB /* ElaDIDService.swift */,
-				F8125C3E2314FD1300B813DB /* encipher */,
-			);
-			path = passport;
-			sourceTree = "<group>";
-		};
-		F8125C3E2314FD1300B813DB /* encipher */ = {
-			isa = PBXGroup;
-			children = (
-				F8125C3F2314FD1300B813DB /* DefaultEncipher.swift */,
-				F8125C402314FD1300B813DB /* Encipher.swift */,
-				F8125C412314FD1300B813DB /* AppIdEncipher.swift */,
-			);
-			path = encipher;
-			sourceTree = "<group>";
-		};
-		F8125C422314FD1300B813DB /* storage */ = {
-			isa = PBXGroup;
-			children = (
-				F8125C432314FD1300B813DB /* IpfsService.swift */,
-				F8125C442314FD1300B813DB /* StorageMedium.swift */,
-			);
-			path = storage;
-			sourceTree = "<group>";
-		};
-		F8125C452314FD1300B813DB /* profile */ = {
-			isa = PBXGroup;
-			children = (
-				F8125C462314FD1300B813DB /* entity */,
-				F8125C492314FD1300B813DB /* service */,
-			);
-			path = profile;
-			sourceTree = "<group>";
-		};
-		F8125C462314FD1300B813DB /* entity */ = {
-			isa = PBXGroup;
-			children = (
-				F8125C472314FD1300B813DB /* Profile.swift */,
-				F8125C482314FD1300B813DB /* Propertys.swift */,
-			);
-			path = entity;
-			sourceTree = "<group>";
-		};
-		F8125C492314FD1300B813DB /* service */ = {
-			isa = PBXGroup;
-			children = (
-				F8125C4A2314FD1300B813DB /* ProfileService.swift */,
-			);
-			path = service;
-			sourceTree = "<group>";
-		};
-		F8125C4B2314FD1300B813DB /* wallet */ = {
-			isa = PBXGroup;
-			children = (
-				F8125C4C2314FD1300B813DB /* EthService.swift */,
-				F8125C4D2314FD1300B813DB /* ElaService.swift */,
-			);
-			path = wallet;
-			sourceTree = "<group>";
-		};
-		F8125C4E2314FD1300B813DB /* carrier */ = {
-			isa = PBXGroup;
-			children = (
-				F8125C4F2314FD1300B813DB /* MessageService.swift */,
-				F8125C502314FD1300B813DB /* GroupService.swift */,
-			);
-			path = carrier;
-			sourceTree = "<group>";
-		};
-		F8125C512314FD1300B813DB /* appraiser */ = {
-			isa = PBXGroup;
-			children = (
-				F8125C522314FD1300B813DB /* AppraiserService.swift */,
-				F8125C532314FD1300B813DB /* Appraiser.swift */,
-			);
-			path = appraiser;
-			sourceTree = "<group>";
-		};
-		F8125C542314FD1300B813DB /* merchant */ = {
-			isa = PBXGroup;
-			children = (
-				F8125C552314FD1300B813DB /* ChargeActivityService.swift */,
-				F8125C562314FD1300B813DB /* MerchantService.swift */,
-				F8125C572314FD1300B813DB /* PledgeActivityService.swift */,
-			);
-			path = merchant;
-			sourceTree = "<group>";
-		};
-		F8125C582314FD1400B813DB /* Base */ = {
-			isa = PBXGroup;
-			children = (
-				F8125C592314FD1400B813DB /* exchange */,
-				F8125C5E2314FD1400B813DB /* asset */,
-				F8125C602314FD1400B813DB /* util */,
-				F8125C652314FD1400B813DB /* passport */,
-				F8125C672314FD1400B813DB /* storage */,
-				F8125C692314FD1400B813DB /* abi */,
-				F8125C732314FD1400B813DB /* wallet */,
-				F8125C762314FD1400B813DB /* carrier */,
+				F8287393235DC80000E4A086 /* exchange */,
+				F8287398235DC80000E4A086 /* asset */,
+				F828739A235DC80000E4A086 /* util */,
+				F82873A1235DC80000E4A086 /* passport */,
+				F82873A3235DC80000E4A086 /* storage */,
+				F82873A5235DC80000E4A086 /* abi */,
+				F82873B0235DC80000E4A086 /* wallet */,
+				F82873B3235DC80000E4A086 /* carrier */,
 			);
 			path = Base;
 			sourceTree = "<group>";
 		};
-		F8125C592314FD1400B813DB /* exchange */ = {
+		F8287393235DC80000E4A086 /* exchange */ = {
 			isa = PBXGroup;
 			children = (
-				F8125C5A2314FD1400B813DB /* TokenContract.swift */,
-				F8125C5B2314FD1400B813DB /* PlatformContract.swift */,
-				F8125C5C2314FD1400B813DB /* ChargeActivityContract.swift */,
-				F8125C5D2314FD1400B813DB /* PledgeActivityContract.swift */,
+				F8287394235DC80000E4A086 /* TokenContract.swift */,
+				F8287395235DC80000E4A086 /* PlatformContract.swift */,
+				F8287396235DC80000E4A086 /* ChargeActivityContract.swift */,
+				F8287397235DC80000E4A086 /* PledgeActivityContract.swift */,
 			);
 			path = exchange;
 			sourceTree = "<group>";
 		};
-		F8125C5E2314FD1400B813DB /* asset */ = {
+		F8287398235DC80000E4A086 /* asset */ = {
 			isa = PBXGroup;
 			children = (
-				F8125C5F2314FD1400B813DB /* AssetManagement.swift */,
+				F8287399235DC80000E4A086 /* AssetManagement.swift */,
 			);
 			path = asset;
 			sourceTree = "<group>";
 		};
-		F8125C602314FD1400B813DB /* util */ = {
+		F828739A235DC80000E4A086 /* util */ = {
 			isa = PBXGroup;
 			children = (
-				F8125C612314FD1400B813DB /* DMACommon.swift */,
-				F8125C622314FD1400B813DB /* DMAHttpUtil.swift */,
-				F8125C632314FD1400B813DB /* DeployHelper.swift */,
-				F8125C642314FD1400B813DB /* ContractMethodHelper.swift */,
-				F823CD102320AD6C00BCF66B /* Web3Util.swift */,
+				F828744A235DC8EB00E4A086 /* NSMutableDictionary+Extension.swift */,
+				F828739B235DC80000E4A086 /* DMACommon.swift */,
+				F828739C235DC80000E4A086 /* String+Extension.swift */,
+				F828739D235DC80000E4A086 /* Web3Util.swift */,
+				F828739E235DC80000E4A086 /* DMAHttpUtil.swift */,
+				F828739F235DC80000E4A086 /* DeployHelper.swift */,
+				F82873A0235DC80000E4A086 /* ContractMethodHelper.swift */,
 			);
 			path = util;
 			sourceTree = "<group>";
 		};
-		F8125C652314FD1400B813DB /* passport */ = {
+		F82873A1235DC80000E4A086 /* passport */ = {
 			isa = PBXGroup;
 			children = (
-				F8125C662314FD1400B813DB /* ElaDID.swift */,
+				F82873A2235DC80000E4A086 /* ElaDID.swift */,
 			);
 			path = passport;
 			sourceTree = "<group>";
 		};
-		F8125C672314FD1400B813DB /* storage */ = {
+		F82873A3235DC80000E4A086 /* storage */ = {
 			isa = PBXGroup;
 			children = (
-				F8125C682314FD1400B813DB /* IpfsStorage.swift */,
+				F82873A4235DC80000E4A086 /* IpfsStorage.swift */,
 			);
 			path = storage;
 			sourceTree = "<group>";
 		};
-		F8125C692314FD1400B813DB /* abi */ = {
+		F82873A5235DC80000E4A086 /* abi */ = {
 			isa = PBXGroup;
 			children = (
-				F8A98109232F28B900F3494B /* NFTokenDMA.json */,
-				F8125C6A2314FD1400B813DB /* ETHChargeActivity.json */,
-				F8125C6B2314FD1400B813DB /* ETHChargeActivityData.json */,
-				F8125C6E2314FD1400B813DB /* ETHPlatform.json */,
-				F8125C6D2314FD1400B813DB /* ETHPlatformData.json */,
-				F8125C712314FD1400B813DB /* ETHPledgeActivity.json */,
-				F8125C702314FD1400B813DB /* ETHPledgeActivityData.json */,
-				F8125C6C2314FD1400B813DB /* ETHTransfer.json */,
-				F8125C6F2314FD1400B813DB /* NFTokenETH.json */,
-				F8125C722314FD1400B813DB /* NFTokenETHData.json */,
+				F82873A6235DC80000E4A086 /* ETHChargeActivity.json */,
+				F82873A7235DC80000E4A086 /* ETHChargeActivityData.json */,
+				F82873A8235DC80000E4A086 /* NFTokenDMA.json */,
+				F82873A9235DC80000E4A086 /* ETHTransfer.json */,
+				F82873AA235DC80000E4A086 /* ETHPlatformData.json */,
+				F82873AB235DC80000E4A086 /* ETHPlatform.json */,
+				F82873AC235DC80000E4A086 /* NFTokenETH.json */,
+				F82873AD235DC80000E4A086 /* ETHPledgeActivityData.json */,
+				F82873AE235DC80000E4A086 /* ETHPledgeActivity.json */,
+				F82873AF235DC80000E4A086 /* NFTokenETHData.json */,
 			);
 			path = abi;
 			sourceTree = "<group>";
 		};
-		F8125C732314FD1400B813DB /* wallet */ = {
+		F82873B0235DC80000E4A086 /* wallet */ = {
 			isa = PBXGroup;
 			children = (
-				F8125C742314FD1400B813DB /* EthWallet.swift */,
-				F8125C752314FD1400B813DB /* ElaWallet.swift */,
+				F82873B1235DC80000E4A086 /* EthWallet.swift */,
+				F82873B2235DC80000E4A086 /* ElaWallet.swift */,
 			);
 			path = wallet;
 			sourceTree = "<group>";
 		};
-		F8125C762314FD1400B813DB /* carrier */ = {
+		F82873B3235DC80000E4A086 /* carrier */ = {
 			isa = PBXGroup;
 			children = (
-				F8125C772314FD1400B813DB /* GroupHelper.swift */,
-				F8125C782314FD1400B813DB /* NetworkReachabilityManager.swift */,
-				F8125C792314FD1400B813DB /* MessageBase.swift */,
+				F82873B4235DC80000E4A086 /* GroupHelper.swift */,
+				F82873B5235DC80000E4A086 /* NetworkReachabilityManager.swift */,
+				F82873B6235DC80000E4A086 /* MessageBase.swift */,
 			);
 			path = carrier;
+			sourceTree = "<group>";
+		};
+		F82873B7235DC80000E4A086 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				F82873B8235DC80000E4A086 /* asset */,
+				F82873BC235DC80000E4A086 /* config */,
+				F82873C1235DC80000E4A086 /* payment */,
+				F82873C6235DC80000E4A086 /* pulse */,
+				F82873CE235DC80000E4A086 /* dataservice */,
+				F82873D6235DC80000E4A086 /* passport */,
+				F82873DC235DC80000E4A086 /* storage */,
+				F82873DF235DC80000E4A086 /* profile */,
+				F82873E5235DC80000E4A086 /* wallet */,
+				F82873EA235DC80000E4A086 /* carrier */,
+				F82873ED235DC80000E4A086 /* appraiser */,
+				F82873F0235DC80000E4A086 /* merchant */,
+				F82873F4235DC80000E4A086 /* tick */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		F82873B8235DC80000E4A086 /* asset */ = {
+			isa = PBXGroup;
+			children = (
+				F82873B9235DC80000E4A086 /* Token20Service.swift */,
+				F82873BA235DC80000E4A086 /* Token721Service.swift */,
+				F82873BB235DC80000E4A086 /* AssetManagementService.swift */,
+			);
+			path = asset;
+			sourceTree = "<group>";
+		};
+		F82873BC235DC80000E4A086 /* config */ = {
+			isa = PBXGroup;
+			children = (
+				F82873BD235DC80000E4A086 /* MerchantServiceConfig.swift */,
+				F82873BE235DC80000E4A086 /* PaymentConfig.swift */,
+				F82873BF235DC80000E4A086 /* ErrorCode.swift */,
+				F82873C0235DC80000E4A086 /* DMAEnum.swift */,
+			);
+			path = config;
+			sourceTree = "<group>";
+		};
+		F82873C1235DC80000E4A086 /* payment */ = {
+			isa = PBXGroup;
+			children = (
+				F82873C2235DC80000E4A086 /* RechargeStatus.swift */,
+				F82873C3235DC80000E4A086 /* PaymentService.swift */,
+				F82873C4235DC80000E4A086 /* PayMethod.swift */,
+				F82873C5235DC80000E4A086 /* Direction.swift */,
+			);
+			path = payment;
+			sourceTree = "<group>";
+		};
+		F82873C6235DC80000E4A086 /* pulse */ = {
+			isa = PBXGroup;
+			children = (
+				F82873C7235DC80000E4A086 /* entity */,
+				F82873C9235DC80000E4A086 /* parser */,
+				F82873CC235DC80000E4A086 /* service */,
+			);
+			path = pulse;
+			sourceTree = "<group>";
+		};
+		F82873C7235DC80000E4A086 /* entity */ = {
+			isa = PBXGroup;
+			children = (
+				F82873C8235DC80000E4A086 /* RequestBody.swift */,
+			);
+			path = entity;
+			sourceTree = "<group>";
+		};
+		F82873C9235DC80000E4A086 /* parser */ = {
+			isa = PBXGroup;
+			children = (
+				F82873CA235DC80000E4A086 /* ParserResult.swift */,
+				F82873CB235DC80000E4A086 /* Parser.swift */,
+			);
+			path = parser;
+			sourceTree = "<group>";
+		};
+		F82873CC235DC80000E4A086 /* service */ = {
+			isa = PBXGroup;
+			children = (
+				F82873CD235DC80000E4A086 /* PulseService.swift */,
+			);
+			path = service;
+			sourceTree = "<group>";
+		};
+		F82873CE235DC80000E4A086 /* dataservice */ = {
+			isa = PBXGroup;
+			children = (
+				F82873CF235DC80000E4A086 /* DataService.swift */,
+				F82873D0235DC80000E4A086 /* ResponseBody.swift */,
+				F82873D1235DC80000E4A086 /* entity */,
+				F82873D5235DC80000E4A086 /* AbstractService.swift */,
+			);
+			path = dataservice;
+			sourceTree = "<group>";
+		};
+		F82873D1235DC80000E4A086 /* entity */ = {
+			isa = PBXGroup;
+			children = (
+				F82873D2235DC80000E4A086 /* DynamicData.swift */,
+				F82873D3235DC80000E4A086 /* Tags.swift */,
+				F82873D4235DC80000E4A086 /* Pulse.swift */,
+			);
+			path = entity;
+			sourceTree = "<group>";
+		};
+		F82873D6235DC80000E4A086 /* passport */ = {
+			isa = PBXGroup;
+			children = (
+				F82873D7235DC80000E4A086 /* PassportService.swift */,
+				F82873D8235DC80000E4A086 /* encipher */,
+			);
+			path = passport;
+			sourceTree = "<group>";
+		};
+		F82873D8235DC80000E4A086 /* encipher */ = {
+			isa = PBXGroup;
+			children = (
+				F82873D9235DC80000E4A086 /* DefaultEncipher.swift */,
+				F82873DA235DC80000E4A086 /* Encipher.swift */,
+				F82873DB235DC80000E4A086 /* AppIdEncipher.swift */,
+			);
+			path = encipher;
+			sourceTree = "<group>";
+		};
+		F82873DC235DC80000E4A086 /* storage */ = {
+			isa = PBXGroup;
+			children = (
+				F82873DD235DC80000E4A086 /* IpfsService.swift */,
+				F82873DE235DC80000E4A086 /* StorageMedium.swift */,
+			);
+			path = storage;
+			sourceTree = "<group>";
+		};
+		F82873DF235DC80000E4A086 /* profile */ = {
+			isa = PBXGroup;
+			children = (
+				F82873E0235DC80000E4A086 /* entity */,
+				F82873E3235DC80000E4A086 /* service */,
+			);
+			path = profile;
+			sourceTree = "<group>";
+		};
+		F82873E0235DC80000E4A086 /* entity */ = {
+			isa = PBXGroup;
+			children = (
+				F82873E1235DC80000E4A086 /* Profile.swift */,
+				F82873E2235DC80000E4A086 /* Propertys.swift */,
+			);
+			path = entity;
+			sourceTree = "<group>";
+		};
+		F82873E3235DC80000E4A086 /* service */ = {
+			isa = PBXGroup;
+			children = (
+				F82873E4235DC80000E4A086 /* ProfileService.swift */,
+			);
+			path = service;
+			sourceTree = "<group>";
+		};
+		F82873E5235DC80000E4A086 /* wallet */ = {
+			isa = PBXGroup;
+			children = (
+				F82873E6235DC80000E4A086 /* ElaDIDService.swift */,
+				F82873E7235DC80000E4A086 /* EthService.swift */,
+				F82873E8235DC80000E4A086 /* ElaService.swift */,
+				F82873E9235DC80000E4A086 /* EthSideChainWalletService .swift */,
+			);
+			path = wallet;
+			sourceTree = "<group>";
+		};
+		F82873EA235DC80000E4A086 /* carrier */ = {
+			isa = PBXGroup;
+			children = (
+				F82873EB235DC80000E4A086 /* MessageService.swift */,
+				F82873EC235DC80000E4A086 /* GroupService.swift */,
+			);
+			path = carrier;
+			sourceTree = "<group>";
+		};
+		F82873ED235DC80000E4A086 /* appraiser */ = {
+			isa = PBXGroup;
+			children = (
+				F82873EE235DC80000E4A086 /* AppraiserService.swift */,
+				F82873EF235DC80000E4A086 /* Appraiser.swift */,
+			);
+			path = appraiser;
+			sourceTree = "<group>";
+		};
+		F82873F0235DC80000E4A086 /* merchant */ = {
+			isa = PBXGroup;
+			children = (
+				F82873F1235DC80000E4A086 /* ChargeActivityService.swift */,
+				F82873F2235DC80000E4A086 /* MerchantService.swift */,
+				F82873F3235DC80000E4A086 /* PledgeActivityService.swift */,
+			);
+			path = merchant;
+			sourceTree = "<group>";
+		};
+		F82873F4235DC80000E4A086 /* tick */ = {
+			isa = PBXGroup;
+			children = (
+				F82873F5235DC80000E4A086 /* ChargeActivityTrusService.swift */,
+				F82873F6235DC80000E4A086 /* TicketService.swift */,
+				F82873F7235DC80000E4A086 /* TicketOrderInfo.swift */,
+				F82873F8235DC80000E4A086 /* SaleMyTickService.swift */,
+				F82873F9235DC80000E4A086 /* TicketTokenInfo.swift */,
+				F82873FA235DC80000E4A086 /* TicketContractInfo.swift */,
+				F82873FB235DC80000E4A086 /* TicketTrustService.swift */,
+				F82873FC235DC80000E4A086 /* PledgeActivityTrusService.swift */,
+			);
+			path = tick;
 			sourceTree = "<group>";
 		};
 		F9A4A06537CA10B6468373B5 /* Pods */ = {
@@ -613,16 +663,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F8125CAD2314FD1400B813DB /* ETHPlatform.json in Resources */,
-				F8125CAE2314FD1400B813DB /* NFTokenETH.json in Resources */,
-				F8125CAF2314FD1400B813DB /* ETHPledgeActivityData.json in Resources */,
-				F8125CAC2314FD1400B813DB /* ETHPlatformData.json in Resources */,
-				F8A9810A232F28B900F3494B /* NFTokenDMA.json in Resources */,
-				F8125CAB2314FD1400B813DB /* ETHTransfer.json in Resources */,
-				F8125CB02314FD1400B813DB /* ETHPledgeActivity.json in Resources */,
-				F8125CAA2314FD1400B813DB /* ETHChargeActivityData.json in Resources */,
-				F8125CB12314FD1400B813DB /* NFTokenETHData.json in Resources */,
-				F8125CA92314FD1400B813DB /* ETHChargeActivity.json in Resources */,
+				F8287410235DC80000E4A086 /* NFTokenETH.json in Resources */,
+				F828740C235DC80000E4A086 /* NFTokenDMA.json in Resources */,
+				F8287412235DC80000E4A086 /* ETHPledgeActivity.json in Resources */,
+				F8287413235DC80000E4A086 /* NFTokenETHData.json in Resources */,
+				F828740B235DC80000E4A086 /* ETHChargeActivityData.json in Resources */,
+				F8287411235DC80000E4A086 /* ETHPledgeActivityData.json in Resources */,
+				F828740D235DC80000E4A086 /* ETHTransfer.json in Resources */,
+				F828740E235DC80000E4A086 /* ETHPlatformData.json in Resources */,
+				F828740F235DC80000E4A086 /* ETHPlatform.json in Resources */,
+				F828740A235DC80000E4A086 /* ETHChargeActivity.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -654,60 +704,74 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F8125CB62314FD1400B813DB /* MessageBase.swift in Sources */,
-				F8125CA82314FD1400B813DB /* IpfsStorage.swift in Sources */,
-				F8125CB52314FD1400B813DB /* NetworkReachabilityManager.swift in Sources */,
-				F8125C872314FD1400B813DB /* ResponseBody.swift in Sources */,
-				F8125CA62314FD1400B813DB /* ContractMethodHelper.swift in Sources */,
-				F8A9810C232F28FC00F3494B /* ErrorCode.swift in Sources */,
-				F8125C9E2314FD1400B813DB /* TokenContract.swift in Sources */,
-				F8125C7A2314FD1400B813DB /* AssetManagementService.swift in Sources */,
-				F8125C9A2314FD1400B813DB /* Appraiser.swift in Sources */,
-				F8125C942314FD1400B813DB /* ProfileService.swift in Sources */,
-				F8125C862314FD1400B813DB /* DataService.swift in Sources */,
-				F8125C882314FD1400B813DB /* DynamicData.swift in Sources */,
-				F823CD112320AD6D00BCF66B /* Web3Util.swift in Sources */,
-				F8125C892314FD1400B813DB /* Tags.swift in Sources */,
-				F8125C842314FD1400B813DB /* Parser.swift in Sources */,
-				F8125CA72314FD1400B813DB /* ElaDID.swift in Sources */,
-				F8125C932314FD1400B813DB /* Propertys.swift in Sources */,
-				F8125C7E2314FD1400B813DB /* RechargeStatus.swift in Sources */,
-				F8125C992314FD1400B813DB /* AppraiserService.swift in Sources */,
-				F8125C9C2314FD1400B813DB /* MerchantService.swift in Sources */,
-				F8125C8D2314FD1400B813DB /* DefaultEncipher.swift in Sources */,
-				F8125C802314FD1400B813DB /* PayMethod.swift in Sources */,
-				F8125C832314FD1400B813DB /* ParserResult.swift in Sources */,
-				F8125C812314FD1400B813DB /* Direction.swift in Sources */,
-				F8125CB22314FD1400B813DB /* EthWallet.swift in Sources */,
-				F8125C952314FD1400B813DB /* EthService.swift in Sources */,
-				F8125C9D2314FD1400B813DB /* PledgeActivityService.swift in Sources */,
-				F8125C7C2314FD1400B813DB /* PaymentConfig.swift in Sources */,
-				F8125C962314FD1400B813DB /* ElaService.swift in Sources */,
-				F8125C912314FD1400B813DB /* StorageMedium.swift in Sources */,
-				F8125C8C2314FD1400B813DB /* ElaDIDService.swift in Sources */,
-				F8125CB32314FD1400B813DB /* ElaWallet.swift in Sources */,
-				F8125C8B2314FD1400B813DB /* AbstractService.swift in Sources */,
-				F8125C902314FD1400B813DB /* IpfsService.swift in Sources */,
-				F8125CA02314FD1400B813DB /* ChargeActivityContract.swift in Sources */,
-				F8125CA22314FD1400B813DB /* AssetManagement.swift in Sources */,
-				F8125C922314FD1400B813DB /* Profile.swift in Sources */,
-				F8125CA12314FD1400B813DB /* PledgeActivityContract.swift in Sources */,
-				F8125C982314FD1400B813DB /* GroupService.swift in Sources */,
-				F8125CB42314FD1400B813DB /* GroupHelper.swift in Sources */,
-				F8125C822314FD1400B813DB /* RequestBody.swift in Sources */,
-				F8125CA32314FD1400B813DB /* DMACommon.swift in Sources */,
-				F8125C9F2314FD1400B813DB /* PlatformContract.swift in Sources */,
-				F8125C7B2314FD1400B813DB /* MerchantServiceConfig.swift in Sources */,
-				F8125C9B2314FD1400B813DB /* ChargeActivityService.swift in Sources */,
-				F8125CA42314FD1400B813DB /* DMAHttpUtil.swift in Sources */,
-				F8125C8F2314FD1400B813DB /* AppIdEncipher.swift in Sources */,
-				F8125C7F2314FD1400B813DB /* PaymentService.swift in Sources */,
-				F8125CA52314FD1400B813DB /* DeployHelper.swift in Sources */,
-				F8125C972314FD1400B813DB /* MessageService.swift in Sources */,
-				F8125C8E2314FD1400B813DB /* Encipher.swift in Sources */,
-				F8125C7D2314FD1400B813DB /* DMAEnum.swift in Sources */,
-				F8125C852314FD1400B813DB /* PulseService.swift in Sources */,
-				F8125C8A2314FD1400B813DB /* Pulse.swift in Sources */,
+				F8287444235DC80000E4A086 /* TicketOrderInfo.swift in Sources */,
+				F8287404235DC80000E4A086 /* Web3Util.swift in Sources */,
+				F8287417235DC80000E4A086 /* NetworkReachabilityManager.swift in Sources */,
+				F8287407235DC80000E4A086 /* ContractMethodHelper.swift in Sources */,
+				F8287445235DC80000E4A086 /* SaleMyTickService.swift in Sources */,
+				F8287434235DC80000E4A086 /* Profile.swift in Sources */,
+				F828742C235DC80000E4A086 /* Pulse.swift in Sources */,
+				F8287438235DC80000E4A086 /* EthService.swift in Sources */,
+				F8287448235DC80000E4A086 /* TicketTrustService.swift in Sources */,
+				F8287419235DC80000E4A086 /* Token20Service.swift in Sources */,
+				F8287423235DC80000E4A086 /* Direction.swift in Sources */,
+				F8287441235DC80000E4A086 /* PledgeActivityService.swift in Sources */,
+				F828743A235DC80000E4A086 /* EthSideChainWalletService .swift in Sources */,
+				F8287433235DC80000E4A086 /* StorageMedium.swift in Sources */,
+				F828743B235DC80000E4A086 /* MessageService.swift in Sources */,
+				F828741B235DC80000E4A086 /* AssetManagementService.swift in Sources */,
+				F828742B235DC80000E4A086 /* Tags.swift in Sources */,
+				F828742F235DC80000E4A086 /* DefaultEncipher.swift in Sources */,
+				F8287408235DC80000E4A086 /* ElaDID.swift in Sources */,
+				F8287418235DC80000E4A086 /* MessageBase.swift in Sources */,
+				F8287439235DC80000E4A086 /* ElaService.swift in Sources */,
+				F82873FE235DC80000E4A086 /* PlatformContract.swift in Sources */,
+				F8287409235DC80000E4A086 /* IpfsStorage.swift in Sources */,
+				F8287422235DC80000E4A086 /* PayMethod.swift in Sources */,
+				F828741A235DC80000E4A086 /* Token721Service.swift in Sources */,
+				F8287436235DC80000E4A086 /* ProfileService.swift in Sources */,
+				F8287403235DC80000E4A086 /* String+Extension.swift in Sources */,
+				F8287425235DC80000E4A086 /* ParserResult.swift in Sources */,
+				F8287430235DC80000E4A086 /* Encipher.swift in Sources */,
+				F828741C235DC80000E4A086 /* MerchantServiceConfig.swift in Sources */,
+				F8287432235DC80000E4A086 /* IpfsService.swift in Sources */,
+				F8287440235DC80000E4A086 /* MerchantService.swift in Sources */,
+				F828742A235DC80000E4A086 /* DynamicData.swift in Sources */,
+				F8287405235DC80000E4A086 /* DMAHttpUtil.swift in Sources */,
+				F8287446235DC80000E4A086 /* TicketTokenInfo.swift in Sources */,
+				F8287415235DC80000E4A086 /* ElaWallet.swift in Sources */,
+				F828743F235DC80000E4A086 /* ChargeActivityService.swift in Sources */,
+				F8287402235DC80000E4A086 /* DMACommon.swift in Sources */,
+				F8287416235DC80000E4A086 /* GroupHelper.swift in Sources */,
+				F8287421235DC80000E4A086 /* PaymentService.swift in Sources */,
+				F8287426235DC80000E4A086 /* Parser.swift in Sources */,
+				F828741D235DC80000E4A086 /* PaymentConfig.swift in Sources */,
+				F82873FF235DC80000E4A086 /* ChargeActivityContract.swift in Sources */,
+				F828744B235DC8EB00E4A086 /* NSMutableDictionary+Extension.swift in Sources */,
+				F8287427235DC80000E4A086 /* PulseService.swift in Sources */,
+				F828743C235DC80000E4A086 /* GroupService.swift in Sources */,
+				F8287435235DC80000E4A086 /* Propertys.swift in Sources */,
+				F8287420235DC80000E4A086 /* RechargeStatus.swift in Sources */,
+				F82873FD235DC80000E4A086 /* TokenContract.swift in Sources */,
+				F828743E235DC80000E4A086 /* Appraiser.swift in Sources */,
+				F828742E235DC80000E4A086 /* PassportService.swift in Sources */,
+				F8287431235DC80000E4A086 /* AppIdEncipher.swift in Sources */,
+				F828742D235DC80000E4A086 /* AbstractService.swift in Sources */,
+				F8287424235DC80000E4A086 /* RequestBody.swift in Sources */,
+				F8287401235DC80000E4A086 /* AssetManagement.swift in Sources */,
+				F8287429235DC80000E4A086 /* ResponseBody.swift in Sources */,
+				F8287406235DC80000E4A086 /* DeployHelper.swift in Sources */,
+				F8287442235DC80000E4A086 /* ChargeActivityTrusService.swift in Sources */,
+				F8287449235DC80000E4A086 /* PledgeActivityTrusService.swift in Sources */,
+				F828743D235DC80000E4A086 /* AppraiserService.swift in Sources */,
+				F8287414235DC80000E4A086 /* EthWallet.swift in Sources */,
+				F8287447235DC80000E4A086 /* TicketContractInfo.swift in Sources */,
+				F8287400235DC80000E4A086 /* PledgeActivityContract.swift in Sources */,
+				F8287443235DC80000E4A086 /* TicketService.swift in Sources */,
+				F828741F235DC80000E4A086 /* DMAEnum.swift in Sources */,
+				F828741E235DC80000E4A086 /* ErrorCode.swift in Sources */,
+				F8287437235DC80000E4A086 /* ElaDIDService.swift in Sources */,
+				F8287428235DC80000E4A086 /* DataService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,0 +1,4 @@
+framework module VarInt {
+  header "VarInt-Swift.h"
+  requires objc
+}

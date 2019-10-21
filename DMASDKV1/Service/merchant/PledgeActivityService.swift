@@ -81,40 +81,6 @@ public class PledgeActivityService : NSObject{
         }
     }
     
-   
-    /// 批量创建资产
-    ///
-    /// - Parameters:
-    ///   - privateKey: 资产合约拥有者地址
-    ///   - assetAddress: 资产合约地址
-    ///   - to: 资产归属地址
-    ///   - array: 资产id 数组
-    ///   - metaData: 资产描述
-    ///   - isTransfer: 是否可以转送
-    ///   - isBurn: 是否可以销毁
-    ///   - gasLimit: gasLimit description
-    ///   - gasPrice: gasPrice description
-    ///   - getGasFee: 估算这次操作所需要的gasfee , true : 进行估算,不进行这次操作, false : 不进行估算,进行这次操作
-    /// - Returns: 交易 hash
-    public func mintWithArray(privateKey:String,assetAddress:String,to:String,array:Array<Any>,metaData:String,isTransfer:Bool,isBurn:Bool,gasLimit:String = "",gasPrice:String = "",getGasFee : Bool = false) -> ContractResult {
-        let asset = AssetManagement(url: urlStr)
-        
-        var gasLimit = gasLimit
-        var gasPrice = gasPrice
-        var getGasFee = getGasFee
-        if !getGasFee{
-            let result = asset.mintWithArray(privateKey: privateKey, contractAddress: assetAddress, to: to, array: array, uri: metaData, isTransfer: isTransfer, isBurn: isBurn, gasLimit: gasLimit, gasPrice: gasPrice,getGasFee : true)
-            let isError = limIsEmpty(gasLimit: &gasLimit, gasPrice: &gasPrice, getGasFee: &getGasFee, result: result)
-            if let result = isError{
-                return result
-            }
-        }else{
-            limAndPriceIsEmpty(gasLimit: &gasLimit, gasPrice: &gasPrice)
-        }
-        
-        let result = asset.mintWithArray(privateKey: privateKey, contractAddress: assetAddress, to: to, array: array, uri: metaData, isTransfer: isTransfer, isBurn: isBurn, gasLimit: gasLimit, gasPrice: gasPrice,getGasFee : getGasFee)
-        return result
-    }
     
     /// 上架
     ///
@@ -405,7 +371,7 @@ public class PledgeActivityService : NSObject{
     ///
     /// - Parameter contractAddress: 合约地址
     /// - Returns: return value description
-    func getAssetNum(platAddress : String) -> ContractResult{
+    func getAssetCount(platAddress : String) -> ContractResult{
         let platform =  PledgeActivityContract(url: urlStr)
         return platform.getAssetNum(contractAddress: platAddress)
     }
@@ -426,7 +392,7 @@ public class PledgeActivityService : NSObject{
     ///   - assetAddress: 资产地址
     ///   - contractAddress: 托管地址
     /// - Returns: return value description
-    func getTokenNum(assetAddress : String,platAddress : String) -> ContractResult{
+    func getTokenCount(assetAddress : String,platAddress : String) -> ContractResult{
         let platform =  PledgeActivityContract(url: urlStr)
         return platform.getTokenNum(assetAddress: assetAddress, contractAddress: platAddress)
     }

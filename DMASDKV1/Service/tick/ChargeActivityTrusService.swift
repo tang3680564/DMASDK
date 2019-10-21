@@ -358,7 +358,7 @@ class ChargeActivityTrusService: NSObject {
     ///   - Failed: 失败 json
     public func getTickSlod(ticketTrustContractAddress : String , ticketContractAddress : String,owner : String,dmaNodelUrl : String,Success : @escaping ((Int) -> ()),Failed : @escaping ((NSMutableDictionary) -> ())){
         let urlStr = url
-        let trusService = TicketTrustService(url: ServerUrl.dmaIP)
+        let trusService = TicketTrustService(url: urlStr)
         var result = trusService.getTokenByTicketContractInOnSale(ticketTrustContractAddress: ticketTrustContractAddress, ticketContractAddress: ticketContractAddress)
         ///计算商城库存
         let tokenIndexArr : NSMutableArray = []

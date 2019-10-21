@@ -35,7 +35,7 @@ public class TicketService : NSObject{
          let assetServer = AssetManagementService(url: url)
          let ipfs = IpfsService(URL: ipfsNodelUrl, serverPost: ipfsNodeUpPoint)
          let hash = ipfs.add(fileData: metadata.toJSONString()?.data(using: .utf8) ?? Data())
-         return assetServer.setupDeploy(privateKey: privateKey, name: name, symbol: symbol, metadata: hash, isburn: true, gasLimit: gasLimit, gasPrice: gasPrice)
+         return assetServer.deploy(privateKey: privateKey, name: name, symbol: symbol, metadata: hash, isburn: true, gasLimit: gasLimit, gasPrice: gasPrice)
     }
     
     /**
@@ -319,7 +319,7 @@ public class TicketService : NSObject{
     
     
     /**
-     * 查询指定的门票实体
+     * 通过节点查询指定的门票实体
      *
      * @param ticketContractAddress
      * @return
