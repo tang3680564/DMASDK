@@ -30,6 +30,10 @@ public class TicketOrderInfo : HandyJSON{
     public var createTime : String?
     ///交易状态
     public var status : String?
+    ///交易哈希 
+    public var transactionHash : String?
+    
+    var level : String?
     
     public var orderItems : Array<orderTokenInfo>?
     

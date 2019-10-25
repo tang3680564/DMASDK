@@ -590,6 +590,13 @@ public class AssetManagement: NSObject {
         return result
     }
     
+    func getCanTransfer(contractAddress : String,tokenId : String) -> ContractResult{
+        let param = [tokenId] as [Any]
+        let contract = ContractMethodHelper(url: url)
+        let result = contract.getContract(abi: abi,contractAddress:contractAddress,method: "getCanTransfer", privateKey: "", parameters: param as [AnyObject], gasLimit: "", gasPrice: "")
+        return result
+    }
+    
     
     /// 获取合约下面的所有创建的资产
     ///

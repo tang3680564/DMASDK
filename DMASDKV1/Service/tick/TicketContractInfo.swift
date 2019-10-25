@@ -32,6 +32,8 @@ public class TicketContractInfo : HandyJSON {
     public var json : String?
     ///地址
     public var location : String?
+    ///发行总量
+    public var totalSupply : String?
     
     public required init() {
     }

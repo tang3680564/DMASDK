@@ -107,7 +107,20 @@ open class AssetManagementService: NSObject {
     ///   - gasPrice: gasPrice description
     ///   - getGasFee: 估算这次操作所需要的gasfee , true : 进行估算,不进行这次操作, false : 不进行估算,进行这次操作
     /// - Returns: return value description
-    public  func burn(privateKey:String,contractAddress:String,owner:String,tokenId:String,gasLimit:String,gasPrice:String,getGasFee : Bool = false) -> ContractResult {
+    public  func burn(privateKey:String,contractAddress:String,owner:String,tokenId:String,gasLimit:String = "",gasPrice:String = "",getGasFee : Bool = false) -> ContractResult {
+        var gasLimit = gasLimit
+        var gasPrice = gasPrice
+        var getGasFee = getGasFee
+        if !getGasFee{
+            let result = asset.burn(privateKey: privateKey, contractAddress: contractAddress, owner: owner, tokenId: tokenId, gasLimit: gasLimit, gasPrice: gasPrice,getGasFee : getGasFee)
+            let isError = limIsEmpty(gasLimit: &gasLimit, gasPrice: &gasPrice, getGasFee: &getGasFee, result: result)
+            if let result = isError{
+                return result
+            }
+        }else{
+            limAndPriceIsEmpty(gasLimit: &gasLimit, gasPrice: &gasPrice)
+        }
+        
         let result = asset.burn(privateKey: privateKey, contractAddress: contractAddress, owner: owner, tokenId: tokenId, gasLimit: gasLimit, gasPrice: gasPrice,getGasFee : getGasFee)
         return result
     }
@@ -474,6 +487,18 @@ open class AssetManagementService: NSObject {
     /// - Returns: return value description
     public func isValid(contractAddress:String,tokenId:String) -> ContractResult {
         let result = asset.valid(contractAddress: contractAddress, tokenId: tokenId)
+        return result
+    }
+    
+    
+    /// 获取资产是否可以转送
+    ///
+    /// - Parameters:
+    ///   - contractAddress: 资产地址
+    ///   - tokenId:  tokenID
+    /// - Returns: return value description
+    public func getCanTransfer(contractAddress:String,tokenId:String) -> ContractResult {
+        let result = asset.getCanTransfer(contractAddress: contractAddress, tokenId: tokenId)
         return result
     }
     

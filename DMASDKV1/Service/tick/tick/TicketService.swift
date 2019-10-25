@@ -31,7 +31,7 @@ public class TicketService : NSObject{
      * @param metadata
      * @return
      */
-    public func createTicketContract( privateKey : String, name : String , symbol : String , metadata : TicketContractInfo , gasPrice : String = "" , gasLimit : String = "",ipfsNodelUrl : String,ipfsNodeUpPoint: String) -> ContractResult{
+    public func createContract( privateKey : String, name : String , symbol : String , metadata : TicketContractInfo , gasPrice : String = "" , gasLimit : String = "",ipfsNodelUrl : String,ipfsNodeUpPoint: String) -> ContractResult{
          let assetServer = AssetManagementService(url: url)
          let ipfs = IpfsService(URL: ipfsNodelUrl, serverPost: ipfsNodeUpPoint)
          let hash = ipfs.add(fileData: metadata.toJSONString()?.data(using: .utf8) ?? Data())
@@ -50,7 +50,7 @@ public class TicketService : NSObject{
      * @param tokenDic  key : tokenID , value : token的 uri
      * @return
      */
-    public func createTicketToken(ticketContractAddress : String, privateKey : String , to : String , tokenDic : Dictionary<String,TicketTokenInfo>,gasPrice : String = "", gasLimit : String = "",ipfsNodelUrl : String,ipfsNodeUpPoint: String) -> NSMutableArray{
+    public func createAsset(ticketContractAddress : String, privateKey : String , to : String , tokenDic : Dictionary<String,TicketTokenInfo>,gasPrice : String = "", gasLimit : String = "",ipfsNodelUrl : String,ipfsNodeUpPoint: String) -> NSMutableArray{
         var dic : Dictionary<NSMutableDictionary,NSMutableArray> = Dictionary<NSMutableDictionary,NSMutableArray>()
         for token in tokenDic{
             if let modelStr = token.value.toJSON(){
@@ -66,7 +66,7 @@ public class TicketService : NSObject{
         }
         let hashArr : NSMutableArray = []
         for token in dic{
-            let arr = createTicketToken(ticketContractAddress: ticketContractAddress, privateKey: privateKey, to: to, uri: token.key.toJsonString(), tokenIds: token.value as! Array<Any>, ipfsNodelUrl: ipfsNodelUrl, ipfsNodeUpPoint: ipfsNodeUpPoint)
+            let arr = createAsset(ticketContractAddress: ticketContractAddress, privateKey: privateKey, to: to, uri: token.key.toJsonString(), tokenIds: token.value as! Array<Any>, ipfsNodelUrl: ipfsNodelUrl, ipfsNodeUpPoint: ipfsNodeUpPoint)
             hashArr.addObjects(from: arr as! [Any])
         }
         return hashArr
@@ -75,7 +75,7 @@ public class TicketService : NSObject{
     
     
     
-    private func createTicketToken(ticketContractAddress : String, privateKey : String , to : String , uri : String , tokenIds : Array<Any>,gasPrice : String = "", gasLimit : String = "",ipfsNodelUrl : String,ipfsNodeUpPoint: String) -> NSMutableArray{
+    private func createAsset(ticketContractAddress : String, privateKey : String , to : String , uri : String , tokenIds : Array<Any>,gasPrice : String = "", gasLimit : String = "",ipfsNodelUrl : String,ipfsNodeUpPoint: String) -> NSMutableArray{
         let ipfs = IpfsService(URL: ipfsNodelUrl, serverPost: ipfsNodeUpPoint)
         let hash = ipfs.add(fileData: uri.data(using: .utf8) ?? Data())
         let assetServer = AssetManagementService(url: url)
@@ -208,9 +208,39 @@ public class TicketService : NSObject{
      * @param gasLimit
      * @return
      */
-    public func setTicketCanTransfer(ticketContractAddress : String ,privateKey :  String , tokenId : String , canTransfer : Bool , gasPrice : String = "" , gasLimit : String = "" ,getGasFee : Bool = false) -> ContractResult{
+    public func setCanTransfer(ticketContractAddress : String ,privateKey :  String , tokenId : String , canTransfer : Bool , gasPrice : String = "" , gasLimit : String = "" ,getGasFee : Bool = false) -> ContractResult{
          let assetServer = AssetManagementService(url: url)
         return assetServer.setCanTransfer(privateKey: privateKey, contractAddress: ticketContractAddress, tokenId: tokenId, canTransfer: canTransfer, gasLimit: gasLimit, gasPrice: gasPrice, getGasFee: getGasFee)
+    }
+    
+    /**
+     * 查看门票是否可转移
+     *
+     * @param ticketContractAddress
+     * @param privateKey
+     * @param tokenid
+     * @param canTransfer
+     * @param gasPrice
+     * @param gasLimit
+     * @return
+     */
+    public func getCanTransfer(ticketContractAddress : String , tokenId : String) -> Bool{
+        let assetServer = AssetManagementService(url: url)
+        let result = assetServer.getCanTransfer(contractAddress: ticketContractAddress, tokenId: tokenId)
+        switch result {
+        case .success(value: let dic):
+            guard let _canTransfer = dic["_canTransfer"] else {
+                return false
+            }
+            if "\(_canTransfer)" == "1"{
+                return true
+            }
+            return false
+        case .failure(error: let error):
+            print(error)
+            return false
+        }
+       
     }
     
     
@@ -221,7 +251,7 @@ public class TicketService : NSObject{
      * @param ticketContractAddress
      * @return
      */
-    public func getTicketContractInfo(ticketContractAddress : String ,ipfsNodelUrl : String,ipfsNodeDownPoint: String) -> TicketContractInfo?{
+    public func getContracts(ticketContractAddress : String ,ipfsNodelUrl : String,ipfsNodeDownPoint: String) -> TicketContractInfo?{
         let asset = AssetManagementService(url: url)
         let result = asset.getMetadata(contractAddress: ticketContractAddress)
         switch result {
@@ -241,13 +271,13 @@ public class TicketService : NSObject{
     }
     
     /**
-     * 根据门票合约地址和门票tokenid获取门票详细信息
+     * 获取某一张票的信息
      *
      * @param ticketContractAddress
      * @param tokenid
      * @return
      */
-    public func getTicketTokenInfo(ticketContractAddress : String , tokenid : String,ipfsNodelUrl : String,ipfsNodeDownPoint: String) -> TicketTokenInfo?{
+    public func getAssets(ticketContractAddress : String , tokenid : String,ipfsNodelUrl : String,ipfsNodeDownPoint: String) -> TicketTokenInfo?{
         let asset = AssetManagementService(url: url)
         let result = asset.getTokenURI(contractAddress: ticketContractAddress, tokenId: tokenid)
         switch result {
@@ -292,7 +322,7 @@ public class TicketService : NSObject{
      * @param ticketContractAddress
      * @return
      */
-    public func getTicketTokens(ticketContractAddress : String,dmaNodelUrl : String,Success : @escaping ((NSMutableArray) -> ()),falied : @escaping ((NSMutableDictionary) -> ())){
+    public func getAssets(ticketContractAddress : String,dmaNodelUrl : String,Success : @escaping ((NSMutableArray) -> ()),falied : @escaping ((NSMutableDictionary) -> ())){
         DMAHttpUtil.getServerData(url: dmaNodelUrl + aseet_URL, param: ["contractAddress":ticketContractAddress,"pageNumber":9999999,"pageSize":1], Success: { (dic) in
             let tokenArr : NSMutableArray = []
             guard let data = dic["data"] as? [NSMutableDictionary] else{
@@ -324,7 +354,7 @@ public class TicketService : NSObject{
      * @param ticketContractAddress
      * @return
      */
-    public func getTicketTokenInfo(ticketContractAddress : String,dmaNodelUrl : String,tokenIds : NSMutableArray,ipfsNodelUrl : String,ipfsNodeDownPoint: String,Success : @escaping ((NSMutableArray) -> ()),falied : @escaping ((NSMutableDictionary) -> ())){
+    public func getAssets(ticketContractAddress : String,dmaNodelUrl : String,tokenIds : NSMutableArray,ipfsNodelUrl : String,ipfsNodeDownPoint: String,Success : @escaping ((NSMutableArray) -> ()),falied : @escaping ((NSMutableDictionary) -> ())){
         let ipfs = IpfsService(URL: ipfsNodelUrl, serverPost: ipfsNodeDownPoint)
         DMAHttpUtil.getServerData(url: dmaNodelUrl + aseet_URL, param: ["contractAddress":ticketContractAddress,"pageNumber":9999999,"pageSize":1,"tokenIds":tokenIds], Success: { (dic) in
             let tokenArr : NSMutableArray = []
@@ -338,13 +368,18 @@ public class TicketService : NSObject{
                     falied(["error":"no search tokenId"])
                     return
                 }
+                guard let tokenId = tokenDic["tokenId"] else{
+                    return
+                }
                 if let metaDataStr = meteHash[metaData]{
                     let model = TicketTokenInfo.deserialize(from: metaDataStr)
+                    model?.tokenID = "\(tokenId)"
                     tokenArr.add(model)
                 }else{
                     let metaDataStr = ipfs.getString(hash: metaData)
                     let model = TicketTokenInfo.deserialize(from: metaDataStr)
                     meteHash[metaData] = metaDataStr
+                    model?.tokenID = "\(tokenId)"
                     tokenArr.add(model)
                 }
             }
@@ -355,7 +390,7 @@ public class TicketService : NSObject{
     }
     
     /**
-     * 查询用户所拥有的门票
+     * 查询合约地址下用户所拥有的门票
      *
      * @param ticketContractAddress
      * @param owner
@@ -420,7 +455,7 @@ public class TicketService : NSObject{
     ///   - Failed: Failed description
     public func getTicketContract(owner : String,dmaNodelUrl : String,Success : @escaping ((NSMutableArray) -> ()),Failed : @escaping ((NSMutableDictionary) -> ())){
         DispatchQueue.global().async {
-            DMAHttpUtil.getServerData(url: dmaNodelUrl + contract_URL, param: ["owner":owner,"pageNumber":1,"pageSize":999999], Success: { (dic) in
+            DMAHttpUtil.getServerData(url: dmaNodelUrl + myAseet_URL, param: ["owner":owner,"pageNumber":1,"pageSize":999999], Success: { (dic) in
                 print(dic)
                 let myShowCellArr : NSMutableArray = []
                 if let data = dic["data"] as? NSMutableArray{
@@ -448,16 +483,16 @@ public class TicketService : NSObject{
          DMAHttpUtil.getServerData(url: dmaNodelUrl + transaction_URL, param: ["contractAddress":ticketContractAddress], Success: Success, Failed: Failed)
     }
     
-    /**
-     * 当前tokenid的转移记录
-     *
-     * @param ticketContractAddress
-     * @param tokenid
-     * @return
-     */
-    public func getTransactionRecordByTokenid(ticketContractAddress : String , tokenID : String ){
-        
-    }
+//    /**
+//     * 当前tokenid的转移记录
+//     *
+//     * @param ticketContractAddress
+//     * @param tokenid
+//     * @return
+//     */
+//    public func getTransactionRecordByTokenid(ticketContractAddress : String , tokenID : String ){
+//        
+//    }
     
     /**
      * 根据用户地址查询交易记录
@@ -470,4 +505,63 @@ public class TicketService : NSObject{
         DMAHttpUtil.getServerData(url: dmaNodelUrl + transaction_URL, param: ["contractAddress":ticketContractAddress,"form":userAddress,"to":userAddress], Success: Success, Failed: Failed)
     }
     
+    
+    /**
+     * 获取接受着是address有关的订单记录
+     *
+     * @return
+     */
+    public func getOrderToAddress(userAddress : String ,dmaNodelUrl : String,Success : @escaping (([TicketOrderInfo?]?) ->()),Failed : @escaping ServerResultSuccessResult){
+        DMAHttpUtil.getServerData(url: dmaNodelUrl + order_URL, param: ["to":userAddress], Success: { (dic) in
+            guard let data = dic["data"] as? NSArray else{
+                return
+            }
+            print(dic)
+            Success([TicketOrderInfo].deserialize(from: data))
+        }, Failed: Failed)
+    }
+    
+    /// 我转卖的订单
+    ///
+    /// - Parameters:
+    ///   - userAddress: 用户地址
+    ///   - dmaNodelUrl: dma 的节点
+    ///   - Success: Success description
+    ///   - Failed: Failed description
+    public func getOrderResellAddress(userAddress : String ,dmaNodelUrl : String,Success : @escaping (([TicketOrderInfo?]?) ->()),Failed : @escaping ServerResultSuccessResult){
+        DMAHttpUtil.getServerData(url: dmaNodelUrl + order_URL, param: ["from":userAddress], Success: { (dic) in
+            guard let data = dic["data"] as? NSArray else{
+                return
+            }
+            print("dic is \(dic)")
+            let arr = [TicketOrderInfo].deserialize(from: data)
+            let resultArr = arr?.filter({ (tick) -> Bool in
+                if tick?.level == "2"{
+                    
+                    return true
+                }
+                return false
+            })
+            Success(resultArr)
+        }, Failed: Failed)
+    }
+    
+    
+    /// 验票
+    ///
+    /// - Parameters:
+    ///   - isBurn: 是否销毁门票
+    ///   - privateKey: 合约拥有者的私钥
+    ///   - contractAddress: 合约地址
+    ///   - owner: 资产拥有者的地址
+    ///   - tokenId:  token
+    /// - Returns: return value description
+    public func isValid(isBurn : Bool,privateKey : String,contractAddress : String,owner : String,tokenId : String) -> ContractResult{
+        let asset = AssetManagementService(url: url)
+        if isBurn {
+            return asset.burn(privateKey: privateKey, contractAddress: contractAddress, owner: owner, tokenId: tokenId)
+        }else{
+            return asset.setCanTransfer(privateKey: privateKey, contractAddress: contractAddress, tokenId: tokenId, canTransfer: false)
+        }
+    }
 }

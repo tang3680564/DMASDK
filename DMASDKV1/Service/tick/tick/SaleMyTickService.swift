@@ -30,11 +30,15 @@ public class SaleMyTickService : NSObject{
     public func onSaleTick(tokenArr : NSMutableArray,platAddress:String,contractAddress : String,price : String,privateKey : String){
         let owner = EthService().exportAddressFromPrivateKey(privateKey: privateKey)
         let tokenNumber : NSMutableArray = []
+        let ques = DispatchQueue(label: "uptoken")
         for i in 0..<tokenArr.count{
             tokenNumber.add(tokenArr[i])
-            if tokenNumber.count == 20{
-                let arr = NSMutableArray(array: tokenNumber)
-                upTokenData(platAddress: platAddress, contractAddress : contractAddress,tokenIDArr : arr,price : price,privateKey : privateKey,owner : owner)
+            if tokenNumber.count == 10{
+                let arr : NSMutableArray = []
+                arr.addObjects(from: tokenNumber as! [Any])
+                ques.sync {
+                    self.upTokenData(platAddress: platAddress, contractAddress : contractAddress,tokenIDArr : arr,price : price,privateKey : privateKey,owner : owner)
+                }
                 tokenNumber.removeAllObjects()
             }
         }
@@ -53,24 +57,24 @@ public class SaleMyTickService : NSObject{
     ///   - owner: 上架给哪个地址
     private func upTokenData(platAddress : String,contractAddress : String,tokenIDArr : NSMutableArray,price : String,privateKey : String,owner : String){
         let urlStr = url
-        DispatchQueue.global().async {
-            let chargeServer = MerchantService(url: urlStr)
-            let result = chargeServer.onSales(contractAddress: contractAddress, platformAddress: platAddress, privateKey: privateKey, owner: owner, tokenIds: tokenIDArr as! Array<Any>, price: price)
-            guard case .success(let dic) = result else{
-                print("upshop error")
-                if case .failure(let error) = result {
-                    print("erorro is ")
-                    print(error)
-                }
-                return
+        let chargeServer = MerchantService(url: urlStr)
+        let result = chargeServer.onSales(contractAddress: contractAddress, platformAddress: platAddress, privateKey: privateKey, owner: owner, tokenIds: tokenIDArr as! Array<Any>, price: price)
+        guard case .success(let dic) = result else{
+            print("upshop error")
+            if case .failure(let error) = result {
+                print("erorro is ")
+                print(error)
             }
-            
-            guard let hash = dic["platfromHash"] as? String else{
-                return
-            }
-            print("hash is \(hash)")
-
+            return
         }
+        
+        guard let hash = dic["platfromHash"] as? String else{
+            return
+        }
+        print("hash is \(hash)")
+        
+
+       
         
     }
     
@@ -85,11 +89,15 @@ public class SaleMyTickService : NSObject{
     public func offSaleTick(tokenArr : NSMutableArray,platAddress:String,contractAddress : String,privateKey : String){
         let tokenNumber : NSMutableArray = []
         var hashArr : NSMutableArray = []
+        let ques = DispatchQueue(label: "offSaleToken")
         for i in 0..<tokenArr.count{
             tokenNumber.add(tokenArr[i])
-            if tokenNumber.count == 20{
-                let arr = NSMutableArray(array: tokenNumber)
-                downTokenData(platAddress: platAddress, contractAddress : contractAddress,tokenIDArr : arr,privateKey : privateKey)
+            if tokenNumber.count == 10{
+                let arr : NSMutableArray = []
+                arr.addObjects(from: tokenNumber as! [Any])
+                ques.sync {
+                    self.downTokenData(platAddress: platAddress, contractAddress : contractAddress,tokenIDArr : arr,privateKey : privateKey)
+                }
                 tokenNumber.removeAllObjects()
             }
         }
@@ -107,24 +115,21 @@ public class SaleMyTickService : NSObject{
     ///   - privateKey: 资产拥有者的私钥
     private func downTokenData(platAddress : String,contractAddress : String,tokenIDArr : NSMutableArray,privateKey : String){
         let urlStr = url
-        DispatchQueue.global().async {
-            let merchantService = MerchantService(url : urlStr)
-            let result = merchantService.offSales(privateKey: privateKey, platAddress: platAddress, assetAddress : contractAddress, tokenArr: tokenIDArr as! Array<Any>)
-            guard case .success(let dic) = result else{
-                print("upshop error")
-                if case .failure(let error) = result {
-                    print("erorro is ")
-                    print(error)
-                }
-                return
+        let merchantService = MerchantService(url : urlStr)
+        let result = merchantService.offSales(privateKey: privateKey, platAddress: platAddress, assetAddress : contractAddress, tokenArr: tokenIDArr as! Array<Any>)
+        guard case .success(let dic) = result else{
+            print("upshop error")
+            if case .failure(let error) = result {
+                print("erorro is ")
+                print(error)
             }
-            
-            guard let hash = dic["hash"] as? String else{
-                return
-            }
-            print("hash is \(hash)")
+            return
         }
-    }
-    
-   
+        
+        guard let hash = dic["hash"] as? String else{
+            return
+        }
+        print("hash is \(hash)")
+        
+        }
 }

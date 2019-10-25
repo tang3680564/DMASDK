@@ -23,7 +23,7 @@ class ChargeActivityTrusService: NSObject {
      * @param privateKey
      * @return
      */
-    public func createTicketTrustContract(privateKey :String) -> ContractResult{
+    public func createContract(privateKey :String) -> ContractResult{
         let chargeActivityService = ChargeActivityService(url: url)
         return chargeActivityService.deploy(privateKey: privateKey)
     }
@@ -36,18 +36,18 @@ class ChargeActivityTrusService: NSObject {
      * @param price
      * @return
      */
-    public func TrustTicketToken(privateKey : String , tokenIds : NSMutableArray , price : String,ticketTrustContractAddress:String,ticketContractAddress : String,endTime : String){
+    public func onShelves(privateKey : String , tokenIds : NSMutableArray , price : String,chargeActivityTrustContractAddress:String,ticketContractAddress : String,endTime : String){
         let owner = EthService().exportAddressFromPrivateKey(privateKey: privateKey)
         let tokenNumber : NSMutableArray = []
         for i in 0..<tokenIds.count{
             tokenNumber.add(tokenIds[i])
             if tokenNumber.count == 20{
                 let arr = NSMutableArray(array: tokenNumber)
-                upTokenData(platAddress: ticketTrustContractAddress, contractAddress : ticketContractAddress,tokenIDArr : arr,price : price,privateKey : privateKey,owner : owner, endTime: endTime)
+                upTokenData(platAddress: chargeActivityTrustContractAddress, contractAddress : ticketContractAddress,tokenIDArr : arr,price : price,privateKey : privateKey,owner : owner, endTime: endTime)
                 tokenNumber.removeAllObjects()
             }
         }
-        upTokenData(platAddress: ticketTrustContractAddress, contractAddress : ticketContractAddress,tokenIDArr : tokenNumber,price : price,privateKey : privateKey,owner : owner, endTime: endTime)
+        upTokenData(platAddress: chargeActivityTrustContractAddress, contractAddress : ticketContractAddress,tokenIDArr : tokenNumber,price : price,privateKey : privateKey,owner : owner, endTime: endTime)
     }
     
     
@@ -90,17 +90,17 @@ class ChargeActivityTrusService: NSObject {
      * @param tokenids
      * @return
      */
-    public func removeTrustTicketToken(privateKey : String , tokenIds : NSMutableArray,ticketTrustContractAddress:String,ticketContractAddress : String){
+    public func offShelves(privateKey : String , tokenIds : NSMutableArray,chargeActivityTrustContractAddress:String,ticketContractAddress : String){
         let tokenNumber : NSMutableArray = []
         for i in 0..<tokenIds.count{
             tokenNumber.add(tokenIds[i])
             if tokenNumber.count == 20{
                 let arr = NSMutableArray(array: tokenNumber)
-                downTokenData(platAddress: ticketTrustContractAddress, contractAddress : ticketContractAddress,tokenIDArr : arr,privateKey : privateKey)
+                downTokenData(platAddress: chargeActivityTrustContractAddress, contractAddress : ticketContractAddress,tokenIDArr : arr,privateKey : privateKey)
                 tokenNumber.removeAllObjects()
             }
         }
-        downTokenData(platAddress: ticketTrustContractAddress, contractAddress : ticketContractAddress,tokenIDArr : tokenNumber,privateKey : privateKey)
+        downTokenData(platAddress: chargeActivityTrustContractAddress, contractAddress : ticketContractAddress,tokenIDArr : tokenNumber,privateKey : privateKey)
     }
     
     private func downTokenData(platAddress : String,contractAddress : String,tokenIDArr : NSMutableArray,privateKey : String){
@@ -132,23 +132,23 @@ class ChargeActivityTrusService: NSObject {
      * @param price
      * @return
      */
-    public func createTicketOrder(privateKey : String , tokenIds : Array<Any> , price : String,ticketTrustContractAddress:String,ticketContractAddress : String,owner : String) -> ContractResult{
+    public func placeOrder(privateKey : String , tokenIds : Array<Any> , price : String,chargeActivityTrustContractAddress:String,ticketContractAddress : String,owner : String) -> ContractResult{
         let chargeActivityService = ChargeActivityService(url: url)
-        return chargeActivityService.createOrder(platAddress: ticketTrustContractAddress, assetAddress: ticketContractAddress, privateKey: privateKey, tokenIds: tokenIds, sumPrice: price, owner: owner)
+        return chargeActivityService.createOrder(platAddress: chargeActivityTrustContractAddress, assetAddress: ticketContractAddress, privateKey: privateKey, tokenIds: tokenIds, sumPrice: price, owner: owner)
     }
     
     /**
      * 根据托管合约地址获取所有托管的票的合约地址
      *
-     * @param ticketTrustContractAddress
+     * @param chargeActivityTrustContractAddress
      * @return
      */
-    public func getTicketContractAddressAll(ticketTrustContractAddress : String) -> ContractResult{
+    public func getOnShelveContracts(chargeActivityTrustContractAddress : String) -> ContractResult{
         let chargeActivityService = ChargeActivityService(url: url)
         let addressArr : NSMutableArray = []
         let tokenArray : NSMutableArray = []
         let pageSize = 0
-        let result = chargeActivityService.getAssetList(pageSize: "\(pageSize)", platAddress: ticketTrustContractAddress)
+        let result = chargeActivityService.getAssetList(pageSize: "\(pageSize)", platAddress: chargeActivityTrustContractAddress)
         guard case .success(let dic) = result else{
             return ContractResult.failure(error: "search error")
         }
@@ -163,14 +163,14 @@ class ChargeActivityTrusService: NSObject {
         if address.count < 10{
             return ContractResult.success(value: ["addressArray":addressArr,"tokenArray":tokenArray])
         }else{
-            return getTicketContractAddressAll(ticketTrustContractAddress : ticketTrustContractAddress,pageSize: pageSize + 1,addressArr: addressArr,tokenArray : tokenArray)
+            return getOnShelveContracts(chargeActivityTrustContractAddress : chargeActivityTrustContractAddress,pageSize: pageSize + 1,addressArr: addressArr,tokenArray : tokenArray)
         }
         
     }
     
-    private func getTicketContractAddressAll(ticketTrustContractAddress : String,pageSize : Int = 0,addressArr : NSMutableArray,tokenArray : NSMutableArray) -> ContractResult{
+    private func getOnShelveContracts(chargeActivityTrustContractAddress : String,pageSize : Int = 0,addressArr : NSMutableArray,tokenArray : NSMutableArray) -> ContractResult{
         let chargeActivityService = ChargeActivityService(url: url)
-        let result = chargeActivityService.getAssetList(pageSize: "\(pageSize)", platAddress: ticketTrustContractAddress)
+        let result = chargeActivityService.getAssetList(pageSize: "\(pageSize)", platAddress: chargeActivityTrustContractAddress)
         guard case .success(let dic) = result else{
             return ContractResult.failure(error: "search error")
         }
@@ -185,32 +185,32 @@ class ChargeActivityTrusService: NSObject {
         if address.count < 10{
             return ContractResult.success(value: ["addressArray":addressArr,"tokenArray":tokenArray])
         }else{
-            return getTicketContractAddressAll(ticketTrustContractAddress : ticketTrustContractAddress,pageSize: pageSize + 1,addressArr : addressArr,tokenArray : tokenArray)
+            return getOnShelveContracts(chargeActivityTrustContractAddress : chargeActivityTrustContractAddress,pageSize: pageSize + 1,addressArr : addressArr,tokenArray : tokenArray)
         }
     }
     
     /**
      * 获取托管合约里面我上架的 tokenID
      *
-     * @param ticketTrustContractAddress
+     * @param chargeActivityTrustContractAddress
      * @param owner
      * @return
      */
-    public func getTrustTicketContractByAddress(ticketTrustContractAddress : String ,owner : String,dmaNodelUrl : String,Success : @escaping ServerResultSuccessResult,Failed : @escaping ServerResultSuccessResult){
-        DMAHttpUtil.getServerData(url: dmaNodelUrl + onSale_URL, param: ["trustAddress":ticketTrustContractAddress,"owner":owner], Success: Success, Failed: Failed)
+    public func getOnShelves(chargeActivityTrustContractAddress : String ,owner : String,dmaNodelUrl : String,Success : @escaping ServerResultSuccessResult,Failed : @escaping ServerResultSuccessResult){
+        DMAHttpUtil.getServerData(url: dmaNodelUrl + onSale_URL, param: ["trustAddress":chargeActivityTrustContractAddress,"owner":owner], Success: Success, Failed: Failed)
     }
     
     /**
      * 查询已上架的门票合约地址下的 token
      *
-     * @param ticketTrustContractAddress
+     * @param chargeActivityTrustContractAddress
      * @param ticketContractAddress
      * @return
      */
-    public func getTokenByTicketContractInOnSale(ticketTrustContractAddress : String , ticketContractAddress : String ) -> ContractResult{
+    public func getTokenByTicketContractInOnSale(chargeActivityTrustContractAddress : String , ticketContractAddress : String ) -> ContractResult{
         let chargeActivityService = ChargeActivityService(url: url)
         let pageSize = 0
-        let result = chargeActivityService.getTokenList(assetAddress: ticketContractAddress, pageSize: "\(pageSize)", platAddress: ticketTrustContractAddress)
+        let result = chargeActivityService.getTokenList(assetAddress: ticketContractAddress, pageSize: "\(pageSize)", platAddress: chargeActivityTrustContractAddress)
         let tokenIDArray : NSMutableArray = []
         let countArray : NSMutableArray = []
         let ownersArray : NSMutableArray = []
@@ -238,14 +238,14 @@ class ChargeActivityTrusService: NSObject {
         if tokenIds.count < 10{
             return ContractResult.success(value: ["tokenIds":tokenIDArray,"count":countArray,"owners":ownersArray,"prices":priceArray])
         }else{
-            return getTokenByTicketContractInOnSale(ticketTrustContractAddress: ticketTrustContractAddress, ticketContractAddress: ticketContractAddress, pageSize: pageSize + 1, tokenIDArray: tokenIDArray, countArray: countArray, ownersArray: ownersArray, priceArray: priceArray)
+            return getTokenByTicketContractInOnSale(chargeActivityTrustContractAddress: chargeActivityTrustContractAddress, ticketContractAddress: ticketContractAddress, pageSize: pageSize + 1, tokenIDArray: tokenIDArray, countArray: countArray, ownersArray: ownersArray, priceArray: priceArray)
         }
     }
     
-    private func getTokenByTicketContractInOnSale(ticketTrustContractAddress : String , ticketContractAddress : String,pageSize : Int,tokenIDArray : NSMutableArray,countArray : NSMutableArray,ownersArray : NSMutableArray,priceArray : NSMutableArray) -> ContractResult{
+    private func getTokenByTicketContractInOnSale(chargeActivityTrustContractAddress : String , ticketContractAddress : String,pageSize : Int,tokenIDArray : NSMutableArray,countArray : NSMutableArray,ownersArray : NSMutableArray,priceArray : NSMutableArray) -> ContractResult{
         print("getTokenByTicketContractInOnSale is this pageSize \(pageSize)")
         let chargeActivityService = ChargeActivityService(url: url)
-        let result = chargeActivityService.getTokenList(assetAddress: ticketContractAddress, pageSize: "\(pageSize)", platAddress: ticketTrustContractAddress)
+        let result = chargeActivityService.getTokenList(assetAddress: ticketContractAddress, pageSize: "\(pageSize)", platAddress: chargeActivityTrustContractAddress)
         guard case .success(let dic) = result else {
             return ContractResult.failure(error: "search error")
         }
@@ -268,20 +268,20 @@ class ChargeActivityTrusService: NSObject {
         if tokenIds.count < 10{
             return ContractResult.success(value: ["tokenIds":tokenIDArray,"count":countArray,"owners":ownersArray,"prices":priceArray])
         }else{
-            return getTokenByTicketContractInOnSale(ticketTrustContractAddress: ticketTrustContractAddress, ticketContractAddress: ticketContractAddress, pageSize: pageSize + 1, tokenIDArray: tokenIDArray, countArray: countArray, ownersArray: ownersArray, priceArray: priceArray)
+            return getTokenByTicketContractInOnSale(chargeActivityTrustContractAddress: chargeActivityTrustContractAddress, ticketContractAddress: ticketContractAddress, pageSize: pageSize + 1, tokenIDArray: tokenIDArray, countArray: countArray, ownersArray: ownersArray, priceArray: priceArray)
         }
     }
     
     /**
      * 根据票合约地址查询 owner 托管的tokenid
      *
-     * @param ticketTrustContractAddress
+     * @param chargeActivityTrustContractAddress
      * @param ticketContractAddress
      * @param owner
      * @return
      */
-    public func  getTrustTicketTokensByTicketContractAndAddress(ticketTrustContractAddress : String , ticketContractAddress : String , owner : String) -> ContractResult{
-        let result = getTokenByTicketContractInOnSale(ticketTrustContractAddress: ticketTrustContractAddress, ticketContractAddress: ticketContractAddress)
+    public func  getTrustTicketTokensByTicketContractAndAddress(chargeActivityTrustContractAddress : String , ticketContractAddress : String , owner : String) -> ContractResult{
+        let result = getTokenByTicketContractInOnSale(chargeActivityTrustContractAddress: chargeActivityTrustContractAddress, ticketContractAddress: ticketContractAddress)
         let tokenIDArray : NSMutableArray = []
         let countArray : NSMutableArray = []
         let ownersArray : NSMutableArray = []
@@ -317,11 +317,11 @@ class ChargeActivityTrusService: NSObject {
     /**
      * 获取未进行托管的tokenid
      *
-     * @param ticketTrustContractAddress
+     * @param chargeActivityTrustContractAddress
      * @param ticketContractAddress
      * @return
      */
-    public func getNotTrustTicketTokensByTicketContract(ticketTrustContractAddress : String , ticketContractAddress : String,owner : String,dmaNodelUrl : String,Success : @escaping ((NSMutableArray) -> ()),Failed : @escaping ((NSMutableDictionary) -> ())){
+    public func getOffShelves(chargeActivityTrustContractAddress : String , ticketContractAddress : String,owner : String,dmaNodelUrl : String,Success : @escaping ((NSMutableArray) -> ()),Failed : @escaping ((NSMutableDictionary) -> ())){
         DMAHttpUtil.getServerData(url: dmaNodelUrl + aseet_URL, param: ["contractAddress":ticketContractAddress,"owner":owner,"pageSize":9999999,"pageNumber":1], Success: { (dic) in
             DispatchQueue.global().async {
                 let tokenArr : NSMutableArray = []
@@ -350,16 +350,15 @@ class ChargeActivityTrusService: NSObject {
     /// 获取门票合约地址下门票已售数量
     ///
     /// - Parameters:
-    ///   - ticketTrustContractAddress: 门票托管地址
+    ///   - chargeActivityTrustContractAddress: 门票托管地址
     ///   - ticketContractAddress: 门票合约地址
     ///   - owner: 门票合约地址拥有者
     ///   - dmaNodelUrl: dma 节点地址
     ///   - Success: 已售数量
     ///   - Failed: 失败 json
-    public func getTickSlod(ticketTrustContractAddress : String , ticketContractAddress : String,owner : String,dmaNodelUrl : String,Success : @escaping ((Int) -> ()),Failed : @escaping ((NSMutableDictionary) -> ())){
+    public func getTickSlod(chargeActivityTrustContractAddress : String , ticketContractAddress : String,owner : String,dmaNodelUrl : String,Success : @escaping ((Int) -> ()),Failed : @escaping ((NSMutableDictionary) -> ())){
         let urlStr = url
-        let trusService = TicketTrustService(url: urlStr)
-        var result = trusService.getTokenByTicketContractInOnSale(ticketTrustContractAddress: ticketTrustContractAddress, ticketContractAddress: ticketContractAddress)
+        var result = getTokenByTicketContractInOnSale(chargeActivityTrustContractAddress: chargeActivityTrustContractAddress, ticketContractAddress: ticketContractAddress)
         ///计算商城库存
         let tokenIndexArr : NSMutableArray = []
         guard case .success(let dic) = result else{
@@ -391,7 +390,7 @@ class ChargeActivityTrusService: NSObject {
                 tokenIndexArr.add("\(tokenIdsArr[i])")
             }
         }
-        getNotTrustTicketTokensByTicketContract(ticketTrustContractAddress: ticketTrustContractAddress, ticketContractAddress: ticketContractAddress, owner: owner, dmaNodelUrl: dmaNodelUrl, Success: { (tokenArr) in
+        getOffShelves(chargeActivityTrustContractAddress: chargeActivityTrustContractAddress, ticketContractAddress: ticketContractAddress, owner: owner, dmaNodelUrl: dmaNodelUrl, Success: { (tokenArr) in
             DispatchQueue.global().async {
                 let aseert = AssetManagementService(url: urlStr)
                 result = aseert.totalSupply(contractAddress: ticketContractAddress)
@@ -418,11 +417,11 @@ class ChargeActivityTrusService: NSObject {
     /**
      * 获取所有订单记录
      *
-     * @param ticketTrustContractAddress
+     * @param chargeActivityTrustContractAddress
      * @return
      */
-    public func getOrderRecordAll(ticketTrustContractAddress : String  ,dmaNodelUrl : String,Success : @escaping ServerResultSuccessResult,Failed : @escaping ServerResultSuccessResult){
-        DMAHttpUtil.getServerData(url: dmaNodelUrl + order_URL, param: ["trustAddress":ticketTrustContractAddress], Success: Success, Failed: Failed)
+    public func getOrderRecordAll(chargeActivityTrustContractAddress : String  ,dmaNodelUrl : String,Success : @escaping ServerResultSuccessResult,Failed : @escaping ServerResultSuccessResult){
+        DMAHttpUtil.getServerData(url: dmaNodelUrl + order_URL, param: ["trustAddress":chargeActivityTrustContractAddress], Success: Success, Failed: Failed)
     }
     
     /**
@@ -430,8 +429,8 @@ class ChargeActivityTrusService: NSObject {
      *
      * @return
      */
-    public func getOrderRecordByAddress(ticketTrustContractAddress : String = "", userAddress : String ,dmaNodelUrl : String,Success : @escaping ServerResultSuccessResult,Failed : @escaping ServerResultSuccessResult){
-        DMAHttpUtil.getServerData(url: dmaNodelUrl + order_URL, param: ["trustAddress":ticketTrustContractAddress,"form":userAddress,"to":userAddress], Success: Success, Failed: Failed)
+    public func getOrderRecordByAddress(chargeActivityTrustContractAddress : String = "", userAddress : String ,dmaNodelUrl : String,Success : @escaping ServerResultSuccessResult,Failed : @escaping ServerResultSuccessResult){
+        DMAHttpUtil.getServerData(url: dmaNodelUrl + order_URL, param: ["trustAddress":chargeActivityTrustContractAddress,"form":userAddress,"to":userAddress], Success: Success, Failed: Failed)
     }
     
     /**
@@ -442,5 +441,18 @@ class ChargeActivityTrusService: NSObject {
      */
     public func getOrderInfoByHash(hash : String ,dmaNodelUrl : String,Success : @escaping ServerResultSuccessResult,Failed : @escaping ServerResultSuccessResult){
         DMAHttpUtil.getServerData(url: dmaNodelUrl + orderItems, param: ["transactionHash":hash], Success: Success, Failed: Failed)
+    }
+    
+    
+    /// 结束活动
+    ///
+    /// - Parameters:
+    ///   - chargeActivityTrustContractAddress: 活动托管合约地址
+    ///   - privateKey: 票的合约地址拥有者的私钥
+    ///   - ticketContractAddress: 票的合约地址
+    /// - Returns: return value description
+    public func endActivity(chargeActivityTrustContractAddress : String,privateKey : String,ticketContractAddress : String) -> ContractResult{
+        let chargeServer = ChargeActivityService(url: url)
+        return chargeServer.endActivity(privateKey: privateKey, assetAddress: ticketContractAddress, contractAddress: ticketContractAddress)
     }
 }

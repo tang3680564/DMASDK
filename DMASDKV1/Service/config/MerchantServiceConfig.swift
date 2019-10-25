@@ -21,6 +21,7 @@ public let exchangeList_url = baseUrl + "common/exchangeList"
 public let exchange_url = baseUrl + "/exchange"
 
 public let contract_URL = "/contract/all"
+public let myAseet_URL = "/asset/my"
 public let aseet_URL = "/asset/all"
 public let order_URL = "/order/all"
 public let orderItems = "/order/items"

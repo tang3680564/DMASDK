@@ -87,15 +87,16 @@
 		F828743F235DC80000E4A086 /* ChargeActivityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82873F1235DC80000E4A086 /* ChargeActivityService.swift */; };
 		F8287440235DC80000E4A086 /* MerchantService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82873F2235DC80000E4A086 /* MerchantService.swift */; };
 		F8287441235DC80000E4A086 /* PledgeActivityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82873F3235DC80000E4A086 /* PledgeActivityService.swift */; };
-		F8287442235DC80000E4A086 /* ChargeActivityTrusService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82873F5235DC80000E4A086 /* ChargeActivityTrusService.swift */; };
-		F8287443235DC80000E4A086 /* TicketService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82873F6235DC80000E4A086 /* TicketService.swift */; };
-		F8287444235DC80000E4A086 /* TicketOrderInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82873F7235DC80000E4A086 /* TicketOrderInfo.swift */; };
-		F8287445235DC80000E4A086 /* SaleMyTickService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82873F8235DC80000E4A086 /* SaleMyTickService.swift */; };
-		F8287446235DC80000E4A086 /* TicketTokenInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82873F9235DC80000E4A086 /* TicketTokenInfo.swift */; };
-		F8287447235DC80000E4A086 /* TicketContractInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82873FA235DC80000E4A086 /* TicketContractInfo.swift */; };
-		F8287448235DC80000E4A086 /* TicketTrustService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82873FB235DC80000E4A086 /* TicketTrustService.swift */; };
-		F8287449235DC80000E4A086 /* PledgeActivityTrusService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82873FC235DC80000E4A086 /* PledgeActivityTrusService.swift */; };
 		F828744B235DC8EB00E4A086 /* NSMutableDictionary+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F828744A235DC8EB00E4A086 /* NSMutableDictionary+Extension.swift */; };
+		F8E89E932362F14E00E87C75 /* TicketOrderInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E89E882362F14E00E87C75 /* TicketOrderInfo.swift */; };
+		F8E89E942362F14E00E87C75 /* ChargeActivityTrusService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E89E8A2362F14E00E87C75 /* ChargeActivityTrusService.swift */; };
+		F8E89E952362F14E00E87C75 /* ActivityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E89E8B2362F14E00E87C75 /* ActivityService.swift */; };
+		F8E89E962362F14E00E87C75 /* PledgeActivityTrusService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E89E8C2362F14E00E87C75 /* PledgeActivityTrusService.swift */; };
+		F8E89E972362F14E00E87C75 /* TicketTokenInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E89E8D2362F14E00E87C75 /* TicketTokenInfo.swift */; };
+		F8E89E982362F14E00E87C75 /* TicketContractInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E89E8E2362F14E00E87C75 /* TicketContractInfo.swift */; };
+		F8E89E992362F14E00E87C75 /* TicketService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E89E902362F14E00E87C75 /* TicketService.swift */; };
+		F8E89E9A2362F14E00E87C75 /* SaleMyTickService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E89E912362F14E00E87C75 /* SaleMyTickService.swift */; };
+		F8E89E9B2362F14E00E87C75 /* TicketTrustService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E89E922362F14E00E87C75 /* TicketTrustService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -183,15 +184,16 @@
 		F82873F1235DC80000E4A086 /* ChargeActivityService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChargeActivityService.swift; sourceTree = "<group>"; };
 		F82873F2235DC80000E4A086 /* MerchantService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MerchantService.swift; sourceTree = "<group>"; };
 		F82873F3235DC80000E4A086 /* PledgeActivityService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PledgeActivityService.swift; sourceTree = "<group>"; };
-		F82873F5235DC80000E4A086 /* ChargeActivityTrusService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChargeActivityTrusService.swift; sourceTree = "<group>"; };
-		F82873F6235DC80000E4A086 /* TicketService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketService.swift; sourceTree = "<group>"; };
-		F82873F7235DC80000E4A086 /* TicketOrderInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketOrderInfo.swift; sourceTree = "<group>"; };
-		F82873F8235DC80000E4A086 /* SaleMyTickService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaleMyTickService.swift; sourceTree = "<group>"; };
-		F82873F9235DC80000E4A086 /* TicketTokenInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketTokenInfo.swift; sourceTree = "<group>"; };
-		F82873FA235DC80000E4A086 /* TicketContractInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketContractInfo.swift; sourceTree = "<group>"; };
-		F82873FB235DC80000E4A086 /* TicketTrustService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketTrustService.swift; sourceTree = "<group>"; };
-		F82873FC235DC80000E4A086 /* PledgeActivityTrusService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PledgeActivityTrusService.swift; sourceTree = "<group>"; };
 		F828744A235DC8EB00E4A086 /* NSMutableDictionary+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSMutableDictionary+Extension.swift"; sourceTree = "<group>"; };
+		F8E89E882362F14E00E87C75 /* TicketOrderInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketOrderInfo.swift; sourceTree = "<group>"; };
+		F8E89E8A2362F14E00E87C75 /* ChargeActivityTrusService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChargeActivityTrusService.swift; sourceTree = "<group>"; };
+		F8E89E8B2362F14E00E87C75 /* ActivityService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityService.swift; sourceTree = "<group>"; };
+		F8E89E8C2362F14E00E87C75 /* PledgeActivityTrusService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PledgeActivityTrusService.swift; sourceTree = "<group>"; };
+		F8E89E8D2362F14E00E87C75 /* TicketTokenInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketTokenInfo.swift; sourceTree = "<group>"; };
+		F8E89E8E2362F14E00E87C75 /* TicketContractInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketContractInfo.swift; sourceTree = "<group>"; };
+		F8E89E902362F14E00E87C75 /* TicketService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketService.swift; sourceTree = "<group>"; };
+		F8E89E912362F14E00E87C75 /* SaleMyTickService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaleMyTickService.swift; sourceTree = "<group>"; };
+		F8E89E922362F14E00E87C75 /* TicketTrustService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketTrustService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -372,6 +374,7 @@
 		F82873B7235DC80000E4A086 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				F8E89E872362F14E00E87C75 /* tick */,
 				F82873B8235DC80000E4A086 /* asset */,
 				F82873BC235DC80000E4A086 /* config */,
 				F82873C1235DC80000E4A086 /* payment */,
@@ -384,7 +387,6 @@
 				F82873EA235DC80000E4A086 /* carrier */,
 				F82873ED235DC80000E4A086 /* appraiser */,
 				F82873F0235DC80000E4A086 /* merchant */,
-				F82873F4235DC80000E4A086 /* tick */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -570,17 +572,35 @@
 			path = merchant;
 			sourceTree = "<group>";
 		};
-		F82873F4235DC80000E4A086 /* tick */ = {
+		F8E89E872362F14E00E87C75 /* tick */ = {
 			isa = PBXGroup;
 			children = (
-				F82873F5235DC80000E4A086 /* ChargeActivityTrusService.swift */,
-				F82873F6235DC80000E4A086 /* TicketService.swift */,
-				F82873F7235DC80000E4A086 /* TicketOrderInfo.swift */,
-				F82873F8235DC80000E4A086 /* SaleMyTickService.swift */,
-				F82873F9235DC80000E4A086 /* TicketTokenInfo.swift */,
-				F82873FA235DC80000E4A086 /* TicketContractInfo.swift */,
-				F82873FB235DC80000E4A086 /* TicketTrustService.swift */,
-				F82873FC235DC80000E4A086 /* PledgeActivityTrusService.swift */,
+				F8E89E882362F14E00E87C75 /* TicketOrderInfo.swift */,
+				F8E89E892362F14E00E87C75 /* activity */,
+				F8E89E8D2362F14E00E87C75 /* TicketTokenInfo.swift */,
+				F8E89E8E2362F14E00E87C75 /* TicketContractInfo.swift */,
+				F8E89E8F2362F14E00E87C75 /* tick */,
+			);
+			name = tick;
+			path = ../../../Uptick_IOS/Uptick/DMA/Service/tick;
+			sourceTree = "<group>";
+		};
+		F8E89E892362F14E00E87C75 /* activity */ = {
+			isa = PBXGroup;
+			children = (
+				F8E89E8A2362F14E00E87C75 /* ChargeActivityTrusService.swift */,
+				F8E89E8B2362F14E00E87C75 /* ActivityService.swift */,
+				F8E89E8C2362F14E00E87C75 /* PledgeActivityTrusService.swift */,
+			);
+			path = activity;
+			sourceTree = "<group>";
+		};
+		F8E89E8F2362F14E00E87C75 /* tick */ = {
+			isa = PBXGroup;
+			children = (
+				F8E89E902362F14E00E87C75 /* TicketService.swift */,
+				F8E89E912362F14E00E87C75 /* SaleMyTickService.swift */,
+				F8E89E922362F14E00E87C75 /* TicketTrustService.swift */,
 			);
 			path = tick;
 			sourceTree = "<group>";
@@ -704,15 +724,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F8287444235DC80000E4A086 /* TicketOrderInfo.swift in Sources */,
 				F8287404235DC80000E4A086 /* Web3Util.swift in Sources */,
 				F8287417235DC80000E4A086 /* NetworkReachabilityManager.swift in Sources */,
 				F8287407235DC80000E4A086 /* ContractMethodHelper.swift in Sources */,
-				F8287445235DC80000E4A086 /* SaleMyTickService.swift in Sources */,
 				F8287434235DC80000E4A086 /* Profile.swift in Sources */,
 				F828742C235DC80000E4A086 /* Pulse.swift in Sources */,
 				F8287438235DC80000E4A086 /* EthService.swift in Sources */,
-				F8287448235DC80000E4A086 /* TicketTrustService.swift in Sources */,
 				F8287419235DC80000E4A086 /* Token20Service.swift in Sources */,
 				F8287423235DC80000E4A086 /* Direction.swift in Sources */,
 				F8287441235DC80000E4A086 /* PledgeActivityService.swift in Sources */,
@@ -727,18 +744,23 @@
 				F8287439235DC80000E4A086 /* ElaService.swift in Sources */,
 				F82873FE235DC80000E4A086 /* PlatformContract.swift in Sources */,
 				F8287409235DC80000E4A086 /* IpfsStorage.swift in Sources */,
+				F8E89E972362F14E00E87C75 /* TicketTokenInfo.swift in Sources */,
 				F8287422235DC80000E4A086 /* PayMethod.swift in Sources */,
+				F8E89E992362F14E00E87C75 /* TicketService.swift in Sources */,
 				F828741A235DC80000E4A086 /* Token721Service.swift in Sources */,
 				F8287436235DC80000E4A086 /* ProfileService.swift in Sources */,
+				F8E89E962362F14E00E87C75 /* PledgeActivityTrusService.swift in Sources */,
 				F8287403235DC80000E4A086 /* String+Extension.swift in Sources */,
 				F8287425235DC80000E4A086 /* ParserResult.swift in Sources */,
 				F8287430235DC80000E4A086 /* Encipher.swift in Sources */,
 				F828741C235DC80000E4A086 /* MerchantServiceConfig.swift in Sources */,
 				F8287432235DC80000E4A086 /* IpfsService.swift in Sources */,
+				F8E89E952362F14E00E87C75 /* ActivityService.swift in Sources */,
+				F8E89E9B2362F14E00E87C75 /* TicketTrustService.swift in Sources */,
 				F8287440235DC80000E4A086 /* MerchantService.swift in Sources */,
+				F8E89E9A2362F14E00E87C75 /* SaleMyTickService.swift in Sources */,
 				F828742A235DC80000E4A086 /* DynamicData.swift in Sources */,
 				F8287405235DC80000E4A086 /* DMAHttpUtil.swift in Sources */,
-				F8287446235DC80000E4A086 /* TicketTokenInfo.swift in Sources */,
 				F8287415235DC80000E4A086 /* ElaWallet.swift in Sources */,
 				F828743F235DC80000E4A086 /* ChargeActivityService.swift in Sources */,
 				F8287402235DC80000E4A086 /* DMACommon.swift in Sources */,
@@ -754,20 +776,19 @@
 				F8287420235DC80000E4A086 /* RechargeStatus.swift in Sources */,
 				F82873FD235DC80000E4A086 /* TokenContract.swift in Sources */,
 				F828743E235DC80000E4A086 /* Appraiser.swift in Sources */,
+				F8E89E982362F14E00E87C75 /* TicketContractInfo.swift in Sources */,
 				F828742E235DC80000E4A086 /* PassportService.swift in Sources */,
 				F8287431235DC80000E4A086 /* AppIdEncipher.swift in Sources */,
+				F8E89E942362F14E00E87C75 /* ChargeActivityTrusService.swift in Sources */,
 				F828742D235DC80000E4A086 /* AbstractService.swift in Sources */,
 				F8287424235DC80000E4A086 /* RequestBody.swift in Sources */,
+				F8E89E932362F14E00E87C75 /* TicketOrderInfo.swift in Sources */,
 				F8287401235DC80000E4A086 /* AssetManagement.swift in Sources */,
 				F8287429235DC80000E4A086 /* ResponseBody.swift in Sources */,
 				F8287406235DC80000E4A086 /* DeployHelper.swift in Sources */,
-				F8287442235DC80000E4A086 /* ChargeActivityTrusService.swift in Sources */,
-				F8287449235DC80000E4A086 /* PledgeActivityTrusService.swift in Sources */,
 				F828743D235DC80000E4A086 /* AppraiserService.swift in Sources */,
 				F8287414235DC80000E4A086 /* EthWallet.swift in Sources */,
-				F8287447235DC80000E4A086 /* TicketContractInfo.swift in Sources */,
 				F8287400235DC80000E4A086 /* PledgeActivityContract.swift in Sources */,
-				F8287443235DC80000E4A086 /* TicketService.swift in Sources */,
 				F828741F235DC80000E4A086 /* DMAEnum.swift in Sources */,
 				F828741E235DC80000E4A086 /* ErrorCode.swift in Sources */,
 				F8287437235DC80000E4A086 /* ElaDIDService.swift in Sources */,

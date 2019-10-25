@@ -23,6 +23,8 @@ public class TicketTokenInfo : HandyJSON{
     //扩展json
     public var json : String?
     
+    public var tokenID : String?
+    
     public required init() {
     }
 }

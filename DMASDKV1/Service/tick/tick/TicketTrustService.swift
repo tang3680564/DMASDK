@@ -23,7 +23,7 @@ public class TicketTrustService : NSObject{
      * @param privateKey
      * @return
      */
-    public func createTicketTrustContract(privateKey :String) -> ContractResult{
+    public func createContract(privateKey :String) -> ContractResult{
         let merchantService = MerchantService(url: url)
         return merchantService.deploy(privateKey: privateKey)
     }
@@ -36,7 +36,7 @@ public class TicketTrustService : NSObject{
      * @param price
      * @return
      */
-    public func TrustTicketToken(privateKey : String , tokenIds : NSMutableArray , price : String,ticketTrustContractAddress:String,ticketContractAddress : String ){
+    public func onShelves(privateKey : String , tokenIds : NSMutableArray , price : String,ticketTrustContractAddress:String,ticketContractAddress : String ){
         let saleTick = SaleMyTickService(url: url)
         saleTick.onSaleTick(tokenArr: tokenIds, platAddress: ticketTrustContractAddress, contractAddress: ticketContractAddress, price: price, privateKey: privateKey)
     }
@@ -48,7 +48,7 @@ public class TicketTrustService : NSObject{
      * @param tokenids
      * @return
      */
-    public func removeTrustTicketToken(privateKey : String , tokenIds : NSMutableArray,ticketTrustContractAddress:String,ticketContractAddress : String){
+    public func offShelves(privateKey : String , tokenIds : NSMutableArray,ticketTrustContractAddress:String,ticketContractAddress : String){
         let saleTick = SaleMyTickService(url: url)
         saleTick.offSaleTick(tokenArr:tokenIds, platAddress: ticketTrustContractAddress, contractAddress: ticketContractAddress, privateKey: privateKey)
     }
@@ -61,7 +61,7 @@ public class TicketTrustService : NSObject{
      * @param price
      * @return
      */
-    public func createTicketOrder(privateKey : String , tokenIds : Array<Any> , price : String,ticketTrustContractAddress:String,ticketContractAddress : String,owner : String) -> ContractResult{
+    public func placeOrder(privateKey : String , tokenIds : Array<Any> , price : String,ticketTrustContractAddress:String,ticketContractAddress : String,owner : String) -> ContractResult{
         let merchantService = MerchantService(url: url)
         return merchantService.createOrder(platAddress: ticketTrustContractAddress, privateKey: privateKey, assetAddress: ticketContractAddress, tokenIds: tokenIds, sumPrice: price, owner: owner)
     }
@@ -72,7 +72,7 @@ public class TicketTrustService : NSObject{
      * @param ticketTrustContractAddress
      * @return
      */
-    public func getTicketContractAddressAll(ticketTrustContractAddress : String) -> ContractResult{
+    public func getOnShelveContracts(ticketTrustContractAddress : String) -> ContractResult{
         let merchantService = MerchantService(url: url)
         let addressArr : NSMutableArray = []
         let tokenArray : NSMutableArray = []
@@ -92,12 +92,12 @@ public class TicketTrustService : NSObject{
         if address.count < 10{
             return ContractResult.success(value: ["addressArray":addressArr,"tokenArray":tokenArray])
         }else{
-            return getTicketContractAddressAll(ticketTrustContractAddress : ticketTrustContractAddress,pageSize: pageSize + 1,addressArr: addressArr,tokenArray : tokenArray)
+            return getOnShelveContracts(ticketTrustContractAddress : ticketTrustContractAddress,pageSize: pageSize + 1,addressArr: addressArr,tokenArray : tokenArray)
         }
         
     }
     
-    private func getTicketContractAddressAll(ticketTrustContractAddress : String,pageSize : Int = 0,addressArr : NSMutableArray,tokenArray : NSMutableArray) -> ContractResult{
+    private func getOnShelveContracts(ticketTrustContractAddress : String,pageSize : Int = 0,addressArr : NSMutableArray,tokenArray : NSMutableArray) -> ContractResult{
         let merchantService = MerchantService(url: url)
         let result = merchantService.getAssetList(pageSize: "\(pageSize)", platAddress: ticketTrustContractAddress)
         guard case .success(let dic) = result else{
@@ -114,7 +114,7 @@ public class TicketTrustService : NSObject{
         if address.count < 10{
             return ContractResult.success(value: ["addressArray":addressArr,"tokenArray":tokenArray])
         }else{
-            return getTicketContractAddressAll(ticketTrustContractAddress : ticketTrustContractAddress,pageSize: pageSize + 1,addressArr : addressArr,tokenArray : tokenArray)
+            return getOnShelveContracts(ticketTrustContractAddress : ticketTrustContractAddress,pageSize: pageSize + 1,addressArr : addressArr,tokenArray : tokenArray)
         }
     }
     
@@ -125,8 +125,8 @@ public class TicketTrustService : NSObject{
      * @param owner
      * @return
      */
-    public func getTrustTicketContractByAddress(ticketTrustContractAddress : String ,owner : String,dmaNodelUrl : String,Success : @escaping ServerResultSuccessResult,Failed : @escaping ServerResultSuccessResult){
-        DMAHttpUtil.getServerData(url: dmaNodelUrl + onSale_URL, param: ["trustAddress":ticketTrustContractAddress,"owner":owner], Success: Success, Failed: Failed)
+    public func getOnShelves(ticketTrustContractAddress : String = "" ,owner : String = "",ticketContractAddress:String = "",dmaNodelUrl : String,Success : @escaping ServerResultSuccessResult,Failed : @escaping ServerResultSuccessResult){
+        DMAHttpUtil.getServerData(url: dmaNodelUrl + onSale_URL, param: ["trustAddress":ticketTrustContractAddress,"contractAddress":ticketContractAddress,"owner":owner], Success: Success, Failed: Failed)
     }
     
     /**
@@ -232,7 +232,7 @@ public class TicketTrustService : NSObject{
         }
         for i in 0..<tokenIds.count{
             if let ownerStr = owners[i] as? String{
-                if ownerStr == owner {
+                if ownerStr.lowercased() == owner.lowercased() {
                     tokenIDArray.add(tokenIds[i])
                     countArray.add(count[i])
                     ownersArray.add(owners[i])
@@ -250,7 +250,7 @@ public class TicketTrustService : NSObject{
      * @param ticketContractAddress
      * @return
      */
-    public func getNotTrustTicketTokensByTicketContract(ticketTrustContractAddress : String , ticketContractAddress : String,owner : String,dmaNodelUrl : String,Success : @escaping ((NSMutableArray) -> ()),Failed : @escaping ((NSMutableDictionary) -> ())){
+    public func getOffShelves(ticketContractAddress : String,owner : String,dmaNodelUrl : String,Success : @escaping ((NSMutableArray) -> ()),Failed : @escaping ((NSMutableDictionary) -> ())){
         DMAHttpUtil.getServerData(url: dmaNodelUrl + aseet_URL, param: ["contractAddress":ticketContractAddress,"owner":owner,"pageSize":9999999,"pageNumber":1], Success: { (dic) in
             DispatchQueue.global().async {
                 let tokenArr : NSMutableArray = []
@@ -287,8 +287,7 @@ public class TicketTrustService : NSObject{
     ///   - Failed: 失败 json
     public func getTickSlod(ticketTrustContractAddress : String , ticketContractAddress : String,owner : String,dmaNodelUrl : String,Success : @escaping ((Int) -> ()),Failed : @escaping ((NSMutableDictionary) -> ())){
         let urlStr = url
-        let trusService = TicketTrustService(url: urlStr)
-        var result = trusService.getTokenByTicketContractInOnSale(ticketTrustContractAddress: ticketTrustContractAddress, ticketContractAddress: ticketContractAddress)
+        var result = getTokenByTicketContractInOnSale(ticketTrustContractAddress: ticketTrustContractAddress, ticketContractAddress: ticketContractAddress)
         ///计算商城库存
         let tokenIndexArr : NSMutableArray = []
         guard case .success(let dic) = result else{
@@ -320,7 +319,7 @@ public class TicketTrustService : NSObject{
                 tokenIndexArr.add("\(tokenIdsArr[i])")
             }
         }
-        getNotTrustTicketTokensByTicketContract(ticketTrustContractAddress: ticketTrustContractAddress, ticketContractAddress: ticketContractAddress, owner: owner, dmaNodelUrl: dmaNodelUrl, Success: { (tokenArr) in
+        getOffShelves(ticketContractAddress: ticketContractAddress, owner: owner, dmaNodelUrl: dmaNodelUrl, Success: { (tokenArr) in
             DispatchQueue.global().async {
                 let aseert = AssetManagementService(url: urlStr)
                 result = aseert.totalSupply(contractAddress: ticketContractAddress)
@@ -332,6 +331,7 @@ public class TicketTrustService : NSObject{
                     print("seach token error")
                     return
                 }
+                print("ticketContractAddress is \(ticketContractAddress)")
                 print("inventory is \(inventory)")
                 print("noOnsale is \(tokenArr.count)")
                 print("total token is \(tokenNumebr)")
@@ -350,7 +350,7 @@ public class TicketTrustService : NSObject{
      * @param ticketTrustContractAddress
      * @return
      */
-    public func getOrderRecordAll(ticketTrustContractAddress : String ,dmaNodelUrl : String,Success : @escaping (([TicketOrderInfo?]?) ->()),Failed : @escaping ServerResultSuccessResult){
+    public func getOrders(ticketTrustContractAddress : String ,dmaNodelUrl : String,Success : @escaping (([TicketOrderInfo?]?) ->()),Failed : @escaping ServerResultSuccessResult){
         DMAHttpUtil.getServerData(url: dmaNodelUrl + order_URL, param: ["trustAddress":ticketTrustContractAddress], Success: { (dic) in
             guard let data = dic["data"] as? NSArray else{
                 return
@@ -359,12 +359,16 @@ public class TicketTrustService : NSObject{
         }, Failed: Failed)
     }
     
-    /**
-     * 获取与address有关的订单记录
-     *
-     * @return
-     */
-    public func getOrderRecordByAddress(ticketTrustContractAddress : String = "" , userAddress : String ,dmaNodelUrl : String,Success : @escaping (([TicketOrderInfo?]?) ->()),Failed : @escaping ServerResultSuccessResult){
+    
+    /// 获取订单记录
+    ///
+    /// - Parameters:
+    ///   - ticketTrustContractAddress: 托管地址
+    ///   - userAddress: 查询指定的用户地址
+    ///   - dmaNodelUrl: 节点地址
+    ///   - Success: Success description
+    ///   - Failed: Failed description
+    public func getOrders(ticketTrustContractAddress : String = "" , userAddress : String = "" ,dmaNodelUrl : String,Success : @escaping (([TicketOrderInfo?]?) ->()),Failed : @escaping ServerResultSuccessResult){
         DMAHttpUtil.getServerData(url: dmaNodelUrl + order_URL, param: ["trustAddress":ticketTrustContractAddress,"form":userAddress,"to":userAddress], Success: { (dic) in
             guard let data = dic["data"] as? NSArray else{
                 return
@@ -380,14 +384,18 @@ public class TicketTrustService : NSObject{
      *
      * @return
      */
-    public func getOrderRecordToAddress(ticketTrustContractAddress : String = "" , userAddress : String ,dmaNodelUrl : String,Success : @escaping (([TicketOrderInfo?]?) ->()),Failed : @escaping ServerResultSuccessResult){
+    public func getOrderToAddress(userAddress : String ,dmaNodelUrl : String,Success : @escaping (([TicketOrderInfo?]?) ->()),Failed : @escaping ServerResultSuccessResult){
         DMAHttpUtil.getServerData(url: dmaNodelUrl + order_URL, param: ["to":userAddress], Success: { (dic) in
             guard let data = dic["data"] as? NSArray else{
                 return
             }
+            print(dic)
             Success([TicketOrderInfo].deserialize(from: data))
         }, Failed: Failed)
     }
+    
+    
+    
     
     /**
      * 获取订单详情
