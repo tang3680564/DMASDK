@@ -1,18 +1,20 @@
 PODS:
-  - Alamofire (4.8.2)
+  - Alamofire (4.9.1)
   - BigInt (3.1.0):
     - SipHash (~> 1.2)
   - CryptoSwift (0.15.0)
-  - ElastosCarrierSDK (5.3.2)
-  - HandyJSON (5.0.0)
-  - PromiseKit (6.10.0):
-    - PromiseKit/CorePromise (= 6.10.0)
-    - PromiseKit/Foundation (= 6.10.0)
-    - PromiseKit/UIKit (= 6.10.0)
-  - PromiseKit/CorePromise (6.10.0)
-  - PromiseKit/Foundation (6.10.0):
+  - DMAELASDKKeyPair (1.0.6)
+  - DMAELASDKTEST (1.0.5)
+  - ElastosCarrierSDK (5.3.4)
+  - HandyJSON (5.0.1)
+  - PromiseKit (6.12.0):
+    - PromiseKit/CorePromise (= 6.12.0)
+    - PromiseKit/Foundation (= 6.12.0)
+    - PromiseKit/UIKit (= 6.12.0)
+  - PromiseKit/CorePromise (6.12.0)
+  - PromiseKit/Foundation (6.12.0):
     - PromiseKit/CorePromise
-  - PromiseKit/UIKit (6.10.0):
+  - PromiseKit/UIKit (6.12.0):
     - PromiseKit/CorePromise
   - Result (4.1.0)
   - scrypt (2.0):
@@ -32,15 +34,19 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 4.7)
+  - DMAELASDKKeyPair
+  - DMAELASDKTEST
   - ElastosCarrierSDK (~> 5.3.2)
   - HandyJSON (~> 5.0.0)
   - web3swift (~> 1.1.10)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - Alamofire
     - BigInt
     - CryptoSwift
+    - DMAELASDKKeyPair
+    - DMAELASDKTEST
     - ElastosCarrierSDK
     - HandyJSON
     - PromiseKit
@@ -52,12 +58,14 @@ SPEC REPOS:
     - web3swift
 
 SPEC CHECKSUMS:
-  Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
+  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   BigInt: 76b5dfdfa3e2e478d4ffdf161aeede5502e2742f
   CryptoSwift: 769f58a9e89f64e8796c2e59ce5f002dc81a2438
-  ElastosCarrierSDK: 7adb827c3a68f9afb4916b1a9cb15bee60adb772
-  HandyJSON: 992f2d661716d6a91de82d0056927bc7813b5770
-  PromiseKit: 1fdaeb6c0a94a5114fcb814ff3d772b86886ad4e
+  DMAELASDKKeyPair: 2fa10eab9895dd2f408d47ac88408c801089f771
+  DMAELASDKTEST: 0930a17152fde98af7fb8be083dbf1497c099e36
+  ElastosCarrierSDK: c02a7d3b117caccc6f119abb6f4a88c9018ef511
+  HandyJSON: d45b8415c501e3affc59ca9762c1197ff0feb646
+  PromiseKit: c06835ba442ce5454ce3cdde470232804a6e4ff8
   Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
   scrypt: 3fe5b1a3b0976f97cd87488673a8f7c65708cc84
   secp256k1_swift: 4fc5c4b2d2c6d21ee8ccb868cdc92da12f38bed9
@@ -65,6 +73,6 @@ SPEC CHECKSUMS:
   SwiftRLP: 9de2c9512a9a6bf0909cd84cc143a7ff1aff7820
   web3swift: 843dd5295d2ae755e6f80e9e0bdabe2868a5c7d8
 
-PODFILE CHECKSUM: 8bef83e8e1e8d5aa310a7ce610754410c7c6b134
+PODFILE CHECKSUM: 284388ca4511630d3e6ba6e53cd3fbb1fe5764e8
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.8.0

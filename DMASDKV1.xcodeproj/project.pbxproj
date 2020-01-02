@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		0DF943739E816E6A25916D56 /* Pods_DMASDKV1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70A38906F026B6EDA704A972 /* Pods_DMASDKV1.framework */; };
 		F8125C0D2314F50700B813DB /* DMASDKV1.h in Headers */ = {isa = PBXBuildFile; fileRef = F8125C0B2314F50700B813DB /* DMASDKV1.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F8125C162314F5A800B813DB /* ElastosSdkKeypair.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8125C142314F5A800B813DB /* ElastosSdkKeypair.framework */; };
-		F8125C172314F5A800B813DB /* ElastosSdkWallet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8125C152314F5A800B813DB /* ElastosSdkWallet.framework */; };
 		F8125C7A2314FD1400B813DB /* AssetManagementService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C222314FD1300B813DB /* AssetManagementService.swift */; };
 		F8125C7B2314FD1400B813DB /* MerchantServiceConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C242314FD1300B813DB /* MerchantServiceConfig.swift */; };
 		F8125C7C2314FD1400B813DB /* PaymentConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C252314FD1300B813DB /* PaymentConfig.swift */; };
@@ -35,13 +33,6 @@
 		F8125CB42314FD1400B813DB /* GroupHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C772314FD1400B813DB /* GroupHelper.swift */; };
 		F8125CB52314FD1400B813DB /* NetworkReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C782314FD1400B813DB /* NetworkReachabilityManager.swift */; };
 		F8125CB62314FD1400B813DB /* MessageBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C792314FD1400B813DB /* MessageBase.swift */; };
-		F8125D0723162C3200B813DB /* SwiftHex.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8125D0023162C3100B813DB /* SwiftHex.framework */; };
-		F8125D0823162C3200B813DB /* SwiftBase58.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8125D0123162C3100B813DB /* SwiftBase58.framework */; };
-		F8125D0923162C3200B813DB /* SwiftGMP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8125D0223162C3100B813DB /* SwiftGMP.framework */; };
-		F8125D0A23162C3200B813DB /* SwiftIpfsApi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8125D0323162C3200B813DB /* SwiftIpfsApi.framework */; };
-		F8125D0B23162C3200B813DB /* SwiftMultiaddr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8125D0423162C3200B813DB /* SwiftMultiaddr.framework */; };
-		F8125D0C23162C3200B813DB /* SwiftMultihash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8125D0523162C3200B813DB /* SwiftMultihash.framework */; };
-		F8125D0D23162C3200B813DB /* VarInt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8125D0623162C3200B813DB /* VarInt.framework */; };
 		F823CD112320AD6D00BCF66B /* Web3Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = F823CD102320AD6C00BCF66B /* Web3Util.swift */; };
 		F82A435B23BD901F0051407A /* ETHToken721Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82A435923BD901E0051407A /* ETHToken721Service.swift */; };
 		F82A435C23BD901F0051407A /* ETHToken20Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82A435A23BD901F0051407A /* ETHToken20Service.swift */; };
@@ -60,8 +51,6 @@
 		F8125C082314F50700B813DB /* DMASDKV1.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DMASDKV1.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8125C0B2314F50700B813DB /* DMASDKV1.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DMASDKV1.h; sourceTree = "<group>"; };
 		F8125C0C2314F50700B813DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F8125C142314F5A800B813DB /* ElastosSdkKeypair.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ElastosSdkKeypair.framework; sourceTree = "<group>"; };
-		F8125C152314F5A800B813DB /* ElastosSdkWallet.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ElastosSdkWallet.framework; sourceTree = "<group>"; };
 		F8125C222314FD1300B813DB /* AssetManagementService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssetManagementService.swift; sourceTree = "<group>"; };
 		F8125C242314FD1300B813DB /* MerchantServiceConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MerchantServiceConfig.swift; sourceTree = "<group>"; };
 		F8125C252314FD1300B813DB /* PaymentConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentConfig.swift; sourceTree = "<group>"; };
@@ -86,13 +75,6 @@
 		F8125C772314FD1400B813DB /* GroupHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupHelper.swift; sourceTree = "<group>"; };
 		F8125C782314FD1400B813DB /* NetworkReachabilityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkReachabilityManager.swift; sourceTree = "<group>"; };
 		F8125C792314FD1400B813DB /* MessageBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageBase.swift; sourceTree = "<group>"; };
-		F8125D0023162C3100B813DB /* SwiftHex.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftHex.framework; path = Carthage/Build/iOS/SwiftHex.framework; sourceTree = "<group>"; };
-		F8125D0123162C3100B813DB /* SwiftBase58.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftBase58.framework; path = Carthage/Build/iOS/SwiftBase58.framework; sourceTree = "<group>"; };
-		F8125D0223162C3100B813DB /* SwiftGMP.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftGMP.framework; path = Carthage/Build/iOS/SwiftGMP.framework; sourceTree = "<group>"; };
-		F8125D0323162C3200B813DB /* SwiftIpfsApi.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftIpfsApi.framework; path = Carthage/Build/iOS/SwiftIpfsApi.framework; sourceTree = "<group>"; };
-		F8125D0423162C3200B813DB /* SwiftMultiaddr.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftMultiaddr.framework; path = Carthage/Build/iOS/SwiftMultiaddr.framework; sourceTree = "<group>"; };
-		F8125D0523162C3200B813DB /* SwiftMultihash.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftMultihash.framework; path = Carthage/Build/iOS/SwiftMultihash.framework; sourceTree = "<group>"; };
-		F8125D0623162C3200B813DB /* VarInt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VarInt.framework; path = Carthage/Build/iOS/VarInt.framework; sourceTree = "<group>"; };
 		F823CD102320AD6C00BCF66B /* Web3Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Web3Util.swift; sourceTree = "<group>"; };
 		F82A435923BD901E0051407A /* ETHToken721Service.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ETHToken721Service.swift; sourceTree = "<group>"; };
 		F82A435A23BD901F0051407A /* ETHToken20Service.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ETHToken20Service.swift; sourceTree = "<group>"; };
@@ -109,15 +91,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F8125D0723162C3200B813DB /* SwiftHex.framework in Frameworks */,
-				F8125D0823162C3200B813DB /* SwiftBase58.framework in Frameworks */,
-				F8125D0923162C3200B813DB /* SwiftGMP.framework in Frameworks */,
-				F8125D0A23162C3200B813DB /* SwiftIpfsApi.framework in Frameworks */,
-				F8125D0B23162C3200B813DB /* SwiftMultiaddr.framework in Frameworks */,
-				F8125D0C23162C3200B813DB /* SwiftMultihash.framework in Frameworks */,
-				F8125D0D23162C3200B813DB /* VarInt.framework in Frameworks */,
-				F8125C172314F5A800B813DB /* ElastosSdkWallet.framework in Frameworks */,
-				F8125C162314F5A800B813DB /* ElastosSdkKeypair.framework in Frameworks */,
 				0DF943739E816E6A25916D56 /* Pods_DMASDKV1.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -128,13 +101,6 @@
 		4CB9FEABC979D0AF8EA3561C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				F8125D0123162C3100B813DB /* SwiftBase58.framework */,
-				F8125D0223162C3100B813DB /* SwiftGMP.framework */,
-				F8125D0023162C3100B813DB /* SwiftHex.framework */,
-				F8125D0323162C3200B813DB /* SwiftIpfsApi.framework */,
-				F8125D0423162C3200B813DB /* SwiftMultiaddr.framework */,
-				F8125D0523162C3200B813DB /* SwiftMultihash.framework */,
-				F8125D0623162C3200B813DB /* VarInt.framework */,
 				70A38906F026B6EDA704A972 /* Pods_DMASDKV1.framework */,
 			);
 			name = Frameworks;
@@ -173,8 +139,6 @@
 		F8125C132314F5A100B813DB /* SDK */ = {
 			isa = PBXGroup;
 			children = (
-				F8125C142314F5A800B813DB /* ElastosSdkKeypair.framework */,
-				F8125C152314F5A800B813DB /* ElastosSdkWallet.framework */,
 			);
 			path = SDK;
 			sourceTree = "<group>";

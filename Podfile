@@ -1,3 +1,4 @@
+source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '12.0'
 project 'DMASDKV1'
 
@@ -9,5 +10,7 @@ target 'DMASDKV1' do
     pod 'Alamofire', '~> 4.7'
     pod 'HandyJSON', '~> 5.0.0'
     pod 'ElastosCarrierSDK', '~> 5.3.2'
+    pod 'DMAELASDKTEST'
+    pod 'DMAELASDKKeyPair'
 end
 
