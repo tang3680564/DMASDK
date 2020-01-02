@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		41C2096BDE2530ECA088F6D0 /* Pods_DMASDKV2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB333711B687309F1B33CB68 /* Pods_DMASDKV2.framework */; };
 		F82A441223BDBDC70051407A /* DMASDKV2.h in Headers */ = {isa = PBXBuildFile; fileRef = F82A441023BDBDC70051407A /* DMASDKV2.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F82A447B23BDBE370051407A /* PlatformContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82A441B23BDBE370051407A /* PlatformContract.swift */; };
 		F82A447C23BDBE370051407A /* ChargeActivityContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82A441C23BDBE370051407A /* ChargeActivityContract.swift */; };
@@ -28,20 +29,12 @@
 		F82A44BC23BDBE370051407A /* ChargeActivityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82A447723BDBE370051407A /* ChargeActivityService.swift */; };
 		F82A44BD23BDBE370051407A /* MerchantService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82A447823BDBE370051407A /* MerchantService.swift */; };
 		F82A44BE23BDBE370051407A /* PledgeActivityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82A447923BDBE370051407A /* PledgeActivityService.swift */; };
-		F82A4A7A23BDC05E0051407A /* DMASDKV1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F82A4A5123BDC04D0051407A /* DMASDKV1.framework */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		F82A4A5023BDC04D0051407A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F82A4A4C23BDC04D0051407A /* DMASDKV1.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = F8125C082314F50700B813DB;
-			remoteInfo = DMASDKV1;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
+		1B685C1F1A3C1910F615511F /* Pods-DMASDKV2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DMASDKV2.debug.xcconfig"; path = "Target Support Files/Pods-DMASDKV2/Pods-DMASDKV2.debug.xcconfig"; sourceTree = "<group>"; };
+		77EC70799176C7890F6AAA21 /* Pods-DMASDKV2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DMASDKV2.release.xcconfig"; path = "Target Support Files/Pods-DMASDKV2/Pods-DMASDKV2.release.xcconfig"; sourceTree = "<group>"; };
+		DB333711B687309F1B33CB68 /* Pods_DMASDKV2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DMASDKV2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F82A440D23BDBDC70051407A /* DMASDKV2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DMASDKV2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F82A441023BDBDC70051407A /* DMASDKV2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DMASDKV2.h; sourceTree = "<group>"; };
 		F82A441123BDBDC70051407A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -65,7 +58,6 @@
 		F82A447723BDBE370051407A /* ChargeActivityService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChargeActivityService.swift; sourceTree = "<group>"; };
 		F82A447823BDBE370051407A /* MerchantService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MerchantService.swift; sourceTree = "<group>"; };
 		F82A447923BDBE370051407A /* PledgeActivityService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PledgeActivityService.swift; sourceTree = "<group>"; };
-		F82A4A4C23BDC04D0051407A /* DMASDKV1.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = DMASDKV1.xcodeproj; path = DMASDKV2/FromeWork/DMASDK/DMASDKV1.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,20 +65,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F82A4A7A23BDC05E0051407A /* DMASDKV1.framework in Frameworks */,
+				41C2096BDE2530ECA088F6D0 /* Pods_DMASDKV2.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D751D2FF0A90EF24060AAFD8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1B685C1F1A3C1910F615511F /* Pods-DMASDKV2.debug.xcconfig */,
+				77EC70799176C7890F6AAA21 /* Pods-DMASDKV2.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		F82A440323BDBDC70051407A = {
 			isa = PBXGroup;
 			children = (
-				F82A4A4C23BDC04D0051407A /* DMASDKV1.xcodeproj */,
 				F82A440F23BDBDC70051407A /* DMASDKV2 */,
 				F82A440E23BDBDC70051407A /* Products */,
 				F82A4A7923BDC05E0051407A /* Frameworks */,
+				D751D2FF0A90EF24060AAFD8 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -183,17 +184,10 @@
 			path = FromeWork;
 			sourceTree = "<group>";
 		};
-		F82A4A4D23BDC04D0051407A /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				F82A4A5123BDC04D0051407A /* DMASDKV1.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		F82A4A7923BDC05E0051407A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DB333711B687309F1B33CB68 /* Pods_DMASDKV2.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -216,6 +210,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F82A441523BDBDC70051407A /* Build configuration list for PBXNativeTarget "DMASDKV2" */;
 			buildPhases = (
+				DD6F1F040AFAB04010C34151 /* [CP] Check Pods Manifest.lock */,
 				F82A440823BDBDC70051407A /* Headers */,
 				F82A440923BDBDC70051407A /* Sources */,
 				F82A440A23BDBDC70051407A /* Frameworks */,
@@ -254,28 +249,12 @@
 			mainGroup = F82A440323BDBDC70051407A;
 			productRefGroup = F82A440E23BDBDC70051407A /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = F82A4A4D23BDC04D0051407A /* Products */;
-					ProjectRef = F82A4A4C23BDC04D0051407A /* DMASDKV1.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				F82A440C23BDBDC70051407A /* DMASDKV2 */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		F82A4A5123BDC04D0051407A /* DMASDKV1.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = DMASDKV1.framework;
-			remoteRef = F82A4A5023BDC04D0051407A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		F82A440B23BDBDC70051407A /* Resources */ = {
@@ -295,6 +274,31 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		DD6F1F040AFAB04010C34151 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DMASDKV2-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F82A440923BDBDC70051407A /* Sources */ = {
@@ -442,6 +446,7 @@
 		};
 		F82A441623BDBDC70051407A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1B685C1F1A3C1910F615511F /* Pods-DMASDKV2.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
@@ -479,6 +484,7 @@
 		};
 		F82A441723BDBDC70051407A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 77EC70799176C7890F6AAA21 /* Pods-DMASDKV2.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;

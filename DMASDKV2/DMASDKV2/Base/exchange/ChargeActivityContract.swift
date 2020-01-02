@@ -9,7 +9,7 @@
 import UIKit
 import BigInt
 import web3swift
-import DMASDKV1
+
 
 class ChargeActivityContract : NSObject{
     

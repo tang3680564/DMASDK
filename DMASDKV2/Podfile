@@ -1,0 +1,12 @@
+source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '12.0'
+project 'DMASDKV2'
+
+inhibit_all_warnings!
+use_frameworks!
+
+target 'DMASDKV2' do
+   pod 'web3swift', '~> 1.1.10'    
+   pod 'Alamofire', '~> 4.7'
+end
+

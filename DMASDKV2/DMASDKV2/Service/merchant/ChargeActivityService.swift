@@ -7,7 +7,6 @@
 //  收费活动合约
 
 import Foundation
-import Alamofire
 import BigInt
 import web3swift
 
