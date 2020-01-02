@@ -135,11 +135,11 @@ open class ElaDIDService: NSObject {
     ///   - mnemonic: 助记词
     ///   - didProfile: did的规范类
     /// - Returns: 交易成功的 hash
-    public func setDIDInfo(mnemonic : String,didProfile : Profile) -> String{
-        let ela = ElaDID()
-        let remark = NSMutableDictionary(dictionary: didProfile.toJSON()!)
-        return ela.setDidInfo(mnemonic: mnemonic,remark : remark,nodeUrl : didInfoUrl)
-    }
+//    public func setDIDInfo(mnemonic : String,didProfile : Profile) -> String{
+//        let ela = ElaDID()
+//        let remark = NSMutableDictionary(dictionary: didProfile.toJSON()!)
+//        return ela.setDidInfo(mnemonic: mnemonic,remark : remark,nodeUrl : didInfoUrl)
+//    }
     
     
     /// 设置 did 信息
@@ -173,21 +173,21 @@ open class ElaDIDService: NSObject {
     ///   - status: 信息的状态
     ///   - Success: 成功回调
     ///   - Failed: 失败回调
-    public func getDIDInfo(didAddress : String,status : Propertys.Status,Success : @escaping ServerResultSuccessResult,Failed : @escaping ServerResultSuccessResult){
-        let ela = ElaDID()
-        var baseUrl = didInfoUrl + "/api/1/didexplorer/did/"
-        baseUrl += didAddress
-        baseUrl += "/status/"
-        switch status {
-            case .normal :
-            baseUrl += "normal"
-            case .deprecated :
-            baseUrl += "deprecated"
-            case .all :
-            baseUrl += "all"
-        }
-        ela.getDidInfo(baseUrl: baseUrl, Success: Success, Failed: Failed)
-    }
+//    public func getDIDInfo(didAddress : String,status : Propertys.Status,Success : @escaping ServerResultSuccessResult,Failed : @escaping ServerResultSuccessResult){
+//        let ela = ElaDID()
+//        var baseUrl = didInfoUrl + "/api/1/didexplorer/did/"
+//        baseUrl += didAddress
+//        baseUrl += "/status/"
+//        switch status {
+//            case .normal :
+//            baseUrl += "normal"
+//            case .deprecated :
+//            baseUrl += "deprecated"
+//            case .all :
+//            baseUrl += "all"
+//        }
+//        ela.getDidInfo(baseUrl: baseUrl, Success: Success, Failed: Failed)
+//    }
     
     
     /// 根据交易 hash 查询设置的 did 信息

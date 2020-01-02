@@ -51,6 +51,9 @@ class DeployHelper: NSObject {
         case .success(let res)?:
             return self.waitSearchReceipt(web3: web3, hash: res.hash)
         case .failure(let error)?:
+            if error.localizedDescription.contains("replacement"){
+                return ContractResult.failure(error: "Other operations in progress")
+            }
             return ContractResult.failure(error: error)
         case .none:
             return ContractResult.failure(error: DMASDKError.RPC_REQUEST_FAILED.getCodeAndMsg())
@@ -69,8 +72,8 @@ class DeployHelper: NSObject {
     
     
     func getAbi(abi:String) -> String {
-        let path = Bundle(identifier: "starrymedia.DMASDKV1")?.path(forResource: abi, ofType: "json")
-//        let path = Bundle.main.path(forResource: abi, ofType: "json")
+//        let path = Bundle(identifier: "starrymedia.DMASDKV1")?.path(forResource: abi, ofType: "json")
+        let path = Bundle.main.path(forResource: abi, ofType: "json")
         let data = NSData.init(contentsOfFile: path!)
         let abiString = String.init(data: data! as Data, encoding:.utf8)
         return abiString!

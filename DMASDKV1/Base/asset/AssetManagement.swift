@@ -13,7 +13,7 @@ import HandyJSON
 
 public class AssetManagement: NSObject {
 //NFTokenDMA
-    let abi = "NFTokenETH"
+    let abi = "NFTokenDMA"
     
     var url = defultURL
     

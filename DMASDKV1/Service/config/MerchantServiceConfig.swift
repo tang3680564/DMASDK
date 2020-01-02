@@ -27,8 +27,10 @@ public let defaultGasLimit = "6002513"
 public let transferGasLimit = "21000"
 public let corsTranferGasLimit = "30744"
 
+///分成比例
 public let firstExpenses = "50"
 public let secondExpenses = "10"
+
 public let expenses = "10"
 public let API_URL = "http://dmaconnect.starrymedia.com/api/1.0/"
 public let merchainContract = "contract/"

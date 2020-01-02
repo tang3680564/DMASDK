@@ -18,6 +18,21 @@ public class ETHToken20Service : NSObject {
     }
     
     
+    /// 发布合约
+    ///
+    /// - Parameters:
+    ///   - privateKey: 私钥
+    ///   - name: 合约名称
+    ///   - symbol: 合约简介
+    ///   - totalSupply: 发行总量
+    ///   - tokenDecimals: 代币允许的小数位
+    ///   - gasLimit: gasLimit description
+    ///   - gasPrice: gasPrice description
+    /// - Returns: ContractResult
+    func setupDeploy(privateKey:String,name:String,symbol:String,totalSupply:String,tokenDecimals : Int  = 18,gasLimit:String,gasPrice:String) -> ContractResult {
+        return tokenContract.setupDeploy(privateKey: privateKey, name: name, symbol: symbol, totalSupply: totalSupply, tokenDecimals: tokenDecimals, gasLimit: gasLimit, gasPrice: gasPrice)
+    }
+    
     /**
      * 返回string类型的ERC20代币的名字
      *

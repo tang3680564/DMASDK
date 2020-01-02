@@ -11,14 +11,12 @@ import web3swift
 import BigInt
 import HandyJSON
 
-
 class ContractMethodHelper: NSObject {
     
     var nodeURL = assetManagementUrl!
     
     private static var randomInt : BigUInt = 0
     
-    private static var address = ""
   
     
     required init(url : String) {
@@ -42,11 +40,6 @@ class ContractMethodHelper: NSObject {
         var options = Web3Options()
         if !privateKey.isEmpty {
             let keystoreJson = ethWallet.exportKeystoreFromPrivateKeyAndPassword(privateKey: privateKey, passWord: "A")
-            let address = ethWallet.exportAddressFromPrivateKey(privateKey: privateKey) ?? ""
-            if ContractMethodHelper.address != address{
-                ContractMethodHelper.address = address
-                ContractMethodHelper.randomInt = 0
-            }
             if keystoreJson != nil {
                 let keystore = EthereumKeystoreV3.init(keystoreJson!)
                 let keystoreManager = KeystoreManager([keystore!])
@@ -69,6 +62,7 @@ class ContractMethodHelper: NSObject {
 //                    return ContractResult.failure(error: "转账失败")
 //                }
                 var transfer = contraction?.method(method, parameters: parameters, extraData: Data(), options: options)?.transaction
+                
                 let random = web3?.eth.getTransactionCount(address: account)
                 switch random{
                 case .success(let res)?:
@@ -92,12 +86,18 @@ class ContractMethodHelper: NSObject {
                     case .success(let res)?:
                         return ContractResult.success(value:["hash":res.hash])
                     case .failure(let error)?:
+                        if error.localizedDescription.contains("replacement"){
+                            return ContractResult.failure(error: "Other operations in progress")
+                        }
                         return ContractResult.failure(error: error)
                     case .none:
                         return ContractResult.failure(error: DMASDKError.RPC_REQUEST_FAILED.getCodeAndMsg())
                     }
                 case .failure(let error)?:
                     print(error)
+                    if error.localizedDescription.contains("replacement"){
+                        return ContractResult.failure(error: "Other operations in progress")
+                    }
                     return ContractResult.failure(error: error)
                 case .none:
                     return ContractResult.failure(error: DMASDKError.RPC_REQUEST_FAILED.getCodeAndMsg())
@@ -112,6 +112,9 @@ class ContractMethodHelper: NSObject {
             case .success(let res)?:
                 return ContractResult.success(value: res)
             case .failure(let error)?:
+                if error.localizedDescription.contains("replacement"){
+                    return ContractResult.failure(error: "Other operations in progress")
+                }
                 return ContractResult.failure(error: error.localizedDescription)
 
             case .none:
@@ -149,7 +152,7 @@ class ContractMethodHelper: NSObject {
                 case .success(let res)?:
                     print("opopoop")
                     print(res)
-                    return ContractResult.success(value:["gas":res])
+                    return ContractResult.success(value:["gas":"\(res)"])
                 case .failure(let error)?:
                     print(error)
                     return ContractResult.failure(error: error)
@@ -176,8 +179,8 @@ class ContractMethodHelper: NSObject {
     }
     
     func getAbi(abi:String) -> String {
-       let path = Bundle(identifier: "starrymedia.DMASDKV1")?.path(forResource: abi, ofType: "json")
-//        let path = Bundle.main.path(forResource: abi, ofType: "json")
+//       let path = Bundle(identifier: "starrymedia.DMASDKV1")?.path(forResource: abi, ofType: "json")
+        let path = Bundle.main.path(forResource: abi, ofType: "json")
         let data = NSData.init(contentsOfFile: path!)
         let abiString = String.init(data: data! as Data, encoding:.utf8)
         return abiString!

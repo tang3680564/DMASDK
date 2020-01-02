@@ -11,20 +11,20 @@ import web3swift
 import BigInt
 
 extension String{
+    
+    ///wei zhuan  value
     func getWeb3ValueInWei() -> String?{
         let value = NSDecimalNumber(string: self).multiplying(by: NSDecimalNumber(string: defaultGasPrice))
-        print(value.stringValue)
         if let bWeiValue = BigUInt(value.stringValue){
-            print(bWeiValue)
             let value =  Web3.Utils.formatToPrecision(bWeiValue,formattingDecimals : 8)
             return value
         }
        return "0"
     }
     
+    ///value zhuan wei
     func getWeb3WeiInValue() -> String?{
         if let bWeiValue = BigUInt(self){
-            print(bWeiValue)
             let value =  Web3.Utils.formatToEthereumUnits(bWeiValue)
             return value
         }

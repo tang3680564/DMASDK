@@ -9,6 +9,8 @@
 import Foundation
 import Alamofire
 
+let error_Str = "error_Str"
+
 public typealias ServerResultSuccessResult = (NSMutableDictionary) -> ()
 
 class DMAHttpUtil: NSObject {

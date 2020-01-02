@@ -119,11 +119,11 @@ class MessageBase : NSObject{
             
             let hiveBootstrapNode = HiveBootstrapNode()
             hiveBootstrapNode.ipv4 = "18.217.147.205"
-            hiveBootstrapNode.port = "9095"
+            hiveBootstrapNode.port = "9094"
             options.hivebootstrapNodes?.append(hiveBootstrapNode)
             
             hiveBootstrapNode.ipv4 = "18.219.53.133"
-            hiveBootstrapNode.port = "9095"
+            hiveBootstrapNode.port = "9094"
             options.hivebootstrapNodes?.append(hiveBootstrapNode)
             
             options.bootstrapNodes?.append(bootstrapNode)

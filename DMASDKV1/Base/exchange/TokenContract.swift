@@ -17,6 +17,27 @@ class TokenContract: NSObject {
     required init(url : String) {
         self.url = url
     }
+    
+    
+    /// 发布合约
+    ///
+    /// - Parameters:
+    ///   - privateKey: 私钥
+    ///   - name: 合约名称
+    ///   - symbol: 合约简介
+    ///   - totalSupply: 发行总量
+    ///   - tokenDecimals: 代币允许的小数位
+    ///   - gasLimit: gasLimit description
+    ///   - gasPrice: gasPrice description
+    /// - Returns: ContractResult
+    func setupDeploy(privateKey:String,name:String,symbol:String,totalSupply:String,tokenDecimals : Int ,gasLimit:String,gasPrice:String) -> ContractResult {
+        let deployHelper = DeployHelper(url: url)
+        let decimals = pow(Double(10), Double(tokenDecimals))
+        let totalSupply = NSDecimalNumber(string: totalSupply).multiplying(by: NSDecimalNumber(value: decimals)).doubleValue
+        let param = [name ,symbol ,NSNumber(value: totalSupply).doubleValue,tokenDecimals] as [Any]
+        return deployHelper.setupDeploy(privateKey: privateKey, abi: abi, bytecode: "TokenDMAData", parameters: param as [AnyObject], gasLimit: gasLimit, gasPrice: gasPrice)
+    }
+    
     /// 资产增发
     ///
     /// - Parameters:
@@ -41,11 +62,31 @@ class TokenContract: NSObject {
     ///   - spender: 被授权者地址
     ///   - value: 授权金额
     /// - Returns: hash
-    func approve(privateKey:String,contractAddress:String,spender:String,value:String,gasLimit:String,gasPrice:String,getGasFee : Bool = false) -> ContractResult {
+    func approve(privateKey:String,contractAddress:String,spender:String,value:String,gasLimit:String = "",gasPrice:String = "",getGasFee : Bool = false) -> ContractResult {
         let param = [spender,Web3.Utils.parseToBigUInt(value, units: .eth) as Any] as [Any]
         let contract = ContractMethodHelper(url: url)
+        
+        var gasLimit = gasLimit
+        var gasPrice = gasPrice
+        var getGasFee = getGasFee
+        
+        if !getGasFee{
+            let result = contract.getContract(abi: abi,contractAddress:contractAddress,method: "approve", privateKey: privateKey, parameters: param as [AnyObject], gasLimit: gasLimit, gasPrice: gasPrice,getGasFee : true)
+            let isError = limIsEmpty(gasLimit: &gasLimit, gasPrice: &gasPrice, getGasFee: &getGasFee, result: result)
+            if let result = isError{
+                return result
+            }
+        }else{
+            limAndPriceIsEmpty(gasLimit: &gasLimit, gasPrice: &gasPrice)
+        }
         let result = contract.getContract(abi: abi,contractAddress:contractAddress,method: "approve", privateKey: privateKey, parameters: param as [AnyObject], gasLimit: gasLimit, gasPrice: gasPrice,getGasFee : getGasFee)
-        return result
+        guard case .success(let dic) = result else{
+            return result
+        }
+        guard let hash = dic["hash"] as? String else{
+            return result
+        }
+        return ContractResult.success(value: ["hash" : hash,"gas" : gasLimit])
     }
     
     /// 资产销毁

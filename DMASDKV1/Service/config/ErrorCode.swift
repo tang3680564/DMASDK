@@ -8,6 +8,7 @@
 
 import Foundation
 
+let error_Code = "error_Code"
 
 public enum DMASDKError{
     

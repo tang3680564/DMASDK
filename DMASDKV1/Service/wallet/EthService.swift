@@ -122,16 +122,37 @@ open class EthService: NSObject {
     ///   - gasPrice: gas价格 例如Demo
     ///   - gasLimit: gas限制 例如Demo
     /// - Returns: 哈希值
-//    public func tokenTransfer(contractAddress : String ,privatekey:String,to:String,value:String,gasPrice:String,gasLimit:String) -> ContractResult {
-//        let tokenContract = TokenContract()
-//        let e = tokenContract.transfer(privateKey: privatekey, contractAddress: contractAddress, to: to, value: value, gasLimit: gasLimit, gasPrice: gasPrice)
-//        return e
-//    }
+    public func tokenTransfer(contractAddress : String ,privatekey:String,to:String,value:String,gasPrice:String = "",gasLimit:String = "",getGasFee : Bool = false) -> ContractResult {
+        let tokenContract = TokenContract(url: url)
+        var gasLimit = gasLimit
+        var gasPrice = gasPrice
+        var getGasFee = getGasFee
+        if !getGasFee{
+            let result = tokenContract.transfer(privateKey: privatekey, contractAddress: contractAddress, to: to, value: value, gasLimit: gasLimit, gasPrice: gasPrice,getGasFee: true)
+            let isError = limIsEmpty(gasLimit: &gasLimit, gasPrice: &gasPrice, getGasFee: &getGasFee, result: result)
+            if let result = isError{
+                return result
+            }
+        }else{
+            limAndPriceIsEmpty(gasLimit: &gasLimit, gasPrice: &gasPrice)
+        }
+        
+        let e = tokenContract.transfer(privateKey: privatekey, contractAddress: contractAddress, to: to, value: value, gasLimit: gasLimit, gasPrice: gasPrice,getGasFee : getGasFee)
+        return e
+    }
     
     
    
-    public func tokenBalance(contractAddress:String) -> String{
-       return balances(address: contractAddress)
+    public func tokenBalance(contractAddress:String,owner : String) -> String{
+        let tokenContract = TokenContract(url: url)
+        let result = tokenContract.balanceOf(contractAddress:contractAddress,owner:owner)
+        switch result {
+        case .success(let dic):
+            return dic["result"] as! String
+        case .failure(let erro):
+            print(erro)
+            return "erro"
+        }
     }
     /// 转账
     ///
@@ -183,13 +204,6 @@ open class EthService: NSObject {
         return result
     }
     
-//    static public func parseToBigUInt(value : String) -> String{
-//        if let str = EthWallet.parseToBigUInt(value: value){
-//            return str
-//        }
-//        return "0"
-//    }
-    
     func getStatusByHash(hash : String ) -> ContractResult{
         let eth = EthWallet()
         eth.url = url
@@ -201,5 +215,11 @@ open class EthService: NSObject {
         eth.url = url
         return eth.getTransactionReceipt(hash: hash)
     }
+//    static public func parseToBigUInt(value : String) -> String{
+//        if let str = EthWallet.parseToBigUInt(value: value){
+//            return str
+//        }
+//        return "0"
+//    }
     
 }

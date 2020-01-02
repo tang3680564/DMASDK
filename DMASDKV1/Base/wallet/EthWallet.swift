@@ -138,10 +138,11 @@ class EthWallet: NSObject {
         let valuesC = NSDecimalNumber(string: value).adding(0.0001)
         let param = [to,Web3.Utils.parseToBigUInt(valuesC.stringValue, units: .eth)! as Any,Web3.Utils.parseToBigUInt(fee, units: .eth)! as Any] as [Any]
         let contract = ContractMethodHelper(url: url!)
-        let result = contract.getContract(abi: abi,contractAddress:contractAddress,method: "receivePayload", privateKey: privateKey, parameters: param as [AnyObject], gasLimit: "30744", gasPrice: gasPrice,weiValue: valuesC.stringValue,getGasFee: getGasFee)
+        let result = contract.getContract(abi: abi,contractAddress:contractAddress,method: "receivePayload", privateKey: privateKey, parameters: param as [AnyObject], gasLimit: gasLimit, gasPrice: gasPrice,weiValue: valuesC.stringValue,getGasFee: getGasFee)
         
         return result
     }
+    
     
     static public func parseToBigUInt(value : String) -> String?{
         return Web3.Utils.formatToEthereumUnits(BigUInt(value)!)
@@ -170,7 +171,7 @@ class EthWallet: NSObject {
         let result = web3?.eth.getTransactionReceipt(hash)
         switch result {
         case .success(let dic)?:
-            return ContractResult.success(value: ["transactionReceipt":"\(dic)"])
+            return ContractResult.success(value: ["transactionReceipt":dic])
         case .failure(let error)?:
             return ContractResult.failure(error: [error_Str : error.localizedDescription])
         case .none:
