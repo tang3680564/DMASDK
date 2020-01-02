@@ -49,6 +49,7 @@
 		F82A436D23BD90850051407A /* TokenDMA.json in Resources */ = {isa = PBXBuildFile; fileRef = F82A436123BD90840051407A /* TokenDMA.json */; };
 		F82A437223BD90850051407A /* NFTokenDMAData.json in Resources */ = {isa = PBXBuildFile; fileRef = F82A436623BD90840051407A /* NFTokenDMAData.json */; };
 		F82A437723BD97450051407A /* TokenDMAData.json in Resources */ = {isa = PBXBuildFile; fileRef = F82A437623BD97450051407A /* TokenDMAData.json */; };
+		F82A44C023BDBF560051407A /* ETHTransfer.json in Resources */ = {isa = PBXBuildFile; fileRef = F82A44BF23BDBF550051407A /* ETHTransfer.json */; };
 		F8A9810C232F28FC00F3494B /* ErrorCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A9810B232F28FC00F3494B /* ErrorCode.swift */; };
 /* End PBXBuildFile section */
 
@@ -99,6 +100,7 @@
 		F82A436123BD90840051407A /* TokenDMA.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TokenDMA.json; sourceTree = "<group>"; };
 		F82A436623BD90840051407A /* NFTokenDMAData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = NFTokenDMAData.json; sourceTree = "<group>"; };
 		F82A437623BD97450051407A /* TokenDMAData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TokenDMAData.json; sourceTree = "<group>"; };
+		F82A44BF23BDBF550051407A /* ETHTransfer.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ETHTransfer.json; sourceTree = "<group>"; };
 		F8A9810B232F28FC00F3494B /* ErrorCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorCode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -327,6 +329,7 @@
 		F82A435D23BD90840051407A /* abi */ = {
 			isa = PBXGroup;
 			children = (
+				F82A44BF23BDBF550051407A /* ETHTransfer.json */,
 				F82A437623BD97450051407A /* TokenDMAData.json */,
 				F82A436023BD90840051407A /* NFTokenDMA.json */,
 				F82A436123BD90840051407A /* TokenDMA.json */,
@@ -414,6 +417,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F82A44C023BDBF560051407A /* ETHTransfer.json in Resources */,
 				F82A437723BD97450051407A /* TokenDMAData.json in Resources */,
 				F82A436D23BD90850051407A /* TokenDMA.json in Resources */,
 				F82A436C23BD90850051407A /* NFTokenDMA.json in Resources */,
