@@ -28,7 +28,18 @@
 		F82A44BC23BDBE370051407A /* ChargeActivityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82A447723BDBE370051407A /* ChargeActivityService.swift */; };
 		F82A44BD23BDBE370051407A /* MerchantService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82A447823BDBE370051407A /* MerchantService.swift */; };
 		F82A44BE23BDBE370051407A /* PledgeActivityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82A447923BDBE370051407A /* PledgeActivityService.swift */; };
+		F82A4A7A23BDC05E0051407A /* DMASDKV1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F82A4A5123BDC04D0051407A /* DMASDKV1.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F82A4A5023BDC04D0051407A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F82A4A4C23BDC04D0051407A /* DMASDKV1.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F8125C082314F50700B813DB;
+			remoteInfo = DMASDKV1;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		F82A440D23BDBDC70051407A /* DMASDKV2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DMASDKV2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -54,6 +65,7 @@
 		F82A447723BDBE370051407A /* ChargeActivityService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChargeActivityService.swift; sourceTree = "<group>"; };
 		F82A447823BDBE370051407A /* MerchantService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MerchantService.swift; sourceTree = "<group>"; };
 		F82A447923BDBE370051407A /* PledgeActivityService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PledgeActivityService.swift; sourceTree = "<group>"; };
+		F82A4A4C23BDC04D0051407A /* DMASDKV1.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = DMASDKV1.xcodeproj; path = DMASDKV2/FromeWork/DMASDK/DMASDKV1.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F82A4A7A23BDC05E0051407A /* DMASDKV1.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,8 +83,10 @@
 		F82A440323BDBDC70051407A = {
 			isa = PBXGroup;
 			children = (
+				F82A4A4C23BDC04D0051407A /* DMASDKV1.xcodeproj */,
 				F82A440F23BDBDC70051407A /* DMASDKV2 */,
 				F82A440E23BDBDC70051407A /* Products */,
+				F82A4A7923BDC05E0051407A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -86,6 +101,7 @@
 		F82A440F23BDBDC70051407A /* DMASDKV2 */ = {
 			isa = PBXGroup;
 			children = (
+				F82A4A4B23BDBFE70051407A /* FromeWork */,
 				F82A441823BDBE370051407A /* Base */,
 				F82A443E23BDBE370051407A /* Service */,
 				F82A441023BDBDC70051407A /* DMASDKV2.h */,
@@ -160,6 +176,28 @@
 			path = merchant;
 			sourceTree = "<group>";
 		};
+		F82A4A4B23BDBFE70051407A /* FromeWork */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = FromeWork;
+			sourceTree = "<group>";
+		};
+		F82A4A4D23BDC04D0051407A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F82A4A5123BDC04D0051407A /* DMASDKV1.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F82A4A7923BDC05E0051407A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -216,12 +254,28 @@
 			mainGroup = F82A440323BDBDC70051407A;
 			productRefGroup = F82A440E23BDBDC70051407A /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = F82A4A4D23BDC04D0051407A /* Products */;
+					ProjectRef = F82A4A4C23BDC04D0051407A /* DMASDKV1.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				F82A440C23BDBDC70051407A /* DMASDKV2 */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		F82A4A5123BDC04D0051407A /* DMASDKV1.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = DMASDKV1.framework;
+			remoteRef = F82A4A5023BDC04D0051407A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		F82A440B23BDBDC70051407A /* Resources */ = {
@@ -396,6 +450,11 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/lib/DMASDK/DMASDKV1/SDK",
+					"$(PROJECT_DIR)/lib/DMASDK/Pods/ElastosCarrierSDK/ElastosCarrier-framework",
+				);
 				INFOPLIST_FILE = DMASDKV2/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -403,6 +462,12 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/lib/DMASDK/Carthage/Checkouts/SwiftGMP/GMPLib/iphoneos",
+					"$(PROJECT_DIR)/lib/DMASDK/Carthage/Checkouts/SwiftGMP/GMPLib/macosx",
+					"$(PROJECT_DIR)/lib/DMASDK/Carthage/Checkouts/SwiftGMP/GMPLib/iphonesimulator",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = starrymedia.DMASDKV2;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -422,6 +487,11 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/lib/DMASDK/DMASDKV1/SDK",
+					"$(PROJECT_DIR)/lib/DMASDK/Pods/ElastosCarrierSDK/ElastosCarrier-framework",
+				);
 				INFOPLIST_FILE = DMASDKV2/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -429,6 +499,12 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/lib/DMASDK/Carthage/Checkouts/SwiftGMP/GMPLib/iphoneos",
+					"$(PROJECT_DIR)/lib/DMASDK/Carthage/Checkouts/SwiftGMP/GMPLib/macosx",
+					"$(PROJECT_DIR)/lib/DMASDK/Carthage/Checkouts/SwiftGMP/GMPLib/iphonesimulator",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = starrymedia.DMASDKV2;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
