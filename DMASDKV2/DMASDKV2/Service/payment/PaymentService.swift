@@ -9,6 +9,7 @@
 import Foundation
 import CommonCrypto
 import Alamofire
+import DMASDKV1
 
 public typealias JsonResultSuccess = (NSMutableDictionary) -> ()
 
