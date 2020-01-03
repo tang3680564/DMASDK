@@ -20,6 +20,15 @@ public let exchangeInfo_url = baseUrl + "common/exchangeInfo"
 public let exchangeList_url = baseUrl + "common/exchangeList"
 public let exchange_url = baseUrl + "/exchange"
 
+public let contract_URL = "/contract/all"
+public let myAseet_URL = "/asset/my"
+public let aseet_URL = "/asset/all"
+public let order_URL = "/order/all"
+public let orderItems = "/order/items"
+public let onSale_URL = "/asset/onSale"
+public let transaction_URL = "/transaction/all"
+
+
 public let platformWallet = "0x51f56e19f4e2c71fc5ffa4cd25520480c7708030"
 public let isBurn = true
 public let defaultGasPrice = "1000000000"
@@ -27,10 +36,8 @@ public let defaultGasLimit = "6002513"
 public let transferGasLimit = "21000"
 public let corsTranferGasLimit = "30744"
 
-///分成比例
 public let firstExpenses = "50"
 public let secondExpenses = "10"
-
 public let expenses = "10"
 public let API_URL = "http://dmaconnect.starrymedia.com/api/1.0/"
 public let merchainContract = "contract/"
@@ -89,7 +96,7 @@ public class Config{
         public static let  ALL = MODULE + "dashboard.page";
     }
     
-   
+    
     
     
 }

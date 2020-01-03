@@ -35,8 +35,29 @@ open class AssetManagementService: NSObject {
     ///   - gasLimit: gasLimit description
     ///   - gasPrice: gasPrice description
     /// - Returns: ContractResult
-    public func setupDeploy(privateKey:String,name:String,symbol:String,metadata:String,isburn:Bool,gasLimit:String,gasPrice:String) -> ContractResult {
+    public func deploy(privateKey:String,name:String,symbol:String,metadata:String,isburn:Bool,gasLimit:String,gasPrice:String,getGasFee : Bool = false) -> ContractResult {
+        
+        var gasLimit = gasLimit
+        var gasPrice = gasPrice
+        var getGasFee = getGasFee
+        if !getGasFee{
+            let result = asset.setupDeploy(privateKey: privateKey, name: name, symbol: symbol, metadata: metadata, isburn: isburn, gasLimit: gasLimit, gasPrice: gasPrice,getGasFee : true)
+            let isError = limIsEmpty(gasLimit: &gasLimit, gasPrice: &gasPrice, getGasFee: &getGasFee, result: result)
+            if let result = isError{
+                return result
+            }
+        }else{
+            limAndPriceIsEmpty(gasLimit: &gasLimit, gasPrice: &gasPrice)
+        }
+        
         let  result = asset.setupDeploy(privateKey: privateKey, name: name, symbol: symbol, metadata: metadata, isburn: isburn, gasLimit: gasLimit, gasPrice: gasPrice)
+        switch result {
+        case .success(value: let dic):
+            let address = dic["address"] as! String
+            return ContractResult.success(value: ["assetAddress" : address])
+        case .failure(error: let error):
+            return ContractResult.failure(error: error)
+        }
         return result
     }
     
@@ -86,7 +107,20 @@ open class AssetManagementService: NSObject {
     ///   - gasPrice: gasPrice description
     ///   - getGasFee: 估算这次操作所需要的gasfee , true : 进行估算,不进行这次操作, false : 不进行估算,进行这次操作
     /// - Returns: return value description
-    public  func burn(privateKey:String,contractAddress:String,owner:String,tokenId:String,gasLimit:String,gasPrice:String,getGasFee : Bool = false) -> ContractResult {
+    public  func burn(privateKey:String,contractAddress:String,owner:String,tokenId:String,gasLimit:String = "",gasPrice:String = "",getGasFee : Bool = false) -> ContractResult {
+        var gasLimit = gasLimit
+        var gasPrice = gasPrice
+        var getGasFee = getGasFee
+        if !getGasFee{
+            let result = asset.burn(privateKey: privateKey, contractAddress: contractAddress, owner: owner, tokenId: tokenId, gasLimit: gasLimit, gasPrice: gasPrice,getGasFee : getGasFee)
+            let isError = limIsEmpty(gasLimit: &gasLimit, gasPrice: &gasPrice, getGasFee: &getGasFee, result: result)
+            if let result = isError{
+                return result
+            }
+        }else{
+            limAndPriceIsEmpty(gasLimit: &gasLimit, gasPrice: &gasPrice)
+        }
+        
         let result = asset.burn(privateKey: privateKey, contractAddress: contractAddress, owner: owner, tokenId: tokenId, gasLimit: gasLimit, gasPrice: gasPrice,getGasFee : getGasFee)
         return result
     }
@@ -125,7 +159,7 @@ open class AssetManagementService: NSObject {
         let result = asset.mint(privateKey: privateKey, contractAddress: contractAddress, to: to, tokenId: tokenId, uri: uri, isTransfer: isTransfer, isBurn: isBurn, gasLimit: gasLimit, gasPrice: gasPrice,getGasFee : getGasFee)
         return result
     }
-   
+    
     
     
     /// 批量创建资产
@@ -142,8 +176,21 @@ open class AssetManagementService: NSObject {
     ///   - gasPrice: gasPrice description
     ///   - getGasFee: 估算这次操作所需要的gasfee , true : 进行估算,不进行这次操作, false : 不进行估算,进行这次操作
     /// - Returns: return value description
-    public  func mintWithArray(privateKey:String,contractAddress:String,to:String,array:Array<Any>,uri:String,isTransfer:Bool,isBurn:Bool,gasLimit:String,gasPrice:String,getGasFee : Bool = false) -> ContractResult {
-        let result = asset.mintWithArray(privateKey: privateKey, contractAddress: contractAddress, to: to, array: array, uri: uri, isTransfer: isTransfer, isBurn: isBurn, gasLimit: gasLimit, gasPrice: gasPrice,getGasFee : getGasFee)
+    public  func mintWithArray(privateKey:String,contractAddress:String,to:String,array:Array<Any>,uri:String,isTransfer:Bool,isBurn:Bool,gasLimit:String = "" ,gasPrice:String = "",getGasFee : Bool = false) -> ContractResult {
+        var gasLimit = gasLimit
+        var gasPrice = gasPrice
+        var getGasFee = getGasFee
+        if !getGasFee{
+            let result = asset.mintWithArray(privateKey: privateKey, contractAddress: contractAddress, to: to, array: array, uri: uri, isTransfer: isTransfer, isBurn: isBurn, gasLimit: gasLimit, gasPrice: gasPrice,getGasFee: true)
+            let isError = limIsEmpty(gasLimit: &gasLimit, gasPrice: &gasPrice, getGasFee: &getGasFee, result: result)
+            if let result = isError{
+                return result
+            }
+        }else{
+            limAndPriceIsEmpty(gasLimit: &gasLimit, gasPrice: &gasPrice)
+        }
+        
+        let result = asset.mintWithArray(privateKey: privateKey, contractAddress: contractAddress, to: to, array: array, uri: uri, isTransfer: isTransfer, isBurn: isBurn, gasLimit: gasLimit, gasPrice: gasPrice,getGasFee: getGasFee)
         return result
     }
     
@@ -204,7 +251,7 @@ open class AssetManagementService: NSObject {
         let result = asset.setStatus(privateKey: privateKey, contractAddress: contractAddress, tokenId: tokenId, status: status, gasLimit: gasLimit, gasPrice: gasPrice,getGasFee : getGasFee)
         return result
     }
-   
+    
     
     /// 资产转送
     ///
@@ -269,7 +316,7 @@ open class AssetManagementService: NSObject {
         let result = asset.balanceOf(contractAddress: contractAddress, owner: owner)
         return result
     }
-   
+    
     
     /// 根据资产id获取授权地址
     ///
@@ -291,7 +338,7 @@ open class AssetManagementService: NSObject {
         let result = asset.getInfo(contractAddress: contractAddress)
         return result
     }
-   
+    
     public  func getMetadata(contractAddress:String) -> ContractResult {
         let result = asset.getMetadata(contractAddress: contractAddress)
         return result
@@ -300,19 +347,6 @@ open class AssetManagementService: NSObject {
         let result = asset.getStatus(contractAddress: contractAddress, tokenId: tokenId)
         return result
     }
-    
-    
-    /// 根据资产id查询资产信息
-    ///
-    /// - Parameters:
-    ///   - contractAddress: 合约地址
-    ///   - tokenId: 资产 ID
-    /// - Returns: return value description
-    public  func getAssetInfo(contractAddress:String,tokenId:String) -> ContractResult {
-        let result = asset.getTokenInfo(contractAddress: contractAddress, tokenId: tokenId)
-        return result
-    }
-    
     
     
     /// 查询是否拥有合约的授权
@@ -418,16 +452,56 @@ open class AssetManagementService: NSObject {
     }
     
     
+    /// 设置资产是否可以转移
+    ///
+    /// - Parameters:
+    ///   - privateKey: 资产拥有者的私钥
+    ///   - contractAddress: 资产地址
+    ///   - tokenId: 资产 ID
+    ///   - canTransfer: 是否可以转移
+    ///   - gasLimit: gasLimit description
+    ///   - gasPrice: gasPrice description
+    ///   - getGasFee: getGasFee description
+    /// - Returns: hash
+    public func setCanTransfer(privateKey : String,contractAddress : String,tokenId : String,canTransfer : Bool,gasLimit:String = "",gasPrice:String = "",getGasFee : Bool = false) -> ContractResult{
+        var gasLimit = gasLimit
+        var gasPrice = gasPrice
+        var getGasFee = getGasFee
+        if !getGasFee{
+            let result = asset.setCanTransfer(privateKey: privateKey, contractAddress: contractAddress, tokenId: tokenId, canTransfer: canTransfer, gasLimit: gasLimit, gasPrice: gasPrice, getGasFee: true)
+            let isError = limIsEmpty(gasLimit: &gasLimit, gasPrice: &gasPrice, getGasFee: &getGasFee, result: result)
+            if let result = isError{
+                return result
+            }
+        }else{
+            limAndPriceIsEmpty(gasLimit: &gasLimit, gasPrice: &gasPrice)
+        }
+        return asset.setCanTransfer(privateKey: privateKey, contractAddress: contractAddress, tokenId: tokenId, canTransfer: canTransfer, gasLimit: gasLimit, gasPrice: gasPrice, getGasFee: getGasFee)
+    }
+    
     /// 验证资产 ID 在合约中是否有效
     ///
     /// - Parameters:
     ///   - contractAddress: 合约地址
     ///   - tokenId: 资产 ID
     /// - Returns: return value description
-    public func valid(contractAddress:String,tokenId:String) -> ContractResult {
+    public func isValid(contractAddress:String,tokenId:String) -> ContractResult {
         let result = asset.valid(contractAddress: contractAddress, tokenId: tokenId)
         return result
     }
+    
+    
+    /// 获取资产是否可以转送
+    ///
+    /// - Parameters:
+    ///   - contractAddress: 资产地址
+    ///   - tokenId:  tokenID
+    /// - Returns: return value description
+    public func getCanTransfer(contractAddress:String,tokenId:String) -> ContractResult {
+        let result = asset.getCanTransfer(contractAddress: contractAddress, tokenId: tokenId)
+        return result
+    }
+    
     
     public func tokenIds(contractAddress:String,owner:String) -> ContractResult {
         let result = asset.tokenIds(contractAddress: contractAddress, owner: owner)
