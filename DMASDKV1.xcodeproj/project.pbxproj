@@ -34,6 +34,7 @@
 		F8125CB52314FD1400B813DB /* NetworkReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C782314FD1400B813DB /* NetworkReachabilityManager.swift */; };
 		F8125CB62314FD1400B813DB /* MessageBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8125C792314FD1400B813DB /* MessageBase.swift */; };
 		F823CD112320AD6D00BCF66B /* Web3Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = F823CD102320AD6C00BCF66B /* Web3Util.swift */; };
+		F825AED623BF0E8000DF74A6 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F825AED523BF0E8000DF74A6 /* String+Extension.swift */; };
 		F82A435B23BD901F0051407A /* ETHToken721Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82A435923BD901E0051407A /* ETHToken721Service.swift */; };
 		F82A435C23BD901F0051407A /* ETHToken20Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82A435A23BD901F0051407A /* ETHToken20Service.swift */; };
 		F82A436C23BD90850051407A /* NFTokenDMA.json in Resources */ = {isa = PBXBuildFile; fileRef = F82A436023BD90840051407A /* NFTokenDMA.json */; };
@@ -76,6 +77,7 @@
 		F8125C782314FD1400B813DB /* NetworkReachabilityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkReachabilityManager.swift; sourceTree = "<group>"; };
 		F8125C792314FD1400B813DB /* MessageBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageBase.swift; sourceTree = "<group>"; };
 		F823CD102320AD6C00BCF66B /* Web3Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Web3Util.swift; sourceTree = "<group>"; };
+		F825AED523BF0E8000DF74A6 /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		F82A435923BD901E0051407A /* ETHToken721Service.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ETHToken721Service.swift; sourceTree = "<group>"; };
 		F82A435A23BD901F0051407A /* ETHToken20Service.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ETHToken20Service.swift; sourceTree = "<group>"; };
 		F82A436023BD90840051407A /* NFTokenDMA.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = NFTokenDMA.json; sourceTree = "<group>"; };
@@ -246,6 +248,7 @@
 		F8125C602314FD1400B813DB /* util */ = {
 			isa = PBXGroup;
 			children = (
+				F825AED523BF0E8000DF74A6 /* String+Extension.swift */,
 				F8125C612314FD1400B813DB /* DMACommon.swift */,
 				F8125C622314FD1400B813DB /* DMAHttpUtil.swift */,
 				F8125C632314FD1400B813DB /* DeployHelper.swift */,
@@ -444,6 +447,7 @@
 				F8125CA42314FD1400B813DB /* DMAHttpUtil.swift in Sources */,
 				F8125CA52314FD1400B813DB /* DeployHelper.swift in Sources */,
 				F8125C972314FD1400B813DB /* MessageService.swift in Sources */,
+				F825AED623BF0E8000DF74A6 /* String+Extension.swift in Sources */,
 				F8125C7D2314FD1400B813DB /* DMAEnum.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
