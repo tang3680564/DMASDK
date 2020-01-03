@@ -11,7 +11,7 @@ import web3swift
 import BigInt
 import HandyJSON
 
-class ContractMethodHelper: NSObject {
+public class ContractMethodHelper: NSObject {
     
     var nodeURL = assetManagementUrl!
     
@@ -19,16 +19,16 @@ class ContractMethodHelper: NSObject {
     
   
     
-    required init(url : String) {
+    public required init(url : String) {
         super.init()
         nodeURL = URL(string: url)!
     }
     
-    required override init() {
+    public required override init() {
         super.init()
     }
     
-    func getContract(abi:String,contractAddress:String,method:String,privateKey:String,parameters: [AnyObject] = [AnyObject](),gasLimit:String,gasPrice:String,weiValue : String? = "",getGasFee : Bool = false) -> ContractResult {
+    public func getContract(abi:String,contractAddress:String,method:String,privateKey:String,parameters: [AnyObject] = [AnyObject](),gasLimit:String,gasPrice:String,weiValue : String? = "",getGasFee : Bool = false) -> ContractResult {
         
         if getGasFee{
             return getContractGas(abi: abi, contractAddress: contractAddress, method: method, privateKey: privateKey,parameters : parameters, gasLimit: gasLimit, gasPrice: gasPrice,weiValue : weiValue)
@@ -125,7 +125,7 @@ class ContractMethodHelper: NSObject {
     }
     
     
-    func getContractGas(abi:String,contractAddress:String,method:String,privateKey:String,parameters: [AnyObject] = [AnyObject](),gasLimit:String,gasPrice:String,weiValue : String? = "") -> ContractResult {
+    public func getContractGas(abi:String,contractAddress:String,method:String,privateKey:String,parameters: [AnyObject] = [AnyObject](),gasLimit:String,gasPrice:String,weiValue : String? = "") -> ContractResult {
         let abi = getAbi(abi: abi)
         let ethWallet = EthWallet()
         let web3 = Web3.new(nodeURL)
@@ -178,7 +178,7 @@ class ContractMethodHelper: NSObject {
         
     }
     
-    func getAbi(abi:String) -> String {
+    public func getAbi(abi:String) -> String {
 //       let path = Bundle(identifier: "starrymedia.DMASDKV1")?.path(forResource: abi, ofType: "json")
         let path = Bundle.main.path(forResource: abi, ofType: "json")
         let data = NSData.init(contentsOfFile: path!)

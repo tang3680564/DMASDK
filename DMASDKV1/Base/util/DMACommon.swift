@@ -37,14 +37,14 @@ public enum ContractResult {
     case failure(error:Any)
 }
 
-class ModelType2: HandyJSON {
+public class ModelType2: HandyJSON {
     var a :String?
-    required init() {}
-    func mapping(mapper: HelpingMapper) {
+    required public init() {}
+    public func mapping(mapper: HelpingMapper) {
         mapper.specify(property: &a, name: "0")
     }
 }
-class ModelType1: HandyJSON {
+public class ModelType1: HandyJSON {
     var _name :String?
     var _symbol :String?
     var _metadata :String?
@@ -69,14 +69,14 @@ class ModelType1: HandyJSON {
     
     var _paedgeValue : String?
     var _pledgeAddress : String?
-    required init() {}
-    func mapping(mapper: HelpingMapper) {
+    required public init() {}
+    public func mapping(mapper: HelpingMapper) {
     }
 }
 
 
 extension NSObject{
-    func getGasLimInResult(result : ContractResult) -> (Bool,String,Any?){
+    public func getGasLimInResult(result : ContractResult) -> (Bool,String,Any?){
         switch result {
         case .success(value: let dic):
             return (true,dic["gas"] as! String,nil)
@@ -85,7 +85,7 @@ extension NSObject{
         }
     }
     
-    func limAndPriceIsEmpty(gasLimit : inout String,gasPrice : inout String){
+    public func limAndPriceIsEmpty(gasLimit : inout String,gasPrice : inout String){
         if gasLimit.isEmpty{
             gasLimit = defaultGasLimit
         }
@@ -94,7 +94,7 @@ extension NSObject{
         }
     }
     
-    func limIsEmpty(gasLimit : inout String,gasPrice : inout String,getGasFee : inout Bool,result : ContractResult) -> ContractResult?{
+    public func limIsEmpty(gasLimit : inout String,gasPrice : inout String,getGasFee : inout Bool,result : ContractResult) -> ContractResult?{
         if gasLimit.isEmpty{
             limAndPriceIsEmpty(gasLimit: &gasLimit, gasPrice: &gasPrice)
             let limt = getGasLimInResult(result: result)

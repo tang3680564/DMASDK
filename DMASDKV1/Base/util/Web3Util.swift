@@ -13,7 +13,7 @@ import BigInt
 extension String{
     
     ///wei zhuan  value
-    func getWeb3ValueInWei() -> String?{
+    public func getWeb3ValueInWei() -> String?{
         let value = NSDecimalNumber(string: self).multiplying(by: NSDecimalNumber(string: defaultGasPrice))
         if let bWeiValue = BigUInt(value.stringValue){
             let value =  Web3.Utils.formatToPrecision(bWeiValue,formattingDecimals : 8)
@@ -23,7 +23,7 @@ extension String{
     }
     
     ///value zhuan wei
-    func getWeb3WeiInValue() -> String?{
+    public func getWeb3WeiInValue() -> String?{
         if let bWeiValue = BigUInt(self){
             let value =  Web3.Utils.formatToEthereumUnits(bWeiValue)
             return value

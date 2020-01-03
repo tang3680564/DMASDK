@@ -13,11 +13,11 @@ let error_Str = "error_Str"
 
 public typealias ServerResultSuccessResult = (NSMutableDictionary) -> ()
 
-class DMAHttpUtil: NSObject {
+public class DMAHttpUtil: NSObject {
     
    
     
-    static func getServerData(url : String,param : Dictionary<String, Any>,Success : @escaping ServerResultSuccessResult,Failed : @escaping ServerResultSuccessResult){
+    public static func getServerData(url : String,param : Dictionary<String, Any>,Success : @escaping ServerResultSuccessResult,Failed : @escaping ServerResultSuccessResult){
         var params = param
         let requset = Alamofire.request(url, method: .post, parameters: params, encoding: URLEncoding.default, headers: [:])
         requset.responseString { (respons) in
@@ -35,7 +35,7 @@ class DMAHttpUtil: NSObject {
         }
     }
     
-    static func getServerDataByGet(url : String,param : Dictionary<String, Any>,Success : @escaping ServerResultSuccessResult,Failed : @escaping ServerResultSuccessResult){
+    public static func getServerDataByGet(url : String,param : Dictionary<String, Any>,Success : @escaping ServerResultSuccessResult,Failed : @escaping ServerResultSuccessResult){
         var params = param
         print(params)
         let requset = Alamofire.request(url, method: .get, parameters: params, encoding: URLEncoding.default, headers: [:])
@@ -57,7 +57,7 @@ class DMAHttpUtil: NSObject {
         }
     }
     
-    static func getDataByServersInSuccess(_ data : Data) -> (Bool,NSMutableDictionary){
+    public static func getDataByServersInSuccess(_ data : Data) -> (Bool,NSMutableDictionary){
         var dic : NSMutableDictionary = [:]
         
         do {
@@ -83,14 +83,14 @@ class DMAHttpUtil: NSObject {
         
     }
     
-    static func getServerJsonDic(dic : NSMutableDictionary) -> NSMutableDictionary{
+    public static func getServerJsonDic(dic : NSMutableDictionary) -> NSMutableDictionary{
         if let data = dic["data"] as? NSMutableDictionary{
             return data
         }
         return [:]
     }
     
-    static func getError(error : NSMutableDictionary) -> String{
+    public static func getError(error : NSMutableDictionary) -> String{
         if let msg = error["msg"] as? String{
             return msg
         }

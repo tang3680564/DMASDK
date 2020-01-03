@@ -10,20 +10,20 @@ import UIKit
 import web3swift
 import BigInt
 
-class DeployHelper: NSObject {
+public class DeployHelper: NSObject {
     
     var ethNode = assetManagementUrl!
     
-    required init(url : String) {
+    public required init(url : String) {
         super.init()
         ethNode = URL(string: url)!
     }
     
-    required override init() {
+    public required override init() {
         super.init()
     }
     
-    func setupDeploy(privateKey:String,abi:String,bytecode:String,parameters: [AnyObject] = [AnyObject](),gasLimit:String,gasPrice:String) -> ContractResult {
+    public func setupDeploy(privateKey:String,abi:String,bytecode:String,parameters: [AnyObject] = [AnyObject](),gasLimit:String,gasPrice:String) -> ContractResult {
         
         let abi = getAbi(abi: abi)
         let bytecode = Data.fromHex(getAbi(abi: bytecode))
@@ -60,7 +60,7 @@ class DeployHelper: NSObject {
         }
     }
     
-    func waitSearchReceipt(web3 : web3?,hash : String) -> ContractResult{
+    public func waitSearchReceipt(web3 : web3?,hash : String) -> ContractResult{
         print("waitSearchReceipt")
         sleep(1)
         let reuslt = web3?.eth.getTransactionReceipt(hash)
@@ -71,7 +71,7 @@ class DeployHelper: NSObject {
     }
     
     
-    func getAbi(abi:String) -> String {
+    public func getAbi(abi:String) -> String {
 //        let path = Bundle(identifier: "starrymedia.DMASDKV1")?.path(forResource: abi, ofType: "json")
         let path = Bundle.main.path(forResource: abi, ofType: "json")
         let data = NSData.init(contentsOfFile: path!)
