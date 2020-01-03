@@ -42,6 +42,13 @@
 		F82A437723BD97450051407A /* TokenDMAData.json in Resources */ = {isa = PBXBuildFile; fileRef = F82A437623BD97450051407A /* TokenDMAData.json */; };
 		F82A44C023BDBF560051407A /* ETHTransfer.json in Resources */ = {isa = PBXBuildFile; fileRef = F82A44BF23BDBF550051407A /* ETHTransfer.json */; };
 		F82A4B2623BED5AF0051407A /* web3swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F82A4B2523BED5AF0051407A /* web3swift.framework */; };
+		F82A4B2E23BEE0DF0051407A /* SwiftIpfsApi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F82A4B2723BEE0DE0051407A /* SwiftIpfsApi.framework */; };
+		F82A4B2F23BEE0DF0051407A /* SwiftBase58.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F82A4B2823BEE0DE0051407A /* SwiftBase58.framework */; };
+		F82A4B3023BEE0DF0051407A /* SwiftHex.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F82A4B2923BEE0DF0051407A /* SwiftHex.framework */; };
+		F82A4B3123BEE0DF0051407A /* VarInt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F82A4B2A23BEE0DF0051407A /* VarInt.framework */; };
+		F82A4B3223BEE0DF0051407A /* SwiftMultiaddr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F82A4B2B23BEE0DF0051407A /* SwiftMultiaddr.framework */; };
+		F82A4B3323BEE0DF0051407A /* SwiftGMP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F82A4B2C23BEE0DF0051407A /* SwiftGMP.framework */; };
+		F82A4B3423BEE0DF0051407A /* SwiftMultihash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F82A4B2D23BEE0DF0051407A /* SwiftMultihash.framework */; };
 		F8A9810C232F28FC00F3494B /* ErrorCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A9810B232F28FC00F3494B /* ErrorCode.swift */; };
 /* End PBXBuildFile section */
 
@@ -85,6 +92,13 @@
 		F82A437623BD97450051407A /* TokenDMAData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TokenDMAData.json; sourceTree = "<group>"; };
 		F82A44BF23BDBF550051407A /* ETHTransfer.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ETHTransfer.json; sourceTree = "<group>"; };
 		F82A4B2523BED5AF0051407A /* web3swift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = web3swift.framework; sourceTree = "<group>"; };
+		F82A4B2723BEE0DE0051407A /* SwiftIpfsApi.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftIpfsApi.framework; path = Carthage/Build/iOS/SwiftIpfsApi.framework; sourceTree = "<group>"; };
+		F82A4B2823BEE0DE0051407A /* SwiftBase58.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftBase58.framework; path = Carthage/Build/iOS/SwiftBase58.framework; sourceTree = "<group>"; };
+		F82A4B2923BEE0DF0051407A /* SwiftHex.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftHex.framework; path = Carthage/Build/iOS/SwiftHex.framework; sourceTree = "<group>"; };
+		F82A4B2A23BEE0DF0051407A /* VarInt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VarInt.framework; path = Carthage/Build/iOS/VarInt.framework; sourceTree = "<group>"; };
+		F82A4B2B23BEE0DF0051407A /* SwiftMultiaddr.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftMultiaddr.framework; path = Carthage/Build/iOS/SwiftMultiaddr.framework; sourceTree = "<group>"; };
+		F82A4B2C23BEE0DF0051407A /* SwiftGMP.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftGMP.framework; path = Carthage/Build/iOS/SwiftGMP.framework; sourceTree = "<group>"; };
+		F82A4B2D23BEE0DF0051407A /* SwiftMultihash.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftMultihash.framework; path = Carthage/Build/iOS/SwiftMultihash.framework; sourceTree = "<group>"; };
 		F8A9810B232F28FC00F3494B /* ErrorCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorCode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -93,6 +107,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F82A4B2E23BEE0DF0051407A /* SwiftIpfsApi.framework in Frameworks */,
+				F82A4B2F23BEE0DF0051407A /* SwiftBase58.framework in Frameworks */,
+				F82A4B3023BEE0DF0051407A /* SwiftHex.framework in Frameworks */,
+				F82A4B3123BEE0DF0051407A /* VarInt.framework in Frameworks */,
+				F82A4B3223BEE0DF0051407A /* SwiftMultiaddr.framework in Frameworks */,
+				F82A4B3323BEE0DF0051407A /* SwiftGMP.framework in Frameworks */,
+				F82A4B3423BEE0DF0051407A /* SwiftMultihash.framework in Frameworks */,
 				0DF943739E816E6A25916D56 /* Pods_DMASDKV1.framework in Frameworks */,
 				F82A4B2623BED5AF0051407A /* web3swift.framework in Frameworks */,
 			);
@@ -104,6 +125,13 @@
 		4CB9FEABC979D0AF8EA3561C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F82A4B2823BEE0DE0051407A /* SwiftBase58.framework */,
+				F82A4B2C23BEE0DF0051407A /* SwiftGMP.framework */,
+				F82A4B2923BEE0DF0051407A /* SwiftHex.framework */,
+				F82A4B2723BEE0DE0051407A /* SwiftIpfsApi.framework */,
+				F82A4B2B23BEE0DF0051407A /* SwiftMultiaddr.framework */,
+				F82A4B2D23BEE0DF0051407A /* SwiftMultihash.framework */,
+				F82A4B2A23BEE0DF0051407A /* VarInt.framework */,
 				F82A4B2523BED5AF0051407A /* web3swift.framework */,
 				70A38906F026B6EDA704A972 /* Pods_DMASDKV1.framework */,
 			);
