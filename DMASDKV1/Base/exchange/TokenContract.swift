@@ -9,7 +9,7 @@
 import UIKit
 import BigInt
 import web3swift
-class TokenContract: NSObject {
+public class TokenContract: NSObject {
     let abi = "TokenDMA"
 
     var url = ""
@@ -30,7 +30,7 @@ class TokenContract: NSObject {
     ///   - gasLimit: gasLimit description
     ///   - gasPrice: gasPrice description
     /// - Returns: ContractResult
-    func setupDeploy(privateKey:String,name:String,symbol:String,totalSupply:String,tokenDecimals : Int ,gasLimit:String,gasPrice:String) -> ContractResult {
+    public func setupDeploy(privateKey:String,name:String,symbol:String,totalSupply:String,tokenDecimals : Int ,gasLimit:String,gasPrice:String) -> ContractResult {
         let deployHelper = DeployHelper(url: url)
         let decimals = pow(Double(10), Double(tokenDecimals))
         let totalSupply = NSDecimalNumber(string: totalSupply).multiplying(by: NSDecimalNumber(value: decimals)).doubleValue
@@ -46,7 +46,7 @@ class TokenContract: NSObject {
     ///   - target: 目标地址
     ///   - amount: 增发金额
     /// - Returns: hash
-    func addIssue(privateKey:String,contractAddress:String,target:String,amount:String,gasLimit:String,gasPrice:String) -> ContractResult {
+    public func addIssue(privateKey:String,contractAddress:String,target:String,amount:String,gasLimit:String,gasPrice:String) -> ContractResult {
         
         let param = [target,Web3.Utils.parseToBigUInt(amount, units: .eth) as Any] as [Any]
         let contract = ContractMethodHelper(url: url)
@@ -62,7 +62,7 @@ class TokenContract: NSObject {
     ///   - spender: 被授权者地址
     ///   - value: 授权金额
     /// - Returns: hash
-    func approve(privateKey:String,contractAddress:String,spender:String,value:String,gasLimit:String = "",gasPrice:String = "",getGasFee : Bool = false) -> ContractResult {
+    public func approve(privateKey:String,contractAddress:String,spender:String,value:String,gasLimit:String = "",gasPrice:String = "",getGasFee : Bool = false) -> ContractResult {
         let param = [spender,Web3.Utils.parseToBigUInt(value, units: .eth) as Any] as [Any]
         let contract = ContractMethodHelper(url: url)
         
@@ -96,7 +96,7 @@ class TokenContract: NSObject {
     ///   - contractAddress: 合约地址
     ///   - value: 金额
     /// - Returns: hash
-    func burn(privateKey:String,contractAddress:String,value:String,gasLimit:String,gasPrice:String) -> ContractResult {
+    public func burn(privateKey:String,contractAddress:String,value:String,gasLimit:String,gasPrice:String) -> ContractResult {
         let param = [Web3.Utils.parseToBigUInt(value, units: .eth) as Any ] as [Any]
         let contract = ContractMethodHelper(url: url)
         let result = contract.getContract(abi: abi,contractAddress:contractAddress,method: "burn", privateKey: privateKey, parameters: param as [AnyObject], gasLimit: gasLimit, gasPrice: gasPrice)
@@ -109,7 +109,7 @@ class TokenContract: NSObject {
     ///   - privateKey: 私钥
     ///   - contractAddress: 合约地址
     /// - Returns: hash
-    func kill(privateKey:String,contractAddress:String,gasLimit:String,gasPrice:String) -> ContractResult {
+    public func kill(privateKey:String,contractAddress:String,gasLimit:String,gasPrice:String) -> ContractResult {
         let param = [] as [Any]
         let contract = ContractMethodHelper(url: url)
         let result = contract.getContract(abi: abi,contractAddress:contractAddress,method: "kill", privateKey: privateKey, parameters: param as [AnyObject], gasLimit: gasLimit, gasPrice: gasPrice)
@@ -124,7 +124,7 @@ class TokenContract: NSObject {
     ///   - owner: 被授权地址
     ///   - amount: 撤销授权金额
     /// - Returns: hash
-    func revokeApprove(privateKey:String,contractAddress:String,owner:String,amount:String,gasLimit:String,gasPrice:String) -> ContractResult {
+    public func revokeApprove(privateKey:String,contractAddress:String,owner:String,amount:String,gasLimit:String,gasPrice:String) -> ContractResult {
         let param = [owner,Web3.Utils.parseToBigUInt(amount, units: .eth) as Any] as [Any]
         let contract = ContractMethodHelper(url: url)
         let result = contract.getContract(abi: abi,contractAddress:contractAddress,method: "revokeApprove", privateKey: privateKey, parameters: param as [AnyObject], gasLimit: gasLimit, gasPrice: gasPrice)
@@ -139,14 +139,14 @@ class TokenContract: NSObject {
     ///   - to: 接收方地址
     ///   - value: 金额
     /// - Returns: hash
-    func transfer(privateKey:String,contractAddress:String,to:String,value:String,gasLimit:String,gasPrice:String,getGasFee : Bool = false) -> ContractResult {
+    public func transfer(privateKey:String,contractAddress:String,to:String,value:String,gasLimit:String,gasPrice:String,getGasFee : Bool = false) -> ContractResult {
         let param = [to,Web3.Utils.parseToBigUInt(value, units: .eth) as Any] as [Any]
         let contract = ContractMethodHelper(url: url)
         let result = contract.getContract(abi: abi,contractAddress:contractAddress,method: "transfer", privateKey: privateKey, parameters: param as [AnyObject], gasLimit: gasLimit, gasPrice: gasPrice,getGasFee : getGasFee)
         return result
     }
     
-    func saveApproveWithArray(privateKey:String,contractAddress:String,to:String,value:String,gasLimit:String,gasPrice:String) -> ContractResult {
+    public func saveApproveWithArray(privateKey:String,contractAddress:String,to:String,value:String,gasLimit:String,gasPrice:String) -> ContractResult {
         let param = [to,Web3.Utils.parseToBigUInt(value, units: .eth) as Any] as [Any]
         let contract = ContractMethodHelper(url: url)
         let result = contract.getContract(abi: abi,contractAddress:contractAddress,method: "saveApproveWithArray", privateKey: privateKey, parameters: param as [AnyObject], gasLimit: gasLimit, gasPrice: gasPrice)
@@ -162,7 +162,7 @@ class TokenContract: NSObject {
     ///   - to: 资产接收者
     ///   - value: 金额
     /// - Returns: hash
-    func transferFrom(privateKey:String,contractAddress:String,from:String,to:String,value:String,gasLimit:String,gasPrice:String,getGasFee : Bool = false) -> ContractResult {
+    public func transferFrom(privateKey:String,contractAddress:String,from:String,to:String,value:String,gasLimit:String,gasPrice:String,getGasFee : Bool = false) -> ContractResult {
         let param = [from,to,Web3.Utils.parseToBigUInt(value, units: .eth) as Any] as [Any]
         let contract = ContractMethodHelper(url: url)
         let result = contract.getContract(abi: abi,contractAddress:contractAddress,method: "transferFrom", privateKey: privateKey, parameters: param as [AnyObject], gasLimit: gasLimit, gasPrice: gasPrice,getGasFee : getGasFee)
@@ -176,7 +176,7 @@ class TokenContract: NSObject {
     ///   - contractAddress: 地址
     ///   - newOwner: 新合约拥有者
     /// - Returns: hash
-    func transferOwnership(privateKey:String,contractAddress:String,newOwner:String,gasLimit:String,gasPrice:String) -> ContractResult {
+    public func transferOwnership(privateKey:String,contractAddress:String,newOwner:String,gasLimit:String,gasPrice:String) -> ContractResult {
         let param = [newOwner] as [Any]
         let contract = ContractMethodHelper(url: url)
         let result = contract.getContract(abi: abi,contractAddress:contractAddress,method: "transferOwnership", privateKey: privateKey, parameters: param as [AnyObject], gasLimit: gasLimit, gasPrice: gasPrice)
@@ -184,7 +184,7 @@ class TokenContract: NSObject {
     }
 //  无私钥
     
-    func allowance(contractAddress:String,owner:String,spender:String) -> ContractResult {
+    public func allowance(contractAddress:String,owner:String,spender:String) -> ContractResult {
         let param = [owner,spender] as [Any]
         let contract = ContractMethodHelper(url: url)
         let result = contract.getContract(abi: abi,contractAddress:contractAddress,method: "allowance", privateKey: "", parameters: param as [AnyObject], gasLimit: "", gasPrice: "")
@@ -199,7 +199,7 @@ class TokenContract: NSObject {
     }
     
     
-    func balanceOf(contractAddress:String,owner:String) -> ContractResult {
+    public func balanceOf(contractAddress:String,owner:String) -> ContractResult {
         let param = [owner] as [Any]
         let contract = ContractMethodHelper(url: url)
         let result = contract.getContract(abi: abi,contractAddress:contractAddress,method: "balanceOf", privateKey: "", parameters: param as [AnyObject], gasLimit: "", gasPrice: "")
@@ -214,7 +214,7 @@ class TokenContract: NSObject {
     }
     
     
-    func decimals(contractAddress:String) -> ContractResult {
+    public func decimals(contractAddress:String) -> ContractResult {
         let param = [] as [Any]
         let contract = ContractMethodHelper(url: url)
         let result = contract.getContract(abi: abi,contractAddress:contractAddress,method: "decimals", privateKey: "", parameters: param as [AnyObject], gasLimit: "", gasPrice: "")
@@ -227,7 +227,7 @@ class TokenContract: NSObject {
         }
         
     }
-    func name(contractAddress:String) -> ContractResult {
+    public func name(contractAddress:String) -> ContractResult {
         let param = [] as [Any]
         let contract = ContractMethodHelper(url: url)
         let result = contract.getContract(abi: abi,contractAddress:contractAddress,method: "name", privateKey: "", parameters: param as [AnyObject], gasLimit: "", gasPrice: "")
@@ -239,7 +239,7 @@ class TokenContract: NSObject {
             return ContractResult.failure(error: error)
         }
     }
-    func owner(contractAddress:String) -> ContractResult {
+    public func owner(contractAddress:String) -> ContractResult {
         let param = [] as [Any]
         let contract = ContractMethodHelper(url: url)
         let result = contract.getContract(abi: abi,contractAddress:contractAddress,method: "owner", privateKey: "", parameters: param as [AnyObject], gasLimit: "", gasPrice: "")
@@ -260,7 +260,7 @@ class TokenContract: NSObject {
         }
         
     }
-    func symbol(contractAddress:String) -> ContractResult {
+    public func symbol(contractAddress:String) -> ContractResult {
         let param = [] as [Any]
         let contract = ContractMethodHelper(url: url)
         let result = contract.getContract(abi: abi,contractAddress:contractAddress,method: "symbol", privateKey: "", parameters: param as [AnyObject], gasLimit: "", gasPrice: "")
@@ -273,7 +273,7 @@ class TokenContract: NSObject {
         }
         
     }
-    func totalSupply(contractAddress:String) -> ContractResult {
+    public func totalSupply(contractAddress:String) -> ContractResult {
         let param = [] as [Any]
         let contract = ContractMethodHelper(url: url)
         let result = contract.getContract(abi: abi,contractAddress:contractAddress,method: "totalSupply", privateKey: "", parameters: param as [AnyObject], gasLimit: "", gasPrice: "")

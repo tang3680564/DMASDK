@@ -45,30 +45,30 @@ public class ModelType2: HandyJSON {
     }
 }
 public class ModelType1: HandyJSON {
-    var _name :String?
-    var _symbol :String?
-    var _metadata :String?
-    var _owner :String?
-    var _isBurn :String?
+    public var _name :String?
+    public var _symbol :String?
+    public var _metadata :String?
+    public var _owner :String?
+    public var _isBurn :String?
     
-    var _user :String?
-    var _isTransfer:String?
-    var _status:String?
-    var _uri:String?
-    var _vaild:String?
+    public var _user :String?
+    public var _isTransfer:String?
+    public var _status:String?
+    public var _uri:String?
+    public var _vaild:String?
     
-    var _remaining:String?
-    var _balance:String?
-    var _decimals:String?
-    var _totalSupply:String?
+    public var _remaining:String?
+    public var _balance:String?
+    public var _decimals:String?
+    public var _totalSupply:String?
     
     
-    var _tId:String?
-    var _value:String?
-    var _cnt:String?
+    public var _tId:String?
+    public var _value:String?
+    public var _cnt:String?
     
-    var _paedgeValue : String?
-    var _pledgeAddress : String?
+    public var _paedgeValue : String?
+    public var _pledgeAddress : String?
     required public init() {}
     public func mapping(mapper: HelpingMapper) {
     }

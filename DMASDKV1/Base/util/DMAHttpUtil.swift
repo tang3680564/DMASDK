@@ -9,7 +9,7 @@
 import Foundation
 import Alamofire
 
-let error_Str = "error_Str"
+public let error_Str = "error_Str"
 
 public typealias ServerResultSuccessResult = (NSMutableDictionary) -> ()
 
