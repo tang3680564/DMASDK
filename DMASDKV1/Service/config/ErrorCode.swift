@@ -12,7 +12,7 @@ let error_Code = "error_Code"
 
 public enum DMASDKError{
     
-    enum ErrorCode : String {
+    public enum ErrorCode : String {
         case TOKEN_ADDRESS_ERROR = "10001"
         case TOKEN_BALANCE_UNDERFINANCED = "10002"
         case GASLIMINT_SHORT = "10003"
@@ -32,7 +32,7 @@ public enum DMASDKError{
         case NO_INFO = "40007"
     }
     
-    enum ErrrorMsg : String{
+    public enum ErrrorMsg : String{
         case TOKEN_ADDRESS_ERROR = "token地址不存在或错误"
         case TOKEN_BALANCE_UNDERFINANCED = "token余额不足"
         case GASLIMINT_SHORT = "gasLimit缺少"
@@ -72,7 +72,7 @@ public enum DMASDKError{
     case TRANSFER_FAILED
     case NO_INFO
     
-    func getCodeAndMsg() -> NSMutableDictionary{
+    public func getCodeAndMsg() -> NSMutableDictionary{
         switch self {
         case .TOKEN_ADDRESS_ERROR:
             return self.getErrorCodeJson(code: DMASDKError.ErrorCode.TOKEN_ADDRESS_ERROR, msg: DMASDKError.ErrrorMsg.TOKEN_ADDRESS_ERROR)
@@ -117,7 +117,7 @@ public enum DMASDKError{
 
 
 extension DMASDKError{
-    func getErrorCodeJson(code : ErrorCode,msg : ErrrorMsg) -> NSMutableDictionary{
+    public func getErrorCodeJson(code : ErrorCode,msg : ErrrorMsg) -> NSMutableDictionary{
         let dic : NSMutableDictionary = [:]
         dic[error_Code] = code.rawValue
         dic[error_Str] = msg.rawValue

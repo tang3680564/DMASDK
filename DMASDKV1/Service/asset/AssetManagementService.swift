@@ -429,6 +429,10 @@ open class AssetManagementService: NSObject {
         return result
     }
     
+    public func tokenIds(contractAddress:String,owner:String) -> ContractResult {
+        let result = asset.tokenIds(contractAddress: contractAddress, owner: owner)
+        return result
+    }
     
     
 }

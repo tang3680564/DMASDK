@@ -204,13 +204,13 @@ open class EthService: NSObject {
         return result
     }
     
-    func getStatusByHash(hash : String ) -> ContractResult{
+    public func getStatusByHash(hash : String ) -> ContractResult{
         let eth = EthWallet()
         eth.url = url
         return eth.getStatusByHash(hash: hash)
     }
     
-    func getTransactionReceipt(hash : String ) -> ContractResult{
+    public func getTransactionReceipt(hash : String ) -> ContractResult{
         let eth = EthWallet()
         eth.url = url
         return eth.getTransactionReceipt(hash: hash)

@@ -4,7 +4,7 @@
 #import <Foundation/NSString.h>
 #import <Foundation/NSError.h>
 
-#if TARGET_OS_MAC && !TARGET_OS_EMBEDDED && !TARGET_OS_SIMULATOR && !TARGET_OS_UIKITFORMAC
+#if TARGET_OS_MAC && !TARGET_OS_EMBEDDED && !TARGET_OS_SIMULATOR
 
 #import "NSTask+AnyPromise.h"
 
@@ -37,20 +37,7 @@
                 resolve([NSError errorWithDomain:PMKErrorDomain code:PMKTaskError userInfo:info]);
             }
         };
-
-    #if __clang_major__ >= 9
-        if (@available(macOS 10.13, *)) {
-            NSError *error = nil;
-            
-            if (![self launchAndReturnError:&error]) {
-                resolve(error);
-            }
-        } else {
-            [self launch];
-        }
-    #else
-        [self launch];  // might @throw
-    #endif
+        [self launch];
     }];
 }
 

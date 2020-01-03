@@ -18,7 +18,7 @@ public enum TranferType : String{
     ///did 向 主链 转账
     case DID_MAIN_CROSS_CHAIN = "0000000000000000000000000000000000"
     
-    func setChainNetValue() -> String{
+    public func setChainNetValue() -> String{
         switch self {
         case .MAIN_DID_CROSS_CHAIN:
             return "XKUh4GLhFJiqAMTF6HyWQrV9pK9HcGUdfJ"
@@ -55,7 +55,7 @@ public enum ChainNetType {
     case TEST
 }
 
-class DMAConfigChainNetSet : NSObject{
+public class DMAConfigChainNetSet : NSObject{
     required init(chainType : ChainNetType) {
         DMAChainNet = chainType
         if chainType == ChainNetType.TEST{

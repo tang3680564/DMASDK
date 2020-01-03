@@ -193,7 +193,7 @@ public class ETHToken20Service : NSObject {
     
     
     /// 判断余额是否足够支付gasfee
-    func banlanceIsOverLimt(address : String = "",privateKey : String = "" , gasLimt : String) -> Bool{
+    public func banlanceIsOverLimt(address : String = "",privateKey : String = "" , gasLimt : String) -> Bool{
         var ethAddress = address
         let ethServer = EthService(url: url)
         if address.isEmpty{

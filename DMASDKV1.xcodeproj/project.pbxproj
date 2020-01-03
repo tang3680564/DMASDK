@@ -41,6 +41,7 @@
 		F82A437223BD90850051407A /* NFTokenDMAData.json in Resources */ = {isa = PBXBuildFile; fileRef = F82A436623BD90840051407A /* NFTokenDMAData.json */; };
 		F82A437723BD97450051407A /* TokenDMAData.json in Resources */ = {isa = PBXBuildFile; fileRef = F82A437623BD97450051407A /* TokenDMAData.json */; };
 		F82A44C023BDBF560051407A /* ETHTransfer.json in Resources */ = {isa = PBXBuildFile; fileRef = F82A44BF23BDBF550051407A /* ETHTransfer.json */; };
+		F82A4B2623BED5AF0051407A /* web3swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F82A4B2523BED5AF0051407A /* web3swift.framework */; };
 		F8A9810C232F28FC00F3494B /* ErrorCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A9810B232F28FC00F3494B /* ErrorCode.swift */; };
 /* End PBXBuildFile section */
 
@@ -83,6 +84,7 @@
 		F82A436623BD90840051407A /* NFTokenDMAData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = NFTokenDMAData.json; sourceTree = "<group>"; };
 		F82A437623BD97450051407A /* TokenDMAData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TokenDMAData.json; sourceTree = "<group>"; };
 		F82A44BF23BDBF550051407A /* ETHTransfer.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ETHTransfer.json; sourceTree = "<group>"; };
+		F82A4B2523BED5AF0051407A /* web3swift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = web3swift.framework; sourceTree = "<group>"; };
 		F8A9810B232F28FC00F3494B /* ErrorCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorCode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -92,6 +94,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0DF943739E816E6A25916D56 /* Pods_DMASDKV1.framework in Frameworks */,
+				F82A4B2623BED5AF0051407A /* web3swift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -101,6 +104,7 @@
 		4CB9FEABC979D0AF8EA3561C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F82A4B2523BED5AF0051407A /* web3swift.framework */,
 				70A38906F026B6EDA704A972 /* Pods_DMASDKV1.framework */,
 			);
 			name = Frameworks;
@@ -589,6 +593,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/DMASDKV1/SDK",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = DMASDKV1/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -622,6 +627,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/DMASDKV1/SDK",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = DMASDKV1/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
