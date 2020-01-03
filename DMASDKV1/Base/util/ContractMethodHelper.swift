@@ -11,7 +11,7 @@ import web3swift
 import BigInt
 import HandyJSON
 
-public class ContractMethodHelper: NSObject {
+open class ContractMethodHelper: NSObject {
     
     public var nodeURL = assetManagementUrl!
     
@@ -171,7 +171,7 @@ public class ContractMethodHelper: NSObject {
         
     }
     
-    public func getAbi(abi:String) -> String {
+    open func getAbi(abi:String) -> String {
                let path = Bundle(identifier: "starrymedia.DMASDKV1")?.path(forResource: abi, ofType: "json")
 //        let path = Bundle.main.path(forResource: abi, ofType: "json")
         let data = NSData.init(contentsOfFile: path!)

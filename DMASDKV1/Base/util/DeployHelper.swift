@@ -10,7 +10,7 @@ import UIKit
 import web3swift
 import BigInt
 
-public class DeployHelper: NSObject {
+open class DeployHelper: NSObject {
     
     public var ethNode = assetManagementUrl!
     
@@ -103,7 +103,7 @@ public class DeployHelper: NSObject {
         }
     }
     
-    public func getAbi(abi:String) -> String {
+    open func getAbi(abi:String) -> String {
         let path = Bundle(identifier: "starrymedia.DMASDKV1")?.path(forResource: abi, ofType: "json")
 //        let path = Bundle.main.path(forResource: abi, ofType: "json")
         let data = NSData.init(contentsOfFile: path!)
