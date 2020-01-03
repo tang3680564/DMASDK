@@ -12,9 +12,9 @@ import web3swift
 public class TokenContract: NSObject {
     let abi = "TokenDMA"
 
-    var url = ""
+    public var url = ""
     
-    required init(url : String) {
+    public required init(url : String) {
         self.url = url
     }
     
