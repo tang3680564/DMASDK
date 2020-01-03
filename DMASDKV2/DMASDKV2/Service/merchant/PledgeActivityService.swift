@@ -267,7 +267,6 @@ public class PledgeActivityService : NSObject{
             limAndPriceIsEmpty(gasLimit: &gasLimit, gasPrice: &gasPrice)
         }
         
-        
         let tokencontact = TokenContract(url: urlStr)
         let tokencontactResult = tokencontact.approve(privateKey: privateKey, contractAddress: token20Address, spender: platAddress, value: sumPrice, gasLimit: gasLimit, gasPrice: gasPrice)
         switch tokencontactResult {

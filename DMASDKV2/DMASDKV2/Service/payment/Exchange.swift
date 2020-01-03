@@ -8,7 +8,7 @@
 
 import Foundation
 import web3swift
-
+import DMASDKV1
 public class Exchange: NSObject {
     
     var url = ""
