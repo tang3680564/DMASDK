@@ -9,7 +9,7 @@
 import Foundation
 import BigInt
 import web3swift
-
+import DMASDKV1
 
 public class ChargeActivityService : NSObject{
     var urlStr = defultURL

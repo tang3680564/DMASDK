@@ -3,6 +3,10 @@ PODS:
   - BigInt (3.1.0):
     - SipHash (~> 1.2)
   - CryptoSwift (0.15.0)
+  - DMAELASDKKeyPair (1.0.6)
+  - DMAELASDKTEST (1.0.5)
+  - ElastosCarrierSDK (5.3.4)
+  - HandyJSON (5.0.1)
   - PromiseKit (6.12.0):
     - PromiseKit/CorePromise (= 6.12.0)
     - PromiseKit/Foundation (= 6.12.0)
@@ -30,6 +34,10 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 4.7)
+  - DMAELASDKKeyPair
+  - DMAELASDKTEST
+  - ElastosCarrierSDK (~> 5.3.2)
+  - HandyJSON (~> 5.0.0)
   - web3swift (~> 1.1.10)
 
 SPEC REPOS:
@@ -37,6 +45,10 @@ SPEC REPOS:
     - Alamofire
     - BigInt
     - CryptoSwift
+    - DMAELASDKKeyPair
+    - DMAELASDKTEST
+    - ElastosCarrierSDK
+    - HandyJSON
     - PromiseKit
     - Result
     - scrypt
@@ -49,6 +61,10 @@ SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   BigInt: 76b5dfdfa3e2e478d4ffdf161aeede5502e2742f
   CryptoSwift: 769f58a9e89f64e8796c2e59ce5f002dc81a2438
+  DMAELASDKKeyPair: 2fa10eab9895dd2f408d47ac88408c801089f771
+  DMAELASDKTEST: 0930a17152fde98af7fb8be083dbf1497c099e36
+  ElastosCarrierSDK: c02a7d3b117caccc6f119abb6f4a88c9018ef511
+  HandyJSON: d45b8415c501e3affc59ca9762c1197ff0feb646
   PromiseKit: c06835ba442ce5454ce3cdde470232804a6e4ff8
   Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
   scrypt: 3fe5b1a3b0976f97cd87488673a8f7c65708cc84
@@ -57,6 +73,6 @@ SPEC CHECKSUMS:
   SwiftRLP: 9de2c9512a9a6bf0909cd84cc143a7ff1aff7820
   web3swift: 843dd5295d2ae755e6f80e9e0bdabe2868a5c7d8
 
-PODFILE CHECKSUM: 10f47415f1ad5a9cfa7f62587106034a947e647f
+PODFILE CHECKSUM: ffe4bf059a97f8f5ce9b6a688f731f617b6a0227
 
 COCOAPODS: 1.8.0

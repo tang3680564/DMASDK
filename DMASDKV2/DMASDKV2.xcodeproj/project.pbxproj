@@ -29,6 +29,7 @@
 		F82A44BC23BDBE370051407A /* ChargeActivityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82A447723BDBE370051407A /* ChargeActivityService.swift */; };
 		F82A44BD23BDBE370051407A /* MerchantService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82A447823BDBE370051407A /* MerchantService.swift */; };
 		F82A44BE23BDBE370051407A /* PledgeActivityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82A447923BDBE370051407A /* PledgeActivityService.swift */; };
+		F82A4B2423BECDF60051407A /* DMASDKV1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F82A4B2323BECDF60051407A /* DMASDKV1.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		F82A447723BDBE370051407A /* ChargeActivityService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChargeActivityService.swift; sourceTree = "<group>"; };
 		F82A447823BDBE370051407A /* MerchantService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MerchantService.swift; sourceTree = "<group>"; };
 		F82A447923BDBE370051407A /* PledgeActivityService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PledgeActivityService.swift; sourceTree = "<group>"; };
+		F82A4B2323BECDF60051407A /* DMASDKV1.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DMASDKV1.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				41C2096BDE2530ECA088F6D0 /* Pods_DMASDKV2.framework in Frameworks */,
+				F82A4B2423BECDF60051407A /* DMASDKV1.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -180,6 +183,7 @@
 		F82A4A4B23BDBFE70051407A /* FromeWork */ = {
 			isa = PBXGroup;
 			children = (
+				F82A4B2323BECDF60051407A /* DMASDKV1.framework */,
 			);
 			path = FromeWork;
 			sourceTree = "<group>";
@@ -459,6 +463,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/lib/DMASDK/DMASDKV1/SDK",
 					"$(PROJECT_DIR)/lib/DMASDK/Pods/ElastosCarrierSDK/ElastosCarrier-framework",
+					"$(PROJECT_DIR)/DMASDKV2/FromeWork",
 				);
 				INFOPLIST_FILE = DMASDKV2/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -497,6 +502,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/lib/DMASDK/DMASDKV1/SDK",
 					"$(PROJECT_DIR)/lib/DMASDK/Pods/ElastosCarrierSDK/ElastosCarrier-framework",
+					"$(PROJECT_DIR)/DMASDKV2/FromeWork",
 				);
 				INFOPLIST_FILE = DMASDKV2/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
