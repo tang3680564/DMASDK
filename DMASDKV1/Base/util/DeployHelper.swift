@@ -12,7 +12,7 @@ import BigInt
 
 public class DeployHelper: NSObject {
     
-    var ethNode = assetManagementUrl!
+    public var ethNode = assetManagementUrl!
     
     public required init(url : String) {
         super.init()
@@ -23,8 +23,10 @@ public class DeployHelper: NSObject {
         super.init()
     }
     
-    public func setupDeploy(privateKey:String,abi:String,bytecode:String,parameters: [AnyObject] = [AnyObject](),gasLimit:String,gasPrice:String) -> ContractResult {
-        
+    public func setupDeploy(privateKey:String,abi:String,bytecode:String,parameters: [AnyObject] = [AnyObject](),gasLimit:String,gasPrice:String,getGasFee : Bool = false) -> ContractResult {
+        if getGasFee{
+            return setupDeployGas(privateKey:privateKey,abi:abi,bytecode:bytecode,parameters: parameters,gasLimit:gasLimit,gasPrice:gasPrice)
+        }
         let abi = getAbi(abi: abi)
         let bytecode = Data.fromHex(getAbi(abi: bytecode))
         let ethWallet = EthWallet()
@@ -51,9 +53,6 @@ public class DeployHelper: NSObject {
         case .success(let res)?:
             return self.waitSearchReceipt(web3: web3, hash: res.hash)
         case .failure(let error)?:
-            if error.localizedDescription.contains("replacement"){
-                return ContractResult.failure(error: "Other operations in progress")
-            }
             return ContractResult.failure(error: error)
         case .none:
             return ContractResult.failure(error: DMASDKError.RPC_REQUEST_FAILED.getCodeAndMsg())
@@ -70,6 +69,39 @@ public class DeployHelper: NSObject {
         return ContractResult.success(value: ["address":address.contractAddress?.address as Any])
     }
     
+    
+    public func setupDeployGas(privateKey:String,abi:String,bytecode:String,parameters: [AnyObject] = [AnyObject](),gasLimit:String,gasPrice:String) -> ContractResult{
+        let abi = getAbi(abi: abi)
+        let bytecode = Data.fromHex(getAbi(abi: bytecode))
+        let ethWallet = EthWallet()
+        let keystoreJson = ethWallet.exportKeystoreFromPrivateKeyAndPassword(privateKey: privateKey, passWord: "")
+        let keystore = EthereumKeystoreV3.init(keystoreJson!)
+        let keystoreManager = KeystoreManager([keystore!])
+        let account = keystoreManager.addresses![0]
+        print(ethNode)
+        print(parameters)
+        let web3 = Web3.new(ethNode)
+        web3?.provider.network = nil
+        web3?.addKeystoreManager(keystoreManager)
+        
+        let contraction = web3?.contract(abi, at: nil, abiVersion: 2)
+        var options = Web3Options.defaultOptions()
+        options.gasLimit = BigUInt(gasLimit)
+        options.gasPrice = BigUInt(gasPrice)
+        options.from = account
+        //        let param = [name ,symbol ,metadata ,isburn ] as [Any]
+        
+        let result = contraction?.deploy(bytecode: bytecode!, parameters: parameters, extraData: Data(), options: options)?.estimateGas(options: options)
+        //
+        switch result {
+        case .success(let res)?:
+            return ContractResult.success(value:["gas":res])
+        case .failure(let error)?:
+            return ContractResult.failure(error: error)
+        case .none:
+            return ContractResult.failure(error: DMASDKError.RPC_REQUEST_FAILED.getCodeAndMsg())
+        }
+    }
     
     public func getAbi(abi:String) -> String {
         let path = Bundle(identifier: "starrymedia.DMASDKV1")?.path(forResource: abi, ofType: "json")

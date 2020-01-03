@@ -7,36 +7,38 @@ PODS:
   - DMAELASDKTEST (1.0.5)
   - ElastosCarrierSDK (5.3.4)
   - HandyJSON (5.0.1)
-  - PromiseKit (6.4.1):
-    - PromiseKit/CorePromise (= 6.4.1)
-    - PromiseKit/Foundation (= 6.4.1)
-    - PromiseKit/UIKit (= 6.4.1)
-  - PromiseKit/CorePromise (6.4.1)
-  - PromiseKit/Foundation (6.4.1):
+  - PromiseKit (6.12.0):
+    - PromiseKit/CorePromise (= 6.12.0)
+    - PromiseKit/Foundation (= 6.12.0)
+    - PromiseKit/UIKit (= 6.12.0)
+  - PromiseKit/CorePromise (6.12.0)
+  - PromiseKit/Foundation (6.12.0):
     - PromiseKit/CorePromise
-  - PromiseKit/UIKit (6.4.1):
+  - PromiseKit/UIKit (6.12.0):
     - PromiseKit/CorePromise
   - Result (4.1.0)
   - scrypt (2.0):
     - CryptoSwift (~> 0.11)
   - secp256k1_swift (1.0.3)
   - SipHash (1.2.2)
-  - SwiftRLP (1.2):
+  - SwiftRLP (1.0.1):
     - BigInt (~> 3.1)
+  - web3swift (1.1.10):
+    - BigInt (~> 3.1)
+    - CryptoSwift (~> 0.11)
+    - PromiseKit (~> 6.3)
+    - Result (~> 4.0)
+    - scrypt (~> 2.0)
+    - secp256k1_swift (~> 1.0.3)
+    - SwiftRLP (~> 1.0.1)
 
 DEPENDENCIES:
   - Alamofire (~> 4.7)
-  - BigInt (~> 3.1)
-  - CryptoSwift (~> 0.12)
   - DMAELASDKKeyPair
   - DMAELASDKTEST
   - ElastosCarrierSDK (~> 5.3.2)
   - HandyJSON (~> 5.0.0)
-  - PromiseKit (~> 6.4.1)
-  - Result (~> 4.0)
-  - scrypt (~> 2.0)
-  - secp256k1_swift (~> 1.0.3)
-  - SwiftRLP (~> 1.1)
+  - web3swift (~> 1.1.10)
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
@@ -53,6 +55,7 @@ SPEC REPOS:
     - secp256k1_swift
     - SipHash
     - SwiftRLP
+    - web3swift
 
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
@@ -62,13 +65,14 @@ SPEC CHECKSUMS:
   DMAELASDKTEST: 0930a17152fde98af7fb8be083dbf1497c099e36
   ElastosCarrierSDK: c02a7d3b117caccc6f119abb6f4a88c9018ef511
   HandyJSON: d45b8415c501e3affc59ca9762c1197ff0feb646
-  PromiseKit: 4c76a6506638034e3d7bede97b2ff7743f7bd2dc
+  PromiseKit: c06835ba442ce5454ce3cdde470232804a6e4ff8
   Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
   scrypt: 3fe5b1a3b0976f97cd87488673a8f7c65708cc84
   secp256k1_swift: 4fc5c4b2d2c6d21ee8ccb868cdc92da12f38bed9
   SipHash: fad90a4683e420c52ef28063063dbbce248ea6d4
-  SwiftRLP: 98a02b2210128353ca02e4c2f4d83e2a9796db4f
+  SwiftRLP: 9de2c9512a9a6bf0909cd84cc143a7ff1aff7820
+  web3swift: 843dd5295d2ae755e6f80e9e0bdabe2868a5c7d8
 
-PODFILE CHECKSUM: 84a67d0abc66dab80f59ddbcf601dc8c39dea346
+PODFILE CHECKSUM: 284388ca4511630d3e6ba6e53cd3fbb1fe5764e8
 
 COCOAPODS: 1.8.0

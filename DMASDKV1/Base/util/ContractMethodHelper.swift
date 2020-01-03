@@ -13,11 +13,11 @@ import HandyJSON
 
 public class ContractMethodHelper: NSObject {
     
-    var nodeURL = assetManagementUrl!
+    public var nodeURL = assetManagementUrl!
     
     private static var randomInt : BigUInt = 0
     
-  
+    
     
     public required init(url : String) {
         super.init()
@@ -52,17 +52,16 @@ public class ContractMethodHelper: NSObject {
                 }
                 web3?.addKeystoreManager(keystoreManager)
                 let contraction = web3?.contract(abi, at: EthereumAddress(contractAddress), abiVersion: 2)
-//                let result = contraction?.method(method, parameters: parameters, extraData: Data(), options: options)?.send(password: "A", options: options,onBlock: "latest")
-//                switch result{
-//                case .success(let res)?:
-//                    return ContractResult.success(value:["hash":res.hash])
-//                case .failure(let error)?:
-//                    return ContractResult.failure(error: error)
-//                case .none:
-//                    return ContractResult.failure(error: "转账失败")
-//                }
+                //                let result = contraction?.method(method, parameters: parameters, extraData: Data(), options: options)?.send(password: "A", options: options,onBlock: "latest")
+                //                switch result{
+                //                case .success(let res)?:
+                //                    return ContractResult.success(value:["hash":res.hash])
+                //                case .failure(let error)?:
+                //                    return ContractResult.failure(error: error)
+                //                case .none:
+                //                    return ContractResult.failure(error: "转账失败")
+                //                }
                 var transfer = contraction?.method(method, parameters: parameters, extraData: Data(), options: options)?.transaction
-                
                 let random = web3?.eth.getTransactionCount(address: account)
                 switch random{
                 case .success(let res)?:
@@ -75,6 +74,9 @@ public class ContractMethodHelper: NSObject {
                         transfer?.nonce = res
                     }
                     ContractMethodHelper.randomInt = transfer!.nonce
+                    print("随机数为 \(ContractMethodHelper.randomInt)")
+                    print("方法为 \(method)")
+                    print("参数为  \(parameters)")
                     do {
                         try Web3Signer.signTX(transaction: &transfer!, keystore: keystore!, account: account, password: "A")
                     } catch {
@@ -86,18 +88,12 @@ public class ContractMethodHelper: NSObject {
                     case .success(let res)?:
                         return ContractResult.success(value:["hash":res.hash])
                     case .failure(let error)?:
-                        if error.localizedDescription.contains("replacement"){
-                            return ContractResult.failure(error: "Other operations in progress")
-                        }
                         return ContractResult.failure(error: error)
                     case .none:
                         return ContractResult.failure(error: DMASDKError.RPC_REQUEST_FAILED.getCodeAndMsg())
                     }
                 case .failure(let error)?:
                     print(error)
-                    if error.localizedDescription.contains("replacement"){
-                        return ContractResult.failure(error: "Other operations in progress")
-                    }
                     return ContractResult.failure(error: error)
                 case .none:
                     return ContractResult.failure(error: DMASDKError.RPC_REQUEST_FAILED.getCodeAndMsg())
@@ -107,21 +103,18 @@ public class ContractMethodHelper: NSObject {
         {
             let contraction = web3?.contract(abi, at: EthereumAddress(contractAddress), abiVersion: 2)
             let result = contraction?.method(method, parameters: parameters, extraData: Data(), options: options)?.call(options: options)
-
+            
             switch result {
             case .success(let res)?:
                 return ContractResult.success(value: res)
             case .failure(let error)?:
-                if error.localizedDescription.contains("replacement"){
-                    return ContractResult.failure(error: "Other operations in progress")
-                }
                 return ContractResult.failure(error: error.localizedDescription)
-
+                
             case .none:
                 return ContractResult.failure(error: DMASDKError.RPC_REQUEST_FAILED.getCodeAndMsg())
             }
         }
-
+        
     }
     
     
@@ -147,12 +140,12 @@ public class ContractMethodHelper: NSObject {
                 
                 let contraction = web3?.contract(abi, at: EthereumAddress(contractAddress), abiVersion: 2)
                 let result = contraction?.method(method, parameters: parameters, extraData: Data(), options: options)?.estimateGas(options: options)
-               
+                
                 switch result {
                 case .success(let res)?:
                     print("opopoop")
                     print(res)
-                    return ContractResult.success(value:["gas":"\(res)"])
+                    return ContractResult.success(value:["gas":res])
                 case .failure(let error)?:
                     print(error)
                     return ContractResult.failure(error: error)
@@ -179,7 +172,7 @@ public class ContractMethodHelper: NSObject {
     }
     
     public func getAbi(abi:String) -> String {
-       let path = Bundle(identifier: "starrymedia.DMASDKV1")?.path(forResource: abi, ofType: "json")
+               let path = Bundle(identifier: "starrymedia.DMASDKV1")?.path(forResource: abi, ofType: "json")
 //        let path = Bundle.main.path(forResource: abi, ofType: "json")
         let data = NSData.init(contentsOfFile: path!)
         let abiString = String.init(data: data! as Data, encoding:.utf8)
