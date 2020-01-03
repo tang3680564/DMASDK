@@ -49,7 +49,7 @@ public class ChargeActivityService : NSObject{
         case .success(let resp):
             let b = resp["balance"] as!String
             if Double(b)! > 0{
-                let asset = AssetManagement(url: urlStr)
+                let asset = AssetManagementService(url: urlStr)
                 print(b)
                 let assetResult = asset.setupDeploy(privateKey: privateKey, name: name, symbol: symbol, metadata: metadata, isburn: true, gasLimit: gasLimit, gasPrice: gasPrice)
                 switch assetResult{
@@ -94,7 +94,7 @@ public class ChargeActivityService : NSObject{
     ///   - getGasFee: 估算这次操作所需要的gasfee , true : 进行估算,不进行这次操作, false : 不进行估算,进行这次操作
     /// - Returns: 交易hash
     public func mintWithArray(privateKey:String,assetAddress:String,to:String,array:Array<Any>,metaData:String,isTransfer:Bool,isBurn:Bool,gasLimit:String = "",gasPrice:String = "",getGasFee : Bool = false) -> ContractResult {
-        let asset = AssetManagement(url: urlStr)
+        let asset = AssetManagementService(url: urlStr)
         var gasLimit = gasLimit
         var gasPrice = gasPrice
         var getGasFee = getGasFee
@@ -137,7 +137,7 @@ public class ChargeActivityService : NSObject{
             return onSales(contractAddress: contractAddress, platformAddress: platformAddress, privateKey: privateKey, gasLimit: gasLimit, gasPrice: gasPrice, owner: owner, tokenIds: tokenIds, price: price, getGasFees: getGasFee,canNext: canNext)
         }
         limAndPriceIsEmpty(gasLimit: &gasLimit, gasPrice: &gasPrice)
-        let asset = AssetManagement(url: urlStr)
+        let asset = AssetManagementService(url: urlStr)
         //
         let assetresult = asset.approveWithArray(privateKey: privateKey, contractAddress: contractAddress, approved: platformAddress, tokenArr: tokenIds, gasLimit: gasLimit, gasPrice: gasPrice)
         switch assetresult {
@@ -164,7 +164,7 @@ public class ChargeActivityService : NSObject{
     }
     
     private func onSales(contractAddress:String,platformAddress:String,privateKey:String,gasLimit:String,gasPrice:String,owner:String,tokenIds:Array<Any>,price:String,getGasFees : Bool,canNext : Bool = false) -> ContractResult {
-        let asset = AssetManagement(url: urlStr)
+        let asset = AssetManagementService(url: urlStr)
         //
         let assetresult = asset.approveWithArray(privateKey: privateKey, contractAddress: contractAddress, approved: platformAddress, tokenArr: tokenIds, gasLimit: gasLimit, gasPrice: gasPrice,getGasFee:  getGasFees)
         switch assetresult {

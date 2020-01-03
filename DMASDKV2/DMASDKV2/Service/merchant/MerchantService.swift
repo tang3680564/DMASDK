@@ -64,7 +64,7 @@ open class MerchantService: NSObject {
             print(resp)
             let b = resp["balance"] as!String
             if Double(b)! > 0{
-                let asset = AssetManagement(url: url)
+                let asset = AssetManagementService(url: url)
                 
                 let assetResult = asset.setupDeploy(privateKey: privateKey, name: name, symbol: symbol, metadata: metadata, isburn: true, gasLimit: gasLimit, gasPrice: gasPrice)
                 switch assetResult{
@@ -111,7 +111,7 @@ open class MerchantService: NSObject {
     ///   - gasPrice: gasPrice description
     /// - Returns: return value description
     public func mintWithArray(privateKey:String,assetAddress:String,to:String,array:Array<Any>,metaData:String,isTransfer:Bool,isBurn:Bool,gasLimit:String = "" ,gasPrice:String = "",getGasFee : Bool = false) -> ContractResult {
-        let asset = AssetManagement(url: url)
+        let asset = AssetManagementService(url: url)
         
         var gasLimit = gasLimit
         var gasPrice = gasPrice
@@ -158,7 +158,7 @@ open class MerchantService: NSObject {
             return onSales(contractAddress: contractAddress, platformAddress: platformAddress, privateKey: privateKey, gasLimit: gasLimit, gasPrice: gasPrice, owner: owner, tokenIds: tokenIds, price: price, getGasFees: getGasFee, canNext: canNext)
         }
         limAndPriceIsEmpty(gasLimit: &gasLimit, gasPrice: &gasPrice)
-        let asset = AssetManagement(url: url)
+        let asset = AssetManagementService(url: url)
         //
         let assetresult = asset.approveWithArray(privateKey: privateKey, contractAddress: contractAddress, approved: platformAddress, tokenArr: tokenIds, gasLimit: gasLimit, gasPrice: gasPrice)
         switch assetresult {
@@ -186,7 +186,7 @@ open class MerchantService: NSObject {
     
     
     private func onSales(contractAddress:String,platformAddress:String,privateKey:String,gasLimit:String,gasPrice:String,owner:String,tokenIds:Array<Any>,price:String,getGasFees : Bool,canNext : Bool = false) -> ContractResult {
-        let asset = AssetManagement(url: url)
+        let asset = AssetManagementService(url: url)
         //
         let assetresult = asset.approveWithArray(privateKey: privateKey, contractAddress: contractAddress, approved: platformAddress, tokenArr: tokenIds, gasLimit: gasLimit, gasPrice: gasPrice,getGasFee: getGasFees)
         switch assetresult {
@@ -316,7 +316,7 @@ open class MerchantService: NSObject {
         return result
     }
     public  func tokenIds(contractAddress:String,owner:String) -> ContractResult {
-        let asset = AssetManagement(url: url)
+        let asset = AssetManagementService(url: url)
         let result = asset.tokenIds(contractAddress: contractAddress, owner: owner)
         return result
     }
